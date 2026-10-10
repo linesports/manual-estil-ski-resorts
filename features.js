@@ -12,7 +12,8 @@
   const savedCategoryFilter = document.getElementById('savedCategoryFilter');
   const bookmarkDialog = document.getElementById('bookmarkDialog');
   const bookmarkCategory = document.getElementById('bookmarkCategory');
-  const categories = ['Sampling', 'Activació de marca', 'Branding', 'Naming', 'Altres'];
+  const categories = ['Sampling', 'Activació de marca', 'Branding', 'Naming'];
+  const legacyCategories = [...categories, 'Altres'];
   const brandPosts = Array.isArray(window.BRAND_INSTAGRAM_POSTS) ? window.BRAND_INSTAGRAM_POSTS : [];
   const storageKey = 'olaf-ski-sponsor-bookmarks-v1';
 
@@ -105,7 +106,7 @@
     try {
       const value = JSON.parse(localStorage.getItem(storageKey) || '[]');
       return Array.isArray(value)
-        ? value.filter(item => item && typeof item.id === 'string' && categories.includes(item.category))
+        ? value.filter(item => item && typeof item.id === 'string' && legacyCategories.includes(item.category))
         : [];
     } catch (_) {
       return [];
@@ -381,7 +382,7 @@
     if (!piece) return;
     const saved = bookmarks.find(bookmark => bookmark.id === piece.id);
     const toggle = document.getElementById('bookmarkToggle');
-    toggle.textContent = saved ? 'Desada · canvia categoria' : 'Guardar';
+    document.getElementById('bookmarkToggleLabel').textContent = saved ? 'Desada · canvia categoria' : 'Guardar';
     toggle.setAttribute('aria-pressed', String(!!saved));
     document.getElementById('bookmarkMeta').hidden = !saved;
     document.getElementById('bookmarkMeta').textContent = saved ? 'A la biblioteca · ' + saved.category : '';
