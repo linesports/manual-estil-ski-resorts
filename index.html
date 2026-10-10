@@ -58,7 +58,7 @@ h1{font-size:19px;line-height:1.15;font-weight:300;letter-spacing:-.4px;margin:0
 .slide video{user-select:auto}
 .slide:not(.active) video{pointer-events:none}
 .slide .image-error{position:absolute;inset:0;display:grid;align-content:center;justify-content:start;color:var(--paper);font-size:13px;padding:22px;text-align:left}
-.video-warning{position:absolute;bottom:15px;left:15px;right:15px;background:var(--color-carbon);color:var(--paper);padding:15px;font-size:13px;text-align:left;pointer-events:none}
+.video-warning{position:absolute;bottom:15px;left:15px;right:15px;display:block;background:var(--color-carbon);color:var(--paper);padding:15px;font-size:13px;line-height:1.5;text-align:left;pointer-events:auto;text-decoration:underline;text-underline-offset:3px}
 .viewer-meta{max-width:640px;margin:22px auto 0;display:flex;justify-content:space-between;align-items:center;gap:15px;min-height:44px}
 .story-meta{display:flex;flex-wrap:wrap;align-items:center;column-gap:15px;row-gap:5px;font-size:13px;font-weight:300}
 .status{font-size:13px;font-weight:300;display:inline-flex;align-items:center}
@@ -306,7 +306,7 @@ function renderSlideMedia(slide,s,n){
  const m=s.media[n]||s.media[0];slide.replaceChildren();slide.dataset.mediaIndex=n;
  const source=m.videoPath||m.videoRemote;
  if(m.mediaType==='video'&&source){
-  const video=document.createElement('video');video.controls=slide.classList.contains('active');video.playsInline=true;video.preload='none';video.poster=m.image||s.image;video.src=source;video.tabIndex=slide.classList.contains('active')?0:-1;video.setAttribute('aria-label',s.title);video.addEventListener('play',()=>{if(!slide.classList.contains('active'))video.pause();});video.addEventListener('error',()=>{const err=document.createElement('span');err.className='video-warning';err.textContent='El vídeo original no respon. Pots consultar la publicació original.';slide.append(err);},{once:true});slide.append(video);
+  const video=document.createElement('video');video.controls=slide.classList.contains('active');video.playsInline=true;video.preload='none';video.poster=m.image||s.image;video.src=source;video.tabIndex=slide.classList.contains('active')?0:-1;video.setAttribute('aria-label',s.title);video.addEventListener('play',()=>{if(!slide.classList.contains('active'))video.pause();});let retried=false;video.addEventListener('error',()=>{if(!retried&&m.videoPath&&video.currentSrc===source){retried=true;const retry=new URL(source);retry.searchParams.set('retry',String(Date.now()));video.src=retry.href;video.load();return;}const err=document.createElement('a');err.className='video-warning';err.href=s.sourceUrl;err.target='_blank';err.rel='noopener noreferrer';err.textContent='No s’ha pogut carregar el vídeo. Obre la publicació original a Instagram.';slide.append(err);});slide.append(video);
  }else{
   const img=document.createElement('img');img.alt=s.title+(s.media.length>1?' · diapositiva '+(n+1):'');img.draggable=false;img.loading='lazy';img.decoding='async';img.src=m.image||s.image;img.addEventListener('error',()=>{const err=document.createElement('span');err.className='image-error';err.textContent='No s’ha pogut carregar aquesta imatge.';slide.append(err);},{once:true});slide.append(img);
   if(m.mediaType==='video'){const warning=document.createElement('span');warning.className='video-warning';warning.textContent='Original no recuperable · consulta Instagram';slide.append(warning);}
