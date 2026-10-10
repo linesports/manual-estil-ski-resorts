@@ -28,19 +28,22 @@
     'Turisme i allotjament',
     'Salut i benestar',
     'Esdeveniments i entreteniment',
+    'Energia i serveis',
     'Altres'
   ];
 
   const sectorBrands = {
     'Automoció i mobilitat': [
       'Audi', 'Toyota', 'Jeep', 'Volvo', 'Motul', 'Mercedes-Benz', 'Range Rover', 'Kia',
-      'Prinoth', 'Leitner-Poma of America'
+      'Prinoth', 'Leitner-Poma of America', 'Hankook', 'Movento Stern', 'Repsol'
     ],
     'Equipament i esports': [
       'Mammut', 'Peak Performance', 'Helly Hansen', 'BUFF', 'Salomon', 'Oakley', 'COMMENCAL',
       'DC Shoes', 'Rossignol', 'Smartwool', 'Rip Curl', 'La Sportiva', 'GORE-TEX',
       'Dynastar', 'Atomic', 'Nitro Snowboards', 'RockShox', 'Wagner Skis', 'SB3 Components',
-      'Columbia', 'Thule', 'Faction Skis', 'Haglöfs', 'POC', 'YETI', 'Burton'
+      'Columbia', 'Thule', 'Faction Skis', 'Haglöfs', 'POC', 'YETI', 'Burton',
+      'Cristóbal Colón Store', 'Loubsol', 'Obermeyer', 'Opinel', 'RideWrap', 'Rhythm Japan',
+      'Shimano', 'Specialized'
     ],
     'Moda i complements': [
       'Zalando', 'Oysho', 'Kiehl’s', 'Alpina Watches', 'Swatch', 'Stanley'
@@ -50,10 +53,12 @@
       'White Claw', 'Don Julio', 'Celsius', 'Best Day Brewing', 'Aspen Vodka', 'Bonneval',
       'Rasta Alfajores', 'Lacasitos', 'El Tony Mate', 'Fresca', 'Royal Guard',
       'Cerveza Royal Guard', 'Sylranch Winery', 'Surfside', 'Ron Barceló', 'Jean Leon',
-      'Veuve Clicquot', 'Casamigos', 'Tartuflanghe'
+      'Veuve Clicquot', 'Casamigos', 'Tartuflanghe', 'Aragón Alimentos', 'ISHIYA', 'Pascual',
+      'Red Bull', 'Rockstar Energy', 'SOMMOS', 'See Ya Later Ranch', 'The Green Mountain',
+      'Vaca Nostra'
     ],
     'Tecnologia i continguts digitals': [
-      'GoPro', 'Insta360', 'HOVERAir', 'Samsung', 'Google Cloud', 'JBL'
+      'GoPro', 'Insta360', 'HOVERAir', 'Samsung', 'Google Cloud', 'JBL', 'Thonet & Vander'
     ],
     'Telecomunicacions': ['Movistar', 'TELUS', 'Andorra Telecom'],
     'Finances i assegurances': [
@@ -61,14 +66,16 @@
     ],
     'Turisme i allotjament': [
       'Pullman Hotels', 'Hotel A Japan', 'Niseko Real Estate', 'RoomBoss', 'Vail Resorts',
-      'Marriott Bonvoy'
+      'Marriott Bonvoy', 'Epic Pass', 'Shiroi Koibito Park'
     ],
     'Salut i benestar': [
       'ISDIN', 'Cantabria Labs', 'Heliocare', 'WHOOP'
     ],
     'Esdeveniments i entreteniment': [
-      'Crankworx', 'Flaixbac', 'Belly Up Aspen', 'Xplore Alpes Festival', 'FIS', 'Vibra Clásica'
-    ]
+      'Crankworx', 'Flaixbac', 'Belly Up Aspen', 'Xplore Alpes Festival', 'FIS', 'Vibra Clásica',
+      'NASTC', 'Pickleball Japan Federation'
+    ],
+    'Energia i serveis': ['Holy Cross Energy', 'Iberdrola']
   };
 
   const normalize = value => String(value || '')
@@ -139,7 +146,7 @@
     }
   }
 
-  function localStoryVideoUrl(value) {
+  function localVideoUrl(value) {
     if (!value) return value;
     try {
       const path = new URL(value, location.href).pathname;
@@ -245,11 +252,8 @@
         copy.media = (piece.media || []).map(media => {
           const localMedia = Object.assign({}, media, {
             image: localImageUrl(media.image),
-            videoPath: piece.kind === 'story' ? localStoryVideoUrl(media.videoPath) : media.videoPath
+            videoPath: localVideoUrl(media.videoPath)
           });
-          if (piece.kind === 'post' && localMedia.mediaType === 'video') {
-            localMedia.instagramEmbedUrl = localMedia.instagramEmbedUrl || instagramEmbedUrl(piece.sourceUrl);
-          }
           return localMedia;
         });
         if (copy.media.length === 1 && copy.media[0].mediaType === 'video') {
@@ -309,9 +313,14 @@
       brandButton.setAttribute('aria-pressed', String(brandSource === 'brand'));
       brandButton.disabled = stationBrandPosts.length === 0;
       document.getElementById('brandSourceNote').hidden = selectedBrand === '*';
+      const expandedReview = stationBrandPosts.find(piece => piece.accountReviewCountInWindow);
       document.getElementById('brandSourceNote').textContent = stationBrandPosts.length
-        ? 'Revisió de fins a 15 publicacions recents del compte; només s’enllacen les que anomenen explícitament l’estació i tenen una peça de patrocini relacionada.'
-        : 'En la mostra revisada no s’ha trobat cap post del compte que anomeni aquesta estació; això no confirma que no n’hi hagi d’altres.';
+        ? expandedReview
+          ? 'Mostra ampliada de @' + expandedReview.account + ': ' +
+            new Intl.NumberFormat('ca-ES').format(expandedReview.accountReviewCountInWindow) +
+            ' publicacions dins la temporada; es mostren les que citen l’estació.'
+          : 'Revisió de fins a 15 publicacions recents del compte; només s’enllacen les que anomenen explícitament l’estació i tenen una peça de patrocini relacionada.'
+        : 'Encara no hi ha cap publicació de la marca enllaçada amb aquesta estació. Això no permet concloure que no n’hi hagi; la cobertura varia segons el compte.';
       if (selectedBrand !== '*') {
         const postsCount = visible.filter(piece => piece.kind === 'post').length;
         const storyCount = visible.filter(piece => piece.kind === 'story').length;
@@ -359,7 +368,7 @@
         ? 'No hi ha coincidències del compte de la marca'
         : 'No hi ha peces d’aquesta marca amb aquest format';
       document.getElementById('emptyText').textContent = brandSource === 'brand'
-        ? 'La revisió cobreix fins a 15 publicacions recents del compte dins la finestra d’estudi i enllaça només les que esmenten l’estació.'
+        ? 'No hi ha cap peça enllaçada del format seleccionat. Torna a “Totes les peces” o prova un altre format.'
         : 'Canvia de format o tria una altra marca patrocinadora.';
       document.getElementById('emptyAction').hidden = false;
     }
@@ -390,7 +399,8 @@
     origin.hidden = !piece.account;
     origin.textContent = piece.account
       ? 'Compte @' + piece.account + ' · ' + (piece.accountFullName || piece.account) +
-        (piece.accountVerified ? ' · verificat per Instagram' : ' · sense verificació blava')
+        (piece.accountVerified ? ' · verificat per Instagram' : ' · sense verificació blava') +
+        (piece.publicationRelationLabel ? ' · ' + piece.publicationRelationLabel : '')
       : '';
     document.getElementById('relatedActivationArea').hidden = !(piece.relatedPieceIds && piece.relatedPieceIds.length);
     document.getElementById('zoom').hidden = !!piece.instagramEmbedUrl;
@@ -401,18 +411,70 @@
     const piece = visible[current];
     const mediaIndex = piece ? (mediaMemories.get(piece.id) || 0) : 0;
     const media = piece && piece.media && (piece.media[mediaIndex] || piece.media[0]);
-    document.getElementById('zoom').hidden = !!(media && media.instagramEmbedUrl);
+    const activeSlide = carousel.children[current];
+    document.getElementById('zoom').hidden = !!(media && media.instagramEmbedUrl) ||
+      !!(activeSlide && activeSlide.dataset.videoUnavailable === 'true');
   };
 
   renderSlideMedia = function (slide, piece, mediaIndex) {
     const media = piece.media && (piece.media[mediaIndex] || piece.media[0]);
-    if (media && media.instagramEmbedUrl) {
+    delete slide.dataset.videoUnavailable;
+    if (media && media.mediaType === 'video' && (media.videoPath || media.videoRemote)) {
       const previous = slide.querySelector('video');
       if (previous) {
         previous.pause();
         previous.removeAttribute('src');
         previous.load();
       }
+      slide.replaceChildren();
+      slide.dataset.mediaIndex = String(mediaIndex);
+      const candidates = Array.from(new Set([media.videoPath, media.videoRemote].filter(Boolean)));
+      const video = document.createElement('video');
+      video.controls = slide.classList.contains('active');
+      video.playsInline = true;
+      video.preload = 'none';
+      video.poster = media.image || piece.image || '';
+      video.tabIndex = slide.classList.contains('active') ? 0 : -1;
+      video.setAttribute('aria-label', piece.title);
+      video.dataset.candidate = '0';
+      video.src = candidates[0];
+      video.addEventListener('play', () => {
+        if (!slide.classList.contains('active')) video.pause();
+      });
+      video.addEventListener('error', () => {
+        const next = Number(video.dataset.candidate) + 1;
+        if (next < candidates.length) {
+          video.dataset.candidate = String(next);
+          video.src = candidates[next];
+          video.load();
+          return;
+        }
+
+        const fallback = document.createElement('div');
+        fallback.className = 'video-recovery';
+        if (media.image || piece.image) {
+          const poster = document.createElement('img');
+          poster.src = media.image || piece.image;
+          poster.alt = piece.title + ' · portada del vídeo';
+          poster.draggable = false;
+          fallback.append(poster);
+        }
+        const link = document.createElement('a');
+        link.className = 'video-recovery-link';
+        link.href = piece.kind === 'story' ? (piece.storyUrl || piece.sourceUrl) : piece.sourceUrl;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = 'Aquest vídeo no es pot reproduir aquí. Obre la peça original a Instagram.';
+        link.addEventListener('click', event => event.stopPropagation());
+        fallback.append(link);
+        slide.dataset.videoUnavailable = 'true';
+        slide.replaceChildren(fallback);
+        updateMediaNavigation();
+      }, { once: false });
+      slide.append(video);
+      return;
+    }
+    if (media && media.instagramEmbedUrl) {
       slide.replaceChildren();
       slide.dataset.mediaIndex = String(mediaIndex);
       const frame = document.createElement('iframe');
