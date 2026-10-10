@@ -137,6 +137,7 @@ dialog::backdrop{background:var(--color-carbon)}
 .view-nav button[aria-current="page"]{color:var(--ink);border-bottom-color:var(--ink)}
 .view-nav button:hover{color:var(--ink)}
 .view-nav .nav-count{font-variant-numeric:tabular-nums;color:var(--color-graphite);margin-left:5px}
+.view-nav .nav-bookmark{width:13px;height:13px;vertical-align:-2px;margin-right:5px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .station-tools,.global-controls,.bookmark-controls{display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap}
 .station-tools{margin:-2px 0 30px}
 .field{display:grid;gap:6px;min-width:180px}
@@ -181,7 +182,7 @@ body[data-view="sectors"] .format-summary,body[data-view="saved"] .format-summar
 <header class="appbar"><span class="brand">OLAF</span><span class="divider" aria-hidden="true"></span><h1>Publicitat de marques</h1><span class="period">Anàlisi temporada 25-26</span></header>
 <div class="shell">
 <main class="content" id="main">
-<nav class="view-nav" aria-label="Vistes de publicitat"><button id="stationViewButton" type="button" aria-current="page">Estacions</button><button id="sectorViewButton" type="button" aria-current="false">Sectors</button><button id="savedViewButton" type="button" aria-current="false">Desades <span class="nav-count" id="savedNavCount">0</span></button></nav>
+<nav class="view-nav" aria-label="Vistes de publicitat"><button id="stationViewButton" type="button" aria-current="page">Estacions</button><button id="sectorViewButton" type="button" aria-current="false">Sectors</button><button id="savedViewButton" type="button" aria-current="false"><svg class="nav-bookmark" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.75h12v16.5l-6-4.1-6 4.1z"/></svg>Desades <span class="nav-count" id="savedNavCount">0</span></button></nav>
 <section class="global-header" id="sectorHeader" hidden><div><h2 id="sectorHeading">Patrocinis per sector</h2><p id="sectorIntro">Explora les marques i activacions de totes les estacions per àmbit de producte.</p></div><div class="global-controls"><label class="field"><span>Sector</span><select id="sectorFilter"><option value="*">Tots els sectors</option></select></label></div></section>
 <section class="global-header" id="savedHeader" hidden><div><h2>Biblioteca de referències</h2><p>Les peces que guardes queden disponibles en aquest navegador per tornar-hi i compartir-les amb l’equip.</p></div><p class="bookmark-note">Desades només en aquest navegador</p></section>
 <div class="bookmark-controls" id="savedFilters" hidden><label class="field"><span>Estació</span><select id="savedStationFilter"><option value="*">Totes les estacions</option></select></label><label class="field"><span>Sector</span><select id="savedSectorFilter"><option value="*">Tots els sectors</option></select></label><label class="field"><span>Tipus de referència</span><select id="savedCategoryFilter"><option value="*">Totes les categories</option></select></label></div>

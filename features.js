@@ -247,15 +247,12 @@
     DATA.pieces = items.map(piece => {
       const origin = sourceStation(piece);
       const copy = Object.assign({}, piece, { station: selected, sourceStation: origin });
+      copy.image = localImageUrl(piece.image);
+      copy.media = (piece.media || []).map(media => Object.assign({}, media, {
+        image: localImageUrl(media.image),
+        videoPath: localVideoUrl(media.videoPath)
+      }));
       if (!piece.account) {
-        copy.image = localImageUrl(piece.image);
-        copy.media = (piece.media || []).map(media => {
-          const localMedia = Object.assign({}, media, {
-            image: localImageUrl(media.image),
-            videoPath: localVideoUrl(media.videoPath)
-          });
-          return localMedia;
-        });
         if (copy.media.length === 1 && copy.media[0].mediaType === 'video') {
           copy.instagramEmbedUrl = copy.media[0].instagramEmbedUrl;
         }
@@ -324,9 +321,13 @@
       if (selectedBrand !== '*') {
         const postsCount = visible.filter(piece => piece.kind === 'post').length;
         const storyCount = visible.filter(piece => piece.kind === 'story').length;
+        const number = new Intl.NumberFormat('ca-ES');
         document.getElementById('stationCounts').textContent = brandSource === 'brand'
-          ? visible.length + ' publicacions de @' + (stationBrandPosts[0] ? stationBrandPosts[0].account : '')
-          : visible.length + ' peces de ' + selectedBrand + ' · ' + postsCount + ' posts · ' + storyCount + ' Stories';
+          ? number.format(visible.length) + ' ' + (visible.length === 1 ? 'publicació' : 'publicacions') +
+            ' del compte @' + (stationBrandPosts[0] ? stationBrandPosts[0].account : '')
+          : number.format(visible.length) + ' ' + (visible.length === 1 ? 'peça' : 'peces') + ' de ' + selectedBrand +
+            ' · ' + number.format(postsCount) + ' ' + (postsCount === 1 ? 'post' : 'posts') +
+            ' · ' + number.format(storyCount) + ' ' + (storyCount === 1 ? 'Story' : 'Stories');
       }
       updateSavedCount();
       return;
@@ -403,17 +404,16 @@
         (piece.publicationRelationLabel ? ' · ' + piece.publicationRelationLabel : '')
       : '';
     document.getElementById('relatedActivationArea').hidden = !(piece.relatedPieceIds && piece.relatedPieceIds.length);
-    document.getElementById('zoom').hidden = !!piece.instagramEmbedUrl;
+    const activeSlide = carousel.children[current];
+    document.getElementById('zoom').hidden = !!(activeSlide &&
+      (activeSlide.querySelector('iframe') || activeSlide.dataset.videoUnavailable === 'true'));
   };
 
   updateMediaNavigation = function () {
     baseUpdateMediaNavigation();
-    const piece = visible[current];
-    const mediaIndex = piece ? (mediaMemories.get(piece.id) || 0) : 0;
-    const media = piece && piece.media && (piece.media[mediaIndex] || piece.media[0]);
     const activeSlide = carousel.children[current];
-    document.getElementById('zoom').hidden = !!(media && media.instagramEmbedUrl) ||
-      !!(activeSlide && activeSlide.dataset.videoUnavailable === 'true');
+    document.getElementById('zoom').hidden = !!(activeSlide &&
+      (activeSlide.querySelector('iframe') || activeSlide.dataset.videoUnavailable === 'true'));
   };
 
   renderSlideMedia = function (slide, piece, mediaIndex) {
@@ -472,6 +472,10 @@
         updateMediaNavigation();
       }, { once: false });
       slide.append(video);
+      return;
+    }
+    if (media && media.mediaType === 'image' && (media.image || piece.image)) {
+      baseRenderSlideMedia(slide, piece, mediaIndex);
       return;
     }
     if (media && media.instagramEmbedUrl) {
