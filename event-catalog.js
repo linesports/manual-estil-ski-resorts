@@ -7,9 +7,12 @@
     ['baqueira_beret', 'fwt', 'Baqueira Beret Pro · Freeride World Tour', 'Esdeveniment', /baqueira.?beret.?pro|freeride.?world.?tour|\bfwt\b|#fwt/i],
     ['baqueira_beret', 'europa-cup', 'Copa d’Europa d’esquí alpí', 'Esdeveniment', /europa.?cup|copa de europa|copa d.europa/i],
     ['baqueira_beret', 'iberdrola', 'Copa d’Espanya Iberdrola · Freeride', 'Esdeveniment', /iberdrola.*freeride|copa espana.*iberdrola/i],
-    ['baqueira_beret', 'naut-aran', 'Trofeu Naut Aran by VORARIU', 'Esdeveniment', /naut aran|master world cup|vorariu/i],
+    ['baqueira_beret', 'naut-aran', 'Trofeu Naut Aran by VORARIU', 'Esdeveniment', /naut aran|master world cup/i],
+    ['baqueira_beret', 'winter-driving', 'Audi winter driving experience', 'Activació', /winter driving|experiencia de conduccion/i],
+    ['baqueira_beret', 'snow-beer', 'The Snow Beer Days × San Miguel', 'Activació', /snow beer days/i],
     ['sierranevadaestacion', 'heliocare', 'Heliocare × Sierra Nevada', 'Campanya', /heliocare|cantabrialabs|cantabria labs|fotoproteccio/i],
     ['sierranevadaestacion', 'quattro-cup', 'Audi quattro Cup · Carolina Ruiz Challenge', 'Esdeveniment', /quattro cup|carolina ruiz/i],
+    ['sierranevadaestacion', 'winter-driving', 'Audi winter driving experience', 'Activació', /winter driving|experiencia de conduccion/i],
     ['sierranevadaestacion', 'movistar-cross', 'Copa d’Espanya Movistar · SBX / Ski Cross', 'Esdeveniment', /copa espana movistar|ski cross|\bsbx\b/i],
     ['sierranevadaestacion', 'ultra', 'Unicaja Ultra Sierra Nevada', 'Esdeveniment', /ultrasierranevada|ultra sierra nevada/i],
     ['sierranevadaestacion', 'por-todo-lo-alto', 'Sierra Nevada Por Todo Lo Alto', 'Esdeveniment', /por todo lo alto/i],
@@ -22,6 +25,8 @@
     ['formigalpanticosaaramon', 'terrain-park', 'Terrain Park Fest', 'Esdeveniment', /terrain park fest/i],
     ['formigalpanticosaaramon', 'cronoslalom', 'Cronoslalom Volvo', 'Activació', /cronoslalom/i],
     ['formigalpanticosaaramon', 'felicitat', 'Dia de la Felicitat × Lacasitos', 'Activació', /dia de la felicidad|dia de la felicitat/i],
+    ['formigalpanticosaaramon', 'nevalia', 'Nevalia × Ron Barceló', 'Esdeveniment', /nevalia/i],
+    ['formigalpanticosaaramon', 'ski-pirineos', 'Ski Pirineos · test de material', 'Activació', /ski pirineos|skipirineos/i],
     ['grandvalira', 'audi-world-cup', 'Audi FIS Ski World Cup Andorra', 'Esdeveniment', /audi.?fis.?ski.?world.?cup/i],
     ['grandvalira', 'snow-club', 'Snow Club Gourmet', 'Cicle', /snow club gourmet/i],
     ['grandvalira', 'oakley-days', 'Oakley Community Days', 'Activació', /oakley community days/i],
@@ -45,7 +50,7 @@
     ['val_thorens', 'fwt', 'Val Thorens Pro · Freeride World Tour', 'Esdeveniment', /val.?thorens.?pro|freerideworldtour|freeride world tour/i],
     ['val_thorens', 'cosmic', 'Cosmic Mountain Festival', 'Esdeveniment', /cosmic mountain/i],
     ['val_thorens', 'summit-games', 'Val Thorens Summit Games', 'Esdeveniment', /summit games/i],
-    ['tignesofficiel', 'enduro', 'Enduro de Tignes by SB3 Components', 'Esdeveniment', /enduro de tignes|endurodesalpes|sb3/i],
+    ['tignesofficiel', 'enduro', 'Enduro de Tignes by SB3 Components', 'Esdeveniment', /enduro de tignes|endurodesalpes/i],
     ['tignesofficiel', 'snowpark-tour', 'Downdays Snowpark Tour', 'Esdeveniment', /downdays|snowpark tour/i],
     ['tignesofficiel', 'freeride-series', 'Freeride Series Tignes', 'Esdeveniment', /freeride series|freeride world tour qualifier/i],
     ['tignesofficiel', 'xplore', 'Xplore Film Tour', 'Esdeveniment', /xplore film tour/i],
@@ -74,6 +79,9 @@
     ['jacksonhole', 'rendezvous', 'Rendezvous presented by Jeep', 'Esdeveniment', /rendezvous/i],
     ['jacksonhole', 'partner-calendar', 'Agenda d’activacions de partners', 'Cicle', /agenda.*(?:sampling|activacions|degustacio)|degustacio a l.agenda/i],
     ['hanazononiseko', 'veuve-apres', 'Après-ski × Veuve Clicquot', 'Activació', /veuve|champagne/i],
+    ['hanazononiseko', 'niseko-film', 'Niseko Film Festival · Park Hyatt Hanazono', 'Esdeveniment', /niseko film festival|niskeo film festival/i],
+    ['rusutsuresort_official', 'ariake-prizes', 'Premis Rusutsu · torneig d’Ariake', 'Activació', /ariake|有明/i],
+    ['rusutsuresort_official', 'nozaka', 'Rusutsu × Toshikazu Nozaka · col·lecció', 'Campanya', /野坂|nozaka/i],
     ['rusutsuresort_official', 'pickleball', 'Pickleball · experiència familiar', 'Activació', /pickleball/i],
     ['rusutsuresort_official', 'ishiya', 'Afternoon tea × ISHIYA', 'Activació', /ishiya|afternoon tea/i],
     ['valle_nevado', 'andes-masters', 'Andes Masters', 'Esdeveniment', /andes masters|andesmasters/i],
@@ -170,6 +178,8 @@
       const contextual = clean([piece.title, piece.context].join(' '));
       let result = options.filter(d => d.match.test(caption));
       if (!result.length) result = options.filter(d => d.match.test(contextual));
+      if (piece.station === 'rusutsuresort_official' && /ariake|有明/.test(caption)) result = result.filter(d => d.id.endsWith(':ariake-prizes'));
+      if (piece.station === 'palarinsalandorra' && !/mtb|btt|mountain.?bike|uci|whoop|\bxco\b|\bdhi\b/.test(caption + contextual)) result = result.filter(d => !d.id.endsWith(':world-cup-mtb'));
       // Recaps may explicitly cover more than one event. A venue name or a
       // general campaign does not split an otherwise identifiable event.
       result = result[0]?.kind === 'Esdeveniment' ? result.filter(d => d.kind === 'Esdeveniment') : result.slice(0, 1);
@@ -180,9 +190,13 @@
     function eventFor(input) { return eventsForPiece(input)[0] || null; }
     function matchesEvent(input, eventId) { return eventsForPiece(input).some(event => event.id === eventId); }
 
+    const brandNamesCache = new Map();
     function namesFor(brand) {
-      return [brand, ...(aliases[brand] || []), ...brandPosts.filter(p => (p.brands || []).some(b => brandKey(b) === brandKey(brand))).map(p => p.account)]
-        .map(brandKey).filter(Boolean);
+      if (!brandNamesCache.has(brand)) brandNamesCache.set(brand, [...new Set(
+        [brand, ...(aliases[brand] || []), ...brandPosts.filter(p => (p.brands || []).some(b => brandKey(b) === brandKey(brand))).map(p => p.account)]
+          .map(brandKey).filter(Boolean)
+      )]);
+      return brandNamesCache.get(brand);
     }
 
     function relations(input) {
@@ -243,7 +257,7 @@
         const mentions = tokens.map((token, at) => ({ at, brands: brandNames.filter(b => namesFor(b).some(k => token.startsWith(k))) })).filter(m => m.brands.length);
         const signals = [
           ['physical', /^(?:estand|estands|booth|booths|wallride)$/],
-          ['demo', /^(?:provar|probar|test|demo|demos|drive|speedtrap)$/],
+          ['demo', /^(?:provar|probar|test|demo|demos|speedtrap)$/],
           ['sampling', /^(?:sampling|degustacio|degustation|samples|tasting)$/],
           ['giveaway', /^(?:sorteig|sorteo|sorteamos|giveaway|concours|contest|premi|premio)$/],
           ['service', /^(?:esim|shuttle|descompte|descuento|valet)$/],

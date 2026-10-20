@@ -88,9 +88,8 @@
       this.library.replaceChildren();
       const heading = el('div', 'event-library-heading');
       const titleBlock = el('div');
-      titleBlock.append(el('p', 'event-eyebrow', 'Explora la presència de marca'));
-      const title = el('h2', '', 'Cada esdeveniment, en una col·lecció.'); title.id = 'eventLibraryTitle';
-      titleBlock.append(title, el('p', 'event-intro', 'Obre una targeta per veure les seves peces i entendre el paper de cada patrocinador.'));
+      const title = el('h2', '', 'Esdeveniments i activacions'); title.id = 'eventLibraryTitle';
+      titleBlock.append(title, el('p', 'event-intro', 'Les peces agrupades per context. Obre una col·lecció per veure com hi participa cada marca.'));
       const all = el('button', 'event-text-link', 'Veure totes les peces');
       all.type = 'button'; all.append(arrow()); all.addEventListener('click', () => this.onSelect('all', true));
       heading.append(titleBlock, all); this.library.append(heading);
@@ -212,6 +211,9 @@
       const origin = document.getElementById('brandPostOrigin');
       origin.hidden = false;
       origin.textContent = originsOf(piece).map(o => (o.type === 'brand' ? 'Marca · @' : 'Estació · @') + o.account).join('  /  ');
+      const owners = [...new Set([piece.primaryOwner, ...(piece.sourceRecords || []).map(record => record.primaryOwner)].filter(Boolean))];
+      if (owners.length) origin.textContent += ' · Autoria principal a Instagram: ' + owners.map(owner => '@' + owner).join(' / ');
+      if (piece.relatedStations?.length > 1) origin.textContent += ' · Estacions vinculades: ' + piece.relatedStations.map(id => DATA.profiles.find(profile => profile.id === id)?.name || id).join(' · ');
     }
 
     reveal() {

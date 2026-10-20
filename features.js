@@ -5,6 +5,13 @@
   const baseUpdateCurrent = updateCurrent;
   const baseUpdateMediaNavigation = updateMediaNavigation;
   const baseRenderSlideMedia = renderSlideMedia;
+  const hydrateVideo = video => {
+    if (video.dataset.poster) { video.poster = video.dataset.poster; delete video.dataset.poster; }
+    if (video.dataset.source) { video.src = video.dataset.source; delete video.dataset.source; }
+  };
+  const mediaObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) { hydrateVideo(entry.target); mediaObserver.unobserve(entry.target); } });
+  }, { root: carousel, rootMargin: '0px 450px', threshold: 0 }) : null;
   const sponsorFilter = document.getElementById('sponsorFilter');
   const sectorFilter = document.getElementById('sectorFilter');
   const savedStationFilter = document.getElementById('savedStationFilter');
@@ -14,8 +21,24 @@
   const bookmarkCategory = document.getElementById('bookmarkCategory');
   const categories = ['Sampling', 'Activació de marca', 'Branding', 'Naming'];
   const legacyCategories = [...categories, 'Altres'];
-  const brandPosts = Array.isArray(window.BRAND_INSTAGRAM_POSTS) ? window.BRAND_INSTAGRAM_POSTS : [];
-  const catalog = window.OLAF_EVENT_MODEL.createCatalog(DATA.pieces, brandPosts);
+  const research = window.OLAF_BRAND_RESEARCH || { posts: [], accounts: [] };
+  const legacyBrandPosts = window.BRAND_INSTAGRAM_POSTS || [];
+  const recordKey = piece => [piece.account, piece.station, window.OLAF_BRAND_MODEL.codeFor(piece) || piece.id].join(':');
+  const priorEditorial = new Map(legacyBrandPosts.map(piece => [recordKey(piece), piece]));
+  const annualPosts = (research.posts || []).map(piece => {
+    const prior = priorEditorial.get(recordKey(piece));
+    return prior ? { ...piece, title: prior.title, explanation: prior.explanation, transfer: prior.transfer,
+      promotionType: prior.promotionType, editorialOrigin: 'prior_reviewed_case_with_refreshed_annual_media' } : piece;
+  });
+  const brandRecords = [...legacyBrandPosts, ...annualPosts];
+  const brandPosts = [...new Map(brandRecords.map(piece => [
+    recordKey(piece), piece
+  ])).values()];
+  const stationPiecesReviewed = DATA.pieces.map(piece => ({ ...piece, ...(window.OLAF_EVIDENCE_CORRECTIONS?.[piece.id] || {}) }));
+  const catalog = window.OLAF_EVENT_MODEL.createCatalog(stationPiecesReviewed, brandPosts);
+  const brandDirectory = window.OLAF_BRAND_MODEL.createDirectory({
+    stationPieces: stationPiecesReviewed, brandPosts, accounts: research.accounts || [], catalog
+  });
   const storageKey = 'olaf-ski-sponsor-bookmarks-v1';
 
   const sectorOrder = [
@@ -27,6 +50,7 @@
     'Telecomunicacions',
     'Finances i assegurances',
     'Turisme i allotjament',
+    'Immobiliari',
     'Salut i benestar',
     'Esdeveniments i entreteniment',
     'Energia i serveis',
@@ -56,7 +80,7 @@
       'Cerveza Royal Guard', 'Sylranch Winery', 'Surfside', 'Ron Barceló', 'Jean Leon',
       'Veuve Clicquot', 'Casamigos', 'Tartuflanghe', 'Aragón Alimentos', 'ISHIYA', 'Pascual',
       'Red Bull', 'Rockstar Energy', 'SOMMOS', 'See Ya Later Ranch', 'The Green Mountain',
-      'Vaca Nostra'
+      'Vaca Nostra', 'Vacanal Coma 3'
     ],
     'Tecnologia i continguts digitals': [
       'GoPro', 'Insta360', 'HOVERAir', 'Samsung', 'Google Cloud', 'JBL', 'Thonet & Vander'
@@ -66,9 +90,10 @@
       'Allianz', 'Visa', 'Reale Seguros', 'Reale', 'Ibercaja', 'Creand', 'Unicaja Banco', 'Santander'
     ],
     'Turisme i allotjament': [
-      'Pullman Hotels', 'Hotel A Japan', 'Niseko Real Estate', 'RoomBoss', 'Vail Resorts',
+      'Pullman Hotels', 'Hotel A Japan', 'RoomBoss', 'Vail Resorts',
       'Marriott Bonvoy', 'Epic Pass', 'Shiroi Koibito Park'
     ],
+    'Immobiliari': ['VORARIU', 'Niseko Real Estate'],
     'Salut i benestar': [
       'ISDIN', 'Cantabria Labs', 'Heliocare', 'WHOOP'
     ],
@@ -76,7 +101,7 @@
       'Crankworx', 'Flaixbac', 'Belly Up Aspen', 'Xplore Alpes Festival', 'FIS', 'Vibra Clásica',
       'NASTC', 'Pickleball Japan Federation'
     ],
-    'Energia i serveis': ['Holy Cross Energy', 'Iberdrola']
+    'Energia i serveis': ['Holy Cross Energy', 'Iberdrola', 'TOA Road Corporation']
   };
 
   const normalize = value => String(value || '')
@@ -105,11 +130,15 @@
     return x === y || (x.length >= 6 && y.length >= 6 && (x.includes(y) || y.includes(x)));
   }
 
-  let viewMode = 'station';
+  const viewFromUrl = () => ['station', 'brands', 'sectors', 'saved'].includes(new URLSearchParams(location.search).get('view'))
+    ? new URLSearchParams(location.search).get('view') : 'station';
+  let viewMode = viewFromUrl();
+  let activeBrand = new URLSearchParams(location.search).get('brand') || '';
   let selectedBrand = '*';
   let brandSource = 'all';
   let selectedEvent = new URLSearchParams(location.search).get('event') || '*';
   let explorer;
+  let brandExplorer;
   let bookmarks = readBookmarks();
 
   function readBookmarks() {
@@ -211,7 +240,7 @@
     select.replaceChildren();
     addOption(select, '*', includeAllLabel);
     sectorOrder.filter(sector => present.has(sector)).forEach(sector => {
-      const count = catalog.pieces.filter(piece => (piece.brands || []).some(brand => sectorForBrand(brand) === sector)).length;
+      const count = window.OLAF_BRAND_MODEL.uniquePublications(catalog.pieces.filter(piece => (piece.brands || []).some(brand => sectorForBrand(brand) === sector))).length;
       addOption(select, sector, sector + ' · ' + new Intl.NumberFormat('ca-ES').format(count));
     });
     select.value = Array.from(select.options).some(option => option.value === previous) ? previous : '*';
@@ -237,16 +266,20 @@
     document.body.dataset.view = viewMode;
     document.getElementById('stationHeader').hidden = !isStation;
     document.getElementById('stationTools').hidden = !isStation;
+    document.getElementById('stationFormatRow').hidden = !isStation;
     document.getElementById('sectorHeader').hidden = viewMode !== 'sectors';
     document.getElementById('savedHeader').hidden = viewMode !== 'saved';
     document.getElementById('savedFilters').hidden = viewMode !== 'saved';
     document.getElementById('stationViewButton').setAttribute('aria-current', String(viewMode === 'station' ? 'page' : 'false'));
+    document.getElementById('brandViewButton').setAttribute('aria-current', String(viewMode === 'brands' ? 'page' : 'false'));
     document.getElementById('sectorViewButton').setAttribute('aria-current', String(viewMode === 'sectors' ? 'page' : 'false'));
     document.getElementById('savedViewButton').setAttribute('aria-current', String(viewMode === 'saved' ? 'page' : 'false'));
     document.getElementById('formatSummary').hidden = !isStation;
+    document.dispatchEvent(new CustomEvent('olaf:viewchange', { detail: { mode: viewMode, station: selected, brand: activeBrand } }));
   }
 
   function renderWithItems(items, preserveFormatFilter) {
+    mediaObserver?.disconnect();
     const originalPieces = DATA.pieces;
     const originalFilter = filter;
     DATA.pieces = items.map(piece => {
@@ -264,7 +297,7 @@
       }
       if (viewMode !== 'station' && origin !== selected) {
         const profile = profileFor(origin);
-        copy.title = (profile ? profile.name + ' · ' : '') + piece.title;
+        copy.title = (piece.relatedStations?.length > 1 ? 'Diverses estacions · ' : profile ? profile.name + ' · ' : '') + piece.title;
       }
       return copy;
     });
@@ -293,6 +326,7 @@
     populateSectorSelect(sectorFilter, 'Tots els sectors');
     populateSavedFilters();
     syncViewChrome();
+    if (viewMode !== 'brands') brandExplorer.render({ enabled: false });
 
     if (viewMode === 'station') {
       const allItems = catalog.pieces.filter(piece => piece.station === selected &&
@@ -315,7 +349,7 @@
       brandButton.disabled = false;
       document.getElementById('brandSourceNote').hidden = false;
       document.getElementById('brandSourceNote').textContent = allItems.some(piece => piece.origins.some(o => o.type === 'brand'))
-        ? 'Estació i marques, en una mateixa lectura. Els comptes de marca només aporten publicacions relacionades explícitament amb aquesta estació; la cobertura és parcial.'
+        ? 'Estació i marques, en una mateixa lectura. Les publicacions dels partners tenen un vincle documentat amb aquesta estació. Consulta la cobertura de cada compte a «Comptes de marca».'
         : 'Els comptes de marca es mostren quan hi ha una publicació documentada relacionada explícitament amb aquesta estació. No disposar-ne encara no implica que no n’hagin publicat.';
       const feedCount = items.filter(p => p.kind === 'post').length;
       document.getElementById('stationCounts').textContent = feedCount + ' posts i Reels · ' + items.filter(p => p.kind === 'story').length + ' Stories' +
@@ -339,12 +373,29 @@
     document.getElementById('brandSourceNote').hidden = true;
     explorer.render({ enabled: false });
 
+    if (viewMode === 'brands') {
+      const items = brandExplorer.render({ enabled: true, brandId: activeBrand, format: filter });
+      renderWithItems(items, true);
+      explorer.strip.hidden = !items.length;
+      explorer.relationDetails.hidden = !items.length;
+      if (!activeBrand || !brandDirectory.find(activeBrand)) {
+        document.getElementById('viewer').hidden = true;
+        document.getElementById('empty').hidden = true;
+      } else if (!visible.length) {
+        document.getElementById('emptyTitle').textContent = 'Cap peça vinculada recuperada amb aquests filtres';
+        document.getElementById('emptyText').textContent = 'Prova un altre compte, estació o format. Consulta la cobertura de la recerca per saber què s’ha pogut recuperar.';
+        document.getElementById('emptyAction').hidden = true;
+      }
+      updateSavedCount();
+      return;
+    }
+
     if (viewMode === 'sectors') {
       const sector = sectorFilter.value || '*';
-      const items = catalog.pieces.filter(piece =>
-        sector === '*' || (piece.brands || []).some(brand => sectorForBrand(brand) === sector));
+      const items = window.OLAF_BRAND_MODEL.withResortAssociations(catalog.pieces.filter(piece =>
+        sector === '*' || (piece.brands || []).some(brand => sectorForBrand(brand) === sector)));
       renderWithItems(items, false);
-      const stations = new Set(visible.map(piece => sourceStation(piece)));
+      const stations = new Set(visible.flatMap(piece => piece.relatedStations || [sourceStation(piece)]));
       const label = sector === '*' ? 'Tots els sectors' : sector;
       document.getElementById('sectorHeading').textContent = label === 'Tots els sectors' ? 'Patrocinis per sector' : label;
       document.getElementById('sectorIntro').textContent =
@@ -382,16 +433,31 @@
 
   const baseChooseStation = chooseStation;
   chooseStation = function (id, fromHistory) {
-    if (id !== selected) {
+    if (!profileFor(id)) return;
+    if (!fromHistory) {
+      viewMode = 'station';
       selectedBrand = '*';
       brandSource = 'all';
-      selectedEvent = fromHistory ? new URLSearchParams(location.search).get('event') || '*' : '*';
-      if (!fromHistory) writeEventUrl('*', false);
+      selectedEvent = '*';
+      const url = new URL(location.href);
+      ['view', 'brand', 'event'].forEach(key => url.searchParams.delete(key));
+      url.hash = id;
+      if (url.href !== location.href) history.pushState(null, '', url);
+    } else {
+      selectedEvent = new URLSearchParams(location.search).get('event') || '*';
     }
-    return baseChooseStation(id, fromHistory);
+    if (id === selected) {
+      closeStationMenu(false);
+      renderComposite();
+      return;
+    }
+    return baseChooseStation(id, true);
   };
 
   updateCurrent = function (index, force) {
+    Array.from(carousel.children).slice(Math.max(0, index - 2), index + 3).forEach(slide => {
+      const video = slide.querySelector('video'); if (video) hydrateVideo(video);
+    });
     baseUpdateCurrent(index, force);
     const piece = visible[index];
     if (!piece) return;
@@ -421,6 +487,8 @@
 
   updateMediaNavigation = function () {
     baseUpdateMediaNavigation();
+    const media = visible[current] && mediaOf(visible[current]);
+    if (media?.unavailableReason) document.getElementById('mediaType').textContent = 'Vídeo restringit · portada de referència';
     const activeSlide = carousel.children[current];
     document.getElementById('zoom').hidden = !!(activeSlide &&
       (activeSlide.querySelector('iframe') || activeSlide.dataset.videoUnavailable === 'true'));
@@ -429,6 +497,14 @@
   renderSlideMedia = function (slide, piece, mediaIndex) {
     const media = piece.media && (piece.media[mediaIndex] || piece.media[0]);
     delete slide.dataset.videoUnavailable;
+    if (media?.unavailableReason) {
+      slide.replaceChildren(); slide.dataset.mediaIndex = String(mediaIndex); slide.dataset.videoUnavailable = 'true';
+      const frame = document.createElement('div'); frame.className = 'video-recovery';
+      const poster = document.createElement('img'); poster.src = media.image; poster.alt = piece.title + ' · portada de referència'; poster.loading = 'lazy';
+      const link = document.createElement('a'); link.className = 'video-recovery-link'; link.href = piece.sourceUrl;
+      link.target = '_blank'; link.rel = 'noopener noreferrer'; link.textContent = media.unavailableReason + ' Obre la publicació a Instagram.';
+      link.addEventListener('click', event => event.stopPropagation()); frame.append(poster, link); slide.append(frame); return;
+    }
     if (media && media.mediaType === 'video' && (media.videoPath || media.videoRemote)) {
       const previous = slide.querySelector('video');
       if (previous) {
@@ -443,11 +519,11 @@
       video.controls = slide.classList.contains('active');
       video.playsInline = true;
       video.preload = 'none';
-      video.poster = media.image || piece.image || '';
+      video.dataset.poster = media.image || piece.image || '';
       video.tabIndex = slide.classList.contains('active') ? 0 : -1;
       video.setAttribute('aria-label', piece.title);
       video.dataset.candidate = '0';
-      video.src = candidates[0];
+      video.dataset.source = candidates[0];
       video.addEventListener('play', () => {
         if (!slide.classList.contains('active')) video.pause();
       });
@@ -482,6 +558,8 @@
         updateMediaNavigation();
       }, { once: false });
       slide.append(video);
+      if (slide.classList.contains('active') || !mediaObserver) hydrateVideo(video);
+      else mediaObserver.observe(video);
       return;
     }
     if (media && media.mediaType === 'image' && (media.image || piece.image)) {
@@ -514,12 +592,34 @@
       selectedBrand = '*';
       brandSource = 'all';
       selectedEvent = '*';
-      writeEventUrl('*', false);
     }
+    writeViewUrl(true);
     renderComposite();
   }
 
+  function writeViewUrl(push) {
+    const url = new URL(location.href);
+    if (viewMode === 'station') url.searchParams.delete('view');
+    else url.searchParams.set('view', viewMode);
+    if (viewMode !== 'station' || selectedEvent === '*') url.searchParams.delete('event');
+    else url.searchParams.set('event', selectedEvent);
+    if (viewMode !== 'station') url.hash = '';
+    else url.hash = selected;
+    if (viewMode === 'brands' && activeBrand) url.searchParams.set('brand', activeBrand);
+    else url.searchParams.delete('brand');
+    try { history[push ? 'pushState' : 'replaceState'](null, '', url); } catch (_) {}
+  }
+
+  function selectBrand(id, reveal) {
+    activeBrand = id;
+    viewMode = 'brands'; filter = 'all';
+    writeViewUrl(true);
+    renderComposite();
+    if (reveal) requestAnimationFrame(() => brandExplorer.reveal());
+  }
+
   document.getElementById('stationViewButton').addEventListener('click', () => setMode('station'));
+  document.getElementById('brandViewButton').addEventListener('click', () => setMode('brands'));
   document.getElementById('sectorViewButton').addEventListener('click', () => setMode('sectors'));
   document.getElementById('savedViewButton').addEventListener('click', () => setMode('saved'));
 
@@ -606,10 +706,7 @@
     selectedEvent = catalog.matchesEvent(target, selectedEvent) ? selectedEvent : catalog.eventFor(target)?.id || 'other';
     viewMode = 'station';
     filter = 'all';
-    if (location.hash !== '#' + selected) {
-      try { history.pushState(null, '', '#' + selected); } catch (_) {}
-    }
-    writeEventUrl(selectedEvent, false);
+    writeViewUrl(true);
     renderComposite();
     requestAnimationFrame(() => {
       const index = visible.findIndex(piece => piece.id === target.id);
@@ -663,15 +760,32 @@
     }
   });
   window.addEventListener('popstate', () => {
+    viewMode = viewFromUrl();
+    activeBrand = new URLSearchParams(location.search).get('brand') || '';
     selectedEvent = new URLSearchParams(location.search).get('event') || '*';
     renderComposite();
   });
   if (!['*', 'all', 'other', ...catalog.eventsFor(selected).map(event => event.id)].includes(selectedEvent)) selectedEvent = '*';
   const stationPieces = DATA.pieces;
-  DATA.pieces = catalog.pieces;
+  DATA.pieces = window.OLAF_BRAND_MODEL.uniquePublications(catalog.pieces);
   renderFormatSummary();
   DATA.pieces = stationPieces;
   document.querySelector('.format-summary-kicker').textContent = 'Visió conjunta · totes les fonts';
+  brandExplorer = new window.OLAFBrandExplorer({
+    directory: brandDirectory, profiles: DATA.profiles, sectorForBrand,
+    onBrand: selectBrand,
+    onFilter: kind => { filter = kind; renderComposite(); },
+    onUpdate: renderComposite,
+    onStation: id => {
+      filter = 'all'; chooseStation(id);
+      document.getElementById('stationHeader').scrollIntoView({ behavior: isReduced() ? 'instant' : 'smooth', block: 'start' });
+    }
+  });
+  window.OLAF_APP = {
+    catalog, brandDirectory,
+    getState: () => ({ mode: viewMode, station: selected, brand: activeBrand, format: filter }),
+    setMode, selectBrand
+  };
   updateSavedCount();
   renderComposite();
 })();
