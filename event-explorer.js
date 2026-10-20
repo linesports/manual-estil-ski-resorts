@@ -52,10 +52,12 @@
     groups(items) {
       const groups = new Map();
       items.forEach(piece => {
-        const event = this.catalog.eventFor(piece);
-        const id = event?.id || 'other';
-        if (!groups.has(id)) groups.set(id, { id, name: event?.name || 'Altres peces de marca', kind: event?.kind || 'Fora d’un esdeveniment identificat', items: [] });
-        groups.get(id).items.push(piece);
+        const events = this.catalog.eventsForPiece(piece);
+        (events.length ? events : [null]).forEach(event => {
+          const id = event?.id || 'other';
+          if (!groups.has(id)) groups.set(id, { id, name: event?.name || 'Altres peces de marca', kind: event?.kind || 'Fora d’un esdeveniment identificat', items: [] });
+          groups.get(id).items.push(piece);
+        });
       });
       return [...groups.values()].sort((a, b) => a.id === 'other' ? 1 : b.id === 'other' ? -1 : b.items.length - a.items.length || a.name.localeCompare(b.name, 'ca'));
     }
@@ -92,6 +94,9 @@
       const all = el('button', 'event-text-link', 'Veure totes les peces');
       all.type = 'button'; all.append(arrow()); all.addEventListener('click', () => this.onSelect('all', true));
       heading.append(titleBlock, all); this.library.append(heading);
+      if (groups.reduce((sum, group) => sum + group.items.length, 0) > this.state.items.length) {
+        titleBlock.append(el('p', 'event-evidence-note', 'Alguns recaps cobreixen més d’un esdeveniment i es poden trobar a cadascuna de les col·leccions relacionades.'));
+      }
       if (!groups.length) {
         const empty = el('div', 'event-library-empty');
         empty.append(el('h3', '', 'No hi ha peces documentades amb aquesta selecció.'), el('p', '', this.state.source === 'brand'

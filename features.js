@@ -304,7 +304,7 @@
           return record ? { ...piece, ...record, id: piece.id, origins: piece.origins, brands: piece.brands } : piece;
         });
       const displayItems = selectedEvent === '*' ? [] : items.filter(piece => selectedEvent === 'all' ||
-        (selectedEvent === 'other' ? !catalog.eventFor(piece) : catalog.eventFor(piece)?.id === selectedEvent));
+        (selectedEvent === 'other' ? !catalog.eventFor(piece) : catalog.matchesEvent(piece, selectedEvent)));
       renderWithItems(displayItems, true);
       const switcher = document.getElementById('brandSourceSwitch');
       switcher.hidden = false;
@@ -590,8 +590,8 @@
   });
 
   function relatedStationPiece(piece) {
-    const event = catalog.eventFor(piece);
-    if (event) return DATA.pieces.find(candidate => candidate.station === sourceStation(piece) && catalog.eventFor(candidate)?.id === event.id);
+    const eventId = catalog.matchesEvent(piece, selectedEvent) ? selectedEvent : catalog.eventFor(piece)?.id;
+    if (eventId) return DATA.pieces.find(candidate => candidate.station === sourceStation(piece) && catalog.matchesEvent(candidate, eventId));
     return DATA.pieces.find(candidate => (piece.relatedPieceIds || []).includes(candidate.id));
   }
 
@@ -603,7 +603,7 @@
     selected = target.station;
     selectedBrand = target.brands.find(brand => sameBrand(brand, brandPost.brand)) || '*';
     brandSource = 'station';
-    selectedEvent = catalog.eventFor(target)?.id || 'other';
+    selectedEvent = catalog.matchesEvent(target, selectedEvent) ? selectedEvent : catalog.eventFor(target)?.id || 'other';
     viewMode = 'station';
     filter = 'all';
     if (location.hash !== '#' + selected) {

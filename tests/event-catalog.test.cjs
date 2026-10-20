@@ -40,6 +40,14 @@ test('brand-account posts are grouped by the event they describe, not every link
   assert.notEqual(c.eventFor(a).id, c.eventFor(b).id);
 });
 
+test('one brand recap can belong to two explicitly named events without duplicating the publication', () => {
+  const a = { ...piece('brand:ripcurl:ABC:cerrocastor', 'cerrocastor', 'Rip Curl GromSearch y Expression Air Session en Cerro Castor', ['Rip Curl']), account: 'ripcurl_argentina' };
+  const c = createCatalog([], [a]);
+  assert.equal(c.pieces.length, 1);
+  assert.equal(c.eventsForPiece(a).length, 2);
+  assert(c.matchesEvent(a, 'cerrocastor:expression'));
+});
+
 test('naming alone does not imply physical presence; a logo on a digital poster is distinct', () => {
   const a = piece('post:baqueira_beret|A', 'baqueira_beret', 'Baqueira Beret Pro by @movistar_es');
   const c = createCatalog([a], []);

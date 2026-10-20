@@ -160,7 +160,7 @@
     const pieces = [...unique.values()];
     const eventCache = new Map(), relationCache = new Map();
 
-    function eventFor(input) {
+    function eventsForPiece(input) {
       const piece = byId.get(input.id) || input;
       if (eventCache.has(piece.id)) return eventCache.get(piece.id);
       const options = definitions.filter(d => d.station === piece.station);
@@ -168,10 +168,17 @@
       // while its original caption identifies The Snow League.
       const caption = clean(piece.caption);
       const contextual = clean([piece.title, piece.context].join(' '));
-      const result = options.find(d => d.match.test(caption)) || options.find(d => d.match.test(contextual)) || null;
+      let result = options.filter(d => d.match.test(caption));
+      if (!result.length) result = options.filter(d => d.match.test(contextual));
+      // Recaps may explicitly cover more than one event. A venue name or a
+      // general campaign does not split an otherwise identifiable event.
+      result = result[0]?.kind === 'Esdeveniment' ? result.filter(d => d.kind === 'Esdeveniment') : result.slice(0, 1);
       eventCache.set(piece.id, result);
       return result;
     }
+
+    function eventFor(input) { return eventsForPiece(input)[0] || null; }
+    function matchesEvent(input, eventId) { return eventsForPiece(input).some(event => event.id === eventId); }
 
     function namesFor(brand) {
       return [brand, ...(aliases[brand] || []), ...brandPosts.filter(p => (p.brands || []).some(b => brandKey(b) === brandKey(brand))).map(p => p.account)]
@@ -264,10 +271,10 @@
     }
 
     return {
-      pieces, definitions, labels, eventFor, relations,
+      pieces, definitions, labels, eventFor, eventsForPiece, matchesEvent, relations,
       canonicalId: id => (byId.get(id) || {}).id || id,
       find: id => byId.get(id),
-      eventsFor: station => definitions.filter(d => d.station === station && pieces.some(p => p.station === station && eventFor(p)?.id === d.id))
+      eventsFor: station => definitions.filter(d => d.station === station && pieces.some(p => p.station === station && matchesEvent(p, d.id)))
     };
   }
 
