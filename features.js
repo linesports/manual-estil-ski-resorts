@@ -15,6 +15,7 @@
   const categories = ['Sampling', 'Activació de marca', 'Branding', 'Naming'];
   const legacyCategories = [...categories, 'Altres'];
   const brandPosts = Array.isArray(window.BRAND_INSTAGRAM_POSTS) ? window.BRAND_INSTAGRAM_POSTS : [];
+  const catalog = window.OLAF_EVENT_MODEL.createCatalog(DATA.pieces, brandPosts);
   const storageKey = 'olaf-ski-sponsor-bookmarks-v1';
 
   const sectorOrder = [
@@ -106,7 +107,9 @@
 
   let viewMode = 'station';
   let selectedBrand = '*';
-  let brandSource = 'station';
+  let brandSource = 'all';
+  let selectedEvent = new URLSearchParams(location.search).get('event') || '*';
+  let explorer;
   let bookmarks = readBookmarks();
 
   function readBookmarks() {
@@ -114,6 +117,8 @@
       const value = JSON.parse(localStorage.getItem(storageKey) || '[]');
       return Array.isArray(value)
         ? value.filter(item => item && typeof item.id === 'string' && legacyCategories.includes(item.category))
+          .map(item => ({ ...item, id: catalog.canonicalId(item.id) }))
+          .filter((item, index, list) => list.findIndex(other => other.id === item.id) === index)
         : [];
     } catch (_) {
       return [];
@@ -172,7 +177,7 @@
   }
 
   function itemIndex() {
-    return new Map([...DATA.pieces, ...brandPosts].map(piece => [piece.id, piece]));
+    return new Map(catalog.pieces.flatMap(piece => piece.aliases.map(id => [id, piece])));
   }
 
   function updateSavedCount() {
@@ -189,7 +194,7 @@
 
   function refreshSponsorOptions() {
     const prior = selectedBrand;
-    const brands = Array.from(new Set(DATA.pieces
+    const brands = Array.from(new Set(catalog.pieces
       .filter(piece => piece.station === selected)
       .flatMap(piece => piece.brands || [])))
       .sort((a, b) => a.localeCompare(b, 'ca'));
@@ -202,11 +207,11 @@
 
   function populateSectorSelect(select, includeAllLabel) {
     const previous = select.value || '*';
-    const present = new Set(DATA.pieces.flatMap(piece => piece.brands || []).map(sectorForBrand));
+    const present = new Set(catalog.pieces.flatMap(piece => piece.brands || []).map(sectorForBrand));
     select.replaceChildren();
     addOption(select, '*', includeAllLabel);
     sectorOrder.filter(sector => present.has(sector)).forEach(sector => {
-      const count = DATA.pieces.filter(piece => (piece.brands || []).some(brand => sectorForBrand(brand) === sector)).length;
+      const count = catalog.pieces.filter(piece => (piece.brands || []).some(brand => sectorForBrand(brand) === sector)).length;
       addOption(select, sector, sector + ' · ' + new Intl.NumberFormat('ca-ES').format(count));
     });
     select.value = Array.from(select.options).some(option => option.value === previous) ? previous : '*';
@@ -290,44 +295,41 @@
     syncViewChrome();
 
     if (viewMode === 'station') {
-      let items;
-      if (brandSource === 'brand' && selectedBrand !== '*') {
-        items = brandPosts.filter(piece =>
-          piece.station === selected &&
-          (piece.brands || []).some(brand => sameBrand(brand, selectedBrand)));
-      } else {
-        items = DATA.pieces.filter(piece =>
-          piece.station === selected &&
-          (selectedBrand === '*' || (piece.brands || []).some(brand => sameBrand(brand, selectedBrand))));
-      }
-      renderWithItems(items, true);
-      const stationBrandPosts = brandPosts.filter(piece =>
-        piece.station === selected && (piece.brands || []).some(brand => sameBrand(brand, selectedBrand)));
+      const allItems = catalog.pieces.filter(piece => piece.station === selected &&
+        (selectedBrand === '*' || piece.brands.some(brand => sameBrand(brand, selectedBrand))));
+      const items = allItems.filter(piece => (brandSource === 'all' || piece.origins.some(origin => origin.type === brandSource)) &&
+        (filter === 'all' || filter === 'story' && piece.kind === 'story' || filter === 'reel' && piece.format === 'Reel / vídeo' || filter === 'post' && piece.kind === 'post' && piece.format !== 'Reel / vídeo'))
+        .map(piece => {
+          const record = brandSource === 'brand' ? piece.sourceRecords.find(p => p.account) : null;
+          return record ? { ...piece, ...record, id: piece.id, origins: piece.origins, brands: piece.brands } : piece;
+        });
+      const displayItems = selectedEvent === '*' ? [] : items.filter(piece => selectedEvent === 'all' ||
+        (selectedEvent === 'other' ? !catalog.eventFor(piece) : catalog.eventFor(piece)?.id === selectedEvent));
+      renderWithItems(displayItems, true);
       const switcher = document.getElementById('brandSourceSwitch');
-      switcher.hidden = selectedBrand === '*';
+      switcher.hidden = false;
+      document.getElementById('allSourcesButton').setAttribute('aria-pressed', String(brandSource === 'all'));
       document.getElementById('stationPostsButton').setAttribute('aria-pressed', String(brandSource === 'station'));
       const brandButton = document.getElementById('brandPostsButton');
       brandButton.setAttribute('aria-pressed', String(brandSource === 'brand'));
-      brandButton.disabled = stationBrandPosts.length === 0;
-      document.getElementById('brandSourceNote').hidden = selectedBrand === '*';
-      const expandedReview = stationBrandPosts.find(piece => piece.accountReviewCountInWindow);
-      document.getElementById('brandSourceNote').textContent = stationBrandPosts.length
-        ? expandedReview
-          ? 'Mostra ampliada de @' + expandedReview.account + ': ' +
-            new Intl.NumberFormat('ca-ES').format(expandedReview.accountReviewCountInWindow) +
-            ' publicacions dins la temporada; es mostren les que citen l’estació.'
-          : 'Revisió de fins a 15 publicacions recents del compte; només s’enllacen les que anomenen explícitament l’estació i tenen una peça de patrocini relacionada.'
-        : 'Encara no hi ha cap publicació de la marca enllaçada amb aquesta estació. Això no permet concloure que no n’hi hagi; la cobertura varia segons el compte.';
-      if (selectedBrand !== '*') {
-        const postsCount = visible.filter(piece => piece.kind === 'post').length;
-        const storyCount = visible.filter(piece => piece.kind === 'story').length;
-        const number = new Intl.NumberFormat('ca-ES');
-        document.getElementById('stationCounts').textContent = brandSource === 'brand'
-          ? number.format(visible.length) + ' ' + (visible.length === 1 ? 'publicació' : 'publicacions') +
-            ' del compte @' + (stationBrandPosts[0] ? stationBrandPosts[0].account : '')
-          : number.format(visible.length) + ' ' + (visible.length === 1 ? 'peça' : 'peces') + ' de ' + selectedBrand +
-            ' · ' + number.format(postsCount) + ' ' + (postsCount === 1 ? 'post' : 'posts') +
-            ' · ' + number.format(storyCount) + ' ' + (storyCount === 1 ? 'Story' : 'Stories');
+      brandButton.disabled = false;
+      document.getElementById('brandSourceNote').hidden = false;
+      document.getElementById('brandSourceNote').textContent = allItems.some(piece => piece.origins.some(o => o.type === 'brand'))
+        ? 'Estació i marques, en una mateixa lectura. Els comptes de marca només aporten publicacions relacionades explícitament amb aquesta estació; la cobertura és parcial.'
+        : 'Els comptes de marca es mostren quan hi ha una publicació documentada relacionada explícitament amb aquesta estació. No disposar-ne encara no implica que no n’hagin publicat.';
+      const feedCount = items.filter(p => p.kind === 'post').length;
+      document.getElementById('stationCounts').textContent = feedCount + ' posts i Reels · ' + items.filter(p => p.kind === 'story').length + ' Stories' +
+        (selectedBrand !== '*' ? ' · ' + selectedBrand : '');
+      explorer.render({ enabled: true, station: selected, allItems, items, visibleItems: displayItems, event: selectedEvent, source: brandSource });
+      if (selectedEvent === '*') {
+        document.getElementById('viewer').hidden = true;
+        document.getElementById('empty').hidden = true;
+      } else if (!displayItems.length) {
+        document.getElementById('emptyTitle').textContent = 'Cap peça documentada amb aquests filtres';
+        document.getElementById('emptyText').textContent = brandSource === 'brand'
+          ? 'No hi ha publicacions del compte de marca enllaçades amb aquesta col·lecció. Prova “Totes les fonts” per consultar les peces de l’estació.'
+          : 'Canvia de marca, font o format per veure les altres peces de la col·lecció.';
+        document.getElementById('emptyAction').hidden = true;
       }
       updateSavedCount();
       return;
@@ -335,10 +337,11 @@
 
     document.getElementById('brandSourceSwitch').hidden = true;
     document.getElementById('brandSourceNote').hidden = true;
+    explorer.render({ enabled: false });
 
     if (viewMode === 'sectors') {
       const sector = sectorFilter.value || '*';
-      const items = DATA.pieces.filter(piece =>
+      const items = catalog.pieces.filter(piece =>
         sector === '*' || (piece.brands || []).some(brand => sectorForBrand(brand) === sector));
       renderWithItems(items, false);
       const stations = new Set(visible.map(piece => sourceStation(piece)));
@@ -381,7 +384,9 @@
   chooseStation = function (id, fromHistory) {
     if (id !== selected) {
       selectedBrand = '*';
-      brandSource = 'station';
+      brandSource = 'all';
+      selectedEvent = fromHistory ? new URLSearchParams(location.search).get('event') || '*' : '*';
+      if (!fromHistory) writeEventUrl('*', false);
     }
     return baseChooseStation(id, fromHistory);
   };
@@ -403,10 +408,15 @@
         (piece.accountVerified ? ' · verificat per Instagram' : ' · sense verificació blava') +
         (piece.publicationRelationLabel ? ' · ' + piece.publicationRelationLabel : '')
       : '';
-    document.getElementById('relatedActivationArea').hidden = !(piece.relatedPieceIds && piece.relatedPieceIds.length);
+    const related = relatedStationPiece(piece);
+    document.getElementById('relatedActivationArea').hidden = !piece.account || !related;
+    document.getElementById('relatedActivationButton').textContent = catalog.eventFor(piece)
+      ? 'Veure una peça de l’estació d’aquesta col·lecció'
+      : 'Veure una peça de l’estació amb aquesta marca';
     const activeSlide = carousel.children[current];
     document.getElementById('zoom').hidden = !!(activeSlide &&
       (activeSlide.querySelector('iframe') || activeSlide.dataset.videoUnavailable === 'true'));
+    explorer?.setActive(piece);
   };
 
   updateMediaNavigation = function () {
@@ -502,7 +512,9 @@
     });
     if (mode === 'station') {
       selectedBrand = '*';
-      brandSource = 'station';
+      brandSource = 'all';
+      selectedEvent = '*';
+      writeEventUrl('*', false);
     }
     renderComposite();
   }
@@ -513,7 +525,8 @@
 
   sponsorFilter.addEventListener('change', () => {
     selectedBrand = sponsorFilter.value || '*';
-    brandSource = 'station';
+    selectedEvent = '*';
+    writeEventUrl('*', false);
     renderComposite();
   });
 
@@ -576,19 +589,27 @@
     renderComposite();
   });
 
+  function relatedStationPiece(piece) {
+    const event = catalog.eventFor(piece);
+    if (event) return DATA.pieces.find(candidate => candidate.station === sourceStation(piece) && catalog.eventFor(candidate)?.id === event.id);
+    return DATA.pieces.find(candidate => (piece.relatedPieceIds || []).includes(candidate.id));
+  }
+
   function showRelatedActivation() {
     const brandPost = visible[current];
-    if (!brandPost || !brandPost.relatedPieceIds || !brandPost.relatedPieceIds.length) return;
-    const target = DATA.pieces.find(piece => piece.id === brandPost.relatedPieceIds[0]);
+    if (!brandPost) return;
+    const target = relatedStationPiece(brandPost);
     if (!target) return;
     selected = target.station;
-    selectedBrand = target.brands.find(brand => sameBrand(brand, brandPost.brand)) || target.brands[0] || '*';
+    selectedBrand = target.brands.find(brand => sameBrand(brand, brandPost.brand)) || '*';
     brandSource = 'station';
+    selectedEvent = catalog.eventFor(target)?.id || 'other';
     viewMode = 'station';
     filter = 'all';
     if (location.hash !== '#' + selected) {
       try { history.pushState(null, '', '#' + selected); } catch (_) {}
     }
+    writeEventUrl(selectedEvent, false);
     renderComposite();
     requestAnimationFrame(() => {
       const index = visible.findIndex(piece => piece.id === target.id);
@@ -601,11 +622,56 @@
   document.getElementById('emptyAction').addEventListener('click', () => {
     if (viewMode !== 'station') return;
     selectedBrand = '*';
-    brandSource = 'station';
+    brandSource = 'all';
+    selectedEvent = '*';
+    writeEventUrl('*', false);
     filter = 'all';
     renderComposite();
   });
 
+  function writeEventUrl(value, push) {
+    const url = new URL(location.href);
+    if (value === '*') url.searchParams.delete('event');
+    else url.searchParams.set('event', value);
+    try { history[push ? 'pushState' : 'replaceState'](null, '', url); } catch (_) {}
+  }
+
+  function selectEvent(value, reveal) {
+    selectedEvent = value;
+    memories.delete(selected + ':' + filter);
+    writeEventUrl(value, true);
+    renderComposite();
+    if (reveal) requestAnimationFrame(() => explorer.reveal());
+  }
+
+  const allSourcesButton = document.createElement('button');
+  allSourcesButton.id = 'allSourcesButton';
+  allSourcesButton.type = 'button';
+  allSourcesButton.textContent = 'Totes les fonts';
+  allSourcesButton.addEventListener('click', () => { brandSource = 'all'; renderComposite(); });
+  document.getElementById('brandSourceSwitch').prepend(allSourcesButton);
+  document.getElementById('stationPostsButton').textContent = 'Estació';
+  document.getElementById('brandPostsButton').textContent = 'Marques';
+  document.getElementById('brandSourceSwitch').setAttribute('aria-label', 'Compte que publica la peça');
+  explorer = new window.OLAFEventExplorer({
+    catalog, imageUrl: localImageUrl, onSelect: selectEvent,
+    onPiece: id => {
+      const index = visible.findIndex(piece => piece.id === catalog.canonicalId(id));
+      if (index < 0) return;
+      go(index);
+      document.getElementById('viewer').scrollIntoView({ behavior: isReduced() ? 'instant' : 'smooth', block: 'start' });
+    }
+  });
+  window.addEventListener('popstate', () => {
+    selectedEvent = new URLSearchParams(location.search).get('event') || '*';
+    renderComposite();
+  });
+  if (!['*', 'all', 'other', ...catalog.eventsFor(selected).map(event => event.id)].includes(selectedEvent)) selectedEvent = '*';
+  const stationPieces = DATA.pieces;
+  DATA.pieces = catalog.pieces;
+  renderFormatSummary();
+  DATA.pieces = stationPieces;
+  document.querySelector('.format-summary-kicker').textContent = 'Visió conjunta · totes les fonts';
   updateSavedCount();
   renderComposite();
 })();

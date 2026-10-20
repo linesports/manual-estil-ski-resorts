@@ -177,6 +177,7 @@ body[data-view="sectors"] .format-summary,body[data-view="saved"] .format-summar
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 
 </style>
+<link rel="stylesheet" href="./event-explorer.css?v=20261020">
 </head>
 <body>
 <header class="appbar"><span class="brand">OLAF</span><span class="divider" aria-hidden="true"></span><h1>Publicitat de marques</h1><span class="period">Anàlisi temporada 25-26</span></header>
@@ -412,5 +413,5 @@ const restoreStationFromUrl=()=>{const id=location.hash.slice(1),target=DATA.pro
 renderFormatSummary();
 </script>
 <dialog class="bookmark-dialog" id="bookmarkDialog" aria-labelledby="bookmarkDialogTitle"><form id="bookmarkForm"><h2 id="bookmarkDialogTitle">Guardar referència</h2><p id="bookmarkDialogDescription">Tria un tipus per trobar-la després a la biblioteca.</p><label class="field"><span>Tipus de referència <strong aria-hidden="true">*</strong></span><select id="bookmarkCategory" required><option value="">Selecciona una categoria</option><option>Sampling</option><option>Activació de marca</option><option>Branding</option><option>Naming</option></select></label><div class="bookmark-dialog-actions"><button id="removeBookmark" class="danger" type="button" hidden>Treure dels guardats</button><span></span><button id="cancelBookmark" type="button">Cancel·lar</button><button id="saveBookmark" class="primary" type="submit" disabled>Desar</button></div></form></dialog>
-<script src="./brand-instagram-posts.js"></script><script src="./features.js"></script>
+<script src="./brand-instagram-posts.js"></script><script src="./event-catalog.js?v=20261020"></script><script src="./event-explorer.js?v=20261020"></script><script src="./features.js?v=20261020"></script>
 </body></html>
