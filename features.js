@@ -871,7 +871,7 @@
   brandExplorer = new window.OLAFBrandExplorer({
     directory: brandDirectory, profiles: DATA.profiles, sectorForBrand,
     onBrand: selectBrand,
-    onFilter: kind => { filter = kind; changedContext(); },
+    onFilter: kind => { if (filter === kind) return; filter = kind; changedContext(); },
     onUpdate: () => changedContext(),
     onDirectoryChange: () => { activePieceId = ''; writeViewUrl(false); updateNavigation(); },
     onBack: () => navigateTo({ ...routeState(), brand: '', account: '*', format: 'all', piece: '', media: 0 }),
@@ -904,7 +904,7 @@
   sectorBrandFilter = makeField('Marca', 'sectorBrandFilter'); addOption(sectorBrandFilter,'*','Totes les marques');
   sectorStationFilter.addEventListener('change',()=>{selectedBrand='*';changedContext();});sectorBrandFilter.addEventListener('change',()=>{selectedBrand=sectorBrandFilter.value;changedContext();});
   globalFormats = document.createElement('div'); globalFormats.className='filter global-format-filter'; globalFormats.id='globalFormatFilter';globalFormats.setAttribute('role','group');globalFormats.setAttribute('aria-label','Format de les peces');
-  for(const [kind,label] of [['all','Totes les peces'],['post','Fotos / carrusels'],['reel','Reels / vídeos'],['story','Stories']]){const button=document.createElement('button');button.type='button';button.dataset.format=kind;button.textContent=label;button.addEventListener('click',()=>{filter=kind;changedContext();});globalFormats.append(button);} navigation.index.before(globalFormats);
+  for(const [kind,label] of [['all','Totes les peces'],['post','Fotos / carrusels'],['reel','Reels / vídeos'],['story','Stories']]){const button=document.createElement('button');button.type='button';button.dataset.format=kind;button.textContent=label;button.addEventListener('click',()=>{if(filter===kind)return;filter=kind;changedContext();});globalFormats.append(button);} navigation.index.before(globalFormats);
   chooseFilter = function(value){ if(value===filter)return; remember();filter=value;changedContext(); };
   const sourceSwitch=document.getElementById('brandSourceSwitch'),sourceField=document.createElement('div'),sourceLabel=document.createElement('span');sourceField.className='field source-field';sourceLabel.id='sourceFieldLabel';sourceLabel.textContent='Qui publica';sourceSwitch.replaceWith(sourceField);sourceField.append(sourceLabel,sourceSwitch);sourceSwitch.setAttribute('aria-labelledby','sourceFieldLabel');
   document.getElementById('postFilter').textContent='Fotos / carrusels';
