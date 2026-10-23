@@ -1,0 +1,59 @@
+{
+  "created": "2026-10-23",
+  "purpose": "Portades de col·leccions. Cap canvi en les evidències.",
+  "curated": {
+    "baqueira_beret:fwt": {
+      "pieceId": "brand:dynastarskis:DTiwnWjDQJG:baqueira_beret",
+      "image": "https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media/DTiwnWjDQJG_01.webp",
+      "width": 1280,
+      "height": 853,
+      "fit": "cover",
+      "position": "50% 20%",
+      "reason": "Fotografia horitzontal nativa del podi. Enquadrament centrat en esportistes, trofeu i panell FWT/Baqueira Beret Pro/partners."
+    },
+    "baqueira_beret:europa-cup": {
+      "pieceId": "story:baqueira_beret:3824285572341183971",
+      "image": "./media/posters/35a8aaef949be258e3a1.webp",
+      "reason": "Fotografia de competidors davant del panell Europa Cup; no es retalla el programa."
+    },
+    "baqueira_beret:iberdrola": {
+      "pieceId": "brand:iberdrola:DTxizIgiFC4:baqueira_beret",
+      "image": "https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media/DTxizIgiFC4_01.webp",
+      "reason": "Publicació de la marca amb el nom de la Copa i la porta de sortida."
+    },
+    "baqueira_beret:winter-driving": {
+      "pieceId": "brand:audispain:DSpIj2NjFxh:baqueira_beret",
+      "image": "https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media-4/DSpIj2NjFxh_03.webp",
+      "reason": "Tercer element del carrusel oficial amb la pista de Baqueira identificada; làmina completa.",
+      "width": 1080,
+      "height": 1346
+    },
+    "baqueira_beret:snow-beer": {
+      "pieceId": "brand:sanmiguel_es:DVJQVDaCIxz:baqueira_beret",
+      "image": "https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media-4/DVJQVDaCIxz_01.webp",
+      "reason": "Fotograma original de l’activació Snow Beer Days a la terrassa, sense inventar atribució de lloc."
+    },
+    "baqueira_beret:naut-aran": {
+      "pieceId": "post:baqueira_beret|DVEmjgiiOFZ",
+      "image": "./media/covers/baqueira-naut-aran-27-5s.webp",
+      "width": 540,
+      "height": 960,
+      "reason": "Fotograma natiu a 27,5 s amb les banderoles de l’Ajuntament de Naut Aran dins la peça del Trofeu; substitueix la portada de pista buida."
+    }
+  },
+  "derived": [
+    {
+      "file": "media/covers/baqueira-naut-aran-27-5s.webp",
+      "pieceId": "post:baqueira_beret|DVEmjgiiOFZ",
+      "source": "media/videos/p_baqueira_beret_DVEmjgiiOFZ.mp4",
+      "sourceUrl": "https://www.instagram.com/p/DVEmjgiiOFZ/",
+      "sourceSHA256": "2c3ac38d72deb75c33c10260be810db5e04fed5255687a21a8c046c5d345bbb7",
+      "frameSeconds": 27.5,
+      "width": 540,
+      "height": 960,
+      "transform": "Extracció de fotograma natiu; WebP q88 m6, sense retall ni reescalat",
+      "sha256": "951370371f436cafcec6382da180b934b8b6ffa4cdaeaefcea2abd37ceea3304",
+      "bytes": 29754
+    }
+  ]
+}

@@ -27,9 +27,15 @@ La navegació principal i els enllaços entre fitxes són enllaços HTML. Els ca
 - Fletxes del carrusel només dins el seu propi àmbit; no intercepten vídeos, formularis o diàlegs. Imatges ampliables amb botó i diàleg natiu amb tancament Escape.
 - L’enllaç a Instagram és visible sota cada peça, fora del desplegable d’anàlisi. El text original té una vista prèvia i una lectura completa independent; els textos curts es mostren sencers i les Stories sense text no n’inventen cap.
 - Controls amb objectiu còmode de 44px; contorns de focus contrastats, selecció subratllada i indicació textual de filtres actius. La preferència de moviment reduït desactiva paral·laxi i transicions.
-- Errors de càrrega mantenen portada, explicació i font quan existeixen; una portada no simula un vídeo. Mapa amb OpenFreeMap i recuperació textual si no està disponible.
+- Errors de càrrega mantenen portada, explicació i font quan existeixen; una portada no simula un vídeo. Localitzador transparent de Natural Earth integrat a la capçalera, amb accés explícit al mapa complet d’OpenStreetMap; si el SVG no està disponible, la ubicació textual i l’enllaç continuen accessibles.
 - Desar o eliminar només es confirma després d’escriure al navegador. Una eliminació té opció de desfer.
 
 ## Límits de les afirmacions
 
 La interfície no pressuposa contractes, publicitat de pagament ni arxiu anual de Stories desaparegudes. Es mantenen els textos originals, l’autoria, les limitacions de cobertura i les fonts. Els vídeos conserven controls natius i una explicació textual de la peça; no s’han inventat subtítols ni transcripcions del seu àudio. La validació automatitzada no es presenta com una certificació WCAG completa.
+
+## Refinament visual d’octubre de 2026
+
+Es conserva el sistema original. Fotografia responsive amb punt focal i variants d’escriptori, portades de col·leccions que respecten la proporció, selector d’estació explícit i espais més compactes abans de les peces. El mapa és context geogràfic sense marc ni superfície pròpia. La informació secundària de fonts queda en un desplegable natiu. No s’han afegit targetes ni canviat l’arquitectura.
+
+Abast fixat per l’usuari: només versió d’escriptori. No desenvolupar variants mòbils.

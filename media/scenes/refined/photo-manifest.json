@@ -1,0 +1,2345 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-23T13:59:00.830510+00:00",
+  "use": "Context photography only. No publication evidence changed.",
+  "policy": "Official sources first. Context photos are separate from evidence. No artificial enlargement except selected, labelled SwinIR Baqueira master. All others retain native detail limits.",
+  "encoders": {
+    "webp": {
+      "quality": 86,
+      "method": 5
+    },
+    "avif": {
+      "quality": 62,
+      "speed": 6
+    }
+  },
+  "photos": [
+    {
+      "id": "baqueira_beret",
+      "input": "originals/baqueira_beret.png",
+      "sourcePage": "https://viajes.baqueira.es/",
+      "sourceAsset": null,
+      "credit": "Fotografia · Baqueira Beret Reservas · imatge de context · còpia reescalada amb SwinIR",
+      "kind": "existing-context-restored",
+      "processing": "SwinIR lightweight_sr x4",
+      "width": 6000,
+      "height": 4000,
+      "sha256": "13c7466600633ba6b9826f6c20ecefa210aeb11f19afea46931c9fc9dfd0572c",
+      "focal": [
+        0.63,
+        0.56
+      ],
+      "position": "63% 56%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/baqueira_beret-desktop-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 54118,
+          "sha256": "e1bb8283ea46f894f36e573ddefe3fc2cbd558fba408ab30b2e9efe69f3d6ee7"
+        },
+        {
+          "src": "./media/scenes/refined/baqueira_beret-desktop-480.avif",
+          "width": 480,
+          "height": 320,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 31283,
+          "sha256": "4d81f615ed5be253b50da553bf2f8a9e3ab91a96e87d77f0264906011b46fc03"
+        },
+        {
+          "src": "./media/scenes/refined/baqueira_beret-desktop-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 136918,
+          "sha256": "0b07079ce8dd43c3797d147f49fac102908626a05ba8c981518de2cc189e27a9"
+        },
+        {
+          "src": "./media/scenes/refined/baqueira_beret-desktop-800.avif",
+          "width": 800,
+          "height": 533,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 80486,
+          "sha256": "4afb131997449005481f0ceba9ee39f0e13677d3502d72637de9e9730b446bdf"
+        },
+        {
+          "src": "./media/scenes/refined/baqueira_beret-desktop-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 269544,
+          "sha256": "9283a3459f11a260d0961f24ff0a89c1e49469868d0ffea6c378c7edd047f9f0"
+        },
+        {
+          "src": "./media/scenes/refined/baqueira_beret-desktop-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 157342,
+          "sha256": "d6383c2c74c9dfa0e2ff87e651f8a084cc8c595145c50318dffd5acbc0bcdcc2"
+        },
+        {
+          "src": "./media/scenes/refined/baqueira_beret-desktop-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 428496,
+          "sha256": "f4e00c8f8e0bc2516296d2246ea00faa92781ad1cba29c36a023ae135f6164b6"
+        },
+        {
+          "src": "./media/scenes/refined/baqueira_beret-desktop-1600.avif",
+          "width": 1600,
+          "height": 1067,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 245223,
+          "sha256": "d35929aead66cee74bd9c1485439281c720e4cc90a9734ec707ccfe743df54d5"
+        },
+        {
+          "src": "./media/scenes/refined/baqueira_beret-desktop-2400.webp",
+          "width": 2400,
+          "height": 1600,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 742996,
+          "sha256": "21a14673d4cbbd44302522c08a76633e0021c4545229da35b329f835a9c63ade"
+        },
+        {
+          "src": "./media/scenes/refined/baqueira_beret-desktop-2400.avif",
+          "width": 2400,
+          "height": 1600,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 426196,
+          "sha256": "29481520e412991653b1ba91e2b4d8e917a428e3fbd98b6bd4fff1d86dcf8e89"
+        }
+      ]
+    },
+    {
+      "id": "sierranevadaestacion",
+      "input": "originals/sierranevadaestacion.jpg",
+      "sourcePage": "https://sierranevada.es/es/",
+      "sourceAsset": "https://umb.sierranevada.es/media/zbbbih0k/12-03-26-borreguiles-y-balsa-de-agua.jpg",
+      "credit": "Fotografia · Cetursa Sierra Nevada · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 3685,
+      "height": 2457,
+      "sha256": "c66dfb1d6926ee709e01fd93de81c839ca8c626ca13455a799fee7269bb15518",
+      "focal": [
+        0.55,
+        0.46
+      ],
+      "position": "55% 46%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/sierranevadaestacion-desktop-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 33568,
+          "sha256": "a36ff52d4c4ca7b9404790fb4c6ad086cb3de59b846da3a8fda5834180069f9a"
+        },
+        {
+          "src": "./media/scenes/refined/sierranevadaestacion-desktop-480.avif",
+          "width": 480,
+          "height": 320,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 20656,
+          "sha256": "800faf2c28ccc429c0613015634bbd7bfe9eb991ecf8200e26ebad35e14d8803"
+        },
+        {
+          "src": "./media/scenes/refined/sierranevadaestacion-desktop-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 83024,
+          "sha256": "3c239ca415193ca2afcde89e9e3773865ba203a8bcae15a73418aca737c39bf9"
+        },
+        {
+          "src": "./media/scenes/refined/sierranevadaestacion-desktop-800.avif",
+          "width": 800,
+          "height": 533,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 51316,
+          "sha256": "285826cbc1012a194203f179edee1f01d37a7204ae9dac6f1bc8aa500b52be6e"
+        },
+        {
+          "src": "./media/scenes/refined/sierranevadaestacion-desktop-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 175690,
+          "sha256": "c98b3919b7852aa41e2909e3bbc2f7b92aac26846267618c4cf1c8f9280a2cfa"
+        },
+        {
+          "src": "./media/scenes/refined/sierranevadaestacion-desktop-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 105809,
+          "sha256": "c16309081ccb7f530741417d831fc3a61c0cf07ca5a2f2d3c10d16ec9177ab4f"
+        },
+        {
+          "src": "./media/scenes/refined/sierranevadaestacion-desktop-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 281394,
+          "sha256": "4d9c554071d093747b4ef78508c5b9401e0be147707cdcf24db138689a23d978"
+        },
+        {
+          "src": "./media/scenes/refined/sierranevadaestacion-desktop-1600.avif",
+          "width": 1600,
+          "height": 1067,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 175486,
+          "sha256": "c23cd2c54129ffb0056bd5d4cc0af603e01772bfbd58bff0d6dc776c0dc4da4e"
+        },
+        {
+          "src": "./media/scenes/refined/sierranevadaestacion-desktop-2400.webp",
+          "width": 2400,
+          "height": 1600,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 564334,
+          "sha256": "e2ebce1264a4ab76439a326b07e77671bb37728b05dc699461609e556bdcc744"
+        },
+        {
+          "src": "./media/scenes/refined/sierranevadaestacion-desktop-2400.avif",
+          "width": 2400,
+          "height": 1600,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 353979,
+          "sha256": "6c862bebe5d5917e3b78a53be305d05ccf9cda140f9ceb85d3b71b758c0d3f81"
+        }
+      ]
+    },
+    {
+      "id": "masellapirineu",
+      "input": "originals/masellapirineu.jpg",
+      "sourcePage": "https://www.masella.com/",
+      "sourceAsset": "https://www.masella.com/uploads/fotoshome/f83c681309c1002a8cf6052169805d49a34e95b1.jpg",
+      "credit": "Fotografia · Masella · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 4032,
+      "height": 2268,
+      "sha256": "f73feed345d777bab8d424eb4e6b43df6f354b13dfeca6f4e670ae748435a660",
+      "focal": [
+        0.6,
+        0.47
+      ],
+      "position": "60% 47%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/masellapirineu-desktop-480.webp",
+          "width": 480,
+          "height": 270,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 45264,
+          "sha256": "128358e8b0043f1b603481cf74a3de086d0c5240ddf692f4ec1f794023cf8175"
+        },
+        {
+          "src": "./media/scenes/refined/masellapirineu-desktop-480.avif",
+          "width": 480,
+          "height": 270,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 26395,
+          "sha256": "04b11da9737b92fdd229382518c17cd98873f9d95433c086de71a6d7befac750"
+        },
+        {
+          "src": "./media/scenes/refined/masellapirineu-desktop-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 115210,
+          "sha256": "dae2af2f28dcefa2ff79f90ca95401533b1013cd3116db0a81bfc2e6bc3a1c29"
+        },
+        {
+          "src": "./media/scenes/refined/masellapirineu-desktop-800.avif",
+          "width": 800,
+          "height": 450,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 69105,
+          "sha256": "fba510ee02ce3a29fccb1c26e893174c943c013468f7ad4e5b73af8b7819384c"
+        },
+        {
+          "src": "./media/scenes/refined/masellapirineu-desktop-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 246076,
+          "sha256": "a4e17e64221d34b5e71bec0d42b4f94be4fdf9a5419ef54fead16e28a91b9088"
+        },
+        {
+          "src": "./media/scenes/refined/masellapirineu-desktop-1200.avif",
+          "width": 1200,
+          "height": 675,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 147976,
+          "sha256": "332fee110b03cb78f09be1c21589a9250ae43c7cad4982f6cfeebd892c2c27bf"
+        },
+        {
+          "src": "./media/scenes/refined/masellapirineu-desktop-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 412630,
+          "sha256": "ac48103bc03869a4afa5fdc53cc918e50e6ea5361e8d6ee4f62e4942c3308784"
+        },
+        {
+          "src": "./media/scenes/refined/masellapirineu-desktop-1600.avif",
+          "width": 1600,
+          "height": 900,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 244052,
+          "sha256": "67554380018528115e60ded61e194314b192c4cf22a48c1cd8150ba3791d42e7"
+        },
+        {
+          "src": "./media/scenes/refined/masellapirineu-desktop-2400.webp",
+          "width": 2400,
+          "height": 1350,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 804552,
+          "sha256": "38f4660dfc9b66cf56cf91cbc0374fbd53098c85ac6b492fbba8f2b90051e254"
+        },
+        {
+          "src": "./media/scenes/refined/masellapirineu-desktop-2400.avif",
+          "width": 2400,
+          "height": 1350,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 466787,
+          "sha256": "fd13e0a851fdaee838960f52f8a1f879d031c334f5a44dea607563e64407de15"
+        }
+      ]
+    },
+    {
+      "id": "cerleraramon",
+      "input": "originals/cerleraramon.jpg",
+      "sourcePage": "https://www.aramon.com/cerler",
+      "sourceAsset": "https://d32r4yxuun6zdf.cloudfront.net/estaticos/extras/fotos/contenidos/00/00/01/16/13//Web_Cerler_Horizontal-13102026.mp4",
+      "credit": "Fotograma · Cerler / Grup Aramón · vídeo oficial · imatge de context",
+      "kind": "official-video-frame",
+      "processing": "static frame at 4 seconds; responsive resize only",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "fc654b9153e8176dedc82c0d04f8254d91bdb56dfe07142a089e82271499a885",
+      "focal": [
+        0.55,
+        0.62
+      ],
+      "position": "55% 62%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/cerleraramon-desktop-480.webp",
+          "width": 480,
+          "height": 270,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 7412,
+          "sha256": "51db7019073fed946c99a5cc7d091ae25d435f7a517c2469c0e1c5d562a5d861"
+        },
+        {
+          "src": "./media/scenes/refined/cerleraramon-desktop-480.avif",
+          "width": 480,
+          "height": 270,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 4965,
+          "sha256": "e55866f49a131b9bffb95a663828b7f95ef271387ae61bc44801474b0f9d8846"
+        },
+        {
+          "src": "./media/scenes/refined/cerleraramon-desktop-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 15548,
+          "sha256": "06dc4d66e0d225a4d50bd46afc57023f0ae1747bb85365bc92f0da98d4ac0f5b"
+        },
+        {
+          "src": "./media/scenes/refined/cerleraramon-desktop-800.avif",
+          "width": 800,
+          "height": 450,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 10262,
+          "sha256": "bb42f4e31f84f3579678d4c0940c71f0c880b546ce407ea59641c33fe04fc3fd"
+        },
+        {
+          "src": "./media/scenes/refined/cerleraramon-desktop-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 26590,
+          "sha256": "df802acbd4fcea018b6dffdfef3a4655d87779801fc2f21e73664cde5c0bf3a2"
+        },
+        {
+          "src": "./media/scenes/refined/cerleraramon-desktop-1200.avif",
+          "width": 1200,
+          "height": 675,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 17589,
+          "sha256": "5eb0a384deafe3bcd995269465caed08f299eefb9ec2a2c292b88be506e2876d"
+        },
+        {
+          "src": "./media/scenes/refined/cerleraramon-desktop-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 38486,
+          "sha256": "e5b456bcce608041dc06acd59d98eb6824be5aba593bac79c0449627ac5135f6"
+        },
+        {
+          "src": "./media/scenes/refined/cerleraramon-desktop-1600.avif",
+          "width": 1600,
+          "height": 900,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 25339,
+          "sha256": "e4c01da801692e0cb6cf247aed3a587d297cc78feecb2e9f66292e613103f23b"
+        },
+        {
+          "src": "./media/scenes/refined/cerleraramon-desktop-1920.webp",
+          "width": 1920,
+          "height": 1080,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 49354,
+          "sha256": "4ee2fceafecdb49a1b0207551c342da2597974a952b21bdea3808112581b25ce"
+        },
+        {
+          "src": "./media/scenes/refined/cerleraramon-desktop-1920.avif",
+          "width": 1920,
+          "height": 1080,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 32587,
+          "sha256": "21d496777abebd10c315699a4421d1f05a7c67ba97d5f2069bf6b68c6f9d1408"
+        }
+      ]
+    },
+    {
+      "id": "javalambrearamon",
+      "input": "originals/javalambrearamon.jpg",
+      "sourcePage": "https://www.aramon.com/javalambre",
+      "sourceAsset": "https://d32r4yxuun6zdf.cloudfront.net/estaticos/extras/fotos/contenidos/00/00/01/16/15//Web_Javalambre_Horizontal-13102026.mp4",
+      "credit": "Fotograma · Javalambre / Grup Aramón · vídeo oficial · imatge de context",
+      "kind": "official-video-frame",
+      "processing": "static frame at 4 seconds; responsive resize only",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "aceaa9c8eb735918ec148b029024292febb1dccc7f9aef19bcf709d88593f4ac",
+      "focal": [
+        0.6,
+        0.57
+      ],
+      "position": "60% 57%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/javalambrearamon-desktop-480.webp",
+          "width": 480,
+          "height": 270,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 12374,
+          "sha256": "94a1fc44db5060cfb2b7dbc950a2fe092914c2a3322dccf9cf014be74525db1b"
+        },
+        {
+          "src": "./media/scenes/refined/javalambrearamon-desktop-480.avif",
+          "width": 480,
+          "height": 270,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 7330,
+          "sha256": "901249a6f70de27b5734c8dba15a51a9a4ef62ebd057ac3cc981065c73776279"
+        },
+        {
+          "src": "./media/scenes/refined/javalambrearamon-desktop-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 27922,
+          "sha256": "477df85038084a3ba42b8a60f7c973b3754bc13d98949cb60f7d24cc7bc9de23"
+        },
+        {
+          "src": "./media/scenes/refined/javalambrearamon-desktop-800.avif",
+          "width": 800,
+          "height": 450,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 15819,
+          "sha256": "d10f91dea60e57f6991a7cf37ff927740acf75793b0117dcc1496081608b9b6e"
+        },
+        {
+          "src": "./media/scenes/refined/javalambrearamon-desktop-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 51002,
+          "sha256": "a28b3a3bc2b1c5e4eff0f469cec5122e457efc2943234305b68c63d466d99508"
+        },
+        {
+          "src": "./media/scenes/refined/javalambrearamon-desktop-1200.avif",
+          "width": 1200,
+          "height": 675,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 28990,
+          "sha256": "da2dcf12679b307caf3311321e9b2950c1cabf0d75b8cd8b758558e41bd69dcc"
+        },
+        {
+          "src": "./media/scenes/refined/javalambrearamon-desktop-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 75384,
+          "sha256": "81042c4879c391dc70174d1af3835998131df4d5c765257adef1726d8c6dd0a5"
+        },
+        {
+          "src": "./media/scenes/refined/javalambrearamon-desktop-1600.avif",
+          "width": 1600,
+          "height": 900,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 42305,
+          "sha256": "a694d34a86130b5a22d3de7ef8007f9c06795f02fe615b750cfff5bc9c640e46"
+        },
+        {
+          "src": "./media/scenes/refined/javalambrearamon-desktop-1920.webp",
+          "width": 1920,
+          "height": 1080,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 96226,
+          "sha256": "b984072bc54a0051809d99c3d0ca9400152ea9a62331021eff9a2f2a161ae4f6"
+        },
+        {
+          "src": "./media/scenes/refined/javalambrearamon-desktop-1920.avif",
+          "width": 1920,
+          "height": 1080,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 55839,
+          "sha256": "63eead255cbb07c0a25fa1bcc12600f384d96ab8e3edb89021de6b56d451e0a8"
+        }
+      ]
+    },
+    {
+      "id": "formigalpanticosaaramon",
+      "input": "originals/formigalpanticosaaramon.jpg",
+      "sourcePage": "https://www.aramon.com/formigal-panticosa",
+      "sourceAsset": "https://d32r4yxuun6zdf.cloudfront.net/estaticos/extras/fotos/contenidos/00/00/01/16/14//slider-formigal-15092026.webm",
+      "credit": "Fotograma · Formigal–Panticosa / Grup Aramón · vídeo oficial · imatge de context",
+      "kind": "official-video-frame",
+      "processing": "static frame at 4 seconds; responsive resize only",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "b2876c993119693237d07763e0062979b6770c3c0a201bf6d48c7b569fb35683",
+      "focal": [
+        0.55,
+        0.47
+      ],
+      "position": "55% 47%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/formigalpanticosaaramon-desktop-480.webp",
+          "width": 480,
+          "height": 270,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 9426,
+          "sha256": "3f8b7e1a645aca5524f40be45d666a77ad1b94e3cba191e2df7ee2c8a5f31dde"
+        },
+        {
+          "src": "./media/scenes/refined/formigalpanticosaaramon-desktop-480.avif",
+          "width": 480,
+          "height": 270,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 7029,
+          "sha256": "dd0a239ec35aa9407db6ccaebd1d1a0b0a6879f547f43ac4c4210faf33ded1b5"
+        },
+        {
+          "src": "./media/scenes/refined/formigalpanticosaaramon-desktop-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 25590,
+          "sha256": "4a731f43c95b77a0623e1302caa3d6e0025f8ec3a6df9ef067f8be27b1beaec8"
+        },
+        {
+          "src": "./media/scenes/refined/formigalpanticosaaramon-desktop-800.avif",
+          "width": 800,
+          "height": 450,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 17856,
+          "sha256": "17ce512301ecc52acdcad7318073b8e3d88a06e74e11d13737bdffc1fc06fafc"
+        },
+        {
+          "src": "./media/scenes/refined/formigalpanticosaaramon-desktop-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 48686,
+          "sha256": "e5ffef5e6c90da305650a5827aa33ae11980cbb1ece68e8e3a6217208a290eec"
+        },
+        {
+          "src": "./media/scenes/refined/formigalpanticosaaramon-desktop-1200.avif",
+          "width": 1200,
+          "height": 675,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 33387,
+          "sha256": "aa97c33868102a84fae128c0de5daca0e1e49e0573dd38b18d9af820f2606390"
+        },
+        {
+          "src": "./media/scenes/refined/formigalpanticosaaramon-desktop-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 72596,
+          "sha256": "038de0775dd8122d48d5815b4058dedd251e8d0c5b38c39babaf205aeb0ddd28"
+        },
+        {
+          "src": "./media/scenes/refined/formigalpanticosaaramon-desktop-1600.avif",
+          "width": 1600,
+          "height": 900,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 49912,
+          "sha256": "7f24156412918faa2471fcd8622a2ba834e62ebed9c7c483fecdc583c058a682"
+        },
+        {
+          "src": "./media/scenes/refined/formigalpanticosaaramon-desktop-1920.webp",
+          "width": 1920,
+          "height": 1080,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 90350,
+          "sha256": "4d08d6c4267726111f41d8022517176d2f714eadea34abb0c2b47ab9c0d1335a"
+        },
+        {
+          "src": "./media/scenes/refined/formigalpanticosaaramon-desktop-1920.avif",
+          "width": 1920,
+          "height": 1080,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 63344,
+          "sha256": "3849b758b19426821258291e7da79078c850c13948606df693e31d41edeba3ff"
+        }
+      ]
+    },
+    {
+      "id": "grandvalira",
+      "input": "originals/grandvalira.jpg",
+      "sourcePage": "https://www.grandvalira.com/es/estacion",
+      "sourceAsset": "https://www.grandvalira.com/sites/default/files/2023-11/Estacion-grandvalira-1.jpg",
+      "credit": "Fotografia · Grandvalira · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "01fd2f2f52516c9aeb483e5b234780ec004c5f4dba384906a58974730a4f6778",
+      "focal": [
+        0.62,
+        0.57
+      ],
+      "position": "62% 57%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/grandvalira-desktop-480.webp",
+          "width": 480,
+          "height": 270,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 14820,
+          "sha256": "f669fe981a55e2c076224cc924a764667266d255f2168027ec1176b7523e47b4"
+        },
+        {
+          "src": "./media/scenes/refined/grandvalira-desktop-480.avif",
+          "width": 480,
+          "height": 270,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 10734,
+          "sha256": "0781037e5dcd1f2d88b920a670763fe7dfeb52779f88e305409f56aa44b4adfc"
+        },
+        {
+          "src": "./media/scenes/refined/grandvalira-desktop-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 33016,
+          "sha256": "730474e74c52af28cff60276ae0711067975528267c940daa09d79ed142fbfda"
+        },
+        {
+          "src": "./media/scenes/refined/grandvalira-desktop-800.avif",
+          "width": 800,
+          "height": 450,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 23554,
+          "sha256": "de0283ddc200b3d4d25c160507f5f49f2074f002a7881606ae68d264f83ac028"
+        },
+        {
+          "src": "./media/scenes/refined/grandvalira-desktop-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 64454,
+          "sha256": "5c4f942f47765949fde98ea796659c04667b76b96daa56ee86bdbbf25bec112e"
+        },
+        {
+          "src": "./media/scenes/refined/grandvalira-desktop-1200.avif",
+          "width": 1200,
+          "height": 675,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 45070,
+          "sha256": "7f1f2f7b3beadd7f994bf2bd9074604669cf66eee9fcee5625e76b13af8a196b"
+        },
+        {
+          "src": "./media/scenes/refined/grandvalira-desktop-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 102198,
+          "sha256": "f51862e33fd4d5a3524d8e9c8f338dbdfb6a3a3d7508577e7643cdc44c839f78"
+        },
+        {
+          "src": "./media/scenes/refined/grandvalira-desktop-1600.avif",
+          "width": 1600,
+          "height": 900,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 71384,
+          "sha256": "1e2bb17c6c1e0e147e55ed89944565be3f61ca3e334d3c2d7bea205b00e96c2e"
+        },
+        {
+          "src": "./media/scenes/refined/grandvalira-desktop-1920.webp",
+          "width": 1920,
+          "height": 1080,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 140060,
+          "sha256": "e13be4ed77810fe9ab89c3ba4c1453af2b0e578fe46b2879504d0f513a273805"
+        },
+        {
+          "src": "./media/scenes/refined/grandvalira-desktop-1920.avif",
+          "width": 1920,
+          "height": 1080,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 99972,
+          "sha256": "e89aef47ca206ed4373098d0f9ab135ba05b44065ad994db932b193e9d5298e2"
+        }
+      ]
+    },
+    {
+      "id": "palarinsalandorra",
+      "input": "originals/palarinsalandorra.jpg",
+      "sourcePage": "https://www.palarinsal.com/es/somos/quien-somos",
+      "sourceAsset": "https://www.palarinsal.com/sites/default/files/2023-10/Arinsal%20invierno.jpg",
+      "credit": "Fotografia · Pal Arinsal · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 1890,
+      "height": 1260,
+      "sha256": "9f470372e6887c182db2f5b313d727c0ee3c8a80b16c374d4cb54ca76e7f3635",
+      "focal": [
+        0.59,
+        0.57
+      ],
+      "position": "59% 57%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/palarinsalandorra-desktop-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 16282,
+          "sha256": "6c1a67c02ba38992e9b5b1c918a739ac945012b714468d78d834087c3e969e76"
+        },
+        {
+          "src": "./media/scenes/refined/palarinsalandorra-desktop-480.avif",
+          "width": 480,
+          "height": 320,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 14309,
+          "sha256": "8444ca512248cd546db4d9909caa7739eb5cb2d6acd872668890b90475381a5e"
+        },
+        {
+          "src": "./media/scenes/refined/palarinsalandorra-desktop-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 43488,
+          "sha256": "0823ff9ca125ee035b7a170f16480e5d01ecc17fc9047d327d6955a23189d0c6"
+        },
+        {
+          "src": "./media/scenes/refined/palarinsalandorra-desktop-800.avif",
+          "width": 800,
+          "height": 533,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 32597,
+          "sha256": "3961300f4e1c7d0c0a8d9ac2d7c850f247d9a205bfd3229b51b763465ae12e23"
+        },
+        {
+          "src": "./media/scenes/refined/palarinsalandorra-desktop-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 105784,
+          "sha256": "35ca273a3c8483139e3375d9ca1f97891cda3211455520bbcf9010157c49d9b2"
+        },
+        {
+          "src": "./media/scenes/refined/palarinsalandorra-desktop-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 69311,
+          "sha256": "35a4b03bc810705de81b29d67bf5049d80e06a65c63f808896082b48e542bac2"
+        },
+        {
+          "src": "./media/scenes/refined/palarinsalandorra-desktop-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 213846,
+          "sha256": "000514ce2e5e6fcb2324cf57cac04e36c296bbff8989ad90f61047c558d8f4b7"
+        },
+        {
+          "src": "./media/scenes/refined/palarinsalandorra-desktop-1600.avif",
+          "width": 1600,
+          "height": 1067,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 131151,
+          "sha256": "359619f088e0fd7fdd547ef0c13e02cb17f9c48f40bb8f495a3fd453aa7b37f5"
+        },
+        {
+          "src": "./media/scenes/refined/palarinsalandorra-desktop-1890.webp",
+          "width": 1890,
+          "height": 1260,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 323290,
+          "sha256": "597ebdb5adb592140ca76cae9a188c177b21c3b3da1908e3a0da235fb1380bd4"
+        },
+        {
+          "src": "./media/scenes/refined/palarinsalandorra-desktop-1890.avif",
+          "width": 1890,
+          "height": 1260,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 196279,
+          "sha256": "61b90154620a6ca7b168fa564a864f19f13eb43b3972265e5c6153b3618d00a8"
+        }
+      ]
+    },
+    {
+      "id": "ordinoarcalis",
+      "input": "originals/ordinoarcalis.jpg",
+      "sourcePage": "https://www.ordinoarcalis.com/es",
+      "sourceAsset": "https://www.ordinoarcalis.com/sites/default/files/2024-09/OA-SLIDE-paisaje.jpg",
+      "credit": "Fotografia · Ordino Arcalís · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 2560,
+      "height": 1440,
+      "sha256": "f0aedec31dda7602c77a1b85e555d86abd28f94a079194b399ca33a84c9c03aa",
+      "focal": [
+        0.56,
+        0.5
+      ],
+      "position": "56% 50%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/ordinoarcalis-desktop-480.webp",
+          "width": 480,
+          "height": 270,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 39894,
+          "sha256": "3145b70960458df9bbbe1eb0b2a396fa8cdfc6e0355692cc5a390b0325a3bf65"
+        },
+        {
+          "src": "./media/scenes/refined/ordinoarcalis-desktop-480.avif",
+          "width": 480,
+          "height": 270,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 23592,
+          "sha256": "6bfac1bdf4c2393b87bb9a478a1e12d88ee801a94bf81b188900420b10e5aa63"
+        },
+        {
+          "src": "./media/scenes/refined/ordinoarcalis-desktop-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 101120,
+          "sha256": "c8440296600d23f7dcf05b64aeb26e6b8610d4c958e5cf78aa54206cceb3f360"
+        },
+        {
+          "src": "./media/scenes/refined/ordinoarcalis-desktop-800.avif",
+          "width": 800,
+          "height": 450,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 58948,
+          "sha256": "cbf24fbde5ed7601e1e1b4b100d4961075f3294aef1025b731af1e9cd1be586d"
+        },
+        {
+          "src": "./media/scenes/refined/ordinoarcalis-desktop-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 209220,
+          "sha256": "d6731d773a7ad4a21facbb45bc042733be38da01612e00fb01165f762e9be7cf"
+        },
+        {
+          "src": "./media/scenes/refined/ordinoarcalis-desktop-1200.avif",
+          "width": 1200,
+          "height": 675,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 123921,
+          "sha256": "dad8db2725c9176e851d99daeaebf71310f6b0c722e517c42a82b24e5b5aafc3"
+        },
+        {
+          "src": "./media/scenes/refined/ordinoarcalis-desktop-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 351088,
+          "sha256": "a61f7f286e95c98d5021fd9455b3495a05f9039dbbb16c7b166164ab29f278d5"
+        },
+        {
+          "src": "./media/scenes/refined/ordinoarcalis-desktop-1600.avif",
+          "width": 1600,
+          "height": 900,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 204868,
+          "sha256": "a38d73733e758bbec2f3c8b29a9c28816f3589d45553210ef8320a6213c75049"
+        },
+        {
+          "src": "./media/scenes/refined/ordinoarcalis-desktop-2400.webp",
+          "width": 2400,
+          "height": 1350,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 696068,
+          "sha256": "7790199095bc284a4641bf0fd88a19304aa4b234a3e6501e48bdce4033a183ab"
+        },
+        {
+          "src": "./media/scenes/refined/ordinoarcalis-desktop-2400.avif",
+          "width": 2400,
+          "height": 1350,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 405198,
+          "sha256": "fb6ae4ab187243e7348721ee0cf8da691f75f4ecc17dbc208a1090f5421f9baa"
+        }
+      ]
+    },
+    {
+      "id": "grupoaramon",
+      "input": "originals/grupoaramon.jpg",
+      "sourcePage": "https://www.aramon.com/cerler",
+      "sourceAsset": "https://d32r4yxuun6zdf.cloudfront.net/estaticos/extras/fotos/contenidos/00/00/01/16/13//Web_Cerler_Horizontal-13102026.mp4",
+      "credit": "Fotograma · Cerler / Grup Aramón · vídeo oficial · imatge de context",
+      "kind": "official-video-frame",
+      "processing": "static frame at 4 seconds; responsive resize only",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "fc654b9153e8176dedc82c0d04f8254d91bdb56dfe07142a089e82271499a885",
+      "focal": [
+        0.55,
+        0.62
+      ],
+      "position": "55% 62%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/grupoaramon-desktop-480.webp",
+          "width": 480,
+          "height": 270,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 7412,
+          "sha256": "51db7019073fed946c99a5cc7d091ae25d435f7a517c2469c0e1c5d562a5d861"
+        },
+        {
+          "src": "./media/scenes/refined/grupoaramon-desktop-480.avif",
+          "width": 480,
+          "height": 270,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 4965,
+          "sha256": "e55866f49a131b9bffb95a663828b7f95ef271387ae61bc44801474b0f9d8846"
+        },
+        {
+          "src": "./media/scenes/refined/grupoaramon-desktop-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 15548,
+          "sha256": "06dc4d66e0d225a4d50bd46afc57023f0ae1747bb85365bc92f0da98d4ac0f5b"
+        },
+        {
+          "src": "./media/scenes/refined/grupoaramon-desktop-800.avif",
+          "width": 800,
+          "height": 450,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 10262,
+          "sha256": "bb42f4e31f84f3579678d4c0940c71f0c880b546ce407ea59641c33fe04fc3fd"
+        },
+        {
+          "src": "./media/scenes/refined/grupoaramon-desktop-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 26590,
+          "sha256": "df802acbd4fcea018b6dffdfef3a4655d87779801fc2f21e73664cde5c0bf3a2"
+        },
+        {
+          "src": "./media/scenes/refined/grupoaramon-desktop-1200.avif",
+          "width": 1200,
+          "height": 675,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 17589,
+          "sha256": "5eb0a384deafe3bcd995269465caed08f299eefb9ec2a2c292b88be506e2876d"
+        },
+        {
+          "src": "./media/scenes/refined/grupoaramon-desktop-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 38486,
+          "sha256": "e5b456bcce608041dc06acd59d98eb6824be5aba593bac79c0449627ac5135f6"
+        },
+        {
+          "src": "./media/scenes/refined/grupoaramon-desktop-1600.avif",
+          "width": 1600,
+          "height": 900,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 25339,
+          "sha256": "e4c01da801692e0cb6cf247aed3a587d297cc78feecb2e9f66292e613103f23b"
+        },
+        {
+          "src": "./media/scenes/refined/grupoaramon-desktop-1920.webp",
+          "width": 1920,
+          "height": 1080,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 49354,
+          "sha256": "4ee2fceafecdb49a1b0207551c342da2597974a952b21bdea3808112581b25ce"
+        },
+        {
+          "src": "./media/scenes/refined/grupoaramon-desktop-1920.avif",
+          "width": 1920,
+          "height": 1080,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 32587,
+          "sha256": "21d496777abebd10c315699a4421d1f05a7c67ba97d5f2069bf6b68c6f9d1408"
+        }
+      ]
+    },
+    {
+      "id": "val_thorens",
+      "input": "originals/val_thorens.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Val_Thorens_vu_depuis_l%27est_en_hiver_(f%C3%A9vrier_2024).JPG",
+      "sourceAsset": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Val_Thorens_vu_depuis_l%27est_en_hiver_%28f%C3%A9vrier_2024%29.JPG",
+      "credit": "Fotografia · Florian Pépellin · CC BY-SA 4.0 · reducció i formats web",
+      "kind": "author-published-photo",
+      "processing": "responsive resize only",
+      "width": 3945,
+      "height": 2940,
+      "sha256": "9dcb4684a0e0ef48b69c63d136c6795ff9ebbd7a4103d9b13663a6fdf2fe3c99",
+      "focal": [
+        0.64,
+        0.56
+      ],
+      "position": "64% 56%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [
+        "Official Val Thorens page and asset requests returned HTTP403; author-published licensed photograph selected instead of enlarging the240px vertical source."
+      ],
+      "author": "Florian Pépellin",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "captured": "2024-02-14",
+      "changes": "Resized and format converted; no generative modification.",
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/val_thorens-desktop-480.webp",
+          "width": 480,
+          "height": 358,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 43826,
+          "sha256": "acb9b3bc4137fbd3d63f44b195296ba05bf0425f474082168c8dbc1db45f50f5"
+        },
+        {
+          "src": "./media/scenes/refined/val_thorens-desktop-480.avif",
+          "width": 480,
+          "height": 358,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 25785,
+          "sha256": "b98babd4b9c8580a2806a8294a4b05aaf53a60d380c5bf12f5aa18a5a8741892"
+        },
+        {
+          "src": "./media/scenes/refined/val_thorens-desktop-800.webp",
+          "width": 800,
+          "height": 596,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 106138,
+          "sha256": "19a2a9da82244ce25bdbef2a5170065e79f8b954936ce816a14e4eed2c793458"
+        },
+        {
+          "src": "./media/scenes/refined/val_thorens-desktop-800.avif",
+          "width": 800,
+          "height": 596,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 63876,
+          "sha256": "1566d6c804b4bd357660c951d64fc0f04036747b5f477c28f76a77f05259023a"
+        },
+        {
+          "src": "./media/scenes/refined/val_thorens-desktop-1200.webp",
+          "width": 1200,
+          "height": 894,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 215964,
+          "sha256": "e8fe28f2434a6fec7d084cceaf5afaf1f2c6beb0fb61bbd2fbe6e7574032df7a"
+        },
+        {
+          "src": "./media/scenes/refined/val_thorens-desktop-1200.avif",
+          "width": 1200,
+          "height": 894,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 129234,
+          "sha256": "842a94c22f108c690f2dbe888ab2cec895cfc270ff0360cafd34d0fad1b66ad8"
+        },
+        {
+          "src": "./media/scenes/refined/val_thorens-desktop-1600.webp",
+          "width": 1600,
+          "height": 1192,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 346284,
+          "sha256": "618e27fcc3323894306b31577b05e0d213d259187d17d81d3c0001129b857465"
+        },
+        {
+          "src": "./media/scenes/refined/val_thorens-desktop-1600.avif",
+          "width": 1600,
+          "height": 1192,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 211583,
+          "sha256": "2b78cf049216b88887b65d747e20962b27c5686962cefb7a5d6a250f29e6efeb"
+        },
+        {
+          "src": "./media/scenes/refined/val_thorens-desktop-2400.webp",
+          "width": 2400,
+          "height": 1789,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 653302,
+          "sha256": "d5b4a8ec24b54af1f47dadbbaea342bee64fbc79552c85cb99bdb6f2a88b3de0"
+        },
+        {
+          "src": "./media/scenes/refined/val_thorens-desktop-2400.avif",
+          "width": 2400,
+          "height": 1789,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 406959,
+          "sha256": "d9754f188e0ccf5057a8ee01e11258ffd3e545498b8ba5d192c5c208d4ac9068"
+        }
+      ]
+    },
+    {
+      "id": "tignesofficiel",
+      "input": "originals/tignesofficiel.webp",
+      "sourcePage": "https://www.tignes.net/",
+      "sourceAsset": null,
+      "credit": "Fotografia · web oficial de Tignes",
+      "kind": "existing-context",
+      "processing": "responsive resize only",
+      "width": 1200,
+      "height": 801,
+      "sha256": "3373a460ca1ea2aa1f77cbfe68159556cc65a507deebbe1549ec41fd50c825eb",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "position": "50% 50%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/tignesofficiel-desktop-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 24846,
+          "sha256": "57af7b49d9e5b870ff5f982c9b939bd9150cdcfa699f37f0fc3be7f89869987b"
+        },
+        {
+          "src": "./media/scenes/refined/tignesofficiel-desktop-480.avif",
+          "width": 480,
+          "height": 320,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 15378,
+          "sha256": "c4eb150491282303b43fa19ec3fecdb1d6de3a60b6da04819c59ea109a34aca2"
+        },
+        {
+          "src": "./media/scenes/refined/tignesofficiel-desktop-800.webp",
+          "width": 800,
+          "height": 534,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 61392,
+          "sha256": "9dbcbd7937585d4127b83aa57ee3da58e0c29abb5d3fe2dfd9de0e509c07031b"
+        },
+        {
+          "src": "./media/scenes/refined/tignesofficiel-desktop-800.avif",
+          "width": 800,
+          "height": 534,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 39476,
+          "sha256": "d0e50b11fccb015220b797ac80f84b166ecf67376453ee9beb8b123c1c663707"
+        },
+        {
+          "src": "./media/scenes/refined/tignesofficiel-desktop-1200.webp",
+          "width": 1200,
+          "height": 801,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 130598,
+          "sha256": "793db25754d4b5419255d9314bd6fc989570ef4e5b24628d1775c517f042377a"
+        },
+        {
+          "src": "./media/scenes/refined/tignesofficiel-desktop-1200.avif",
+          "width": 1200,
+          "height": 801,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 81996,
+          "sha256": "8c66d4507afe03d20366a2bd59f72a0487ad785eca1291897f6f4bb1a27a0202"
+        }
+      ]
+    },
+    {
+      "id": "laax",
+      "input": "originals/laax.webp",
+      "sourcePage": "https://www.laax.com/",
+      "sourceAsset": null,
+      "credit": "Fotografia · web oficial de LAAX",
+      "kind": "existing-context",
+      "processing": "responsive resize only",
+      "width": 1700,
+      "height": 1194,
+      "sha256": "f87f0b699236ac6ab922814e948887837a7e613b95bffc7fa5c379d0d8bd25e6",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "position": "50% 50%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/laax-desktop-480.webp",
+          "width": 480,
+          "height": 337,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 30220,
+          "sha256": "84b8446bfe0ab89c78af90e586e9b27a3d0f9b98eabc56cb343576570610dcbf"
+        },
+        {
+          "src": "./media/scenes/refined/laax-desktop-480.avif",
+          "width": 480,
+          "height": 337,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 18193,
+          "sha256": "96c7a971e45186cb72aa17ad42288595baff5074f2109023099acaeda0c32849"
+        },
+        {
+          "src": "./media/scenes/refined/laax-desktop-800.webp",
+          "width": 800,
+          "height": 562,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 66326,
+          "sha256": "e7430d3f96c3c8de4d255d0fb571374688be72133f311dafe53f59b12a5c5ba5"
+        },
+        {
+          "src": "./media/scenes/refined/laax-desktop-800.avif",
+          "width": 800,
+          "height": 562,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 43215,
+          "sha256": "d7d5b54f6738fa498e407f4032bead93a80dcbb835bda2bc1e8a47d049a0ccd8"
+        },
+        {
+          "src": "./media/scenes/refined/laax-desktop-1200.webp",
+          "width": 1200,
+          "height": 843,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 113130,
+          "sha256": "64a84e3280fec74ef126e324b2c37fc9b66b1143d2dc656586b4131f24f8326e"
+        },
+        {
+          "src": "./media/scenes/refined/laax-desktop-1200.avif",
+          "width": 1200,
+          "height": 843,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 74248,
+          "sha256": "d56f10e0c23a58656a6f21618abaf0b66796eb7e5bb859201d5ef701bd53e56e"
+        },
+        {
+          "src": "./media/scenes/refined/laax-desktop-1600.webp",
+          "width": 1600,
+          "height": 1124,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 160078,
+          "sha256": "143d9cf7b75b474b00a6d5ce361ed2819af90081db27544c2190b12ecf50dc83"
+        },
+        {
+          "src": "./media/scenes/refined/laax-desktop-1600.avif",
+          "width": 1600,
+          "height": 1124,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 101008,
+          "sha256": "ce6b579fa56e20c0cc87c93390bece37254a05240d4ac6f6ca593e3ea2510edc"
+        },
+        {
+          "src": "./media/scenes/refined/laax-desktop-1700.webp",
+          "width": 1700,
+          "height": 1194,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 176488,
+          "sha256": "6341d179b12c2ab33157b0706c5d6dd937137a49b54376137bb6b489016914bc"
+        },
+        {
+          "src": "./media/scenes/refined/laax-desktop-1700.avif",
+          "width": 1700,
+          "height": 1194,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 115406,
+          "sha256": "c730157e5cbeacee46bffdb7acd806cfc26a5d44c0ff952fdccb4f5597bbf787"
+        }
+      ]
+    },
+    {
+      "id": "zermattbergbahnen",
+      "input": "originals/zermattbergbahnen.webp",
+      "sourcePage": "https://www.matterhornparadise.ch/en",
+      "sourceAsset": null,
+      "credit": "Fotografia · web oficial de Zermatt–Matterhorn Paradise",
+      "kind": "existing-context",
+      "processing": "responsive resize only",
+      "width": 1680,
+      "height": 800,
+      "sha256": "d126d1d4a1f281a2ee0f081bd4dfc7449555a655d3c45a5ab8db9fd61f70fcc1",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "position": "50% 50%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/zermattbergbahnen-desktop-480.webp",
+          "width": 480,
+          "height": 229,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 22806,
+          "sha256": "61422de0d7fd2427045d42272a3adac831253694434d6056169db349e1010683"
+        },
+        {
+          "src": "./media/scenes/refined/zermattbergbahnen-desktop-480.avif",
+          "width": 480,
+          "height": 229,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 13467,
+          "sha256": "a7fe177bd30dc0bf0319b665d55b6616737ab1b03ad1dfe0c594a3a1a553eb2f"
+        },
+        {
+          "src": "./media/scenes/refined/zermattbergbahnen-desktop-800.webp",
+          "width": 800,
+          "height": 381,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 52660,
+          "sha256": "939167e56ce501b8485e7d342d03ac22b008f336003b1231b03fa2662314cf05"
+        },
+        {
+          "src": "./media/scenes/refined/zermattbergbahnen-desktop-800.avif",
+          "width": 800,
+          "height": 381,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 31697,
+          "sha256": "6df90a375258a8514d0feece63c3c859a7894321cc75d1a439ea63f02ac18b62"
+        },
+        {
+          "src": "./media/scenes/refined/zermattbergbahnen-desktop-1200.webp",
+          "width": 1200,
+          "height": 571,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 101480,
+          "sha256": "6c18182a1704281fa020d347d11687dbcd0b3e5be8156ecfff10f74afc1adb40"
+        },
+        {
+          "src": "./media/scenes/refined/zermattbergbahnen-desktop-1200.avif",
+          "width": 1200,
+          "height": 571,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 62586,
+          "sha256": "3366012f2d61f99f3096d05f694bf14033fa4fe4885a59741199d47ec58d6a03"
+        },
+        {
+          "src": "./media/scenes/refined/zermattbergbahnen-desktop-1600.webp",
+          "width": 1600,
+          "height": 762,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 161124,
+          "sha256": "2c50ba47e145ec33b9963076e272fc071948d8437755def983cc3e2eb3d2cef6"
+        },
+        {
+          "src": "./media/scenes/refined/zermattbergbahnen-desktop-1600.avif",
+          "width": 1600,
+          "height": 762,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 99594,
+          "sha256": "38918c3274bc1b591d7dec68e5aa274f3146202f8b9d8eb2d8e9241fa48c1925"
+        },
+        {
+          "src": "./media/scenes/refined/zermattbergbahnen-desktop-1680.webp",
+          "width": 1680,
+          "height": 800,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 185498,
+          "sha256": "bf40769c4f195af555d21b87f6ef58057ad390308edb5368ae486f7e7c0cca38"
+        },
+        {
+          "src": "./media/scenes/refined/zermattbergbahnen-desktop-1680.avif",
+          "width": 1680,
+          "height": 800,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 113718,
+          "sha256": "eb2306f3007be28fec6a7db9bed4bd2fb72ec22fb20d2b61756b18fd3013260a"
+        }
+      ]
+    },
+    {
+      "id": "aspensnowmass",
+      "input": "originals/aspensnowmass.jpg",
+      "sourcePage": "https://www.aspensnowmass.com/",
+      "sourceAsset": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/homepage-hero/homepage-hero-image/winter/2025-26/hp_hero_2526.jpg",
+      "credit": "Fotografia · Aspen Snowmass · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 1507,
+      "height": 848,
+      "sha256": "672b9a36fd7914ac521aef0ea8090e52593fcb29c706f97caa3d0923c3d7b799",
+      "focal": [
+        0.6,
+        0.54
+      ],
+      "position": "60% 54%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/aspensnowmass-desktop-480.webp",
+          "width": 480,
+          "height": 270,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 35252,
+          "sha256": "b55381fa419545e521e20cc04ab682849f08e6b6043c630fc9e9102fdbdea64c"
+        },
+        {
+          "src": "./media/scenes/refined/aspensnowmass-desktop-480.avif",
+          "width": 480,
+          "height": 270,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 20761,
+          "sha256": "7b5001288fa25d493b193fe61f3457a971aee8c57bfe1448ed5177a366e2fb45"
+        },
+        {
+          "src": "./media/scenes/refined/aspensnowmass-desktop-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 89682,
+          "sha256": "d6dc1d58394fce9adf9b0d321da10f5970bbb5c361d7d670abd2aa0d3196d8bc"
+        },
+        {
+          "src": "./media/scenes/refined/aspensnowmass-desktop-800.avif",
+          "width": 800,
+          "height": 450,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 53820,
+          "sha256": "ee57c15eaf3e9ebb5710948e399cef774469683bfe3b7086d3b13cf6e24e9f61"
+        },
+        {
+          "src": "./media/scenes/refined/aspensnowmass-desktop-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 171388,
+          "sha256": "a0b2d91dfb9f7235eafbc36708f84e096f693c9d5354485c9554947dd4589ae3"
+        },
+        {
+          "src": "./media/scenes/refined/aspensnowmass-desktop-1200.avif",
+          "width": 1200,
+          "height": 675,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 102920,
+          "sha256": "9eff1be08ba994c8cc9a766fb4338587aa91c67fac97f4315c287f6e490339f5"
+        },
+        {
+          "src": "./media/scenes/refined/aspensnowmass-desktop-1507.webp",
+          "width": 1507,
+          "height": 848,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 224822,
+          "sha256": "2ad2e70da854fc7292b96393f9b4f2c43cf1c0611c5f951d4f3fec89946d016d"
+        },
+        {
+          "src": "./media/scenes/refined/aspensnowmass-desktop-1507.avif",
+          "width": 1507,
+          "height": 848,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 147880,
+          "sha256": "2a40e9243dfb09970a246651f1d799bd7b00060b90bae665a7ee03023c4f3392"
+        }
+      ]
+    },
+    {
+      "id": "whistlerblackcomb",
+      "input": "originals/whistlerblackcomb.webp",
+      "sourcePage": "https://www.instagram.com/p/DTB137bDKGN/",
+      "sourceAsset": null,
+      "credit": "Fotografia · Whistler Blackcomb",
+      "kind": "existing-context",
+      "processing": "responsive resize only",
+      "width": 900,
+      "height": 589,
+      "sha256": "6c09aa498b964c3d01cf9b41c864b1e7c4e75ab6d371db66cf21411912d2c2a0",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "position": "50% 50%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [
+        "Native width below1200px; desktop area must be limited to native width. No synthetic enlargement."
+      ],
+      "displayWidth": 900,
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/whistlerblackcomb-desktop-480.webp",
+          "width": 480,
+          "height": 314,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 41346,
+          "sha256": "506d76c8d724574777e1510fd224d974bb945b114dcde7abd05d0358c1a0ed0d"
+        },
+        {
+          "src": "./media/scenes/refined/whistlerblackcomb-desktop-480.avif",
+          "width": 480,
+          "height": 314,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 25211,
+          "sha256": "cbb37fd2b385f7cd576b29517226290965e5204824360b59cac197d15bf47618"
+        },
+        {
+          "src": "./media/scenes/refined/whistlerblackcomb-desktop-800.webp",
+          "width": 800,
+          "height": 524,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 101204,
+          "sha256": "a09d365ac9a6ea79fea11d8826205572f651c7134111ab97fb056a86894236fa"
+        },
+        {
+          "src": "./media/scenes/refined/whistlerblackcomb-desktop-800.avif",
+          "width": 800,
+          "height": 524,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 60271,
+          "sha256": "5d5e572568eb0cb018fd99bf4ec9414f4d5e43b8cfef4e93d8738350efe9837d"
+        },
+        {
+          "src": "./media/scenes/refined/whistlerblackcomb-desktop-900.webp",
+          "width": 900,
+          "height": 589,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 124664,
+          "sha256": "f071bb79a38c4edef203d01dd27f1899e53ff6715eccb6f32fe34e568d9475a4"
+        },
+        {
+          "src": "./media/scenes/refined/whistlerblackcomb-desktop-900.avif",
+          "width": 900,
+          "height": 589,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 75972,
+          "sha256": "8f0b5ff250a9081395ed63a49fa6832020b3060fcb0b11ff1b7285423c616bcd"
+        }
+      ]
+    },
+    {
+      "id": "jacksonhole",
+      "input": "originals/jacksonhole.jpg",
+      "sourcePage": "https://www.jacksonhole.com/mountain-stats",
+      "sourceAsset": "https://www.datocms-assets.com/50871/1625890887-teton-village.jpeg?w=2400",
+      "credit": "Fotografia · Jackson Hole Mountain Resort · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 2400,
+      "height": 925,
+      "sha256": "e3319f926bb75a8cf5f614f2f78fea7760c6ec11aed93c0bda52a8dc1a46f147",
+      "focal": [
+        0.62,
+        0.55
+      ],
+      "position": "62% 55%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/jacksonhole-desktop-480.webp",
+          "width": 480,
+          "height": 185,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 30492,
+          "sha256": "84d9959d0e1c47ae2f027730a20a29c602705cbcde17338ac6823739f609bb56"
+        },
+        {
+          "src": "./media/scenes/refined/jacksonhole-desktop-480.avif",
+          "width": 480,
+          "height": 185,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 21188,
+          "sha256": "adc0408613785f48bf2ab6b272e4856fb6dd2a8150d55fbff26229222cd1a967"
+        },
+        {
+          "src": "./media/scenes/refined/jacksonhole-desktop-800.webp",
+          "width": 800,
+          "height": 308,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 80302,
+          "sha256": "e70a627d0c5b81375e33f7dac5e953613b29737ae02ed9a21baf603f3bd24b32"
+        },
+        {
+          "src": "./media/scenes/refined/jacksonhole-desktop-800.avif",
+          "width": 800,
+          "height": 308,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 50725,
+          "sha256": "811465f0a530110ea90b365e5e87f8244881e55989bc8657521458a4473e2efa"
+        },
+        {
+          "src": "./media/scenes/refined/jacksonhole-desktop-1200.webp",
+          "width": 1200,
+          "height": 462,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 172036,
+          "sha256": "8ccd81efb8eda6de0fdfe56ed4d007f5184166059dadf0bcdfbdd29dda914a7a"
+        },
+        {
+          "src": "./media/scenes/refined/jacksonhole-desktop-1200.avif",
+          "width": 1200,
+          "height": 462,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 101889,
+          "sha256": "858682ea4f6c148f1c4618de00c8d0c53f857a3cd264b2b2c46bca97f506e096"
+        },
+        {
+          "src": "./media/scenes/refined/jacksonhole-desktop-1600.webp",
+          "width": 1600,
+          "height": 617,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 257788,
+          "sha256": "234533e5b9579b2bdef8e815b78346b28fe05443cbc7e04f6683aa841eb6afae"
+        },
+        {
+          "src": "./media/scenes/refined/jacksonhole-desktop-1600.avif",
+          "width": 1600,
+          "height": 617,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 156465,
+          "sha256": "e564e7557364862c24ec1396e2a393e761a82873f4b7c713d45ef4a10dc1d886"
+        },
+        {
+          "src": "./media/scenes/refined/jacksonhole-desktop-2400.webp",
+          "width": 2400,
+          "height": 925,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 442628,
+          "sha256": "7d322e2ebe6df19faf0dde0c6946f34867789af2d21204ec57faa57efbce573b"
+        },
+        {
+          "src": "./media/scenes/refined/jacksonhole-desktop-2400.avif",
+          "width": 2400,
+          "height": 925,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 278468,
+          "sha256": "656b7d84fe2947168aa58b34b34050a4384130ced9ee95db3fbea05591764588"
+        }
+      ]
+    },
+    {
+      "id": "hanazononiseko",
+      "input": "originals/hanazononiseko.webp",
+      "sourcePage": "https://hanazononiseko.com/en",
+      "sourceAsset": null,
+      "credit": "Fotografia · web oficial de Hanazono Niseko",
+      "kind": "existing-context",
+      "processing": "responsive resize only",
+      "width": 1600,
+      "height": 1066,
+      "sha256": "709926090045461ec9ec79a57ecc95fe74e1d6f187081a79cb0d170d9ce6f9e4",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "position": "50% 50%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/hanazononiseko-desktop-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 38884,
+          "sha256": "2bb9f8eaf42ee628ad6bfb792576f541652d9fe302a0fbf067979eaa7601e0c8"
+        },
+        {
+          "src": "./media/scenes/refined/hanazononiseko-desktop-480.avif",
+          "width": 480,
+          "height": 320,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 22670,
+          "sha256": "f632bd5f9d0bf59744a4ce565b94b71cf8473f44568f2a7f7edf7c6e9a430196"
+        },
+        {
+          "src": "./media/scenes/refined/hanazononiseko-desktop-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 104180,
+          "sha256": "dd8c3cde1ec2e0c3a5142fb35fd2fc51db8b86a91022a0d7d6e9378e00158549"
+        },
+        {
+          "src": "./media/scenes/refined/hanazononiseko-desktop-800.avif",
+          "width": 800,
+          "height": 533,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 60704,
+          "sha256": "3176ef60c54e38a322d6cf35d08233722fdb778f11beb6b7948141ed6636e625"
+        },
+        {
+          "src": "./media/scenes/refined/hanazononiseko-desktop-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 211974,
+          "sha256": "376085e3b6aa0fc2fca943448419730a41e1dda368d02e8d3cd7a0a9819a4a64"
+        },
+        {
+          "src": "./media/scenes/refined/hanazononiseko-desktop-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 130440,
+          "sha256": "f1ae8b54ebef77939313760dcf3444d335b9d275b65587b8fb1f4cc97228cc3d"
+        },
+        {
+          "src": "./media/scenes/refined/hanazononiseko-desktop-1600.webp",
+          "width": 1600,
+          "height": 1066,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 364782,
+          "sha256": "26c4f790ceec4288afddfaccb8df142ba1976764064cd74bbd42a214353db219"
+        },
+        {
+          "src": "./media/scenes/refined/hanazononiseko-desktop-1600.avif",
+          "width": 1600,
+          "height": 1066,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 228276,
+          "sha256": "7c3f759a786815dc9e46df7a0fc8cf907f84c1c311c9c76b48aced0d058172ae"
+        }
+      ]
+    },
+    {
+      "id": "rusutsuresort_official",
+      "input": "originals/rusutsuresort_official.jpg",
+      "sourcePage": "https://rusutsu.com/en/",
+      "sourceAsset": "https://rusutsu.com/wp-content/uploads/winter-bg.jpg",
+      "credit": "Fotografia · Rusutsu Resort · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 1440,
+      "height": 500,
+      "sha256": "81a604f14290815304a9d0993f8aa8b7c09ddc388d4a5cfe2d85f2ce805ee195",
+      "focal": [
+        0.64,
+        0.55
+      ],
+      "position": "64% 55%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/rusutsuresort_official-desktop-480.webp",
+          "width": 480,
+          "height": 167,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 11738,
+          "sha256": "7bc03d0bb0eb94f60234e487ec061a7b316979d61799168a14e07bb7d1654c6d"
+        },
+        {
+          "src": "./media/scenes/refined/rusutsuresort_official-desktop-480.avif",
+          "width": 480,
+          "height": 167,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 8071,
+          "sha256": "43bcaeae332037de1cb70be446b5090e3e4411caaf6e3acf95141eac89c2dd3b"
+        },
+        {
+          "src": "./media/scenes/refined/rusutsuresort_official-desktop-800.webp",
+          "width": 800,
+          "height": 278,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 27520,
+          "sha256": "a0c8069eee4717e0f1caf2e23c7f14801156c51f0fe87de440b3c4fba7437966"
+        },
+        {
+          "src": "./media/scenes/refined/rusutsuresort_official-desktop-800.avif",
+          "width": 800,
+          "height": 278,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 18613,
+          "sha256": "804b2a3c91decf07ded4a4f05f5ef9f3eeb0957dea0f0f0002dfc8a7aeffeaee"
+        },
+        {
+          "src": "./media/scenes/refined/rusutsuresort_official-desktop-1200.webp",
+          "width": 1200,
+          "height": 417,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 54608,
+          "sha256": "ded9b20f2cc13c8741312f3b12c28f17c4a280261ad2c72b4049e59ba29755aa"
+        },
+        {
+          "src": "./media/scenes/refined/rusutsuresort_official-desktop-1200.avif",
+          "width": 1200,
+          "height": 417,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 36800,
+          "sha256": "549a111659ac2d6392cd0affadb07f14cb8e135a1dbb9fe85c4b0e0171ff8eda"
+        },
+        {
+          "src": "./media/scenes/refined/rusutsuresort_official-desktop-1440.webp",
+          "width": 1440,
+          "height": 500,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 75070,
+          "sha256": "5b7519256effabbebe16125c7ae8ecae6de1d97033b843c7fdc9db338f8bc3f5"
+        },
+        {
+          "src": "./media/scenes/refined/rusutsuresort_official-desktop-1440.avif",
+          "width": 1440,
+          "height": 500,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 52016,
+          "sha256": "aa264a00448ae8baa45d033b6e8175b28c15df28f70bc3bea65cb71c0e62e93d"
+        }
+      ]
+    },
+    {
+      "id": "skiportillo",
+      "input": "originals/skiportillo.jpg",
+      "sourcePage": "https://skiportillo.com/en/home/",
+      "sourceAsset": "https://skiportillo.com/wp-content/uploads/2023/12/All-Inclusive-Resort-Hotel-Ski-Portillo.jpg",
+      "credit": "Fotografia · Ski Portillo · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 1900,
+      "height": 1000,
+      "sha256": "f00e71df99ddaa14973384edc3b3ec4ba9ed0cd8be219bf6797db11cdc431540",
+      "focal": [
+        0.65,
+        0.57
+      ],
+      "position": "65% 57%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/skiportillo-desktop-480.webp",
+          "width": 480,
+          "height": 253,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 28858,
+          "sha256": "330a69542af779241d5d9756f77eb080edfa79bca0753e50d0ba641d1507a1b1"
+        },
+        {
+          "src": "./media/scenes/refined/skiportillo-desktop-480.avif",
+          "width": 480,
+          "height": 253,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 18721,
+          "sha256": "c020844f7c59a0659b818271996f86b9e10b53fe0aa8d8aa0b15b09ab9f153a1"
+        },
+        {
+          "src": "./media/scenes/refined/skiportillo-desktop-800.webp",
+          "width": 800,
+          "height": 421,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 69068,
+          "sha256": "ec329d2cb9d292687b9b6bfba97cb10c850f64247f7ab8bd89308766632d6cc2"
+        },
+        {
+          "src": "./media/scenes/refined/skiportillo-desktop-800.avif",
+          "width": 800,
+          "height": 421,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 45062,
+          "sha256": "11ef42d39581be3e9cb02cb652d3785ed7e501a51701f7c30e95894c53425f97"
+        },
+        {
+          "src": "./media/scenes/refined/skiportillo-desktop-1200.webp",
+          "width": 1200,
+          "height": 632,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 139542,
+          "sha256": "f5c3fd4c63d27f7d0d07fc48a56283b95aca07a57d695b3fbe39a23f5a0bd128"
+        },
+        {
+          "src": "./media/scenes/refined/skiportillo-desktop-1200.avif",
+          "width": 1200,
+          "height": 632,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 91627,
+          "sha256": "bddcd8d4f2b2e39dbd1cb7150741d7f7aa29da106fbd2464ede5f5c83a3e0b11"
+        },
+        {
+          "src": "./media/scenes/refined/skiportillo-desktop-1600.webp",
+          "width": 1600,
+          "height": 842,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 228780,
+          "sha256": "6182d8e9cbb478ee741a1fd30ad8889d0580c24b0c24621ddd3915d438d0868b"
+        },
+        {
+          "src": "./media/scenes/refined/skiportillo-desktop-1600.avif",
+          "width": 1600,
+          "height": 842,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 147750,
+          "sha256": "ccbb7485a4c0e9e756f05b0125cefc5d91e51a58a749c32233a68f8e7ae9167a"
+        },
+        {
+          "src": "./media/scenes/refined/skiportillo-desktop-1900.webp",
+          "width": 1900,
+          "height": 1000,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 308292,
+          "sha256": "867f866fc40150a51f36e8dac2fd0302a232f53ed7d72ec952bfff44d181fd0c"
+        },
+        {
+          "src": "./media/scenes/refined/skiportillo-desktop-1900.avif",
+          "width": 1900,
+          "height": 1000,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 196665,
+          "sha256": "cb571c1277d69f2dcfedde3d9d992d1122f574515209726d6b8045b1598c2444"
+        }
+      ]
+    },
+    {
+      "id": "valle_nevado",
+      "input": "originals/valle_nevado.webp",
+      "sourcePage": "https://www.vallenevado.com/en/",
+      "sourceAsset": "https://www.vallenevado.com/wp-content/uploads/2026/09/HOTEL-scaled.webp",
+      "credit": "Fotografia · Valle Nevado · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 2560,
+      "height": 1920,
+      "sha256": "aa0387f383c0c536ef4bf1a812795ff2352ccb3eca28b605c03b728f8c05061e",
+      "focal": [
+        0.55,
+        0.58
+      ],
+      "position": "55% 58%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/valle_nevado-desktop-480.webp",
+          "width": 480,
+          "height": 360,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 17620,
+          "sha256": "c3634980cc63fb196cbe76d2eae9040e8a9e8c68d6afef51747899a4e2d625d8"
+        },
+        {
+          "src": "./media/scenes/refined/valle_nevado-desktop-480.avif",
+          "width": 480,
+          "height": 360,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 11670,
+          "sha256": "e5491e3678d3d738b14ecdf7023bc0cc4d15779af050db8a8d0517fd4e2913e9"
+        },
+        {
+          "src": "./media/scenes/refined/valle_nevado-desktop-800.webp",
+          "width": 800,
+          "height": 600,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 41872,
+          "sha256": "4b013b7b52dce03d492897c5ea8310a06669804b3aacbe4c7c17ecdd8a543d49"
+        },
+        {
+          "src": "./media/scenes/refined/valle_nevado-desktop-800.avif",
+          "width": 800,
+          "height": 600,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 27479,
+          "sha256": "66d5dea1244af70a65cd0a2806621dd2de9a97fe22f220cea769d284c52e377e"
+        },
+        {
+          "src": "./media/scenes/refined/valle_nevado-desktop-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 79154,
+          "sha256": "d1e1c4e8919feb27ef03d967f2d47da774609a5403bbb079a7c8ce4c79211aba"
+        },
+        {
+          "src": "./media/scenes/refined/valle_nevado-desktop-1200.avif",
+          "width": 1200,
+          "height": 900,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 54468,
+          "sha256": "a7dc0527ef3c8f0acba6b7511339984138d0fdbb7eb9d7409b83ded055eeb6f6"
+        },
+        {
+          "src": "./media/scenes/refined/valle_nevado-desktop-1600.webp",
+          "width": 1600,
+          "height": 1200,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 125140,
+          "sha256": "191dd0252792fbe0182a4f5f74cd78558715824b99fe3c8a8e63e626b8398a66"
+        },
+        {
+          "src": "./media/scenes/refined/valle_nevado-desktop-1600.avif",
+          "width": 1600,
+          "height": 1200,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 88392,
+          "sha256": "1a3202962dbf6f3392ecccf0a1d1678a0afd57119182d2f605eb7c9faf99a222"
+        },
+        {
+          "src": "./media/scenes/refined/valle_nevado-desktop-2400.webp",
+          "width": 2400,
+          "height": 1800,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 227320,
+          "sha256": "fa44e9c9ac968094850e41c468deb0252f937824ce7d3b88e8214c3a09847dbf"
+        },
+        {
+          "src": "./media/scenes/refined/valle_nevado-desktop-2400.avif",
+          "width": 2400,
+          "height": 1800,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 162093,
+          "sha256": "7825f1364f39528c7916d1c1164856fa971f7af8ca344e3f79d868a66f972b14"
+        }
+      ]
+    },
+    {
+      "id": "cerrocastor",
+      "input": "originals/cerrocastor.jpg",
+      "sourcePage": "https://www.cerrocastor.com/es_ar/institucional-cerro-castor.html",
+      "sourceAsset": "https://www.cerrocastor.com/CMS/Servidor/CerroCastor/galeria/1530____PANO0001_4_Mejorado_NR-_1__1123.jpg",
+      "credit": "Fotografia · Cerro Castor · web oficial · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 5272,
+      "height": 3948,
+      "sha256": "a9efb3ccf4f560bfdcc6428a031ac3e249b01cf9bafa6d4ee61607a8bff1a40d",
+      "focal": [
+        0.55,
+        0.57
+      ],
+      "position": "55% 57%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [],
+      "derivatives": [
+        {
+          "src": "./media/scenes/refined/cerrocastor-desktop-480.webp",
+          "width": 480,
+          "height": 359,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 49760,
+          "sha256": "dcfdad953c2f99458e082f31fd77df450d9657e3a2f3f8dae8d271c195c524d2"
+        },
+        {
+          "src": "./media/scenes/refined/cerrocastor-desktop-480.avif",
+          "width": 480,
+          "height": 359,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 27559,
+          "sha256": "5e4b0837338604b64d9581ea46a6a20b545dfb57c60b979b8e82ea5827a8cb32"
+        },
+        {
+          "src": "./media/scenes/refined/cerrocastor-desktop-800.webp",
+          "width": 800,
+          "height": 599,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 122088,
+          "sha256": "12852796bd62f69f2d071f8e16b6cd663e610e38f4c16da801f9c439d5a9622f"
+        },
+        {
+          "src": "./media/scenes/refined/cerrocastor-desktop-800.avif",
+          "width": 800,
+          "height": 599,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 70929,
+          "sha256": "35cca8ff8a949823fde8303048f98804028606367fa874be33c034ebbeabd21c"
+        },
+        {
+          "src": "./media/scenes/refined/cerrocastor-desktop-1200.webp",
+          "width": 1200,
+          "height": 899,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 253970,
+          "sha256": "f44be1347b271488aaa908e7eab099f8562929967ba2736c3becebf6a82d9303"
+        },
+        {
+          "src": "./media/scenes/refined/cerrocastor-desktop-1200.avif",
+          "width": 1200,
+          "height": 899,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 149643,
+          "sha256": "1f2cc4a443705f7bac04b0629c3c4778e5d9a03a2a60b3d520dd628053d30fe3"
+        },
+        {
+          "src": "./media/scenes/refined/cerrocastor-desktop-1600.webp",
+          "width": 1600,
+          "height": 1198,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 421270,
+          "sha256": "01e5aa6452411088336b974173dcb05a89e3d0aa8c223e68512396012fdabc86"
+        },
+        {
+          "src": "./media/scenes/refined/cerrocastor-desktop-1600.avif",
+          "width": 1600,
+          "height": 1198,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 252398,
+          "sha256": "e4e7d6e7ebae7a0be3858c93ef829472d21b9f93c48460948e9a348b3b27b9b9"
+        },
+        {
+          "src": "./media/scenes/refined/cerrocastor-desktop-2400.webp",
+          "width": 2400,
+          "height": 1797,
+          "format": "webp",
+          "mode": "desktop",
+          "bytes": 793174,
+          "sha256": "6d6b22d753a61bc653d57d6e3ab718ef4cf8bb425449b04a39ee089b6f963922"
+        },
+        {
+          "src": "./media/scenes/refined/cerrocastor-desktop-2400.avif",
+          "width": 2400,
+          "height": 1797,
+          "format": "avif",
+          "mode": "desktop",
+          "bytes": 502463,
+          "sha256": "cd7aa7d5d3230ff194458f22c8e834832560cffe7498379d967039836f32fcfd"
+        }
+      ]
+    }
+  ],
+  "scope": "Desktop only; no new mobile variants or art direction."
+}

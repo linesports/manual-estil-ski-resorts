@@ -1,0 +1,721 @@
+{
+  "sourceUrl": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/9380cca83db5f9aef52d5e762765100745f84b27/geojson/ne_50m_admin_0_countries.geojson",
+  "sourceSHA256": "3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fdeb",
+  "sourceCommit": "9380cca83db5f9aef52d5e762765100745f84b27",
+  "license": "Public domain",
+  "licenseUrl": "https://www.naturalearthdata.com/about/terms-of-use/",
+  "projection": "Spherical Mercator; coordinates WGS84 longitude/latitude",
+  "width": 400,
+  "height": 240,
+  "simplification": "Douglas–Peucker; tolerance per asset, SVG pixels. Coordinates rounded to 0.1 px. Islands under 0.9 px in both dimensions omitted at locator scale.",
+  "attribution": "Made with Natural Earth",
+  "coordinateSource": "Existing scene-data.js, preserved without changes",
+  "assets": [
+    {
+      "id": "baqueira_beret",
+      "image": "./media/geography/baqueira_beret.svg",
+      "bytes": 5728,
+      "sha256": "376e505823d59be26261d0af1c8701ce06e4cb5ad0345c622b37613579df9978",
+      "region": "iberia",
+      "bounds": [
+        -10.4,
+        35.3,
+        10.1,
+        51.5
+      ],
+      "points": [
+        [
+          0.944,
+          42.699
+        ]
+      ],
+      "countries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "filledCountries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "sierranevadaestacion",
+      "image": "./media/geography/sierranevadaestacion.svg",
+      "bytes": 5728,
+      "sha256": "9c6af4d90069629b6956f7d9f4b5cf7324ad078562d20fea4b1225c099f6734a",
+      "region": "iberia",
+      "bounds": [
+        -10.4,
+        35.3,
+        10.1,
+        51.5
+      ],
+      "points": [
+        [
+          -3.397,
+          37.095
+        ]
+      ],
+      "countries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "filledCountries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "masellapirineu",
+      "image": "./media/geography/masellapirineu.svg",
+      "bytes": 5714,
+      "sha256": "1d9da49049609e941a6b566e1605a7d5e3babdb41528ba18b916a7b323e4f35a",
+      "region": "iberia",
+      "bounds": [
+        -10.4,
+        35.3,
+        10.1,
+        51.5
+      ],
+      "points": [
+        [
+          1.9,
+          42.35
+        ]
+      ],
+      "countries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "filledCountries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "cerleraramon",
+      "image": "./media/geography/cerleraramon.svg",
+      "bytes": 5719,
+      "sha256": "2b5e6b82fee511b4cd86e3fb298b4846c3eb7cc6bb965c25eaaf9414e56190f8",
+      "region": "iberia",
+      "bounds": [
+        -10.4,
+        35.3,
+        10.1,
+        51.5
+      ],
+      "points": [
+        [
+          0.54,
+          42.594
+        ]
+      ],
+      "countries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "filledCountries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "javalambrearamon",
+      "image": "./media/geography/javalambrearamon.svg",
+      "bytes": 5725,
+      "sha256": "3e243b722d49c07ccca9410c03295bdf8d9caead02370a859b93cc683a3914fd",
+      "region": "iberia",
+      "bounds": [
+        -10.4,
+        35.3,
+        10.1,
+        51.5
+      ],
+      "points": [
+        [
+          -1.024,
+          40.113
+        ]
+      ],
+      "countries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "filledCountries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "formigalpanticosaaramon",
+      "image": "./media/geography/formigalpanticosaaramon.svg",
+      "bytes": 5930,
+      "sha256": "97d8025fa3d255b1bad59f972a7d757e09518ee8517e0e0b956ada7431f59931",
+      "region": "iberia",
+      "bounds": [
+        -10.4,
+        35.3,
+        10.1,
+        51.5
+      ],
+      "points": [
+        [
+          -0.395,
+          42.774
+        ],
+        [
+          -0.28,
+          42.722
+        ]
+      ],
+      "countries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "filledCountries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "grandvalira",
+      "image": "./media/geography/grandvalira.svg",
+      "bytes": 5720,
+      "sha256": "8f6258881cc5edebebe2285d42bf538b47dae501534cfbeb41bfce8dbc95ed68",
+      "region": "iberia",
+      "bounds": [
+        -10.4,
+        35.3,
+        10.1,
+        51.5
+      ],
+      "points": [
+        [
+          1.668,
+          42.58
+        ]
+      ],
+      "countries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "filledCountries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "palarinsalandorra",
+      "image": "./media/geography/palarinsalandorra.svg",
+      "bytes": 5920,
+      "sha256": "70648edfe291fbd2239341fe08823459894ac2f7913625e5902f82100120e2d7",
+      "region": "iberia",
+      "bounds": [
+        -10.4,
+        35.3,
+        10.1,
+        51.5
+      ],
+      "points": [
+        [
+          1.484,
+          42.545
+        ],
+        [
+          1.481,
+          42.572
+        ]
+      ],
+      "countries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "filledCountries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "ordinoarcalis",
+      "image": "./media/geography/ordinoarcalis.svg",
+      "bytes": 5729,
+      "sha256": "9a740e68bd50b9593c056c5cc3477896eb02f4fc3ab94b3b6cb31dbd42f46d70",
+      "region": "iberia",
+      "bounds": [
+        -10.4,
+        35.3,
+        10.1,
+        51.5
+      ],
+      "points": [
+        [
+          1.485,
+          42.631
+        ]
+      ],
+      "countries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "filledCountries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "grupoaramon",
+      "image": "./media/geography/grupoaramon.svg",
+      "bytes": 6306,
+      "sha256": "6ccbe830e1282e07401beaf44744284db75ae1e637d6319d4a701380c7637759",
+      "region": "iberia",
+      "bounds": [
+        -10.4,
+        35.3,
+        10.1,
+        51.5
+      ],
+      "points": [
+        [
+          0.54,
+          42.594
+        ],
+        [
+          -1.024,
+          40.113
+        ],
+        [
+          -0.395,
+          42.774
+        ],
+        [
+          -0.28,
+          42.722
+        ]
+      ],
+      "countries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "filledCountries": [
+        "ESP",
+        "PRT",
+        "AND",
+        "FRA"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "val_thorens",
+      "image": "./media/geography/val_thorens.svg",
+      "bytes": 7268,
+      "sha256": "68d3c307bc8d353a08e1b577ce5bdddd66ebe8f2b0ed45512fdab52100dc0040",
+      "region": "alps",
+      "bounds": [
+        -5.6,
+        36.3,
+        19.1,
+        51.5
+      ],
+      "points": [
+        [
+          6.58,
+          45.299
+        ]
+      ],
+      "countries": [
+        "FRA",
+        "CHE",
+        "ITA",
+        "AUT",
+        "LIE"
+      ],
+      "filledCountries": [
+        "FRA",
+        "CHE",
+        "ITA",
+        "AUT",
+        "LIE"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "tignesofficiel",
+      "image": "./media/geography/tignesofficiel.svg",
+      "bytes": 7268,
+      "sha256": "f65b2be231b1d348b42cfef461717367260efcdd4f7cb63123912eae86cddb1b",
+      "region": "alps",
+      "bounds": [
+        -5.6,
+        36.3,
+        19.1,
+        51.5
+      ],
+      "points": [
+        [
+          6.907,
+          45.468
+        ]
+      ],
+      "countries": [
+        "FRA",
+        "CHE",
+        "ITA",
+        "AUT",
+        "LIE"
+      ],
+      "filledCountries": [
+        "FRA",
+        "CHE",
+        "ITA",
+        "AUT",
+        "LIE"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "laax",
+      "image": "./media/geography/laax.svg",
+      "bytes": 7260,
+      "sha256": "740f88ada1394c056ce7d4ae50a75c312b6190e26dbecee3516b0a1f7b1af474",
+      "region": "alps",
+      "bounds": [
+        -5.6,
+        36.3,
+        19.1,
+        51.5
+      ],
+      "points": [
+        [
+          9.215,
+          46.836
+        ]
+      ],
+      "countries": [
+        "FRA",
+        "CHE",
+        "ITA",
+        "AUT",
+        "LIE"
+      ],
+      "filledCountries": [
+        "FRA",
+        "CHE",
+        "ITA",
+        "AUT",
+        "LIE"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "zermattbergbahnen",
+      "image": "./media/geography/zermattbergbahnen.svg",
+      "bytes": 7288,
+      "sha256": "bcb53d990003304f7bd0edc0169471adeae9b3b06e308d3eb57b7b30d6a56bea",
+      "region": "alps",
+      "bounds": [
+        -5.6,
+        36.3,
+        19.1,
+        51.5
+      ],
+      "points": [
+        [
+          7.749,
+          46.02
+        ]
+      ],
+      "countries": [
+        "FRA",
+        "CHE",
+        "ITA",
+        "AUT",
+        "LIE"
+      ],
+      "filledCountries": [
+        "FRA",
+        "CHE",
+        "ITA",
+        "AUT",
+        "LIE"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "aspensnowmass",
+      "image": "./media/geography/aspensnowmass.svg",
+      "bytes": 13827,
+      "sha256": "d9ca3c84105292cf0890ca0638dc4c9f52e0f02c6d25fb259d18c8d74e15e6cb",
+      "region": "usa",
+      "bounds": [
+        -126,
+        23.2,
+        -65,
+        51.5
+      ],
+      "points": [
+        [
+          -106.86,
+          39.2
+        ]
+      ],
+      "countries": [
+        "USA",
+        "CAN",
+        "MEX"
+      ],
+      "filledCountries": [
+        "USA"
+      ],
+      "simplificationPixels": 0.9
+    },
+    {
+      "id": "jacksonhole",
+      "image": "./media/geography/jacksonhole.svg",
+      "bytes": 13826,
+      "sha256": "8a69581385d09bed0593f635ae17e5d7aeebbc0f0996181a50d8294cc940f595",
+      "region": "usa",
+      "bounds": [
+        -126,
+        23.2,
+        -65,
+        51.5
+      ],
+      "points": [
+        [
+          -110.828,
+          43.587
+        ]
+      ],
+      "countries": [
+        "USA",
+        "CAN",
+        "MEX"
+      ],
+      "filledCountries": [
+        "USA"
+      ],
+      "simplificationPixels": 0.9
+    },
+    {
+      "id": "whistlerblackcomb",
+      "image": "./media/geography/whistlerblackcomb.svg",
+      "bytes": 11970,
+      "sha256": "a3654e626f98e354d3b3faa95158a84721ade1be262c09ae65e45aa61cf83fef",
+      "region": "canada",
+      "bounds": [
+        -142,
+        25,
+        -51,
+        77
+      ],
+      "points": [
+        [
+          -122.956,
+          50.114
+        ]
+      ],
+      "countries": [
+        "CAN",
+        "USA",
+        "MEX"
+      ],
+      "filledCountries": [
+        "CAN",
+        "USA"
+      ],
+      "simplificationPixels": 1.25
+    },
+    {
+      "id": "hanazononiseko",
+      "image": "./media/geography/hanazononiseko.svg",
+      "bytes": 5138,
+      "sha256": "f79c7487f7773d02992b60855afde90a8734d279e32c21f317a844cea0114b9d",
+      "region": "japan",
+      "bounds": [
+        128,
+        29,
+        146.8,
+        46.6
+      ],
+      "points": [
+        [
+          140.682,
+          42.894
+        ]
+      ],
+      "countries": [
+        "JPN"
+      ],
+      "filledCountries": [
+        "JPN"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "rusutsuresort_official",
+      "image": "./media/geography/rusutsuresort_official.svg",
+      "bytes": 5128,
+      "sha256": "be7ec16e1f95f6900a2970ac2a9ddc63159679134f2315220a7d3aa265d2f517",
+      "region": "japan",
+      "bounds": [
+        128,
+        29,
+        146.8,
+        46.6
+      ],
+      "points": [
+        [
+          140.9,
+          42.735
+        ]
+      ],
+      "countries": [
+        "JPN"
+      ],
+      "filledCountries": [
+        "JPN"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "skiportillo",
+      "image": "./media/geography/skiportillo.svg",
+      "bytes": 9669,
+      "sha256": "45b0f64abbaa3a4aa9f7b908e9909e8f1e6361d08062d58d9a3e7da9eaa9f0bc",
+      "region": "andes",
+      "bounds": [
+        -76.5,
+        -57,
+        -52,
+        -17
+      ],
+      "points": [
+        [
+          -70.129,
+          -32.836
+        ]
+      ],
+      "countries": [
+        "CHL",
+        "ARG",
+        "BOL",
+        "PRY",
+        "URY"
+      ],
+      "filledCountries": [
+        "CHL",
+        "ARG"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "valle_nevado",
+      "image": "./media/geography/valle_nevado.svg",
+      "bytes": 9669,
+      "sha256": "d7ec2fd9296f94d6abea1a63661df4ba971489cb1a77b8910a315e92e02f900f",
+      "region": "andes",
+      "bounds": [
+        -76.5,
+        -57,
+        -52,
+        -17
+      ],
+      "points": [
+        [
+          -70.249,
+          -33.354
+        ]
+      ],
+      "countries": [
+        "CHL",
+        "ARG",
+        "BOL",
+        "PRY",
+        "URY"
+      ],
+      "filledCountries": [
+        "CHL",
+        "ARG"
+      ],
+      "simplificationPixels": 0.45
+    },
+    {
+      "id": "cerrocastor",
+      "image": "./media/geography/cerrocastor.svg",
+      "bytes": 9671,
+      "sha256": "b226e72305550b82f0fcccac21f54c3ab487282a5966143460252ebe40cd8b13",
+      "region": "andes",
+      "bounds": [
+        -76.5,
+        -57,
+        -52,
+        -17
+      ],
+      "points": [
+        [
+          -68.016,
+          -54.723
+        ]
+      ],
+      "countries": [
+        "CHL",
+        "ARG",
+        "BOL",
+        "PRY",
+        "URY"
+      ],
+      "filledCountries": [
+        "CHL",
+        "ARG"
+      ],
+      "simplificationPixels": 0.45
+    }
+  ]
+}

@@ -1,0 +1,436 @@
+{
+  "schemaVersion": 1,
+  "builtFor": "OLAF original refinement2026-10-23",
+  "sources": [
+    {
+      "id": "baqueira_beret",
+      "input": "originals/baqueira_beret.png",
+      "sourcePage": "https://viajes.baqueira.es/",
+      "sourceAsset": null,
+      "credit": "Fotografia · Baqueira Beret Reservas · imatge de context · còpia reescalada amb SwinIR",
+      "kind": "existing-context-restored",
+      "processing": "SwinIR lightweight_sr x4",
+      "width": 6000,
+      "height": 4000,
+      "sha256": "13c7466600633ba6b9826f6c20ecefa210aeb11f19afea46931c9fc9dfd0572c",
+      "focal": [
+        0.63,
+        0.56
+      ],
+      "position": "63% 56%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "sierranevadaestacion",
+      "input": "originals/sierranevadaestacion.jpg",
+      "sourcePage": "https://sierranevada.es/es/",
+      "sourceAsset": "https://umb.sierranevada.es/media/zbbbih0k/12-03-26-borreguiles-y-balsa-de-agua.jpg",
+      "credit": "Fotografia · Cetursa Sierra Nevada · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 3685,
+      "height": 2457,
+      "sha256": "c66dfb1d6926ee709e01fd93de81c839ca8c626ca13455a799fee7269bb15518",
+      "focal": [
+        0.55,
+        0.46
+      ],
+      "position": "55% 46%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "masellapirineu",
+      "input": "originals/masellapirineu.jpg",
+      "sourcePage": "https://www.masella.com/",
+      "sourceAsset": "https://www.masella.com/uploads/fotoshome/f83c681309c1002a8cf6052169805d49a34e95b1.jpg",
+      "credit": "Fotografia · Masella · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 4032,
+      "height": 2268,
+      "sha256": "f73feed345d777bab8d424eb4e6b43df6f354b13dfeca6f4e670ae748435a660",
+      "focal": [
+        0.6,
+        0.47
+      ],
+      "position": "60% 47%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "cerleraramon",
+      "input": "originals/cerleraramon.jpg",
+      "sourcePage": "https://www.aramon.com/cerler",
+      "sourceAsset": "https://d32r4yxuun6zdf.cloudfront.net/estaticos/extras/fotos/contenidos/00/00/01/16/13//Web_Cerler_Horizontal-13102026.mp4",
+      "credit": "Fotograma · Cerler / Grup Aramón · vídeo oficial · imatge de context",
+      "kind": "official-video-frame",
+      "processing": "static frame at 4 seconds; responsive resize only",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "fc654b9153e8176dedc82c0d04f8254d91bdb56dfe07142a089e82271499a885",
+      "focal": [
+        0.55,
+        0.62
+      ],
+      "position": "55% 62%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "javalambrearamon",
+      "input": "originals/javalambrearamon.jpg",
+      "sourcePage": "https://www.aramon.com/javalambre",
+      "sourceAsset": "https://d32r4yxuun6zdf.cloudfront.net/estaticos/extras/fotos/contenidos/00/00/01/16/15//Web_Javalambre_Horizontal-13102026.mp4",
+      "credit": "Fotograma · Javalambre / Grup Aramón · vídeo oficial · imatge de context",
+      "kind": "official-video-frame",
+      "processing": "static frame at 4 seconds; responsive resize only",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "aceaa9c8eb735918ec148b029024292febb1dccc7f9aef19bcf709d88593f4ac",
+      "focal": [
+        0.6,
+        0.57
+      ],
+      "position": "60% 57%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "formigalpanticosaaramon",
+      "input": "originals/formigalpanticosaaramon.jpg",
+      "sourcePage": "https://www.aramon.com/formigal-panticosa",
+      "sourceAsset": "https://d32r4yxuun6zdf.cloudfront.net/estaticos/extras/fotos/contenidos/00/00/01/16/14//slider-formigal-15092026.webm",
+      "credit": "Fotograma · Formigal–Panticosa / Grup Aramón · vídeo oficial · imatge de context",
+      "kind": "official-video-frame",
+      "processing": "static frame at 4 seconds; responsive resize only",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "b2876c993119693237d07763e0062979b6770c3c0a201bf6d48c7b569fb35683",
+      "focal": [
+        0.55,
+        0.47
+      ],
+      "position": "55% 47%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "grandvalira",
+      "input": "originals/grandvalira.jpg",
+      "sourcePage": "https://www.grandvalira.com/es/estacion",
+      "sourceAsset": "https://www.grandvalira.com/sites/default/files/2023-11/Estacion-grandvalira-1.jpg",
+      "credit": "Fotografia · Grandvalira · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "01fd2f2f52516c9aeb483e5b234780ec004c5f4dba384906a58974730a4f6778",
+      "focal": [
+        0.62,
+        0.57
+      ],
+      "position": "62% 57%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "palarinsalandorra",
+      "input": "originals/palarinsalandorra.jpg",
+      "sourcePage": "https://www.palarinsal.com/es/somos/quien-somos",
+      "sourceAsset": "https://www.palarinsal.com/sites/default/files/2023-10/Arinsal%20invierno.jpg",
+      "credit": "Fotografia · Pal Arinsal · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 1890,
+      "height": 1260,
+      "sha256": "9f470372e6887c182db2f5b313d727c0ee3c8a80b16c374d4cb54ca76e7f3635",
+      "focal": [
+        0.59,
+        0.57
+      ],
+      "position": "59% 57%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "ordinoarcalis",
+      "input": "originals/ordinoarcalis.jpg",
+      "sourcePage": "https://www.ordinoarcalis.com/es",
+      "sourceAsset": "https://www.ordinoarcalis.com/sites/default/files/2024-09/OA-SLIDE-paisaje.jpg",
+      "credit": "Fotografia · Ordino Arcalís · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 2560,
+      "height": 1440,
+      "sha256": "f0aedec31dda7602c77a1b85e555d86abd28f94a079194b399ca33a84c9c03aa",
+      "focal": [
+        0.56,
+        0.5
+      ],
+      "position": "56% 50%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "grupoaramon",
+      "input": "originals/grupoaramon.jpg",
+      "sourcePage": "https://www.aramon.com/cerler",
+      "sourceAsset": "https://d32r4yxuun6zdf.cloudfront.net/estaticos/extras/fotos/contenidos/00/00/01/16/13//Web_Cerler_Horizontal-13102026.mp4",
+      "credit": "Fotograma · Cerler / Grup Aramón · vídeo oficial · imatge de context",
+      "kind": "official-video-frame",
+      "processing": "static frame at 4 seconds; responsive resize only",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "fc654b9153e8176dedc82c0d04f8254d91bdb56dfe07142a089e82271499a885",
+      "focal": [
+        0.55,
+        0.62
+      ],
+      "position": "55% 62%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "val_thorens",
+      "input": "originals/val_thorens.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Val_Thorens_vu_depuis_l%27est_en_hiver_(f%C3%A9vrier_2024).JPG",
+      "sourceAsset": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Val_Thorens_vu_depuis_l%27est_en_hiver_%28f%C3%A9vrier_2024%29.JPG",
+      "credit": "Fotografia · Florian Pépellin · CC BY-SA 4.0 · reducció i formats web",
+      "kind": "author-published-photo",
+      "processing": "responsive resize only",
+      "width": 3945,
+      "height": 2940,
+      "sha256": "9dcb4684a0e0ef48b69c63d136c6795ff9ebbd7a4103d9b13663a6fdf2fe3c99",
+      "focal": [
+        0.64,
+        0.56
+      ],
+      "position": "64% 56%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [
+        "Official Val Thorens page and asset requests returned HTTP403; author-published licensed photograph selected instead of enlarging the240px vertical source."
+      ],
+      "author": "Florian Pépellin",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "captured": "2024-02-14",
+      "changes": "Resized and format converted; no generative modification."
+    },
+    {
+      "id": "tignesofficiel",
+      "input": "originals/tignesofficiel.webp",
+      "sourcePage": "https://www.tignes.net/",
+      "sourceAsset": null,
+      "credit": "Fotografia · web oficial de Tignes",
+      "kind": "existing-context",
+      "processing": "responsive resize only",
+      "width": 1200,
+      "height": 801,
+      "sha256": "3373a460ca1ea2aa1f77cbfe68159556cc65a507deebbe1549ec41fd50c825eb",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "position": "50% 50%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "laax",
+      "input": "originals/laax.webp",
+      "sourcePage": "https://www.laax.com/",
+      "sourceAsset": null,
+      "credit": "Fotografia · web oficial de LAAX",
+      "kind": "existing-context",
+      "processing": "responsive resize only",
+      "width": 1700,
+      "height": 1194,
+      "sha256": "f87f0b699236ac6ab922814e948887837a7e613b95bffc7fa5c379d0d8bd25e6",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "position": "50% 50%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "zermattbergbahnen",
+      "input": "originals/zermattbergbahnen.webp",
+      "sourcePage": "https://www.matterhornparadise.ch/en",
+      "sourceAsset": null,
+      "credit": "Fotografia · web oficial de Zermatt–Matterhorn Paradise",
+      "kind": "existing-context",
+      "processing": "responsive resize only",
+      "width": 1680,
+      "height": 800,
+      "sha256": "d126d1d4a1f281a2ee0f081bd4dfc7449555a655d3c45a5ab8db9fd61f70fcc1",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "position": "50% 50%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "aspensnowmass",
+      "input": "originals/aspensnowmass.jpg",
+      "sourcePage": "https://www.aspensnowmass.com/",
+      "sourceAsset": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/homepage-hero/homepage-hero-image/winter/2025-26/hp_hero_2526.jpg",
+      "credit": "Fotografia · Aspen Snowmass · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 1507,
+      "height": 848,
+      "sha256": "672b9a36fd7914ac521aef0ea8090e52593fcb29c706f97caa3d0923c3d7b799",
+      "focal": [
+        0.6,
+        0.54
+      ],
+      "position": "60% 54%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "whistlerblackcomb",
+      "input": "originals/whistlerblackcomb.webp",
+      "sourcePage": "https://www.instagram.com/p/DTB137bDKGN/",
+      "sourceAsset": null,
+      "credit": "Fotografia · Whistler Blackcomb",
+      "kind": "existing-context",
+      "processing": "responsive resize only",
+      "width": 900,
+      "height": 589,
+      "sha256": "6c09aa498b964c3d01cf9b41c864b1e7c4e75ab6d371db66cf21411912d2c2a0",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "position": "50% 50%",
+      "use": "Context photography only; not publication evidence",
+      "notes": [
+        "Native width below1200px; desktop area must be limited to native width. No synthetic enlargement."
+      ],
+      "displayWidth": 900
+    },
+    {
+      "id": "jacksonhole",
+      "input": "originals/jacksonhole.jpg",
+      "sourcePage": "https://www.jacksonhole.com/mountain-stats",
+      "sourceAsset": "https://www.datocms-assets.com/50871/1625890887-teton-village.jpeg?w=2400",
+      "credit": "Fotografia · Jackson Hole Mountain Resort · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 2400,
+      "height": 925,
+      "sha256": "e3319f926bb75a8cf5f614f2f78fea7760c6ec11aed93c0bda52a8dc1a46f147",
+      "focal": [
+        0.62,
+        0.55
+      ],
+      "position": "62% 55%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "hanazononiseko",
+      "input": "originals/hanazononiseko.webp",
+      "sourcePage": "https://hanazononiseko.com/en",
+      "sourceAsset": null,
+      "credit": "Fotografia · web oficial de Hanazono Niseko",
+      "kind": "existing-context",
+      "processing": "responsive resize only",
+      "width": 1600,
+      "height": 1066,
+      "sha256": "709926090045461ec9ec79a57ecc95fe74e1d6f187081a79cb0d170d9ce6f9e4",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "position": "50% 50%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "rusutsuresort_official",
+      "input": "originals/rusutsuresort_official.jpg",
+      "sourcePage": "https://rusutsu.com/en/",
+      "sourceAsset": "https://rusutsu.com/wp-content/uploads/winter-bg.jpg",
+      "credit": "Fotografia · Rusutsu Resort · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 1440,
+      "height": 500,
+      "sha256": "81a604f14290815304a9d0993f8aa8b7c09ddc388d4a5cfe2d85f2ce805ee195",
+      "focal": [
+        0.64,
+        0.55
+      ],
+      "position": "64% 55%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "skiportillo",
+      "input": "originals/skiportillo.jpg",
+      "sourcePage": "https://skiportillo.com/en/home/",
+      "sourceAsset": "https://skiportillo.com/wp-content/uploads/2023/12/All-Inclusive-Resort-Hotel-Ski-Portillo.jpg",
+      "credit": "Fotografia · Ski Portillo · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 1900,
+      "height": 1000,
+      "sha256": "f00e71df99ddaa14973384edc3b3ec4ba9ed0cd8be219bf6797db11cdc431540",
+      "focal": [
+        0.65,
+        0.57
+      ],
+      "position": "65% 57%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "valle_nevado",
+      "input": "originals/valle_nevado.webp",
+      "sourcePage": "https://www.vallenevado.com/en/",
+      "sourceAsset": "https://www.vallenevado.com/wp-content/uploads/2026/09/HOTEL-scaled.webp",
+      "credit": "Fotografia · Valle Nevado · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 2560,
+      "height": 1920,
+      "sha256": "aa0387f383c0c536ef4bf1a812795ff2352ccb3eca28b605c03b728f8c05061e",
+      "focal": [
+        0.55,
+        0.58
+      ],
+      "position": "55% 58%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    },
+    {
+      "id": "cerrocastor",
+      "input": "originals/cerrocastor.jpg",
+      "sourcePage": "https://www.cerrocastor.com/es_ar/institucional-cerro-castor.html",
+      "sourceAsset": "https://www.cerrocastor.com/CMS/Servidor/CerroCastor/galeria/1530____PANO0001_4_Mejorado_NR-_1__1123.jpg",
+      "credit": "Fotografia · Cerro Castor · web oficial · imatge de context",
+      "kind": "official-context",
+      "processing": "responsive resize only",
+      "width": 5272,
+      "height": 3948,
+      "sha256": "a9efb3ccf4f560bfdcc6428a031ac3e249b01cf9bafa6d4ee61607a8bff1a40d",
+      "focal": [
+        0.55,
+        0.57
+      ],
+      "position": "55% 57%",
+      "use": "Context photography only; not publication evidence",
+      "notes": []
+    }
+  ],
+  "policy": "Official sources first. Context photos are separate from evidence. No artificial enlargement except selected, labelled SwinIR Baqueira master. All others retain native detail limits.",
+  "scope": "Desktop only"
+}

@@ -93,7 +93,7 @@
       const heading = el('div', 'event-library-heading');
       const titleBlock = el('div');
       const title = el('h2', '', 'Esdeveniments i activacions'); title.id = 'eventLibraryTitle';
-      titleBlock.append(title, el('p', 'event-intro', 'Les peces agrupades per context. Obre una col·lecció per veure com hi participa cada marca.'));
+      titleBlock.append(title, el('p', 'event-intro', 'Les peces agrupades pel context on participa cada marca.'));
       const all = el('button', 'event-text-link', 'Veure totes les peces');
       all.type = 'button'; all.append(arrow()); all.addEventListener('click', () => this.onSelect('all', true));
       heading.append(titleBlock, all); this.library.append(heading);
@@ -123,10 +123,24 @@
       card.href = window.OLAF_NAVIGATION.write(location.href, { ...window.OLAF_NAVIGATION.read(location.href), event: group.id, piece: '', media: 0 }).href;
       card.setAttribute('aria-label', 'Obrir ' + group.name + ', ' + countText(group.items.length, 'peça', 'peces'));
       const cover = el('span', 'event-card-cover');
-      const photos = [...group.items].sort((a, b) => (b.kind === 'story') - (a.kind === 'story')).slice(0, 3);
-      photos.forEach((piece, n) => {
-        const frame = el('span', 'event-stack-frame event-stack-' + n + (photos.length === 1 ? ' event-stack-solo' : ''));
-        const img = el('img'); img.width = 400; img.height = 225; img.src = this.imageUrl(piece.image || piece.media?.[0]?.image); img.alt = ''; img.loading = index < 3 ? 'eager' : 'lazy'; img.decoding = 'async';
+      const photos = window.OLAF_EVENT_COVERS.select(group);
+      const foreground = photos.at(-1);
+      const setLayout = (width, height) => { cover.dataset.coverLayout = foreground?.fit === 'contain' && width < height ? 'portrait' : 'landscape'; };
+      setLayout(foreground?.width || 400, foreground?.height || 225);
+      photos.forEach((photo, n) => {
+        const frame = el('span', 'event-stack-frame event-stack-' + n + (photos.length === 1 ? ' event-stack-solo' : '') + (n === photos.length - 1 ? ' event-stack-foreground' : ''));
+        frame.dataset.coverFit = photo.fit;
+        frame.dataset.coverPieceId = photo.pieceId;
+        frame.style.setProperty('--cover-ratio', (photo.width || 400) / (photo.height || 225));
+        const img = el('img');
+        if (photo.width && photo.height) { img.width = photo.width; img.height = photo.height; }
+        img.src = this.imageUrl(photo.image); img.alt = ''; img.loading = index < 3 ? 'eager' : 'lazy'; img.decoding = 'async';
+        img.style.objectFit = photo.fit; img.style.objectPosition = photo.position;
+        img.addEventListener('load', () => {
+          img.width = img.naturalWidth; img.height = img.naturalHeight;
+          frame.style.setProperty('--cover-ratio', img.naturalWidth / img.naturalHeight);
+          if (n === photos.length - 1) setLayout(img.naturalWidth, img.naturalHeight);
+        }, { once: true });
         img.addEventListener('error', () => { img.hidden = true; frame.classList.add('poster-unavailable'); }, { once: true });
         frame.append(img); cover.append(frame);
       });
