@@ -1,0 +1,27 @@
+/* Photographic sector directory: one editorial column, desktop only. */
+@media (min-width:1024px) {
+  .sector-directory { display:grid; grid-template-columns:minmax(0,1fr); gap:24px; margin:24px 0 64px; border:0; }
+  .sector-directory .sector-photo-card { position:relative; isolation:isolate; display:flex; align-items:flex-end; gap:28px; min-height:0; height:auto; aspect-ratio:3.5; padding:36px 40px; border:0; border-radius:16px; overflow:hidden; background:#242c30; color:#fff; text-decoration:none; transform:none; }
+  .sector-photo-card::after { content:''; position:absolute; inset:0; z-index:-1; background:linear-gradient(90deg,rgba(5,12,16,.76),rgba(5,12,16,.42) 44%,rgba(5,12,16,.12) 76%),linear-gradient(transparent 20%,rgba(5,12,16,.48)); pointer-events:none; }
+  .sector-cover { display:block; position:absolute; inset:0; z-index:-2; overflow:hidden; }
+  .sector-cover img { display:block; width:100%; height:100%; object-fit:cover; transition:transform 900ms cubic-bezier(.11,.74,.35,.92); }
+  .sector-photo-card:hover .sector-cover img { transform:scale(1.035); }
+  .sector-photo-card .sector-label { display:grid; flex:1; min-width:0; gap:14px; max-width:850px; }
+  .sector-photo-card strong { color:#fff; font-size:clamp(32px,2.5vw,40px); font-weight:600; line-height:1.15; letter-spacing:-.03em; text-shadow:0 2px 14px #0005; }
+  .sector-photo-card .sector-label>span { color:#ffffffe6; font-size:14px; font-weight:400; line-height:1.5; text-shadow:0 1px 8px #0008; }
+  .sector-photo-card .sector-directory-count { flex-shrink:0; color:#fff; font-size:16px; font-weight:500; line-height:1.4; margin:0 0 2px; font-variant-numeric:tabular-nums; }
+  .sector-photo-card .directory-arrow { display:grid; place-items:center; flex-shrink:0; width:44px; height:44px; margin:0 0 -7px; color:#fff; border:1px solid #ffffff80; border-radius:50%; transition:background-color .2s,transform .2s; }
+  .sector-photo-card .directory-arrow svg { width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.6; }
+  .sector-photo-card:hover .directory-arrow { background:#ffffff20; transform:translateX(3px); }
+  .sector-photo-card:focus-visible { outline:3px solid #b50024; outline-offset:6px; }
+  .sector-photo-card[data-image-state="unavailable"] { background:#343b3d; }
+  .sector-photo-card[data-image-state="unavailable"] .sector-cover { display:none; }
+  @media (max-width:1280px) {
+    .sector-directory .sector-photo-card { padding:32px; gap:24px; }
+    .sector-photo-card .sector-label { max-width:760px; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    .sector-cover img,.sector-photo-card .directory-arrow { transition:none; }
+    .sector-photo-card:hover .sector-cover img,.sector-photo-card:hover .directory-arrow { transform:none; }
+  }
+}

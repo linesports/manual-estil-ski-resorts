@@ -1,0 +1,858 @@
+{
+  "generatedAt": "2026-10-23T15:46:55.932232+00:00",
+  "scope": "Desktop context video only. No publication evidence changed.",
+  "stations": [
+    {
+      "source": "aspensnowmass-source.mp4",
+      "segments": [
+        [
+          4.4,
+          7.7
+        ],
+        [
+          12.4,
+          18.6
+        ]
+      ],
+      "credit": "Aspen Snowmass",
+      "title": "Aspen Anthem 2025–26 · vídeo oficial de capçalera",
+      "id": "aspensnowmass",
+      "sourceDimensions": [
+        1920,
+        1080
+      ],
+      "sourceBytes": 19624160,
+      "sourceSHA256": "6a3fe03c27fccf97d0400844314cc2f9d3db31393e47b3c56fb5a40a280ae31b",
+      "sourceWindowSeconds": [
+        0,
+        30.071708
+      ],
+      "processing": {
+        "resize": "Downsample to1920x1080; no enlargement",
+        "endToStartCrossfade": 0.24,
+        "speedChanged": false,
+        "motionInterpolation": false,
+        "audio": "Decorative muted context; no audio track",
+        "generative": false
+      },
+      "derivatives": [
+        {
+          "path": "./media/hero/aspensnowmass-1080.webm",
+          "bytes": 2222358,
+          "sha256": "c57794759cea16456aa1215802fb8ba7a1f167072f7930d3860345b99b0b2c75",
+          "width": 1920,
+          "height": 1080,
+          "duration": 9.28,
+          "codec": "vp9",
+          "audio": false
+        },
+        {
+          "path": "./media/hero/aspensnowmass-1080.mp4",
+          "bytes": 3154439,
+          "sha256": "8f7dcf184b5d6a80c02074843cf134dd73325d733a959a83b09726cbf76f58c9",
+          "width": 1920,
+          "height": 1080,
+          "duration": 9.28,
+          "codec": "h264",
+          "audio": false
+        }
+      ],
+      "poster": {
+        "path": "./media/hero/aspensnowmass-poster.webp",
+        "bytes": 219602,
+        "sha256": "f9c97cf4b68cafc78ff7e292a876580d3a5225773017d6fed2060d6af66aaa39",
+        "width": 1920,
+        "height": 1080
+      },
+      "sourceURL": "https://vimeo.com/1145980093",
+      "sourcePage": "https://www.aspensnowmass.com/",
+      "copyright": "Official public publication; rights remain with source owner. No separate redistribution grant inferred from public access."
+    },
+    {
+      "source": "cerrocastor-source.mp4",
+      "segments": [
+        [
+          7.8,
+          11.6
+        ],
+        [
+          14.8,
+          18.7
+        ],
+        [
+          19.6,
+          21.8
+        ]
+      ],
+      "posterTime": 15.3,
+      "credit": "Cerro Castor",
+      "title": "Cerro Castor",
+      "id": "cerrocastor",
+      "sourceDimensions": [
+        1920,
+        1080
+      ],
+      "sourceBytes": 12706837,
+      "sourceSHA256": "37b7fefe7448809b12314849b9e27cc6bb2972e1e2fa15da491e3a3464e1183d",
+      "sourceWindowSeconds": [
+        0,
+        30.016667
+      ],
+      "processing": {
+        "resize": "Native 1920x1080 or downsample; no enlargement",
+        "endToStartCrossfade": 0.24,
+        "speedChanged": false,
+        "motionInterpolation": false,
+        "audio": "Decorative muted context; no audio track",
+        "generative": false
+      },
+      "derivatives": [
+        {
+          "path": "./media/hero/cerrocastor-1080.webm",
+          "bytes": 1969516,
+          "sha256": "e0b1a9217944e37f84619f28c7b514489a31ca02bee786277512291ae66c0b41",
+          "width": 1920,
+          "height": 1080,
+          "duration": 9.68,
+          "codec": "vp9",
+          "audio": false
+        },
+        {
+          "path": "./media/hero/cerrocastor-1080.mp4",
+          "bytes": 3229656,
+          "sha256": "25dc4471efc62100cd56b4f4539c7c5f6a7a56bfb011d0526e8d5f47e1cf67d6",
+          "width": 1920,
+          "height": 1080,
+          "duration": 9.68,
+          "codec": "h264",
+          "audio": false
+        }
+      ],
+      "poster": {
+        "path": "./media/hero/cerrocastor-poster.webp",
+        "bytes": 48532,
+        "sha256": "a7fdb88817316960284aabdcc6358c7a2fcd8ba7844ac4b8f4b6802bab60c034",
+        "width": 1920,
+        "height": 1080
+      },
+      "publisher": "Cerro Castor",
+      "channelUrl": "https://www.youtube.com/channel/UCdRznjZhMfIArULYvuXxzZg",
+      "published": "20250218",
+      "originalDuration": 35,
+      "sourceURL": "https://www.youtube.com/watch?v=bZtjLI2jrCw",
+      "sourcePage": "https://www.cerrocastor.com/es_ar/home.html",
+      "copyright": "Official public publication; rights remain with source owner. No separate redistribution grant inferred from public access."
+    },
+    {
+      "source": "hanazononiseko-source.mp4",
+      "segments": [
+        [
+          0.6,
+          11.6
+        ]
+      ],
+      "crop": [
+        1920,
+        816,
+        0,
+        132
+      ],
+      "credit": "Hanazono Niseko Resort",
+      "title": "Where Dreams Come True - Niseko Hanazono Resort",
+      "id": "hanazononiseko",
+      "sourceDimensions": [
+        1920,
+        1080
+      ],
+      "sourceBytes": 6108077,
+      "sourceSHA256": "3ee27e8e846db159c0023015ee719014b91d99daa90c734bde21cebea6a0bf35",
+      "sourceWindowSeconds": [
+        0,
+        30.029
+      ],
+      "processing": {
+        "resize": "Remove baked black bars by native crop; no enlargement",
+        "endToStartCrossfade": 0.24,
+        "speedChanged": false,
+        "motionInterpolation": false,
+        "audio": "Decorative muted context; no audio track",
+        "generative": false
+      },
+      "derivatives": [
+        {
+          "path": "./media/hero/hanazononiseko-1080.webm",
+          "bytes": 2274941,
+          "sha256": "05242cb25da4ab48c36f13bf068ce650eb857fd48dddc7b9014b5c18eceffb2c",
+          "width": 1920,
+          "height": 816,
+          "duration": 10.76,
+          "codec": "vp9",
+          "audio": false
+        },
+        {
+          "path": "./media/hero/hanazononiseko-1080.mp4",
+          "bytes": 3606613,
+          "sha256": "80dd66b67438a2ecd337e9aacd79fc00677ca4374c1d085e15a9967bd0f42667",
+          "width": 1920,
+          "height": 816,
+          "duration": 10.76,
+          "codec": "h264",
+          "audio": false
+        }
+      ],
+      "poster": {
+        "path": "./media/hero/hanazononiseko-poster.webp",
+        "bytes": 181848,
+        "sha256": "3a3458a75a1d12a661fb250ad2f61abe325684078f1f08105938b2669c0c2c50",
+        "width": 1920,
+        "height": 816
+      },
+      "publisher": "Hanazono Niseko Resort ニセコ HANAZONOリゾート",
+      "channelUrl": "https://www.youtube.com/channel/UCrNyeY4kGLL0-Hs8wC98peg",
+      "published": "20240209",
+      "originalDuration": 146,
+      "sourceURL": "https://www.youtube.com/watch?v=KybKqT2_mFY",
+      "sourcePage": "https://hanazononiseko.com/en/blog/winter-movie-2024",
+      "copyright": "Official public publication; rights remain with source owner. No separate redistribution grant inferred from public access."
+    },
+    {
+      "source": "jacksonhole-source.mp4",
+      "segments": [
+        [
+          0.0,
+          3.8
+        ],
+        [
+          14.6,
+          20.6
+        ]
+      ],
+      "credit": "Jackson Hole Mountain Resort",
+      "title": "Jackson Hole · vídeo oficial de capçalera",
+      "id": "jacksonhole",
+      "sourceDimensions": [
+        1920,
+        1080
+      ],
+      "sourceBytes": 19832389,
+      "sourceSHA256": "102090018dc313c2da18e6ddb37b691241324a314a61ac4598c6a4ddb7bad806",
+      "sourceWindowSeconds": [
+        0,
+        20.966667
+      ],
+      "processing": {
+        "resize": "Downsample to1920x1080; no enlargement",
+        "endToStartCrossfade": 0.24,
+        "speedChanged": false,
+        "motionInterpolation": false,
+        "audio": "Decorative muted context; no audio track",
+        "generative": false
+      },
+      "derivatives": [
+        {
+          "path": "./media/hero/jacksonhole-1080.webm",
+          "bytes": 1960978,
+          "sha256": "8d49d28f69e7269adf5ab35011f40449142a62c09f23ba04fc9681536aa25b92",
+          "width": 1920,
+          "height": 1080,
+          "duration": 9.56,
+          "codec": "vp9",
+          "audio": false
+        },
+        {
+          "path": "./media/hero/jacksonhole-1080.mp4",
+          "bytes": 3244061,
+          "sha256": "ba2a85ffd3f101512af12d03005eefae10794cb83336025eccf7371bfaa2130f",
+          "width": 1920,
+          "height": 1080,
+          "duration": 9.56,
+          "codec": "h264",
+          "audio": false
+        }
+      ],
+      "poster": {
+        "path": "./media/hero/jacksonhole-poster.webp",
+        "bytes": 39556,
+        "sha256": "bd88aed58f43cbe4c312b3e5c64a5e4f15f2022a4a4c7a77d63af334b73e5153",
+        "width": 1920,
+        "height": 1080
+      },
+      "sourceURL": "https://vimeo.com/1232865472",
+      "sourcePage": "https://www.jacksonhole.com/",
+      "copyright": "Official public publication; rights remain with source owner. No separate redistribution grant inferred from public access."
+    },
+    {
+      "source": "laax-source.mp4",
+      "segments": [
+        [
+          3.0,
+          12.8
+        ]
+      ],
+      "credit": "LAAX",
+      "title": "I know a place | Winter in LAAX",
+      "id": "laax",
+      "sourceDimensions": [
+        1920,
+        1080
+      ],
+      "sourceBytes": 3741845,
+      "sourceSHA256": "b8434365734e292878479653d1d66f548175a05fe8a9f3f6bc92e8c683ab0915",
+      "sourceWindowSeconds": [
+        0,
+        25.734042
+      ],
+      "processing": {
+        "resize": "Downsample to1920x1080; no enlargement",
+        "endToStartCrossfade": 0.24,
+        "speedChanged": false,
+        "motionInterpolation": false,
+        "audio": "Decorative muted context; no audio track",
+        "generative": false
+      },
+      "derivatives": [
+        {
+          "path": "./media/hero/laax-1080.webm",
+          "bytes": 2412801,
+          "sha256": "c138948914dfb49e6b17a9d69f2c4568cd9a07c059f3a88574f64a7ad10df2de",
+          "width": 1920,
+          "height": 1080,
+          "duration": 9.56,
+          "codec": "vp9",
+          "audio": false
+        },
+        {
+          "path": "./media/hero/laax-1080.mp4",
+          "bytes": 3201664,
+          "sha256": "f6578165866e2710871c1959a2f77dbad74f1eb429ee6d0e89f3bcb673648858",
+          "width": 1920,
+          "height": 1080,
+          "duration": 9.56,
+          "codec": "h264",
+          "audio": false
+        }
+      ],
+      "poster": {
+        "path": "./media/hero/laax-poster.webp",
+        "bytes": 145840,
+        "sha256": "bc06a7143cc4ab554b3c260f02451846417cb4e64b7f12cb9eb53d2e688c5d5e",
+        "width": 1920,
+        "height": 1080
+      },
+      "publisher": "LAAX",
+      "channelUrl": "https://www.youtube.com/channel/UCBlBk1j3FtQa7372nwW52Lw",
+      "published": "20260916",
+      "originalDuration": 26,
+      "sourceURL": "https://www.youtube.com/watch?v=5czrHgCBTzg",
+      "sourcePage": "https://www.laax.com/en",
+      "copyright": "Official public publication; rights remain with source owner. No separate redistribution grant inferred from public access."
+    },
+    {
+      "source": "rusutsuresort_official-source.mp4",
+      "segments": [
+        [
+          13.0,
+          23.0
+        ]
+      ],
+      "credit": "Rusutsu Resort",
+      "title": "Rusutsu Winter / rs2min26hL",
+      "id": "rusutsuresort_official",
+      "sourceDimensions": [
+        1920,
+        1080
+      ],
+      "sourceBytes": 7490852,
+      "sourceSHA256": "4f5d787cd3a7dafb3c77497ed76e684273ee8ce6016f24ae45e3a0eb5f82d90f",
+      "sourceWindowSeconds": [
+        0,
+        30.03
+      ],
+      "processing": {
+        "resize": "Downsample to1920x1080; no enlargement",
+        "endToStartCrossfade": 0.24,
+        "speedChanged": false,
+        "motionInterpolation": false,
+        "audio": "Decorative muted context; no audio track",
+        "generative": false
+      },
+      "derivatives": [
+        {
+          "path": "./media/hero/rusutsuresort_official-1080.webm",
+          "bytes": 2469490,
+          "sha256": "60d36c7a39e830343bcc75cadc7efd5c54140ae2815a53e67c2ca7bda9e2bc06",
+          "width": 1920,
+          "height": 1080,
+          "duration": 9.76,
+          "codec": "vp9",
+          "audio": false
+        },
+        {
+          "path": "./media/hero/rusutsuresort_official-1080.mp4",
+          "bytes": 3278797,
+          "sha256": "1532d15ed36d0271ef4db68f7394684bb83696fff1063dfb442dded6104b77c1",
+          "width": 1920,
+          "height": 1080,
+          "duration": 9.76,
+          "codec": "h264",
+          "audio": false
+        }
+      ],
+      "poster": {
+        "path": "./media/hero/rusutsuresort_official-poster.webp",
+        "bytes": 297818,
+        "sha256": "b375aa446073da6835f6821be6641b47b623afd97e208afb1e92c747171906ab",
+        "width": 1920,
+        "height": 1080
+      },
+      "publisher": "Rusutsu Resort",
+      "channelUrl": "https://www.youtube.com/channel/UCSDylxZLdEpdaevQk6x9Lhw",
+      "published": "20260706",
+      "originalDuration": 120,
+      "sourceURL": "https://www.youtube.com/watch?v=-BmK6_jI0dk",
+      "sourcePage": "https://rusutsu.com/en/",
+      "copyright": "Official public publication; rights remain with source owner. No separate redistribution grant inferred from public access."
+    },
+    {
+      "source": "skiportillo-mountain-source.mp4",
+      "segments": [
+        [
+          3.5,
+          13.5
+        ]
+      ],
+      "credit": "Ski Portillo",
+      "title": "SKI PORTILLO MONTAÑA",
+      "id": "skiportillo",
+      "sourceDimensions": [
+        1920,
+        1080
+      ],
+      "sourceBytes": 5340749,
+      "sourceSHA256": "a813c90a4eb512d2b77bade376ac376e08a4c870d6872dc72c2a965a5c6efc95",
+      "sourceWindowSeconds": [
+        0,
+        30.03
+      ],
+      "processing": {
+        "resize": "Downsample to1920x1080; no enlargement",
+        "endToStartCrossfade": 0.24,
+        "speedChanged": false,
+        "motionInterpolation": false,
+        "audio": "Decorative muted context; no audio track",
+        "generative": false
+      },
+      "derivatives": [
+        {
+          "path": "./media/hero/skiportillo-1080.webm",
+          "bytes": 2261239,
+          "sha256": "110ba70696f364609034084bc2bcfa3ca80ee91bf84f255e8a2702621f7cdd0a",
+          "width": 1920,
+          "height": 1080,
+          "duration": 9.76,
+          "codec": "vp9",
+          "audio": false
+        },
+        {
+          "path": "./media/hero/skiportillo-1080.mp4",
+          "bytes": 3292214,
+          "sha256": "a666e8ccff23250f0dac8f8b4305494730c6544e33080563a448bd6ce95ff8c2",
+          "width": 1920,
+          "height": 1080,
+          "duration": 9.76,
+          "codec": "h264",
+          "audio": false
+        }
+      ],
+      "poster": {
+        "path": "./media/hero/skiportillo-poster.webp",
+        "bytes": 266594,
+        "sha256": "f2bbf9a0154a963c1bb5236c1f574632c8e4d8ccabdcd6c2696e93e72e151be7",
+        "width": 1920,
+        "height": 1080
+      },
+      "publisher": "Ski Portillo",
+      "channelUrl": "https://www.youtube.com/channel/UCQ305V_QdoVQlkm0ijSz27g",
+      "published": "20201202",
+      "originalDuration": 49,
+      "sourceURL": "https://www.youtube.com/watch?v=ucSGvuasIyo",
+      "sourcePage": "https://skiportillo.com/en/home/",
+      "copyright": "Official public publication; rights remain with source owner. No separate redistribution grant inferred from public access."
+    },
+    {
+      "source": "tignesofficiel-source.mp4",
+      "segments": [
+        [
+          2.0,
+          6.25
+        ],
+        [
+          9.6,
+          15.6
+        ]
+      ],
+      "crop": [
+        1920,
+        908,
+        0,
+        86
+      ],
+      "credit": "Tignes",
+      "title": "Tignes 2026-2027 : 162 jours de ski intense",
+      "id": "tignesofficiel",
+      "sourceDimensions": [
+        1920,
+        1080
+      ],
+      "sourceBytes": 5223558,
+      "sourceSHA256": "00ac96c7dbc72941807683e5a6af21444a43dc74702ce86af2979c131acf5fa4",
+      "sourceWindowSeconds": [
+        0,
+        30.0
+      ],
+      "processing": {
+        "resize": "Native crop removes baked bars or captions; no enlargement",
+        "endToStartCrossfade": 0.24,
+        "speedChanged": false,
+        "motionInterpolation": false,
+        "audio": "Decorative muted context; no audio track",
+        "generative": false
+      },
+      "derivatives": [
+        {
+          "path": "./media/hero/tignesofficiel-1080.webm",
+          "bytes": 1988944,
+          "sha256": "a0b3989110a3536049dc968972b0d702bd488304ea007887a49b41550260dbfb",
+          "width": 1920,
+          "height": 908,
+          "duration": 10.0,
+          "codec": "vp9",
+          "audio": false
+        },
+        {
+          "path": "./media/hero/tignesofficiel-1080.mp4",
+          "bytes": 3332883,
+          "sha256": "79580b5c2f1f5037ac72b21312ae0eac71b7b8b13f651b5e5ea486c1351b94de",
+          "width": 1920,
+          "height": 908,
+          "duration": 10.0,
+          "codec": "h264",
+          "audio": false
+        }
+      ],
+      "poster": {
+        "path": "./media/hero/tignesofficiel-poster.webp",
+        "bytes": 104266,
+        "sha256": "070d271f5f5c14e086a05b821f7acaab1bfa5bacb7751750baa5f6aeb303b5a9",
+        "width": 1920,
+        "height": 908
+      },
+      "publisher": "Tignes",
+      "channelUrl": "https://www.youtube.com/channel/UCaicYnKn4LZs2xpfibm7FTw",
+      "published": "20261008",
+      "originalDuration": 41,
+      "sourceURL": "https://www.youtube.com/watch?v=D5bpJ7SRF5Q",
+      "sourcePage": "https://www.tignes.net/",
+      "copyright": "Official public publication; rights remain with source owner. No separate redistribution grant inferred from public access."
+    },
+    {
+      "source": "val_thorens-source.mp4",
+      "segments": [
+        [
+          3.0,
+          6.4
+        ],
+        [
+          11.8,
+          13.6
+        ],
+        [
+          19.15,
+          20.6
+        ],
+        [
+          21.8,
+          23.6
+        ]
+      ],
+      "crop": [
+        1920,
+        990,
+        0,
+        0
+      ],
+      "credit": "Val Thorens",
+      "title": "Live United Val Thorens",
+      "id": "val_thorens",
+      "sourceDimensions": [
+        1920,
+        1080
+      ],
+      "sourceBytes": 5188299,
+      "sourceSHA256": "d685261db5d5d332fc498f01563833f14797a20f452c350e25834bcd47c55e5a",
+      "sourceWindowSeconds": [
+        0,
+        30.03
+      ],
+      "processing": {
+        "resize": "Native crop removes baked bars or captions; no enlargement",
+        "endToStartCrossfade": 0.24,
+        "speedChanged": false,
+        "motionInterpolation": false,
+        "audio": "Decorative muted context; no audio track",
+        "generative": false
+      },
+      "derivatives": [
+        {
+          "path": "./media/hero/val_thorens-1080.webm",
+          "bytes": 1482671,
+          "sha256": "c6bfd38aad826059c31d0ee2e25a4ba7b81b3e8f1ab9e3a5e8e6387e374a73be",
+          "width": 1920,
+          "height": 990,
+          "duration": 8.2,
+          "codec": "vp9",
+          "audio": false
+        },
+        {
+          "path": "./media/hero/val_thorens-1080.mp4",
+          "bytes": 2691513,
+          "sha256": "3b45cf03c7063642ae2e06d00ff1ca0a5bf62691c8f71eb5b9d072e1334c9b78",
+          "width": 1920,
+          "height": 990,
+          "duration": 8.2,
+          "codec": "h264",
+          "audio": false
+        }
+      ],
+      "poster": {
+        "path": "./media/hero/val_thorens-poster.webp",
+        "bytes": 28838,
+        "sha256": "aa04d069cabdff04dfa060a17d60699a2d0dfff5452e43b711d7120e2663e38a",
+        "width": 1920,
+        "height": 990
+      },
+      "publisher": "Val Thorens",
+      "channelUrl": "https://www.youtube.com/channel/UCcPl1mWAyzdvAdWFCvrTNqA",
+      "published": "20251021",
+      "originalDuration": 84,
+      "sourceURL": "https://www.youtube.com/watch?v=nJKTlJz5nus",
+      "sourcePage": "https://www.youtube.com/@ValThorens",
+      "copyright": "Official public publication; rights remain with source owner. No separate redistribution grant inferred from public access."
+    },
+    {
+      "source": "valle_nevado-youtube-source.mp4",
+      "segments": [
+        [
+          0.5,
+          3.6
+        ],
+        [
+          12.4,
+          14.7
+        ],
+        [
+          15.6,
+          19.5
+        ],
+        [
+          22.0,
+          24.6
+        ]
+      ],
+      "credit": "Valle Nevado",
+      "title": "¡Las mejores vacaciones de invierno se viven en Valle Nevado!",
+      "id": "valle_nevado",
+      "sourceDimensions": [
+        1920,
+        1080
+      ],
+      "sourceBytes": 10263440,
+      "sourceSHA256": "c44ed8de835fe32606f0210be7b8ff85f3bbb1fa200e266b0c6ff5ea28f75a32",
+      "sourceWindowSeconds": [
+        0,
+        30.04
+      ],
+      "processing": {
+        "resize": "Downsample to1920x1080; no enlargement",
+        "endToStartCrossfade": 0.24,
+        "speedChanged": false,
+        "motionInterpolation": false,
+        "audio": "Decorative muted context; no audio track",
+        "generative": false
+      },
+      "derivatives": [
+        {
+          "path": "./media/hero/valle_nevado-1080.webm",
+          "bytes": 1902729,
+          "sha256": "7e6a70a305cfbffe7384f4135358cda5275c08a65382262b88a7440d884219bb",
+          "width": 1920,
+          "height": 1080,
+          "duration": 11.68,
+          "codec": "vp9",
+          "audio": false
+        },
+        {
+          "path": "./media/hero/valle_nevado-1080.mp4",
+          "bytes": 3771985,
+          "sha256": "ee1afa381de31b3dbc03134ac0df9e0b41630e7642da00b694dd9d58ff8cc66c",
+          "width": 1920,
+          "height": 1080,
+          "duration": 11.68,
+          "codec": "h264",
+          "audio": false
+        }
+      ],
+      "poster": {
+        "path": "./media/hero/valle_nevado-poster.webp",
+        "bytes": 48628,
+        "sha256": "a86310cd6899d5375be7ba8edabd75359387d890374fa4a2ed450ac040bfefb1",
+        "width": 1920,
+        "height": 1080
+      },
+      "publisher": "Valle Nevado Ski Resort",
+      "channelUrl": "https://www.youtube.com/channel/UCeugwuttf3KGSyVuax_AzNw",
+      "published": "20210715",
+      "originalDuration": 32,
+      "sourceURL": "https://www.youtube.com/watch?v=rdWhg_w96Kk",
+      "sourcePage": "https://www.vallenevado.com/en/",
+      "copyright": "Official public publication; rights remain with source owner. No separate redistribution grant inferred from public access."
+    },
+    {
+      "source": "whistlerblackcomb-source.mp4",
+      "segments": [
+        [
+          2.4,
+          7.6
+        ],
+        [
+          22.0,
+          27.0
+        ]
+      ],
+      "credit": "Whistler Blackcomb",
+      "title": "HOME - The Whistler Blackcomb Movie (TRAILER)",
+      "id": "whistlerblackcomb",
+      "sourceDimensions": [
+        1920,
+        1080
+      ],
+      "sourceBytes": 5139721,
+      "sourceSHA256": "c52a09d645d3c16c3b335728827e3f5f773d1e1610a036022e9bce9a5669034e",
+      "sourceWindowSeconds": [
+        0,
+        30.03
+      ],
+      "processing": {
+        "resize": "Downsample to1920x1080; no enlargement",
+        "endToStartCrossfade": 0.24,
+        "speedChanged": false,
+        "motionInterpolation": false,
+        "audio": "Decorative muted context; no audio track",
+        "generative": false
+      },
+      "derivatives": [
+        {
+          "path": "./media/hero/whistlerblackcomb-1080.webm",
+          "bytes": 1541859,
+          "sha256": "3cc918ac1e90700cfeb2916eb96bb23a9388dadef83b318231a7a2e33674586d",
+          "width": 1920,
+          "height": 1080,
+          "duration": 9.96,
+          "codec": "vp9",
+          "audio": false
+        },
+        {
+          "path": "./media/hero/whistlerblackcomb-1080.mp4",
+          "bytes": 3181931,
+          "sha256": "3e55468cdf416aa42406352b44117e78bafb3dec6967659460661806d987ee76",
+          "width": 1920,
+          "height": 1080,
+          "duration": 9.96,
+          "codec": "h264",
+          "audio": false
+        }
+      ],
+      "poster": {
+        "path": "./media/hero/whistlerblackcomb-poster.webp",
+        "bytes": 47228,
+        "sha256": "950d10b895e4c634a0249c9e04828d2c514ea5875a7007b2d642ef888ca51384",
+        "width": 1920,
+        "height": 1080
+      },
+      "publisher": "Whistler Blackcomb",
+      "channelUrl": "https://www.youtube.com/channel/UCbi5NfIOiul4U1H6pWcpBPQ",
+      "published": "20260928",
+      "originalDuration": 90,
+      "sourceURL": "https://www.youtube.com/watch?v=pygD29AgqFA",
+      "sourcePage": "https://www.youtube.com/@WhistlerBlackcomb",
+      "copyright": "Official public publication; rights remain with source owner. No separate redistribution grant inferred from public access."
+    },
+    {
+      "source": "zermatt-winter-source.mp4",
+      "segments": [
+        [
+          11.0,
+          20.8
+        ]
+      ],
+      "credit": "Zermatt Bergbahnen / Matterhorn Paradise",
+      "title": "Matterhorn Ski Paradise",
+      "id": "zermattbergbahnen",
+      "sourceDimensions": [
+        1920,
+        1080
+      ],
+      "sourceBytes": 7805151,
+      "sourceSHA256": "d77dee72c0958c975ba4575795155c33e8c67a353b3fdd3046df817d4ef1c6c6",
+      "sourceWindowSeconds": [
+        0,
+        30.0
+      ],
+      "processing": {
+        "resize": "Downsample to1920x1080; no enlargement",
+        "endToStartCrossfade": 0.24,
+        "speedChanged": false,
+        "motionInterpolation": false,
+        "audio": "Decorative muted context; no audio track",
+        "generative": false
+      },
+      "derivatives": [
+        {
+          "path": "./media/hero/zermattbergbahnen-1080.webm",
+          "bytes": 1815837,
+          "sha256": "52b300b62f0ac75276734a3af3bd87b3a4888e6d96bf73ddef6ccebe0e7a4c5e",
+          "width": 1920,
+          "height": 1080,
+          "duration": 9.56,
+          "codec": "vp9",
+          "audio": false
+        },
+        {
+          "path": "./media/hero/zermattbergbahnen-1080.mp4",
+          "bytes": 3236759,
+          "sha256": "46c1bbb97076d91ff04a8a974dd1611f1b5cccca077479bee9e04a8d1c9817e9",
+          "width": 1920,
+          "height": 1080,
+          "duration": 9.56,
+          "codec": "h264",
+          "audio": false
+        }
+      ],
+      "poster": {
+        "path": "./media/hero/zermattbergbahnen-poster.webp",
+        "bytes": 113898,
+        "sha256": "4772f0f80d0e813c90cedc8e3c83a77a7ea35d0d658bf85799eaafbfb1be03a1",
+        "width": 1920,
+        "height": 1080
+      },
+      "publisher": "Zermatt Bergbahnen AG",
+      "channelUrl": "https://www.youtube.com/channel/UCpPMA8bCH6-xrkZ9wvAfxnw",
+      "published": "20240115",
+      "originalDuration": 37,
+      "sourceURL": "https://www.youtube.com/watch?v=BP9CodFnz5c",
+      "sourcePage": "https://www.matterhornparadise.ch/en",
+      "copyright": "Official public publication; rights remain with source owner. No separate redistribution grant inferred from public access."
+    }
+  ],
+  "rightsNote": "Official source attribution and exact native clips preserved. Local preparation does not establish a separate redistribution licence."
+}

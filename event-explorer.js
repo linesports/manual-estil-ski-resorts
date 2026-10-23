@@ -108,12 +108,20 @@
         this.library.append(empty); return;
       }
       const grid = el('div', 'event-grid');
-      (this.expanded ? groups : groups.slice(0, 6)).forEach((group, index) => grid.append(this.card(group, index)));
+      const columns = matchMedia('(min-width:1024px)').matches ? Array.from({ length:3 }, () => ({ node:el('div', 'event-column'), height:0 })) : [];
+      if (columns.length) grid.append(...columns.map(column => column.node));
+      (this.expanded ? groups : groups.slice(0, 6)).forEach((group, index) => {
+        const card = this.card(group, index);
+        if (!columns.length) { grid.append(card); return; }
+        const column = columns.reduce((shortest, entry) => entry.height < shortest.height ? entry : shortest);
+        column.node.append(card);
+        column.height += 1 / (Number(card.style.getPropertyValue('--card-media-ratio')) || 1) + .065;
+      });
       this.library.append(grid);
       if (groups.length > 6) {
         const more = el('button', 'event-show-more', this.expanded ? 'Mostrar menys col·leccions' : 'Veure les ' + (groups.length - 6) + ' col·leccions restants');
         more.type = 'button'; more.setAttribute('aria-expanded', String(this.expanded));
-        more.addEventListener('click', () => { this.expanded = !this.expanded; this.renderLibrary(groups); (this.expanded ? this.library.querySelectorAll('.event-card')[6] : this.library.querySelector('.event-show-more'))?.focus(); });
+        more.addEventListener('click', () => { this.expanded = !this.expanded; this.renderLibrary(groups); (this.expanded ? this.library.querySelector('[data-event-id="' + CSS.escape(groups[6].id) + '"]') : this.library.querySelector('.event-show-more'))?.focus(); });
         this.library.append(more);
       }
     }
@@ -125,7 +133,12 @@
       const cover = el('span', 'event-card-cover');
       const photos = window.OLAF_EVENT_COVERS.select(group);
       const foreground = photos.at(-1);
-      const setLayout = (width, height) => { cover.dataset.coverLayout = foreground?.fit === 'contain' && width < height ? 'portrait' : 'landscape'; };
+      const setLayout = (width, height) => {
+        const portrait = foreground?.fit === 'contain' && width < height;
+        cover.dataset.coverLayout = portrait ? 'portrait' : 'landscape';
+        card.dataset.coverLayout = portrait ? 'portrait' : 'landscape';
+        card.style.setProperty('--card-media-ratio', portrait ? width / height : 1);
+      };
       setLayout(foreground?.width || 400, foreground?.height || 225);
       photos.forEach((photo, n) => {
         const frame = el('span', 'event-stack-frame event-stack-' + n + (photos.length === 1 ? ' event-stack-solo' : '') + (n === photos.length - 1 ? ' event-stack-foreground' : ''));

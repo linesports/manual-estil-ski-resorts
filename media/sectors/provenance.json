@@ -1,0 +1,684 @@
+{
+  "date": "2026-10-23",
+  "scope": "Desktop sector directory",
+  "generativeSynthesis": false,
+  "upscaling": false,
+  "assets": [
+    {
+      "name": "Alimentació i begudes",
+      "id": "alimentacio",
+      "asset": "1742054292309-d07b8f18b0ef",
+      "page": "delicious-food-and-drinks-displayed-on-a-table-aeoblyrwGZg",
+      "author": "Mathias Reding",
+      "description": "Taula amb plats i begudes",
+      "focal": [
+        0.5,
+        0.55
+      ],
+      "sourceUrl": "https://unsplash.com/photos/delicious-food-and-drinks-displayed-on-a-table-aeoblyrwGZg",
+      "downloadUrl": "https://images.unsplash.com/photo-1742054292309-d07b8f18b0ef?auto=format&fit=max&w=3000&q=95&fm=jpg",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "usage": "Decorative editorial category context; not an evidence record, brand partnership, or location attribution",
+      "nativeDimensions": [
+        3000,
+        2000
+      ],
+      "nativeSHA256": "cb7f3caebd0b9c8d2988b9040ff9040b95a0b9ea28baac2e94473c43607d4a2e",
+      "derivatives": [
+        {
+          "path": "./media/sectors/alimentacio-1200.webp",
+          "width": 1200,
+          "height": 343,
+          "bytes": 61302,
+          "sha256": "5ca710b4a26d110aa08f73bcf73a97a718d6ab16508eed9c9551744d20defc7f"
+        },
+        {
+          "path": "./media/sectors/alimentacio-1200.avif",
+          "width": 1200,
+          "height": 343,
+          "bytes": 42922,
+          "sha256": "d5dc75395835042aadc7fe5cb8227edaaf4be2e5f32fcd97633065a837ff5565"
+        },
+        {
+          "path": "./media/sectors/alimentacio-2400.webp",
+          "width": 2400,
+          "height": 686,
+          "bytes": 166574,
+          "sha256": "19bb6de57cb1ac91edda3911cc706e7656269321a71c0ed3868fcd841f0c6843"
+        },
+        {
+          "path": "./media/sectors/alimentacio-2400.avif",
+          "width": 2400,
+          "height": 686,
+          "bytes": 119333,
+          "sha256": "458fda8e98ffce0002da06ad4d970055b0773a0ae3c4a2200d3d1e24108357cc"
+        }
+      ]
+    },
+    {
+      "name": "Automoció i mobilitat",
+      "id": "automocio",
+      "asset": "1769558115499-ec32a8a8d851",
+      "page": "a-car-parked-on-a-snowy-mountain-road-at-night-16dCdkv7l7M",
+      "author": "Hyundai Motor Group",
+      "description": "Kia Sportage en una carretera nevada de nit",
+      "focal": [
+        0.5,
+        0.62
+      ],
+      "sourceUrl": "https://unsplash.com/photos/a-car-parked-on-a-snowy-mountain-road-at-night-16dCdkv7l7M",
+      "downloadUrl": "https://images.unsplash.com/photo-1769558115499-ec32a8a8d851?auto=format&fit=max&w=3000&q=95&fm=jpg",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "usage": "Decorative editorial category context; not an evidence record, brand partnership, or location attribution",
+      "nativeDimensions": [
+        3000,
+        2000
+      ],
+      "nativeSHA256": "e9e9370c1756f3b270d784cffcc9c370d8463e4fd81d3b95a78a95eaa08abd1f",
+      "derivatives": [
+        {
+          "path": "./media/sectors/automocio-1200.webp",
+          "width": 1200,
+          "height": 343,
+          "bytes": 51540,
+          "sha256": "7d9ac4dec16d5075c0a123cb54a85fb4f6a2113e3acc3708adc6e0ab2ea01ef8"
+        },
+        {
+          "path": "./media/sectors/automocio-1200.avif",
+          "width": 1200,
+          "height": 343,
+          "bytes": 40319,
+          "sha256": "1e1715f44f3fda6ab05c771b67bea956fc414ade18f7f7acca281c269c7ac014"
+        },
+        {
+          "path": "./media/sectors/automocio-2400.webp",
+          "width": 2400,
+          "height": 686,
+          "bytes": 143588,
+          "sha256": "b44f87cf29ae386ead10260fa98f73103e1c9b1f235e1a173fdab8df5262c25e"
+        },
+        {
+          "path": "./media/sectors/automocio-2400.avif",
+          "width": 2400,
+          "height": 686,
+          "bytes": 109014,
+          "sha256": "1772a6249a2495a646b1037c90799aadf1a1f5327b8d62be42d4448fe0c96c6b"
+        }
+      ]
+    },
+    {
+      "name": "Moda i complements",
+      "id": "moda",
+      "asset": "1780721653236-22b53a1ed0e0",
+      "page": "elegant-gold-and-silver-wristwatch-on-a-blurred-laptop-keyboard-DuCJDKEtTIg",
+      "author": "Rejwoan Ahmed",
+      "description": "Detall de rellotge de polsera",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "sourceUrl": "https://unsplash.com/photos/elegant-gold-and-silver-wristwatch-on-a-blurred-laptop-keyboard-DuCJDKEtTIg",
+      "downloadUrl": "https://images.unsplash.com/photo-1780721653236-22b53a1ed0e0?auto=format&fit=max&w=3000&q=95&fm=jpg",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "usage": "Decorative editorial category context; not an evidence record, brand partnership, or location attribution",
+      "nativeDimensions": [
+        3000,
+        2250
+      ],
+      "nativeSHA256": "08e4b6d101abb30887f8ab4c5f644060f385f3a047b92e8ca76d5f8a55dd639e",
+      "derivatives": [
+        {
+          "path": "./media/sectors/moda-1200.webp",
+          "width": 1200,
+          "height": 343,
+          "bytes": 61338,
+          "sha256": "8e1efc7c497a34781e8a99deb487c8ddcf7bae4ee204268cc75e1a3e5397c8cb"
+        },
+        {
+          "path": "./media/sectors/moda-1200.avif",
+          "width": 1200,
+          "height": 343,
+          "bytes": 42042,
+          "sha256": "b632343c34bcc9aaf1fb1b08fa6ca22348f3b33cab239fa7c8e39776c0c15322"
+        },
+        {
+          "path": "./media/sectors/moda-2400.webp",
+          "width": 2400,
+          "height": 686,
+          "bytes": 142482,
+          "sha256": "ede4d973f6454eeef7bef6eff2e9bd0de6323b0f135a92cda8a2112f4cce60b9"
+        },
+        {
+          "path": "./media/sectors/moda-2400.avif",
+          "width": 2400,
+          "height": 686,
+          "bytes": 108302,
+          "sha256": "4645cd4cc862fae73d1253fad769b643844ac6125987fc644d78e40cd5bcee4b"
+        }
+      ]
+    },
+    {
+      "name": "Finances i assegurances",
+      "id": "finances",
+      "asset": "1663415526629-14b0ae51076e",
+      "page": "a-large-building-with-columns-and-a-flag-on-top-b07tX5xgZ5U",
+      "author": "Francais a Londres",
+      "description": "Façana de banc amb columnes",
+      "focal": [
+        0.5,
+        0.45
+      ],
+      "sourceUrl": "https://unsplash.com/photos/a-large-building-with-columns-and-a-flag-on-top-b07tX5xgZ5U",
+      "downloadUrl": "https://images.unsplash.com/photo-1663415526629-14b0ae51076e?auto=format&fit=max&w=3000&q=95&fm=jpg",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "usage": "Decorative editorial category context; not an evidence record, brand partnership, or location attribution",
+      "nativeDimensions": [
+        3000,
+        2250
+      ],
+      "nativeSHA256": "c03b3ae70a38190d73dcc96078b25083a3d3acd990fd9da6e1b26a8b11bc3b7b",
+      "derivatives": [
+        {
+          "path": "./media/sectors/finances-1200.webp",
+          "width": 1200,
+          "height": 343,
+          "bytes": 115532,
+          "sha256": "36ff279f1197567fa3e9150f9e86b93a94bffc6d168aaedb6d61c08c0d88b8dd"
+        },
+        {
+          "path": "./media/sectors/finances-1200.avif",
+          "width": 1200,
+          "height": 343,
+          "bytes": 71799,
+          "sha256": "88ac1876c5b23fb39ac477fa5baa46dde7b54bf38995585b9aeabdc3939d08b1"
+        },
+        {
+          "path": "./media/sectors/finances-2400.webp",
+          "width": 2400,
+          "height": 686,
+          "bytes": 352636,
+          "sha256": "4f8897cc7376d21303bc3209f5f15f535b67bc2d57b74997fa2a1be378854dc6"
+        },
+        {
+          "path": "./media/sectors/finances-2400.avif",
+          "width": 2400,
+          "height": 686,
+          "bytes": 218578,
+          "sha256": "9046e4c54377259fc5cba379b88fb6ec5d47ce8c3cae8c6a6875b6b944dc8eed"
+        }
+      ]
+    },
+    {
+      "name": "Tecnologia i continguts digitals",
+      "id": "tecnologia",
+      "asset": "1536702567485-2c5f40fec9c7",
+      "page": "close-up-photo-of-black-camera-body-uIF40JqldaI",
+      "author": "Alexander Andrews",
+      "description": "Detall d’una càmera digital",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "sourceUrl": "https://unsplash.com/photos/close-up-photo-of-black-camera-body-uIF40JqldaI",
+      "downloadUrl": "https://images.unsplash.com/photo-1536702567485-2c5f40fec9c7?auto=format&fit=max&w=3000&q=95&fm=jpg",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "usage": "Decorative editorial category context; not an evidence record, brand partnership, or location attribution",
+      "nativeDimensions": [
+        3000,
+        2002
+      ],
+      "nativeSHA256": "cbbbcac5c1ff62cf7744f23e7fa1bc553af3762076a61224326da57377ad1fc0",
+      "derivatives": [
+        {
+          "path": "./media/sectors/tecnologia-1200.webp",
+          "width": 1200,
+          "height": 343,
+          "bytes": 36226,
+          "sha256": "9efc1a8e3a5510cb1789db0018efc249e52abaf10171a1661469574df5044936"
+        },
+        {
+          "path": "./media/sectors/tecnologia-1200.avif",
+          "width": 1200,
+          "height": 343,
+          "bytes": 28447,
+          "sha256": "12287e1916d88af336fbdbd4dc8f5ebe20706236d470953f543c2499cb123a26"
+        },
+        {
+          "path": "./media/sectors/tecnologia-2400.webp",
+          "width": 2400,
+          "height": 686,
+          "bytes": 96398,
+          "sha256": "d60212354e1aeacb2cec961a206ccbf7eeb96ac5e46c06064cb2ccb502bf5627"
+        },
+        {
+          "path": "./media/sectors/tecnologia-2400.avif",
+          "width": 2400,
+          "height": 686,
+          "bytes": 69652,
+          "sha256": "171ca7c5397cda281c04892a193823711f0d4182062c367fd4ecb16b69e80123"
+        }
+      ]
+    },
+    {
+      "name": "Telecomunicacions",
+      "id": "telecomunicacions",
+      "asset": "1769944172433-2ddde5a6b9fd",
+      "page": "a-tall-telecommunications-tower-with-multiple-antennas-7L2zDtd-GQw",
+      "author": "iridial",
+      "description": "Antena de telecomunicacions",
+      "focal": [
+        0.5,
+        0.42
+      ],
+      "sourceUrl": "https://unsplash.com/photos/a-tall-telecommunications-tower-with-multiple-antennas-7L2zDtd-GQw",
+      "downloadUrl": "https://images.unsplash.com/photo-1769944172433-2ddde5a6b9fd?auto=format&fit=max&w=3000&q=95&fm=jpg",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "usage": "Decorative editorial category context; not an evidence record, brand partnership, or location attribution",
+      "nativeDimensions": [
+        3000,
+        4586
+      ],
+      "nativeSHA256": "c28a473e7344d88d630a14a8b06b95044635b7f093eadefaab4bd9db1aec2b29",
+      "derivatives": [
+        {
+          "path": "./media/sectors/telecomunicacions-1200.webp",
+          "width": 1200,
+          "height": 343,
+          "bytes": 14478,
+          "sha256": "4f8e668afc38773d665684e63f544ee08cbdb6bd41e9b296dce6056bcdbb7b09"
+        },
+        {
+          "path": "./media/sectors/telecomunicacions-1200.avif",
+          "width": 1200,
+          "height": 343,
+          "bytes": 11763,
+          "sha256": "c6a5954ef12fab7e0922e1fc0309da14fe93f298328b5012f716d91d8b393d67"
+        },
+        {
+          "path": "./media/sectors/telecomunicacions-2400.webp",
+          "width": 2400,
+          "height": 686,
+          "bytes": 46130,
+          "sha256": "8912cc6014fb54d667e1d736021a8a6971aad6877c45cedb34f74ef209f3414f"
+        },
+        {
+          "path": "./media/sectors/telecomunicacions-2400.avif",
+          "width": 2400,
+          "height": 686,
+          "bytes": 40047,
+          "sha256": "8104ec006eaec18aa97f1a98282a990ee6f5014fd5a2df2951f191384859d645"
+        }
+      ]
+    },
+    {
+      "name": "Immobiliari",
+      "id": "immobiliari",
+      "asset": "1769029299328-31fa8472ef67",
+      "page": "wooden-chalets-nestled-on-a-snowy-mountainside-72ehzxwCZIw",
+      "author": "Franck Ridel",
+      "description": "Xalets de muntanya a la neu",
+      "focal": [
+        0.5,
+        0.6
+      ],
+      "sourceUrl": "https://unsplash.com/photos/wooden-chalets-nestled-on-a-snowy-mountainside-72ehzxwCZIw",
+      "downloadUrl": "https://images.unsplash.com/photo-1769029299328-31fa8472ef67?auto=format&fit=max&w=3000&q=95&fm=jpg",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "usage": "Decorative editorial category context; not an evidence record, brand partnership, or location attribution",
+      "nativeDimensions": [
+        3000,
+        2000
+      ],
+      "nativeSHA256": "7519b276bd41ac44c763ac706b0f66b8b56a9dcde10f99a275e9e5851c448d72",
+      "derivatives": [
+        {
+          "path": "./media/sectors/immobiliari-1200.webp",
+          "width": 1200,
+          "height": 343,
+          "bytes": 102230,
+          "sha256": "7fbd166d441f6e2d5685cc0d0653b2033b861c56172e408d196330ee0fdf0140"
+        },
+        {
+          "path": "./media/sectors/immobiliari-1200.avif",
+          "width": 1200,
+          "height": 343,
+          "bytes": 63469,
+          "sha256": "dd634dc83f4c713535ea2eb5e35bf65bffad494c65bbeb0896274b681ae8f7a5"
+        },
+        {
+          "path": "./media/sectors/immobiliari-2400.webp",
+          "width": 2400,
+          "height": 686,
+          "bytes": 298674,
+          "sha256": "ce4f62a12a2c0612778c28ead14f28c76c1aff2438357590d1634404403c81e7"
+        },
+        {
+          "path": "./media/sectors/immobiliari-2400.avif",
+          "width": 2400,
+          "height": 686,
+          "bytes": 187661,
+          "sha256": "9586c769264924240493710e254538acb22bf551a9563b778967e16660cbbb69"
+        }
+      ]
+    },
+    {
+      "name": "Energia i serveis",
+      "id": "energia",
+      "asset": "1487875961445-47a00398c267",
+      "page": "wind-turbines-on-snowy-mountain-under-clear-blue-sky-during-daytime-nyL-rzwP-Mk",
+      "author": "Jason Mavrommatis",
+      "description": "Aerogeneradors en una muntanya nevada",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "sourceUrl": "https://unsplash.com/photos/wind-turbines-on-snowy-mountain-under-clear-blue-sky-during-daytime-nyL-rzwP-Mk",
+      "downloadUrl": "https://images.unsplash.com/photo-1487875961445-47a00398c267?auto=format&fit=max&w=3000&q=95&fm=jpg",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "usage": "Decorative editorial category context; not an evidence record, brand partnership, or location attribution",
+      "nativeDimensions": [
+        3000,
+        2000
+      ],
+      "nativeSHA256": "764f0c66a459e43836a372a27ed3eee382288c0ce76dbac3b1d27dcba13cbade",
+      "derivatives": [
+        {
+          "path": "./media/sectors/energia-1200.webp",
+          "width": 1200,
+          "height": 343,
+          "bytes": 14510,
+          "sha256": "8260e5bd6b92ce0c64537a774fcc6c347beefec0132585171328e32c9fbd0f1c"
+        },
+        {
+          "path": "./media/sectors/energia-1200.avif",
+          "width": 1200,
+          "height": 343,
+          "bytes": 13579,
+          "sha256": "57dedefb060791502d2ed784b0a7c82f63bebff50bcb019f6543a27baa136570"
+        },
+        {
+          "path": "./media/sectors/energia-2400.webp",
+          "width": 2400,
+          "height": 686,
+          "bytes": 81470,
+          "sha256": "cb7b9c1494fe29418e0478bd98c96de454a75e7c0f780c4f6a674e56760d2e17"
+        },
+        {
+          "path": "./media/sectors/energia-2400.avif",
+          "width": 2400,
+          "height": 686,
+          "bytes": 69440,
+          "sha256": "7d9fa9306752268b2ab69d9489f2fc8f49eb95739ee7e5346f3c11ba2be5117b"
+        }
+      ]
+    },
+    {
+      "name": "Esdeveniments i entreteniment",
+      "id": "esdeveniments",
+      "asset": "1773346563165-f63acbfd06a0",
+      "page": "crowd-enjoying-a-concert-with-colorful-stage-lights-IIOcBx7c8pM",
+      "author": "Jessica Christian",
+      "description": "Públic i il·luminació d’un concert",
+      "focal": [
+        0.5,
+        0.9
+      ],
+      "sourceUrl": "https://unsplash.com/photos/crowd-enjoying-a-concert-with-colorful-stage-lights-IIOcBx7c8pM",
+      "downloadUrl": "https://images.unsplash.com/photo-1773346563165-f63acbfd06a0?auto=format&fit=max&w=3000&q=95&fm=jpg",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "usage": "Decorative editorial category context; not an evidence record, brand partnership, or location attribution",
+      "nativeDimensions": [
+        3000,
+        2000
+      ],
+      "nativeSHA256": "aba5327f329cb2dba349ab6827248e9f8a53e08c2ab6b3930f1cb90b96e77eaa",
+      "derivatives": [
+        {
+          "path": "./media/sectors/esdeveniments-1200.webp",
+          "width": 1200,
+          "height": 343,
+          "bytes": 72388,
+          "sha256": "eb26b438d76663d891990c7f7ed56fa1417677fbebd7707251bf8f3c82f83e27"
+        },
+        {
+          "path": "./media/sectors/esdeveniments-1200.avif",
+          "width": 1200,
+          "height": 343,
+          "bytes": 51544,
+          "sha256": "038691ae30140330219cb3805e25045a8ea44cce8aa9f5c7511c18942293e174"
+        },
+        {
+          "path": "./media/sectors/esdeveniments-2400.webp",
+          "width": 2400,
+          "height": 686,
+          "bytes": 259280,
+          "sha256": "1f55255e06f0e86a59394b438bfbdc11826e493ba00cf23795ba70a086013776"
+        },
+        {
+          "path": "./media/sectors/esdeveniments-2400.avif",
+          "width": 2400,
+          "height": 686,
+          "bytes": 165698,
+          "sha256": "a6ea382c2d49f88225c0ed137d768edfeee9390b0e6459ebdb439ebc52314b50"
+        }
+      ]
+    },
+    {
+      "name": "Salut i benestar",
+      "id": "salut",
+      "asset": "1667205742805-b5154830522b",
+      "page": "a-man-standing-on-a-snowy-mountain-_eaLwN2SUzk",
+      "author": "Dmitrii Vaccinium",
+      "description": "Trail runner en una muntanya nevada",
+      "focal": [
+        0.5,
+        0.16
+      ],
+      "sourceUrl": "https://unsplash.com/photos/a-man-standing-on-a-snowy-mountain-_eaLwN2SUzk",
+      "downloadUrl": "https://images.unsplash.com/photo-1667205742805-b5154830522b?auto=format&fit=max&w=3000&q=95&fm=jpg",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "usage": "Decorative editorial category context; not an evidence record, brand partnership, or location attribution",
+      "nativeDimensions": [
+        3000,
+        4500
+      ],
+      "nativeSHA256": "c0a64b5f1974ff84d427b1d4c3b0e6eb56068e6d7653cbcec0232e8d12ae51cc",
+      "derivatives": [
+        {
+          "path": "./media/sectors/salut-1200.webp",
+          "width": 1200,
+          "height": 343,
+          "bytes": 28724,
+          "sha256": "1d6389d3c1fab2182caeb95f62b1afa15c9647625c03df22e754972f506be236"
+        },
+        {
+          "path": "./media/sectors/salut-1200.avif",
+          "width": 1200,
+          "height": 343,
+          "bytes": 23348,
+          "sha256": "7b67913f139c363817a5a2a19a000f73bd4e8aecea6781a0daf16a17b48b7598"
+        },
+        {
+          "path": "./media/sectors/salut-2400.webp",
+          "width": 2400,
+          "height": 686,
+          "bytes": 81272,
+          "sha256": "ef4442f5ffd2c23e0418438202c9cd366f51ef1277c13a3d53cb73a7529c22a0"
+        },
+        {
+          "path": "./media/sectors/salut-2400.avif",
+          "width": 2400,
+          "height": 686,
+          "bytes": 62344,
+          "sha256": "a5566b51db34396c7bb871675af1bde65cc01cb33485a81c10af440868962587"
+        }
+      ]
+    },
+    {
+      "name": "Turisme i allotjament",
+      "id": "turisme",
+      "asset": "1781456651369-e829182b2eb0",
+      "page": "alpine-hotels-beside-a-ski-slope-with-towering-snow-capped-mountains-bU6FP2dIHcY",
+      "author": "Barney Goodman",
+      "description": "Hotel alpí al costat d’una pista",
+      "focal": [
+        0.5,
+        0.55
+      ],
+      "sourceUrl": "https://unsplash.com/photos/alpine-hotels-beside-a-ski-slope-with-towering-snow-capped-mountains-bU6FP2dIHcY",
+      "downloadUrl": "https://images.unsplash.com/photo-1781456651369-e829182b2eb0?auto=format&fit=max&w=3000&q=95&fm=jpg",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "usage": "Decorative editorial category context; not an evidence record, brand partnership, or location attribution",
+      "nativeDimensions": [
+        3000,
+        1989
+      ],
+      "nativeSHA256": "fa216612d441eddbac259131425c08229632470c42767d419956e4c48e5b65ab",
+      "derivatives": [
+        {
+          "path": "./media/sectors/turisme-1200.webp",
+          "width": 1200,
+          "height": 343,
+          "bytes": 118594,
+          "sha256": "173f29943b87a86e250d638a3d5598d4084d43e83c46913ad7bf52d12617b3b4"
+        },
+        {
+          "path": "./media/sectors/turisme-1200.avif",
+          "width": 1200,
+          "height": 343,
+          "bytes": 67896,
+          "sha256": "75019ed279d2fc4c89f530b5df08813768824e860089ff62b4408e075e10bd24"
+        },
+        {
+          "path": "./media/sectors/turisme-2400.webp",
+          "width": 2400,
+          "height": 686,
+          "bytes": 387414,
+          "sha256": "3b33ba4aadabaf6f542893d170daf1418c48927b4e97b64ce008ac01c0621f46"
+        },
+        {
+          "path": "./media/sectors/turisme-2400.avif",
+          "width": 2400,
+          "height": 686,
+          "bytes": 213017,
+          "sha256": "5347768ebb7888b9de9b58d83ca283afcd2cf3e28991984bf6b01f20820aae69"
+        }
+      ]
+    },
+    {
+      "name": "Altres",
+      "id": "altres",
+      "asset": "1770563181834-84edf4cedb07",
+      "page": "group-of-friends-hiking-on-a-mountain-trail-NDrFQQORTRU",
+      "author": "Timur Shakerzianov",
+      "description": "Grup d’excursionistes a la muntanya",
+      "focal": [
+        0.5,
+        0.55
+      ],
+      "sourceUrl": "https://unsplash.com/photos/group-of-friends-hiking-on-a-mountain-trail-NDrFQQORTRU",
+      "downloadUrl": "https://images.unsplash.com/photo-1770563181834-84edf4cedb07?auto=format&fit=max&w=3000&q=95&fm=jpg",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "usage": "Decorative editorial category context; not an evidence record, brand partnership, or location attribution",
+      "nativeDimensions": [
+        3000,
+        2000
+      ],
+      "nativeSHA256": "b1bd0dd5de5318a30eaf51a2a6db26678289d465fe56953a491ad0aad01c92e8",
+      "derivatives": [
+        {
+          "path": "./media/sectors/altres-1200.webp",
+          "width": 1200,
+          "height": 343,
+          "bytes": 73764,
+          "sha256": "df71481e0f27b1bcd26442862a7b72af1ba2f7a375601587c24f52a94373ed26"
+        },
+        {
+          "path": "./media/sectors/altres-1200.avif",
+          "width": 1200,
+          "height": 343,
+          "bytes": 49223,
+          "sha256": "de3fc68a978b2e4b0c6701fb3805a73f9149d40d04fefebe4b36b34c3e368899"
+        },
+        {
+          "path": "./media/sectors/altres-2400.webp",
+          "width": 2400,
+          "height": 686,
+          "bytes": 262042,
+          "sha256": "4c0b2f4c5f405395a7ea977709061c0ec77dff9d6532d87685ce057843447514"
+        },
+        {
+          "path": "./media/sectors/altres-2400.avif",
+          "width": 2400,
+          "height": 686,
+          "bytes": 147821,
+          "sha256": "4943d294205214ccdd6ce512618f9dd8fb27d78435ceba8ad963d886c25e2b7c"
+        }
+      ]
+    },
+    {
+      "name": "Equipament i esports",
+      "id": "equipament",
+      "asset": "1641799540167-44c4865934e9",
+      "page": "a-pair-of-skis-sitting-on-top-of-a-snow-covered-slope-BLKZfjRaa6Y",
+      "author": "Hendrik Morkel",
+      "description": "Esquís sobre una pista de neu",
+      "focal": [
+        0.5,
+        0.6
+      ],
+      "sourceUrl": "https://unsplash.com/photos/a-pair-of-skis-sitting-on-top-of-a-snow-covered-slope-BLKZfjRaa6Y",
+      "downloadUrl": "https://images.unsplash.com/photo-1641799540167-44c4865934e9?auto=format&fit=max&w=3000&q=95&fm=jpg",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "usage": "Decorative editorial category context; not an evidence record, brand partnership, or location attribution",
+      "nativeDimensions": [
+        3000,
+        1688
+      ],
+      "nativeSHA256": "02648f1b5d604037bc82a92985394654c42245838239d9c3fcf260abee424455",
+      "derivatives": [
+        {
+          "path": "./media/sectors/equipament-1200.webp",
+          "width": 1200,
+          "height": 343,
+          "bytes": 26188,
+          "sha256": "98094ef1b308ae93caccf5b5497d524084a5e71a48cf9e3e8abe22c6ff572796"
+        },
+        {
+          "path": "./media/sectors/equipament-1200.avif",
+          "width": 1200,
+          "height": 343,
+          "bytes": 17578,
+          "sha256": "d7f489c74f187c7789d804e0216503663d1bb9ae0440343d0d22e1bfce8cd61f"
+        },
+        {
+          "path": "./media/sectors/equipament-2400.webp",
+          "width": 2400,
+          "height": 686,
+          "bytes": 69298,
+          "sha256": "5011de6ce8dbdc4be7d851bf6b431da57894c8845a4f50e3f081f99b6c85ac2b"
+        },
+        {
+          "path": "./media/sectors/equipament-2400.avif",
+          "width": 2400,
+          "height": 686,
+          "bytes": 45997,
+          "sha256": "11ba154891f2cb95c98ec17d0e6064ad77797ac6b4aa0fd721f81ab5171d0206"
+        }
+      ]
+    }
+  ]
+}

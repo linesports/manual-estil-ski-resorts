@@ -29,7 +29,7 @@
   window.OLAFBrandExplorer = class {
     constructor({ directory, profiles, sectorForBrand, onBrand, onFilter, onUpdate, onStation, onBack, onDirectoryChange }) {
       Object.assign(this, { directory, profiles, sectorForBrand, onBrand, onFilter, onUpdate, onStation, onBack, onDirectoryChange });
-      this.query = ''; this.station = '*'; this.sector = '*'; this.scope = 'with'; this.account = '*'; this.expanded = false;
+      this.query = ''; this.station = '*'; this.sector = '*'; this.scope = 'with'; this.account = '*'; this.expanded = false; this.pageSize = 18;
       this.root = el('section', 'brand-surface'); this.root.id = 'brandSurface'; this.root.hidden = true;
       const intro = el('div', 'brand-introduction'); this.intro = intro;
       const title = el('h1', '', 'Comptes de marca'); title.id = 'brandDirectoryTitle'; title.tabIndex = -1;
@@ -47,7 +47,7 @@
       this.resultNote = el('p', 'brand-results-note'); this.resultNote.setAttribute('aria-live', 'polite');
       this.list = el('div', 'brand-directory'); this.list.id = 'brandDirectory';
       this.more = el('button', 'brand-directory-more', 'Veure més marques'); this.more.type = 'button';
-      this.more.addEventListener('click', () => { this.expanded = !this.expanded; this.renderRows(); if(this.expanded) this.list.children[5]?.focus(); });
+      this.more.addEventListener('click', () => { this.expanded = !this.expanded; this.renderRows(); if(this.expanded) this.list.children[this.pageSize]?.focus(); });
       this.detail = el('section', 'brand-detail'); this.detail.id = 'brandDetail'; this.detail.hidden = true;
       this.directoryArea = el('div', 'brand-directory-area'); this.directoryArea.append(toolbar, this.resultNote, this.list, this.more); this.root.append(intro, this.directoryArea, this.detail);
       document.getElementById('stationFormatRow').before(this.root);
@@ -70,28 +70,30 @@
         (this.scope === 'all' || brand.items.length) &&
         (this.station === '*' || brand.stationIds.includes(this.station)) &&
         (this.sector === '*' || this.sectorForBrand(brand.aliases[0]) === this.sector) &&
-        (!query || window.OLAF_BRAND_MODEL.normalize([brand.name, ...brand.accounts.map(a => a.username), ...brand.stationIds.map(id => this.profile(id)?.name)].join(' ')).includes(query)));
+        (!query || window.OLAF_BRAND_MODEL.normalize([brand.name, ...brand.accounts.map(a => a.username), ...brand.stationIds.map(id => this.profile(id)?.name)].join(' ')).includes(query)))
+        .sort((a, b) => b.publicationCount - a.publicationCount || a.name.localeCompare(b.name, 'ca'));
     }
 
     renderRows() {
       const brands = this.filteredBrands(); this.list.replaceChildren(); if(this.search.value !== this.query) this.search.value = this.query; this.sectorSelect.value = this.sector; this.stationSelect.value = this.station; this.scopeSelect.value = this.scope;
-      this.resultNote.textContent = brands.length + ' marques' + (this.scope === 'with' ? ' amb publicacions vinculades a les estacions' : ' · la disponibilitat varia segons el compte');
-      (this.expanded ? brands : brands.slice(0, 5)).forEach(brand => {
-        const row = el('a', 'brand-directory-row'); row.dataset.brandId = brand.id;
+      this.resultNote.textContent = brands.length + (brands.length === 1 ? ' marca' : ' marques') + (this.scope === 'with' ? ' amb publicacions vinculades a les estacions' : ' · la disponibilitat varia segons el compte') + ' · de més a menys publicacions';
+      (this.expanded ? brands : brands.slice(0, this.pageSize)).forEach(brand => {
+        const row = el('a', 'brand-directory-row'); row.dataset.brandId = brand.id; row.dataset.publicationCount = brand.publicationCount;
         row.href = window.OLAF_NAVIGATION.write(location.href, { ...window.OLAF_NAVIGATION.read(location.href), mode: 'brands', brand: brand.id, account: '*', piece: '', media: 0 }).href;
         const avatar = el('span', 'brand-avatar');
         const image = brand.accounts.find(account => account.avatar)?.avatar;
-        if (image) { const img = el('img'); img.width = 44; img.height = 36; img.src = image; img.alt = ''; img.loading = 'lazy'; img.addEventListener('error', () => img.hidden = true, { once: true }); avatar.append(img); }
+        const fallback = el('span', 'brand-logo-fallback', brand.name); fallback.hidden = !!image; avatar.append(fallback);
+        if (image) { const img = el('img'); img.width = 112; img.height = 96; img.src = image; img.alt = ''; img.loading = 'lazy'; img.addEventListener('error', () => { img.hidden = true; fallback.hidden = false; }, { once: true }); avatar.append(img); }
         const identity = el('span', 'brand-row-identity'); identity.append(el('strong', '', brand.name), el('span', '', this.sectorForBrand(brand.aliases[0])));
         const accounts = el('span', 'brand-row-accounts', brand.accounts.filter(a => a.identityStatus === 'confirmed').slice(0, 2).map(a => '@' + a.username).join(' · ') || 'Compte pendent de verificar');
         const stations = el('span', 'brand-row-stations', brand.stationIds.slice(0, 3).map(id => this.profile(id)?.name || id).join(' · ') + (brand.stationIds.length > 3 ? ' +' + (brand.stationIds.length - 3) : ''));
-        const count = el('span', 'brand-row-count', brand.publicationCount ? brand.publicationCount + ' ' + (brand.publicationCount === 1 ? 'publicació' : 'publicacions') : 'Sense peces recuperades');
+        const count = el('span', 'brand-row-count'); count.append(el('strong', '', new Intl.NumberFormat('ca-ES').format(brand.publicationCount)), el('span', '', brand.publicationCount ? (brand.publicationCount === 1 ? 'publicació' : 'publicacions') : 'peces recuperades'));
         row.append(avatar, identity, accounts, stations, count, arrow());
         row.addEventListener('click', event => { if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); this.account = '*'; this.onBrand(brand.id, true); }); this.list.append(row);
       });
       if (!brands.length) this.list.append(el('p', 'brand-no-results', 'Cap marca coincideix amb aquesta cerca. Prova un altre nom, sector o estació.'));
-      this.more.hidden = brands.length <= 5;
-      this.more.textContent = this.expanded ? 'Mostrar menys marques' : 'Veure les ' + (brands.length - 5) + ' marques restants';
+      this.more.hidden = brands.length <= this.pageSize;
+      this.more.textContent = this.expanded ? 'Mostrar menys marques' : (brands.length - this.pageSize === 1 ? 'Veure una marca més' : 'Veure les ' + (brands.length - this.pageSize) + ' marques restants');
       this.more.setAttribute('aria-expanded', String(this.expanded));
     }
 
