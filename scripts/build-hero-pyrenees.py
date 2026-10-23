@@ -43,7 +43,7 @@ def build(kv):
   dest=OUTPUT/(stem+'.'+ext);cmd=['ffmpeg','-y','-loglevel','error','-filter_complex_threads','1','-i',str(p),'-filter_complex',flt,'-map','[out]','-an','-map_metadata','-1']
   if ext=='mp4':cmd+=['-c:v','libx264','-crf','24','-preset','medium','-maxrate','2500k','-bufsize','5000k','-profile:v','high','-pix_fmt','yuv420p','-movflags','+faststart','-g','50','-threads','2']
   else:cmd+=['-c:v','libvpx-vp9','-crf','33','-b:v','2000k','-maxrate','2600k','-bufsize','5200k','-deadline','good','-cpu-used','4','-row-mt','1','-threads','2','-g','100','-pix_fmt','yuv420p']
- 
+
   if not (RESUME and dest.exists()):run(cmd+[str(dest)])
   result=probe(dest);v=next(s for s in result['streams']if s['codec_type']=='video');run(['ffmpeg','-v','error','-i',str(dest),'-f','null','-'])
   derivatives.append({'path':'./media/hero/'+dest.name,'bytes':dest.stat().st_size,'sha256':sha(dest),'codec':v['codec_name'],'width':v['width'],'height':v['height'],'duration':float(result['format']['duration']),'audio':False,'fullDecode':'passed'})

@@ -41,7 +41,7 @@ def encode(e):
   path=out/f'{k}-1080.{ext}'
   cmd=['ffmpeg','-y','-loglevel','error','-filter_complex_threads','1','-threads','2','-i',str(source),'-filter_complex',';'.join(filters),'-map','[out]','-an','-map_metadata','-1','-threads','2']
   cmd+=['-c:v','libvpx-vp9','-crf','34','-b:v','1700k','-maxrate','2400k','-bufsize','4800k','-deadline','good','-cpu-used','4','-row-mt','1','-g','150']if ext=='webm'else['-c:v','libx264','-crf','24','-preset','medium','-maxrate','2500k','-bufsize','5M','-profile:v','high','-level','4.1','-movflags','+faststart','-g','50']
-  
+
   reusable=False
   if path.exists() and path.stat().st_size>0:
    try:
