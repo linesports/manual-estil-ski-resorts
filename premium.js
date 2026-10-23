@@ -121,7 +121,7 @@
   new IntersectionObserver(entries => { heroInView = entries[0].isIntersecting; playback(); }, { threshold: .02 }).observe(hero);
   document.addEventListener('visibilitychange', playback);
 
-  const targets = { overview: 'stationOverview', activations: 'eventLibrary', pieces: 'viewer', analysis: 'eventInsights' };
+  const targets = { overview: 'stationHero', activations: 'eventLibrary', pieces: 'viewer', analysis: 'eventInsights' };
   function sectionTarget(section) {
     const node = document.getElementById(targets[section]);
     return section === 'analysis' && node?.hidden ? document.getElementById('storyDetails') : node;
@@ -209,7 +209,7 @@
     hero.hidden = sectionNav.hidden = overview.hidden = !stationMode;
     if (stationMode && scene) {
       document.getElementById('heroPlace').textContent = scene.place;
-      document.getElementById('stationOverviewTitle').textContent = scene.name + ' en un cop d’ull';
+      document.getElementById('stationOverviewTitle').textContent = 'En un cop d’ull';
       navRoutes(state);
       window.OLAF_WEATHER?.show({ stationId: state.station, scene, container: document.getElementById('stationWeather') });
     } else window.OLAF_WEATHER?.hide();

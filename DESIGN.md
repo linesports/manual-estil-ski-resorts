@@ -8,10 +8,10 @@ La referència escollida explícitament per l’usuari és Switzerland Tourism /
 
 - Inter autohostatjada amb llicència oberta. La STAllegra de Switzerland Tourism no es copia.
 - Fons blanc `#fff`, tinta `#272726`, text secundari `#62625f`, vermell `#b50024` i logo `#db001c`. Gris `#f2f2f2` reservat a superfícies secundàries.
-- Hero real de `100svh`, màxim 1120 px, vel negre del 20%, títol blanc centrat de 76–88 px, ombra negra suau i selector explícit.
+- Hero real de `100svh`, màxim 1120 px, vel negre del 20%, títol blanc centrat de 76–88 px, ombra amb petit desplaçament, halo fosc difús darrere del nom i selector explícit.
 - Vídeo panoràmic de Baqueira amb controls de pausa, pausa fora de pantalla i fotografia de reserva. Moviment reduït o estalvi de dades mantenen la fotografia fins a una reproducció voluntària. El vídeo és context territorial; no forma part de les evidències de temporada 25–26.
 - Capçalera global blanca de 110 px i menú de secció de 88 px just sota el hero, fixat en fer scroll. La selecció usa contorn vermell; focus visible.
-- Contingut de 1190 px, sense caixes per a cada paràgraf. Ubicació, mapa sense marc i temps actual en la mateixa introducció clara. Cartografia Natural Earth de domini públic, silueta grisa visible i marcador vermell.
+- Contingut de 1190 px, sense caixes per a cada paràgraf. Resum, recompte de peces, mapa sense marc i temps actual integrats a la part baixa del hero sobre un degradat fosc. Després del menú comencen directament els filtres i les col·leccions. Cartografia Natural Earth de domini públic, silueta grisa visible i marcador vermell.
 - Col·leccions fotogràfiques amb radi de 16 px, sense ombra; només representen agrupacions reals existents. Hover: zoom 1.05, retall interior de 3 px i desplaçament del text de 5 px. Sense aquests moviments quan es demana moviment reduït.
 - Les fotografies de presentació poden tenir un enquadrament editorial; cartells i fonts verticals modestes es conserven sencers. L’original complet sempre continua accessible al visor.
 - Meteorologia de MET Norway amb hora de validesa, hora de consulta, atribució, refresc de 12 minuts mentre la pàgina és visible i estats de fallada/antiguitat explícits. És una estimació del model per al domini, no un termòmetre físic ni un estat de pistes.
