@@ -2,13 +2,19 @@
 
 Visor de referències publicitàries d’Instagram per a un equip de màrqueting. Mode d’ús: consultar, comparar i guardar. El contingut és l’evidència; la interfície n’organitza l’accés i no n’afegeix afirmacions.
 
-## Identitat preservada
+## Direcció visual d’escriptori — Zermatt
 
-- Inter autohostat, text grafit `#20292d`, gris neu `#edf0f1`, accent blau pissarra `#6085a3`.
-- Text secundari dels controls `#435967`, focus `#244f6d`, superfície de controls `#f4f6f7`.
-- Fotografies reals de context amb degradats progressius. No es presenten com evidències noves. En mòbil es reforça la superfície clara per preservar la lectura.
-- Pàgina contínua, sense contenidors decoratius per a cada paràgraf. Graella de col·leccions i directori de marques, espaiat generós entre tasques, agrupació estreta entre un control i la seva etiqueta.
-- Tipografia de consulta: cos 16px, controls 14px, suport 12–14px. Títols 34–56px segons context. Els menús d’estació mantenen opcions de 14px.
+La referència escollida explícitament per l’usuari és Switzerland Tourism / Zermatt. Aquesta direcció substitueix la paleta blava i la capçalera ambiental anteriors. Només s’implementa i es verifica escriptori (1280, 1440 i 1920 px).
+
+- Inter autohostatjada amb llicència oberta. La STAllegra de Switzerland Tourism no es copia.
+- Fons blanc `#fff`, tinta `#272726`, text secundari `#62625f`, vermell `#b50024` i logo `#db001c`. Gris `#f2f2f2` reservat a superfícies secundàries.
+- Hero real de `100svh`, màxim 1120 px, vel negre del 20%, títol blanc centrat de 76–88 px, ombra negra suau i selector explícit.
+- Vídeo panoràmic de Baqueira amb controls de pausa, pausa fora de pantalla i fotografia de reserva. Moviment reduït o estalvi de dades mantenen la fotografia fins a una reproducció voluntària. El vídeo és context territorial; no forma part de les evidències de temporada 25–26.
+- Capçalera global blanca de 110 px i menú de secció de 88 px just sota el hero, fixat en fer scroll. La selecció usa contorn vermell; focus visible.
+- Contingut de 1190 px, sense caixes per a cada paràgraf. Ubicació, mapa sense marc i temps actual en la mateixa introducció clara. Cartografia Natural Earth de domini públic, silueta grisa visible i marcador vermell.
+- Col·leccions fotogràfiques amb radi de 16 px, sense ombra; només representen agrupacions reals existents. Hover: zoom 1.05, retall interior de 3 px i desplaçament del text de 5 px. Sense aquests moviments quan es demana moviment reduït.
+- Les fotografies de presentació poden tenir un enquadrament editorial; cartells i fonts verticals modestes es conserven sencers. L’original complet sempre continua accessible al visor.
+- Meteorologia de MET Norway amb hora de validesa, hora de consulta, atribució, refresc de 12 minuts mentre la pàgina és visible i estats de fallada/antiguitat explícits. És una estimació del model per al domini, no un termòmetre físic ni un estat de pistes.
 
 ## Arquitectura de la informació
 
@@ -27,15 +33,13 @@ La navegació principal i els enllaços entre fitxes són enllaços HTML. Els ca
 - Fletxes del carrusel només dins el seu propi àmbit; no intercepten vídeos, formularis o diàlegs. Imatges ampliables amb botó i diàleg natiu amb tancament Escape.
 - L’enllaç a Instagram és visible sota cada peça, fora del desplegable d’anàlisi. El text original té una vista prèvia i una lectura completa independent; els textos curts es mostren sencers i les Stories sense text no n’inventen cap.
 - Controls amb objectiu còmode de 44px; contorns de focus contrastats, selecció subratllada i indicació textual de filtres actius. La preferència de moviment reduït desactiva paral·laxi i transicions.
-- Errors de càrrega mantenen portada, explicació i font quan existeixen; una portada no simula un vídeo. Localitzador transparent de Natural Earth integrat a la capçalera, amb accés explícit al mapa complet d’OpenStreetMap; si el SVG no està disponible, la ubicació textual i l’enllaç continuen accessibles.
+- Errors de càrrega mantenen portada, explicació i font quan existeixen; una portada no simula un vídeo. Localitzador de Natural Earth integrat a la introducció sota el hero, amb accés explícit al mapa complet d’OpenStreetMap; si el SVG no està disponible, la ubicació textual i l’enllaç continuen accessibles.
 - Desar o eliminar només es confirma després d’escriure al navegador. Una eliminació té opció de desfer.
 
 ## Límits de les afirmacions
 
 La interfície no pressuposa contractes, publicitat de pagament ni arxiu anual de Stories desaparegudes. Es mantenen els textos originals, l’autoria, les limitacions de cobertura i les fonts. Els vídeos conserven controls natius i una explicació textual de la peça; no s’han inventat subtítols ni transcripcions del seu àudio. La validació automatitzada no es presenta com una certificació WCAG completa.
 
-## Refinament visual d’octubre de 2026
+## Abast i precedència
 
-Es conserva el sistema original. Fotografia responsive amb punt focal i variants d’escriptori, portades de col·leccions que respecten la proporció, selector d’estació explícit i espais més compactes abans de les peces. El mapa és context geogràfic sense marc ni superfície pròpia. La informació secundària de fonts queda en un desplegable natiu. No s’han afegit targetes ni canviat l’arquitectura.
-
-Abast fixat per l’usuari: només versió d’escriptori. No desenvolupar variants mòbils.
+La nova direcció Zermatt se situa sobre el refinament original d’octubre de 2026, conservant models, corpus i fonts. La proposta d’atlas descartada no s’utilitza. Només versió d’escriptori; no desenvolupar variants mòbils. Publicació posterior a la revisió del resultat local.

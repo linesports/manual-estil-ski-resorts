@@ -21,20 +21,42 @@
   },
   "baqueira_beret:iberdrola": {
     "pieceId": "brand:iberdrola:DTxizIgiFC4:baqueira_beret",
-    "image": "https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media/DTxizIgiFC4_01.webp",
-    "reason": "Publicació de la marca amb el nom de la Copa i la porta de sortida."
+    "image": "https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media/DTxizIgiFC4_03.webp",
+    "reason": "Tercer element del carrusel de la marca: fotografia de l’equipament i els trofeus d’Iberdrola. Retall de presentació; original sencer al visor.",
+    "width": 1080,
+    "height": 1350,
+    "fit": "cover",
+    "position": "50% 45%",
+    "previewPhoto": true
   },
   "baqueira_beret:winter-driving": {
-    "pieceId": "brand:audispain:DSpIj2NjFxh:baqueira_beret",
-    "image": "https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media-4/DSpIj2NjFxh_03.webp",
-    "reason": "Tercer element del carrusel oficial amb la pista de Baqueira identificada; làmina completa.",
-    "width": 1080,
-    "height": 1346
+    "pieceId": "brand:audispain:DRVFhn0mIwM:baqueira_beret",
+    "image": "https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media-4/DRVFhn0mIwM_01.webp",
+    "width": 750,
+    "height": 1333,
+    "fit": "cover",
+    "position": "50% 70%",
+    "previewPhoto": true,
+    "reason": "Fotografia original del vehicle en una carretera nevada. Enquadrament centrat en el cotxe; la publicació vincula l’experiència amb Baqueira i Sierra Nevada, sense atribuir aquest fotograma a una ubicació concreta.",
+    "alternates": [
+      {
+        "pieceId": "brand:audispain:DSpIj2NjFxh:baqueira_beret",
+        "image": "https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media-4/DSpIj2NjFxh_03.webp",
+        "reason": "Tercer element del carrusel oficial amb la pista de Baqueira identificada; làmina completa.",
+        "width": 1080,
+        "height": 1346
+      }
+    ]
   },
   "baqueira_beret:snow-beer": {
     "pieceId": "brand:sanmiguel_es:DVJQVDaCIxz:baqueira_beret",
     "image": "https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media-4/DVJQVDaCIxz_01.webp",
-    "reason": "Fotograma original de l’activació Snow Beer Days a la terrassa, sense inventar atribució de lloc."
+    "reason": "Fotografia original del servei de l’activació a la terrassa. Enquadrament centrat en la persona i el servei; no s’atribueix una localització concreta al fotograma del recap.",
+    "width": 750,
+    "height": 1332,
+    "fit": "cover",
+    "position": "50% 45%",
+    "previewPhoto": true
   },
   "baqueira_beret:naut-aran": {
     "pieceId": "post:baqueira_beret|DVEmjgiiOFZ",
@@ -65,15 +87,17 @@
 
   function select(group) {
     const choices = [];
-    const picked = editorial[group.id];
+    const entry = editorial[group.id];
+    const curated = entry ? [entry, ...(entry.alternates || [])] : [];
     for (const piece of group.items || []) {
       const images = [...(piece.media || []), { image: piece.image, mediaType: piece.mediaType }]
         .filter(media => media.image && !/^(?:data:|about:blank$)/i.test(media.image));
       if (!images.length) continue;
       const candidates = images.map(media => candidate(piece, media)).sort((a, b) => b.score - a.score);
       let cover = candidates[0];
-      if (picked && identity(piece).includes(picked.pieceId)) {
-        cover = { ...candidate(piece, picked), ...picked, pieceId: piece.id, score: 1000 };
+      const picked = curated.find(choice => identity(piece).includes(choice.pieceId));
+      if (picked) {
+        cover = { ...candidate(piece, picked), ...picked, pieceId: piece.id, score: 1000 - curated.indexOf(picked) };
       }
       choices.push(cover);
     }
@@ -81,7 +105,7 @@
     const seen = new Set();
     return choices.sort((a, b) => b.score - a.score)
       .filter(cover => { const key = filename(cover.image); if (seen.has(key)) return false; seen.add(key); return true; })
-      .slice(0, 3).reverse().map(({ score, reason, ...cover }) => cover);
+      .slice(0, 3).reverse().map(({ score, reason, alternates, ...cover }) => cover);
   }
 
   const api = { select };

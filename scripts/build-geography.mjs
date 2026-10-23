@@ -130,9 +130,9 @@ for (const [regionId, ids] of Object.entries(byRegion)) {
     const markers = points.map(point => {
       const [x, y] = project(point);
       assert(x >= padding && x <= width - padding && y >= padding && y <= height - padding, `${id}: projected point clipped`);
-      return `<g data-coordinates="${point.join(',')}"><circle cx="${number(x)}" cy="${number(y)}" r="8" fill="#426b87" opacity=".16"/><circle cx="${number(x)}" cy="${number(y)}" r="4.2" fill="#426b87" stroke="#edf0f1" stroke-width="1.5"/></g>`;
+      return `<g data-coordinates="${point.join(',')}"><circle cx="${number(x)}" cy="${number(y)}" r="9" fill="#b50024" opacity=".18"/><circle cx="${number(x)}" cy="${number(y)}" r="4.5" fill="#b50024" stroke="#fff" stroke-width="1.5"/></g>`;
     }).join('');
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><title>${escapeXML(scene.name)} · situació geogràfica aproximada</title><desc>Made with Natural Earth. Public domain. Mercator. ${escapeXML(region.label)}. ${region.bounds.join(', ')}.</desc><g fill="#d9e2e7" stroke="#8399a6" stroke-width=".7" stroke-linejoin="round" fill-rule="evenodd">${outlines}</g>${markers}</svg>\n`;
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><title>${escapeXML(scene.name)} · situació geogràfica aproximada</title><desc>Made with Natural Earth. Public domain. Mercator. ${escapeXML(region.label)}. ${region.bounds.join(', ')}.</desc><g fill="#d1d1cc" stroke="#82827c" stroke-width=".8" stroke-linejoin="round" fill-rule="evenodd">${outlines}</g>${markers}</svg>\n`;
     const image = `./media/geography/${id}.svg`;
     const bytes = Buffer.byteLength(svg);
     assert(bytes < 15360, `${id}: locator exceeds 15 KiB (${bytes})`);

@@ -46,3 +46,12 @@ test('a publication with no usable image never emits an empty img source', () =>
   assert.deepEqual(select({ id: 'empty:event', items: [piece('missing', '')] }), []);
   assert.deepEqual(select({ id: 'empty:event', items: [] }), []);
 });
+
+test('the photographic Audi preview outranks its information panel when both publications match', () => {
+  const panel = piece('brand:audispain:DSpIj2NjFxh:baqueira_beret', 'https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media-4/DSpIj2NjFxh_01.webp');
+  panel.media.push({ image: 'https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media-4/DSpIj2NjFxh_03.webp', mediaType: 'image' });
+  const photo = piece('brand:audispain:DRVFhn0mIwM:baqueira_beret', 'https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media-4/DRVFhn0mIwM_01.webp', 'video');
+  const main = select({ id: 'baqueira_beret:winter-driving', items: [panel, photo] }).at(-1);
+  assert.equal(main.pieceId, photo.id);
+  assert.equal(main.fit, 'cover');
+});

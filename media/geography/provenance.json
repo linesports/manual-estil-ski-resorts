@@ -14,8 +14,8 @@
     {
       "id": "baqueira_beret",
       "image": "./media/geography/baqueira_beret.svg",
-      "bytes": 5728,
-      "sha256": "376e505823d59be26261d0af1c8701ce06e4cb5ad0345c622b37613579df9978",
+      "bytes": 5725,
+      "sha256": "a1151994afda7994e8f50fa2ba59b06e69015a9ca798bde2074f7114d58c4da3",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -46,8 +46,8 @@
     {
       "id": "sierranevadaestacion",
       "image": "./media/geography/sierranevadaestacion.svg",
-      "bytes": 5728,
-      "sha256": "9c6af4d90069629b6956f7d9f4b5cf7324ad078562d20fea4b1225c099f6734a",
+      "bytes": 5725,
+      "sha256": "c8e85c50f9c436ea046d9554ede8142d3c301470ba2850ae0d5339ea10a6684d",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -78,8 +78,8 @@
     {
       "id": "masellapirineu",
       "image": "./media/geography/masellapirineu.svg",
-      "bytes": 5714,
-      "sha256": "1d9da49049609e941a6b566e1605a7d5e3babdb41528ba18b916a7b323e4f35a",
+      "bytes": 5711,
+      "sha256": "26c25ecacfc59f2fcf322593df84d2caa788a677de713a688286af3f7e84899e",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -110,8 +110,8 @@
     {
       "id": "cerleraramon",
       "image": "./media/geography/cerleraramon.svg",
-      "bytes": 5719,
-      "sha256": "2b5e6b82fee511b4cd86e3fb298b4846c3eb7cc6bb965c25eaaf9414e56190f8",
+      "bytes": 5716,
+      "sha256": "16a5350deeb1abc05a3fce4e42b42256570befc493c8b38a5860bdcf3ea01e57",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -142,8 +142,8 @@
     {
       "id": "javalambrearamon",
       "image": "./media/geography/javalambrearamon.svg",
-      "bytes": 5725,
-      "sha256": "3e243b722d49c07ccca9410c03295bdf8d9caead02370a859b93cc683a3914fd",
+      "bytes": 5722,
+      "sha256": "e6f57200b44c068933fc364256e315efc2292fc16074161079c9a41c83150c47",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -174,8 +174,8 @@
     {
       "id": "formigalpanticosaaramon",
       "image": "./media/geography/formigalpanticosaaramon.svg",
-      "bytes": 5930,
-      "sha256": "97d8025fa3d255b1bad59f972a7d757e09518ee8517e0e0b956ada7431f59931",
+      "bytes": 5924,
+      "sha256": "80614d4c58230801a4a86064d8902c591ebdca6d279902ed677e4cc3bcf53633",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -210,8 +210,8 @@
     {
       "id": "grandvalira",
       "image": "./media/geography/grandvalira.svg",
-      "bytes": 5720,
-      "sha256": "8f6258881cc5edebebe2285d42bf538b47dae501534cfbeb41bfce8dbc95ed68",
+      "bytes": 5717,
+      "sha256": "79cd0f48b0b4c71375057f5d5106930276c6b446dbfb8f31c6c1bddfc8b8b904",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -242,8 +242,8 @@
     {
       "id": "palarinsalandorra",
       "image": "./media/geography/palarinsalandorra.svg",
-      "bytes": 5920,
-      "sha256": "70648edfe291fbd2239341fe08823459894ac2f7913625e5902f82100120e2d7",
+      "bytes": 5914,
+      "sha256": "5f74841f8dbaab87d2e5a6484e6431200394a424371c8e48882f2a0a483c4cdb",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -278,8 +278,8 @@
     {
       "id": "ordinoarcalis",
       "image": "./media/geography/ordinoarcalis.svg",
-      "bytes": 5729,
-      "sha256": "9a740e68bd50b9593c056c5cc3477896eb02f4fc3ab94b3b6cb31dbd42f46d70",
+      "bytes": 5726,
+      "sha256": "8914a5c07e76c9cc12218ed34a9269638a466ce712848615b70a8d199d60a558",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -310,8 +310,8 @@
     {
       "id": "grupoaramon",
       "image": "./media/geography/grupoaramon.svg",
-      "bytes": 6306,
-      "sha256": "6ccbe830e1282e07401beaf44744284db75ae1e637d6319d4a701380c7637759",
+      "bytes": 6294,
+      "sha256": "191f6d873fc0a59902ed0f754f62c8b6923e9ed13345083f2d95c8166fe4d497",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -354,8 +354,8 @@
     {
       "id": "val_thorens",
       "image": "./media/geography/val_thorens.svg",
-      "bytes": 7268,
-      "sha256": "68d3c307bc8d353a08e1b577ce5bdddd66ebe8f2b0ed45512fdab52100dc0040",
+      "bytes": 7265,
+      "sha256": "60f5b91aefde44c88c29b012e9b0bef8b137a2da58775ef433ec30806062d676",
       "region": "alps",
       "bounds": [
         -5.6,
@@ -388,8 +388,8 @@
     {
       "id": "tignesofficiel",
       "image": "./media/geography/tignesofficiel.svg",
-      "bytes": 7268,
-      "sha256": "f65b2be231b1d348b42cfef461717367260efcdd4f7cb63123912eae86cddb1b",
+      "bytes": 7265,
+      "sha256": "73182a1e6b9637c17b7355c72757bbd557f64bd943544aa0774c76e40d4604d9",
       "region": "alps",
       "bounds": [
         -5.6,
@@ -422,8 +422,8 @@
     {
       "id": "laax",
       "image": "./media/geography/laax.svg",
-      "bytes": 7260,
-      "sha256": "740f88ada1394c056ce7d4ae50a75c312b6190e26dbecee3516b0a1f7b1af474",
+      "bytes": 7257,
+      "sha256": "b535eb09a759f515adb3f0ec680508bd1bf0323e28db37c5115df79d6eaa8f97",
       "region": "alps",
       "bounds": [
         -5.6,
@@ -456,8 +456,8 @@
     {
       "id": "zermattbergbahnen",
       "image": "./media/geography/zermattbergbahnen.svg",
-      "bytes": 7288,
-      "sha256": "bcb53d990003304f7bd0edc0169471adeae9b3b06e308d3eb57b7b30d6a56bea",
+      "bytes": 7285,
+      "sha256": "78d5be2a009f2b61e6d56893227230e80ef62b4358c2db59769260c5353a587b",
       "region": "alps",
       "bounds": [
         -5.6,
@@ -490,8 +490,8 @@
     {
       "id": "aspensnowmass",
       "image": "./media/geography/aspensnowmass.svg",
-      "bytes": 13827,
-      "sha256": "d9ca3c84105292cf0890ca0638dc4c9f52e0f02c6d25fb259d18c8d74e15e6cb",
+      "bytes": 13824,
+      "sha256": "ea4d799c2de72b6a2672f0016ff2d9e54785f872b8e5e42822cb0cb010c89ca7",
       "region": "usa",
       "bounds": [
         -126,
@@ -518,8 +518,8 @@
     {
       "id": "jacksonhole",
       "image": "./media/geography/jacksonhole.svg",
-      "bytes": 13826,
-      "sha256": "8a69581385d09bed0593f635ae17e5d7aeebbc0f0996181a50d8294cc940f595",
+      "bytes": 13823,
+      "sha256": "a9f56d4501732be31441dd2a005a9c1671b9c6b8223b3aa2c2e39ed400d6cc4d",
       "region": "usa",
       "bounds": [
         -126,
@@ -546,8 +546,8 @@
     {
       "id": "whistlerblackcomb",
       "image": "./media/geography/whistlerblackcomb.svg",
-      "bytes": 11970,
-      "sha256": "a3654e626f98e354d3b3faa95158a84721ade1be262c09ae65e45aa61cf83fef",
+      "bytes": 11967,
+      "sha256": "8a0144ceb9b7d5739fe35e121e99b4f503d02ae5b51c91b097af31e8d638a71c",
       "region": "canada",
       "bounds": [
         -142,
@@ -575,8 +575,8 @@
     {
       "id": "hanazononiseko",
       "image": "./media/geography/hanazononiseko.svg",
-      "bytes": 5138,
-      "sha256": "f79c7487f7773d02992b60855afde90a8734d279e32c21f317a844cea0114b9d",
+      "bytes": 5135,
+      "sha256": "0dfa7c7c5f361ff7ac136664910b21f8ad043f30a4488c61f23f265f744baf61",
       "region": "japan",
       "bounds": [
         128,
@@ -601,8 +601,8 @@
     {
       "id": "rusutsuresort_official",
       "image": "./media/geography/rusutsuresort_official.svg",
-      "bytes": 5128,
-      "sha256": "be7ec16e1f95f6900a2970ac2a9ddc63159679134f2315220a7d3aa265d2f517",
+      "bytes": 5125,
+      "sha256": "939a78fd75d472c738a1cca354804f08dc3c52ce9cb77bc97ec9f649b2e84fe4",
       "region": "japan",
       "bounds": [
         128,
@@ -627,8 +627,8 @@
     {
       "id": "skiportillo",
       "image": "./media/geography/skiportillo.svg",
-      "bytes": 9669,
-      "sha256": "45b0f64abbaa3a4aa9f7b908e9909e8f1e6361d08062d58d9a3e7da9eaa9f0bc",
+      "bytes": 9666,
+      "sha256": "2d9b829169307e880b144d2b95429da32910e59b0a3f234062f3122bf772ed0b",
       "region": "andes",
       "bounds": [
         -76.5,
@@ -658,8 +658,8 @@
     {
       "id": "valle_nevado",
       "image": "./media/geography/valle_nevado.svg",
-      "bytes": 9669,
-      "sha256": "d7ec2fd9296f94d6abea1a63661df4ba971489cb1a77b8910a315e92e02f900f",
+      "bytes": 9666,
+      "sha256": "1f765343f3b93e232f063abdc88f1e83cb81bce5b71accdff761c5e65cf2f068",
       "region": "andes",
       "bounds": [
         -76.5,
@@ -689,8 +689,8 @@
     {
       "id": "cerrocastor",
       "image": "./media/geography/cerrocastor.svg",
-      "bytes": 9671,
-      "sha256": "b226e72305550b82f0fcccac21f54c3ab487282a5966143460252ebe40cd8b13",
+      "bytes": 9668,
+      "sha256": "19248a1c8b169567aab035eb488e8b8d1b2c6877af8cb0f761d15857d107a5f2",
       "region": "andes",
       "bounds": [
         -76.5,

@@ -1,0 +1,105 @@
+{
+  "scope": "Desktop only; context hero, separate from publication evidence",
+  "source": {
+    "path": "baqueira-made-in-baqueira-season62-4k.webm",
+    "sha256": "227a132a22ff9947afffc30f1c652d310d3758257261792533f6177bfcca3578",
+    "width": 3840,
+    "height": 2160,
+    "duration": 64.792,
+    "videoCodec": "vp9",
+    "publisher": "Baqueira Beret",
+    "sourceUrl": "https://www.youtube.com/watch?v=9nWbOswvwIc",
+    "channelUrl": "https://www.youtube.com/channel/UCbIS66MjEoRw9gILxNLZVTw",
+    "published": "2026-10-15",
+    "title": "MADE IN BAQUEIRA – Trailer Temporada62 – Baqueira Beret",
+    "copyrightStatus": "Official public publication by Baqueira Beret; no Creative Commons or reuse license supplied in source metadata. Rights remain with the source rightsholders. This local preview does not establish a redistribution grant."
+  },
+  "processing": {
+    "segmentsSeconds": [
+      [
+        24.0,
+        25.4
+      ],
+      [
+        18.0,
+        19.5
+      ],
+      [
+        35.96,
+        38.76
+      ],
+      [
+        44.96,
+        48.56
+      ],
+      [
+        52.0,
+        54.6
+      ],
+      [
+        56.32,
+        58.44
+      ],
+      [
+        21.72,
+        24.0
+      ]
+    ],
+    "outputFrameRate": 25,
+    "outputSize": [
+      1920,
+      1080
+    ],
+    "scale": "Lanczos reduction from native3840×2160; no enlargement",
+    "crossfadeSeconds": 0.24,
+    "endToStartBlend": true,
+    "audio": "Muted hero; original video-only source track preserved. No audio track in service variants.",
+    "generativeSynthesis": false,
+    "motionInterpolation": false,
+    "overlaysAdded": false,
+    "gradeAdded": false,
+    "cropAdded": false,
+    "intermediate": "Lossless FFV1"
+  },
+  "derivatives": [
+    {
+      "path": "./media/hero/baqueira-beret-1080.webm",
+      "bytes": 6431103,
+      "sha256": "17d1369ea5d6d66aa05e98e472769057cb2b16e724b1f68e12fd4e9a66421421",
+      "codec": "vp9",
+      "pixelFormat": "yuv420p",
+      "width": 1920,
+      "height": 1080,
+      "duration": 14.6,
+      "frameRate": "25/1",
+      "audio": false
+    },
+    {
+      "path": "./media/hero/baqueira-beret-1080.mp4",
+      "bytes": 5771278,
+      "sha256": "6ac39772e618b49120f356568c74570c26fd9e7b17bc79bd65194414d5aa67c9",
+      "codec": "h264",
+      "pixelFormat": "yuv420p",
+      "width": 1920,
+      "height": 1080,
+      "duration": 14.6,
+      "frameRate": "25/1",
+      "audio": false
+    }
+  ],
+  "poster": {
+    "path": "./media/hero/baqueira-beret-poster.webp",
+    "width": 1920,
+    "height": 1080,
+    "sourceTimestamp": 24.24,
+    "nativeMaster": "baqueira-hero-poster-native-4k.png",
+    "nativeSize": [
+      3840,
+      2160
+    ]
+  },
+  "review": {
+    "selectedSourceFrames": "Reviewed contact sheets with exact source timestamps; title cards and close-up character scenes excluded.",
+    "remaining": "Rendered service variants and browser playback checked separately."
+  }
+}

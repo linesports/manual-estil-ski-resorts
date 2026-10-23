@@ -50,7 +50,7 @@
       this.more.addEventListener('click', () => { this.expanded = !this.expanded; this.renderRows(); if(this.expanded) this.list.children[5]?.focus(); });
       this.detail = el('section', 'brand-detail'); this.detail.id = 'brandDetail'; this.detail.hidden = true;
       this.directoryArea = el('div', 'brand-directory-area'); this.directoryArea.append(toolbar, this.resultNote, this.list, this.more); this.root.append(intro, this.directoryArea, this.detail);
-      document.getElementById('stationHeader').before(this.root);
+      document.getElementById('stationOverview').before(this.root);
       this.search.addEventListener('input', () => { this.query = this.search.value; this.expanded = false; this.renderRows(); this.onDirectoryChange?.(); });
       this.sectorSelect.addEventListener('change', () => { this.sector = this.sectorSelect.value; this.expanded = false; onUpdate(); });
       this.stationSelect.addEventListener('change', () => { this.station = this.stationSelect.value; this.expanded = false; onUpdate(); });
