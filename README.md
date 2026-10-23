@@ -27,3 +27,10 @@ Validació del model d’esdeveniments i atribucions:
 ```sh
 node --test tests/*.test.cjs
 ```
+
+
+La navegació té quatre entrades estables: Estacions, Comptes de marca, Sectors i Desades. Les fitxes substitueixen el directori, mantenen un retorn explícit i exposen un fil de navegació. El sector disposa d’un índex visual; cada selecció de peces té un índex paginat de miniatures i un carrusel amb controls de teclat. Les vinculacions detallades dels partners es consulten després de les peces.
+
+`navigation-state.js` centralitza els enllaços compartibles i la restauració de filtres, peça i element del carrusel. `navigation-ui.js` gestiona el fil de navegació, índexs, recuperació i notificacions; `navigation.css` aplica els controls i estats compartits sobre el sistema existent. Les decisions d’interfície es documenten a `DESIGN.md`.
+
+La interfície ofereix salt al contingut, focus visible, controls natius de vídeo, ampliació amb teclat, filtres etiquetats, suport de moviment reduït i contrast forçat. Les desades són locals al navegador: l’estat només es confirma quan es pot persistir, i es pot desfer una eliminació. La comprovació automatitzada d’accessibilitat es complementa amb recorreguts de teclat; no equival a una certificació WCAG ni a una transcripció de l’àudio de tots els vídeos.

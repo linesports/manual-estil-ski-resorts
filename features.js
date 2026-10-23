@@ -5,6 +5,11 @@
   const baseUpdateCurrent = updateCurrent;
   const baseUpdateMediaNavigation = updateMediaNavigation;
   const baseRenderSlideMedia = renderSlideMedia;
+  document.querySelector('.skip-link').addEventListener('click', event => {
+    event.preventDefault();
+    const main = document.getElementById('main'); main.focus({ preventScroll: true });
+    main.scrollIntoView({ behavior: 'instant', block: 'start' });
+  });
   const hydrateVideo = video => {
     if (video.dataset.poster) { video.poster = video.dataset.poster; delete video.dataset.poster; }
     if (video.dataset.source) { video.src = video.dataset.source; delete video.dataset.source; }
@@ -140,6 +145,8 @@
   let explorer;
   let brandExplorer;
   let bookmarks = readBookmarks();
+  let navigation, rendering = false, activePieceId = "", routeMedia = 0;
+  let sectorStationFilter, sectorBrandFilter, globalFormats;
 
   function readBookmarks() {
     try {
@@ -154,9 +161,9 @@
     }
   }
 
-  function writeBookmarks() {
+  function writeBookmarks(value = bookmarks) {
     try {
-      localStorage.setItem(storageKey, JSON.stringify(bookmarks));
+      localStorage.setItem(storageKey, JSON.stringify(value));
       return true;
     } catch (_) {
       return false;
@@ -264,6 +271,8 @@
   function syncViewChrome() {
     const isStation = viewMode === 'station';
     document.body.dataset.view = viewMode;
+    for (const [id, level] of [['storyTitle', isStation ? 'h3' : 'h2'], ['emptyTitle', isStation ? 'h3' : 'h2']]) { const old=document.getElementById(id); if(old.tagName.toLowerCase() !== level){ const next=document.createElement(level); next.id=id;next.className=old.className;next.textContent=old.textContent;old.replaceWith(next); } }
+    document.querySelectorAll('#storyDetails h3.detail-label,#storyDetails h4.detail-label').forEach(old=>{ const level=isStation?'h4':'h3';if(old.tagName.toLowerCase()!==level){const next=document.createElement(level);next.className=old.className;next.textContent=old.textContent;old.replaceWith(next);} });
     document.getElementById('stationHeader').hidden = !isStation;
     document.getElementById('stationTools').hidden = !isStation;
     document.getElementById('stationFormatRow').hidden = !isStation;
@@ -302,6 +311,11 @@
       return copy;
     });
     if (!preserveFormatFilter) filter = 'all';
+    if (activePieceId && DATA.pieces.some(piece => piece.id === activePieceId)) {
+      memories.set(selected + ':' + filter, activePieceId);
+      const piece = DATA.pieces.find(piece => piece.id === activePieceId);
+      mediaMemories.set(activePieceId, Math.min(routeMedia, Math.max(0, piece.media.length - 1)));
+    }
     baseRenderCarousel();
     DATA.pieces = originalPieces;
     filter = originalFilter;
@@ -322,7 +336,23 @@
   }
 
   function renderComposite() {
-    refreshSponsorOptions();
+    const focused = document.activeElement;
+    const focusId = focused?.id;
+    const formatFocus = focused?.closest('.brand-format-filter') ? focused.dataset.format : null;
+    rendering = true;
+    try { renderCompositeContent(); }
+    finally {
+      rendering = false;
+      if (navigation) updateNavigation();
+      if (focused && !focused.isConnected) {
+        const replacement = focusId ? document.getElementById(focusId) : formatFocus ? document.querySelector('.brand-format-filter [data-format="' + formatFocus + '"]') : null;
+        if (replacement?.checkVisibility()) replacement.focus({ preventScroll: true });
+      }
+    }
+  }
+
+  function renderCompositeContent() {
+    if (viewMode === 'station') refreshSponsorOptions();
     populateSectorSelect(sectorFilter, 'Tots els sectors');
     populateSavedFilters();
     syncViewChrome();
@@ -392,24 +422,29 @@
 
     if (viewMode === 'sectors') {
       const sector = sectorFilter.value || '*';
-      const items = window.OLAF_BRAND_MODEL.withResortAssociations(catalog.pieces.filter(piece =>
-        sector === '*' || (piece.brands || []).some(brand => sectorForBrand(brand) === sector)));
-      renderWithItems(items, false);
+      refreshSectorBrands();
+      const items = sector === '*' ? [] : window.OLAF_BRAND_MODEL.withResortAssociations(catalog.pieces.filter(piece =>
+        (piece.brands || []).some(brand => sectorForBrand(brand) === sector) &&
+        (sectorStationFilter.value === '*' || piece.station === sectorStationFilter.value) &&
+        (selectedBrand === '*' || piece.brands.some(brand => sameBrand(brand, selectedBrand)))));
+      renderWithItems(items, true);
+      if (sector === '*') { document.getElementById('viewer').hidden = true; document.getElementById('empty').hidden = true; }
       const stations = new Set(visible.flatMap(piece => piece.relatedStations || [sourceStation(piece)]));
       const label = sector === '*' ? 'Tots els sectors' : sector;
       document.getElementById('sectorHeading').textContent = label === 'Tots els sectors' ? 'Patrocinis per sector' : label;
       document.getElementById('sectorIntro').textContent =
         new Intl.NumberFormat('ca-ES').format(visible.length) +
         ' peces publicitàries · ' + stations.size + ' estacions · mira quines marques i activacions apareixen en aquest àmbit.';
+      if(sector === '*') document.getElementById('sectorIntro').textContent = 'Tria un sector per comparar com es mostren les marques a les estacions.';
     } else {
       const items = getSavedItems();
-      renderWithItems(items, false);
+      renderWithItems(items, true);
       document.getElementById('sectorIntro').textContent = '';
     }
 
     updateSavedCount();
     const empty = document.getElementById('empty');
-    if (!visible.length) {
+    if (!visible.length && !(viewMode === 'sectors' && sectorFilter.value === '*')) {
       document.getElementById('emptyTitle').textContent = viewMode === 'saved'
         ? 'Encara no hi ha referències desades amb aquests filtres'
         : 'No hi ha peces documentades en aquest sector';
@@ -431,27 +466,14 @@
 
   renderCarousel = renderComposite;
 
-  const baseChooseStation = chooseStation;
   chooseStation = function (id, fromHistory) {
     if (!profileFor(id)) return;
-    if (!fromHistory) {
-      viewMode = 'station';
-      selectedBrand = '*';
-      brandSource = 'all';
-      selectedEvent = '*';
-      const url = new URL(location.href);
-      ['view', 'brand', 'event'].forEach(key => url.searchParams.delete(key));
-      url.hash = id;
-      if (url.href !== location.href) history.pushState(null, '', url);
-    } else {
-      selectedEvent = new URLSearchParams(location.search).get('event') || '*';
-    }
-    if (id === selected) {
-      closeStationMenu(false);
-      renderComposite();
-      return;
-    }
-    return baseChooseStation(id, true);
+    remember(); selected = id; viewMode = 'station'; selectedBrand = '*'; brandSource = 'all'; selectedEvent = '*';
+    filter = 'all'; activePieceId = ''; routeMedia = 0;
+    closeStationMenu(false); syncFormatButtons();
+    if (!fromHistory) writeViewUrl(true);
+    renderComposite();
+    document.getElementById('stationSelectorTrigger').focus({ preventScroll: true });
   };
 
   updateCurrent = function (index, force) {
@@ -483,10 +505,21 @@
     document.getElementById('zoom').hidden = !!(activeSlide &&
       (activeSlide.querySelector('iframe') || activeSlide.dataset.videoUnavailable === 'true'));
     explorer?.setActive(piece);
+    navigation?.setActive(piece);
+    activePieceId = piece.id; routeMedia = mediaMemories.get(piece.id) || 0;
+    if (!rendering && navigation) writeViewUrl(false);
+    const activeSlideNode = carousel.children[index];
+    if (activeSlideNode) {
+      activeSlideNode.querySelectorAll('button,a').forEach(node => node.tabIndex = 0);
+      const video = activeSlideNode.querySelector('video');
+      if (video) video.setAttribute('aria-describedby', 'storyTitle explanation');
+    }
   };
 
   updateMediaNavigation = function () {
     baseUpdateMediaNavigation();
+    const currentPiece = visible[current];
+    if (currentPiece && navigation && !rendering) { activePieceId = currentPiece.id; routeMedia = mediaMemories.get(currentPiece.id) || 0; writeViewUrl(false); }
     const media = visible[current] && mediaOf(visible[current]);
     if (media?.unavailableReason) document.getElementById('mediaType').textContent = 'Vídeo restringit · portada de referència';
     const activeSlide = carousel.children[current];
@@ -564,6 +597,14 @@
     }
     if (media && media.mediaType === 'image' && (media.image || piece.image)) {
       baseRenderSlideMedia(slide, piece, mediaIndex);
+      const image = slide.querySelector('img');
+      if (image) {
+        const open = document.createElement('button'); open.type = 'button'; open.className = 'image-open';
+        open.setAttribute('aria-label', 'Ampliar ' + piece.title); open.tabIndex = slide.classList.contains('active') ? 0 : -1;
+        image.width = media.width || 540; image.height = media.height || 960;
+        image.replaceWith(open); open.append(image);
+        open.addEventListener('click', event => { event.stopPropagation(); if (slide.classList.contains('active')) openZoom(); else go(Number(slide.dataset.index)); });
+      }
       return;
     }
     if (media && media.instagramEmbedUrl) {
@@ -582,66 +623,114 @@
     baseRenderSlideMedia(slide, piece, mediaIndex);
   };
 
-  function setMode(mode) {
-    viewMode = mode;
-    filter = 'all';
-    ['all', 'post', 'reel', 'story'].forEach(kind => {
-      document.getElementById(kind + 'Filter').setAttribute('aria-pressed', String(kind === 'all'));
-    });
-    if (mode === 'station') {
-      selectedBrand = '*';
-      brandSource = 'all';
-      selectedEvent = '*';
-    }
-    writeViewUrl(true);
-    renderComposite();
+  function syncFormatButtons() {
+    ['all', 'post', 'reel', 'story'].forEach(kind => document.getElementById(kind + 'Filter').setAttribute('aria-pressed', String(kind === filter)));
+    globalFormats?.querySelectorAll('[data-format]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.format === filter)));
+  }
+
+  function setMode(mode) { navigateTo({ mode, station: selected }); }
+
+  function routeState() {
+    return { mode: viewMode, station: selected, brand: activeBrand, event: selectedEvent,
+      format: filter, sponsor: selectedBrand, source: brandSource,
+      sector: viewMode === 'brands' ? brandExplorer?.sector || '*' : viewMode === 'saved' ? savedSectorFilter.value : sectorFilter.value,
+      query: brandExplorer?.query || '', scope: brandExplorer?.scope || 'with', account: brandExplorer?.account || '*',
+      resort: viewMode === 'brands' ? brandExplorer?.station || '*' : viewMode === 'saved' ? savedStationFilter.value : sectorStationFilter?.value || '*',
+      category: savedCategoryFilter.value, piece: activePieceId, media: routeMedia };
   }
 
   function writeViewUrl(push) {
-    const url = new URL(location.href);
-    if (viewMode === 'station') url.searchParams.delete('view');
-    else url.searchParams.set('view', viewMode);
-    if (viewMode !== 'station' || selectedEvent === '*') url.searchParams.delete('event');
-    else url.searchParams.set('event', selectedEvent);
-    if (viewMode !== 'station') url.hash = '';
-    else url.hash = selected;
-    if (viewMode === 'brands' && activeBrand) url.searchParams.set('brand', activeBrand);
-    else url.searchParams.delete('brand');
-    try { history[push ? 'pushState' : 'replaceState'](null, '', url); } catch (_) {}
+    if (!navigation) return;
+    const url = window.OLAF_NAVIGATION.write(location.href, routeState());
+    if (url.href !== location.href) try { history[push ? 'pushState' : 'replaceState'](null, '', url); } catch (_) {}
+  }
+
+  function navigateTo(state) {
+    const url = window.OLAF_NAVIGATION.write(location.href, { station: selected, ...state });
+    if (url.href !== location.href) history.pushState(null, '', url);
+    restoreRoute(true);
+  }
+
+  function selectValue(select, value) { select.value = Array.from(select.options).some(option => option.value === value) ? value : '*'; }
+
+  function restoreRoute(focus) {
+    const state = window.OLAF_NAVIGATION.read(location.href, DATA.profiles.map(profile => profile.id));
+    viewMode = state.mode; selected = state.station;
+    activeBrand = brandDirectory.find(state.brand) ? state.brand : '';
+    selectedEvent = ['*', 'all', 'other', ...catalog.eventsFor(selected).map(event => event.id)].includes(state.event) ? state.event : '*';
+    selectedBrand = state.sponsor; brandSource = state.source; filter = state.format;
+    activePieceId = catalog.canonicalId(state.piece); routeMedia = state.media;
+    brandExplorer.query = state.query; brandExplorer.scope = state.scope; brandExplorer.station = state.resort;
+    brandExplorer.sector = state.sector; brandExplorer.account = state.account;
+    if (!brandExplorer.profiles.some(p => p.id === brandExplorer.station)) brandExplorer.station = '*';
+    selectValue(brandExplorer.sectorSelect, brandExplorer.sector); brandExplorer.sector = brandExplorer.sectorSelect.value;
+    populateSectorSelect(sectorFilter, 'Tots els sectors'); populateSavedFilters();
+    selectValue(sectorFilter, state.sector); selectValue(savedSectorFilter, state.sector);
+    selectValue(savedStationFilter, state.resort); selectValue(savedCategoryFilter, state.category); selectValue(sectorStationFilter, state.resort);
+    syncFormatButtons(); renderComposite();
+    if (focus) requestAnimationFrame(() => navigation.focusView());
+    writeViewUrl(false);
+  }
+
+  function changedContext(push = true) {
+    activePieceId = ''; routeMedia = 0; syncFormatButtons(); writeViewUrl(push); renderComposite();
+  }
+
+  function refreshSectorBrands() {
+    const brands = [...new Set(catalog.pieces.filter(piece => piece.brands.some(brand => sectorForBrand(brand) === sectorFilter.value) &&
+      (sectorStationFilter.value === '*' || piece.station === sectorStationFilter.value)).flatMap(piece => piece.brands).filter(brand => sectorForBrand(brand) === sectorFilter.value))].sort((a,b) => a.localeCompare(b,'ca'));
+    sectorBrandFilter.replaceChildren(); addOption(sectorBrandFilter, '*', 'Totes les marques'); brands.forEach(brand => addOption(sectorBrandFilter, brand, brand));
+    selectedBrand = brands.includes(selectedBrand) ? selectedBrand : '*'; sectorBrandFilter.value = selectedBrand;
+  }
+
+  function updateNavigation() {
+    const state = routeState();
+    const eventName = selectedEvent === 'all' ? 'Totes les peces de marca' : selectedEvent === 'other' ? 'Altres peces de marca' : catalog.eventsFor(selected).find(event => event.id === selectedEvent)?.name;
+    const filters = [];
+    if (viewMode === 'station') { if(selectedBrand !== '*') filters.push(selectedBrand); if(brandSource !== 'all') filters.push(brandSource === 'brand' ? 'Publica la marca' : 'Publica l’estació'); }
+    if (viewMode === 'brands') { if(brandExplorer.query && !activeBrand) filters.push('Cerca: ' + brandExplorer.query); if(brandExplorer.sector !== '*' && !activeBrand) filters.push(brandExplorer.sector); if(brandExplorer.station !== '*') filters.push(profileFor(brandExplorer.station)?.name || brandExplorer.station); if(brandExplorer.account !== '*') filters.push('@' + brandExplorer.account); if(brandExplorer.scope === 'all' && !activeBrand) filters.push('Totes les marques investigades'); }
+    if (viewMode === 'sectors') { if(sectorStationFilter.value !== '*') filters.push(profileFor(sectorStationFilter.value)?.name); if(selectedBrand !== '*') filters.push(selectedBrand); }
+    if (viewMode === 'saved') [savedStationFilter,savedSectorFilter,savedCategoryFilter].forEach(select => { if(select.value !== '*') filters.push(select.selectedOptions[0]?.textContent); });
+    if (filter !== 'all') filters.push({post:'Fotos i carrusels',reel:'Reels / vídeos',story:'Stories'}[filter]);
+    const hasContext = viewMode === 'station' ? selectedEvent !== '*' : viewMode === 'brands' ? !!activeBrand : viewMode === 'sectors' ? sectorFilter.value !== '*' : true;
+    navigation.render({ state, items: hasContext ? visible : [], eventName, brandName: brandDirectory.find(activeBrand)?.name, filters });
+    globalFormats.hidden = !(viewMode === 'sectors' && sectorFilter.value !== '*' || viewMode === 'saved');
+    sectorStationFilter.closest('label').hidden = sectorBrandFilter.closest('label').hidden = sectorFilter.value === '*';
+    document.body.dataset.detail = String(viewMode === 'brands' && !!activeBrand || viewMode === 'station' && selectedEvent !== '*');
+    syncFormatButtons();
   }
 
   function selectBrand(id, reveal) {
     activeBrand = id;
-    viewMode = 'brands'; filter = 'all';
+    viewMode = 'brands'; filter = 'all'; activePieceId = ''; routeMedia = 0;
     writeViewUrl(true);
     renderComposite();
     if (reveal) requestAnimationFrame(() => brandExplorer.reveal());
   }
 
-  document.getElementById('stationViewButton').addEventListener('click', () => setMode('station'));
-  document.getElementById('brandViewButton').addEventListener('click', () => setMode('brands'));
-  document.getElementById('sectorViewButton').addEventListener('click', () => setMode('sectors'));
-  document.getElementById('savedViewButton').addEventListener('click', () => setMode('saved'));
+  document.getElementById('stationViewButton').addEventListener('click', event => { if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); setMode('station'); });
+  document.getElementById('brandViewButton').addEventListener('click', event => { if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); setMode('brands'); });
+  document.getElementById('sectorViewButton').addEventListener('click', event => { if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); setMode('sectors'); });
+  document.getElementById('savedViewButton').addEventListener('click', event => { if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); setMode('saved'); });
 
   sponsorFilter.addEventListener('change', () => {
     selectedBrand = sponsorFilter.value || '*';
     selectedEvent = '*';
-    writeEventUrl('*', false);
-    renderComposite();
+    changedContext();
   });
 
-  sectorFilter.addEventListener('change', () => renderComposite());
+  sectorFilter.addEventListener('change', () => { selectedBrand = '*'; changedContext(); });
   [savedStationFilter, savedSectorFilter, savedCategoryFilter].forEach(select =>
-    select.addEventListener('change', () => renderComposite()));
+    select.addEventListener('change', () => changedContext()));
 
   document.getElementById('stationPostsButton').addEventListener('click', () => {
     brandSource = 'station';
-    renderComposite();
+    changedContext();
   });
   document.getElementById('brandPostsButton').addEventListener('click', () => {
     if (document.getElementById('brandPostsButton').disabled) return;
     brandSource = 'brand';
-    renderComposite();
+    changedContext();
   });
 
   function openBookmarkDialog() {
@@ -668,25 +757,37 @@
     const id = bookmarkDialog.dataset.itemId;
     const category = bookmarkCategory.value;
     if (!id || !categories.includes(category)) return;
-    bookmarks = bookmarks.filter(bookmark => bookmark.id !== id);
-    bookmarks.push({ id, category, savedAt: new Date().toISOString() });
-    if (!writeBookmarks()) {
+    const next = [...bookmarks.filter(bookmark => bookmark.id !== id), { id, category, savedAt: new Date().toISOString() }];
+    if (!writeBookmarks(next)) {
       document.getElementById('bookmarkDialogDescription').textContent =
         'No s’ha pogut desar en aquest navegador. Revisa l’espai disponible i torna-ho a provar.';
       return;
     }
+    bookmarks = next;
     bookmarkDialog.close();
     updateSavedCount();
     renderComposite();
+    navigation.feedback('Referència desada a «' + category + '».');
   });
 
   document.getElementById('removeBookmark').addEventListener('click', () => {
     const id = bookmarkDialog.dataset.itemId;
-    bookmarks = bookmarks.filter(bookmark => bookmark.id !== id);
-    writeBookmarks();
+    const removed = bookmarks.find(bookmark => bookmark.id === id);
+    const next = bookmarks.filter(bookmark => bookmark.id !== id);
+    if (!writeBookmarks(next)) {
+      document.getElementById('bookmarkDialogDescription').textContent = 'No s’ha pogut actualitzar la biblioteca. La referència continua desada; torna-ho a provar.';
+      return;
+    }
+    bookmarks = next;
     bookmarkDialog.close();
     updateSavedCount();
     renderComposite();
+    navigation.feedback('Referència eliminada de les desades.', () => {
+      const restored = [...bookmarks.filter(bookmark => bookmark.id !== id), removed];
+      if (!writeBookmarks(restored)) { navigation.feedback('No s’ha pogut restaurar. Revisa l’emmagatzematge del navegador i torna-ho a provar.'); return; }
+      bookmarks = restored; updateSavedCount(); renderComposite(); navigation.feedback('Referència restaurada.'); navigation.dismiss.focus();
+    });
+    if (!visible.length) navigation.undo.focus();
   });
 
   function relatedStationPiece(piece) {
@@ -736,8 +837,7 @@
   function selectEvent(value, reveal) {
     selectedEvent = value;
     memories.delete(selected + ':' + filter);
-    writeEventUrl(value, true);
-    renderComposite();
+    changedContext();
     if (reveal) requestAnimationFrame(() => explorer.reveal());
   }
 
@@ -745,11 +845,12 @@
   allSourcesButton.id = 'allSourcesButton';
   allSourcesButton.type = 'button';
   allSourcesButton.textContent = 'Totes les fonts';
-  allSourcesButton.addEventListener('click', () => { brandSource = 'all'; renderComposite(); });
+  allSourcesButton.addEventListener('click', () => { brandSource = 'all'; changedContext(); });
   document.getElementById('brandSourceSwitch').prepend(allSourcesButton);
   document.getElementById('stationPostsButton').textContent = 'Estació';
   document.getElementById('brandPostsButton').textContent = 'Marques';
   document.getElementById('brandSourceSwitch').setAttribute('aria-label', 'Compte que publica la peça');
+  document.getElementById('brandSourceSwitch').setAttribute('role', 'group');
   explorer = new window.OLAFEventExplorer({
     catalog, imageUrl: localImageUrl, onSelect: selectEvent,
     onPiece: id => {
@@ -759,12 +860,8 @@
       document.getElementById('viewer').scrollIntoView({ behavior: isReduced() ? 'instant' : 'smooth', block: 'start' });
     }
   });
-  window.addEventListener('popstate', () => {
-    viewMode = viewFromUrl();
-    activeBrand = new URLSearchParams(location.search).get('brand') || '';
-    selectedEvent = new URLSearchParams(location.search).get('event') || '*';
-    renderComposite();
-  });
+  window.addEventListener('popstate', () => restoreRoute(false));
+  window.addEventListener('hashchange', () => { if(!['viewer','main','eventRolesTitle'].includes(location.hash.slice(1))) restoreRoute(false); });
   if (!['*', 'all', 'other', ...catalog.eventsFor(selected).map(event => event.id)].includes(selectedEvent)) selectedEvent = '*';
   const stationPieces = DATA.pieces;
   DATA.pieces = window.OLAF_BRAND_MODEL.uniquePublications(catalog.pieces);
@@ -774,8 +871,10 @@
   brandExplorer = new window.OLAFBrandExplorer({
     directory: brandDirectory, profiles: DATA.profiles, sectorForBrand,
     onBrand: selectBrand,
-    onFilter: kind => { filter = kind; renderComposite(); },
-    onUpdate: renderComposite,
+    onFilter: kind => { filter = kind; changedContext(); },
+    onUpdate: () => changedContext(),
+    onDirectoryChange: () => { activePieceId = ''; writeViewUrl(false); updateNavigation(); },
+    onBack: () => navigateTo({ ...routeState(), brand: '', account: '*', format: 'all', piece: '', media: 0 }),
     onStation: id => {
       filter = 'all'; chooseStation(id);
       document.getElementById('stationHeader').scrollIntoView({ behavior: isReduced() ? 'instant' : 'smooth', block: 'start' });
@@ -783,9 +882,32 @@
   });
   window.OLAF_APP = {
     catalog, brandDirectory,
-    getState: () => ({ mode: viewMode, station: selected, brand: activeBrand, format: filter }),
+    getState: routeState,
     setMode, selectBrand
   };
+  navigation = new window.OLAFNavigationUI({ profiles: DATA.profiles, catalog, sectorForBrand, onNavigate: navigateTo,
+    onPiece: (id, reveal) => {
+      const index = visible.findIndex(piece => piece.id === id); if(index < 0) return;
+      go(index);
+      if(reveal) { const title = document.getElementById('viewer'); title.tabIndex = -1; title.focus({preventScroll:true}); title.scrollIntoView({behavior:isReduced()?'instant':'smooth',block:'start'}); }
+    },
+    onReset: () => {
+      filter = 'all'; selectedBrand = '*'; brandSource = 'all';
+      if(viewMode === 'brands') { brandExplorer.account = '*'; brandExplorer.station = '*'; if(!activeBrand){ brandExplorer.query = ''; brandExplorer.sector = '*'; brandExplorer.scope = 'with'; } }
+      if(viewMode === 'sectors') sectorStationFilter.value = '*';
+      if(viewMode === 'saved') [savedStationFilter,savedSectorFilter,savedCategoryFilter].forEach(select => select.value = '*');
+      changedContext(); navigation.focusView();
+    }
+  });
+  const makeField = (name, id) => { const label=document.createElement('label');label.className='field'; const text=document.createElement('span');text.textContent=name;const select=document.createElement('select');select.id=id;label.append(text,select);document.querySelector('#sectorHeader .global-controls').append(label);return select; };
+  sectorStationFilter = makeField('Estació', 'sectorStationFilter'); addOption(sectorStationFilter,'*','Totes les estacions'); DATA.profiles.forEach(profile=>addOption(sectorStationFilter,profile.id,profile.name));
+  sectorBrandFilter = makeField('Marca', 'sectorBrandFilter'); addOption(sectorBrandFilter,'*','Totes les marques');
+  sectorStationFilter.addEventListener('change',()=>{selectedBrand='*';changedContext();});sectorBrandFilter.addEventListener('change',()=>{selectedBrand=sectorBrandFilter.value;changedContext();});
+  globalFormats = document.createElement('div'); globalFormats.className='filter global-format-filter'; globalFormats.id='globalFormatFilter';globalFormats.setAttribute('role','group');globalFormats.setAttribute('aria-label','Format de les peces');
+  for(const [kind,label] of [['all','Totes les peces'],['post','Fotos / carrusels'],['reel','Reels / vídeos'],['story','Stories']]){const button=document.createElement('button');button.type='button';button.dataset.format=kind;button.textContent=label;button.addEventListener('click',()=>{filter=kind;changedContext();});globalFormats.append(button);} navigation.index.before(globalFormats);
+  chooseFilter = function(value){ if(value===filter)return; remember();filter=value;changedContext(); };
+  const sourceSwitch=document.getElementById('brandSourceSwitch'),sourceField=document.createElement('div'),sourceLabel=document.createElement('span');sourceField.className='field source-field';sourceLabel.id='sourceFieldLabel';sourceLabel.textContent='Qui publica';sourceSwitch.replaceWith(sourceField);sourceField.append(sourceLabel,sourceSwitch);sourceSwitch.setAttribute('aria-labelledby','sourceFieldLabel');
+  document.getElementById('postFilter').textContent='Fotos / carrusels';
   updateSavedCount();
-  renderComposite();
+  restoreRoute(false);
 })();

@@ -14,7 +14,7 @@
     const place = document.createElement('div'); place.className = 'map-fallback';
     const title = document.createElement('strong'); title.textContent = scene.place;
     const coordinates = document.createElement('span'); coordinates.textContent = scene.coordinates[1].toFixed(2) + '°, ' + scene.coordinates[0].toFixed(2) + '°';
-    place.append(title, coordinates); mapNode.append(place);
+    const note = document.createElement('span'); note.textContent = 'Mapa no disponible · ubicació aproximada'; place.append(title, coordinates, note); mapNode.append(place);
   }
 
   function positionMap(scene, animate) {
@@ -26,7 +26,7 @@
     if (!mapReady) { if (mapUnavailable) fallback(scene); return; }
     markers.forEach(marker => marker.remove()); markers = [];
     (scene.points || [scene.coordinates]).forEach(coordinates => {
-      const node = document.createElement('span'); node.className = 'map-location-marker'; node.setAttribute('aria-label', scene.name);
+      const node = document.createElement('span'); node.className = 'map-location-marker'; node.setAttribute('aria-hidden', 'true');
       markers.push(new maplibregl.Marker({ element: node }).setLngLat(coordinates).addTo(map));
     });
     requestAnimationFrame(() => {
@@ -43,20 +43,7 @@
     try {
       map = new maplibregl.Map({
         container: mapNode, center: [0.94, 42.7], zoom: 8.1,
-        style: {
-          version: 8,
-          sources: {
-            geography: { type: 'raster', tiles: ['https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'], tileSize: 256,
-              attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://carto.com/attributions">CARTO</a>' },
-            relief: { type: 'raster-dem', url: 'https://tiles.mapterhorn.com/tilejson.json', tileSize: 512, encoding: 'terrarium',
-              attribution: '© <a href="https://mapterhorn.com/">Mapterhorn</a>' }
-          },
-          layers: [
-            { id: 'background', type: 'background', paint: { 'background-color': '#dfe6e9' } },
-            { id: 'geography', type: 'raster', source: 'geography', paint: { 'raster-saturation': -1, 'raster-opacity': .85, 'raster-contrast': -.1 } },
-            { id: 'relief', type: 'hillshade', source: 'relief', paint: { 'hillshade-exaggeration': .28, 'hillshade-shadow-color': '#728797', 'hillshade-highlight-color': '#ffffff', 'hillshade-accent-color': '#9eafb9' } }
-          ]
-        },
+        style: 'https://tiles.openfreemap.org/styles/positron',
         attributionControl: false, scrollZoom: false, dragRotate: false, pitchWithRotate: false, doubleClickZoom: false,
         dragPan: false, touchZoomRotate: false, keyboard: false, renderWorldCopies: false,
         fadeDuration: reduced.matches ? 0 : 250
@@ -68,11 +55,8 @@
         map.getCanvas().setAttribute('aria-hidden', 'true');
         if (pendingScene) positionMap(pendingScene, false);
       });
-      map.on('error', event => {
-        // Relief is progressive enhancement: the independently sourced location map remains usable.
-        if (/mapterhorn|relief/.test(event.error?.message || '') || event.sourceId === 'relief') {
-          if (map.getLayer('relief')) map.setLayoutProperty('relief', 'visibility', 'none');
-        }
+      map.on('error', () => {
+        if (!mapReady) { mapUnavailable = true; map?.remove(); map = null; fallback(pendingScene); }
       });
       mapNode.addEventListener('webglcontextlost', () => {
         mapReady = false; mapUnavailable = true; map.remove(); map = null; fallback(pendingScene);

@@ -41,6 +41,8 @@
       this.dossier.id = 'eventDossier';
       this.dossier.setAttribute('aria-labelledby', 'eventDossierTitle');
       document.getElementById('viewer').before(this.library, this.dossier);
+      this.insights = el('section', 'event-insights'); this.insights.id = 'eventInsights'; this.insights.hidden = true;
+      document.getElementById('viewer').after(this.insights);
       this.strip = el('div', 'piece-role-strip');
       this.strip.id = 'pieceRoleStrip';
       document.getElementById('brandsLine').after(this.strip);
@@ -69,6 +71,8 @@
       this.state = state;
       this.library.hidden = !state.enabled || state.event !== '*';
       this.dossier.hidden = !state.enabled || state.event === '*';
+      this.insights.hidden = !state.enabled || state.event === '*';
+      this.insights.replaceChildren();
       this.strip.hidden = !state.enabled;
       this.relationDetails.hidden = !state.enabled;
       if (!state.enabled) return;
@@ -109,19 +113,20 @@
       if (groups.length > 6) {
         const more = el('button', 'event-show-more', this.expanded ? 'Mostrar menys col·leccions' : 'Veure les ' + (groups.length - 6) + ' col·leccions restants');
         more.type = 'button'; more.setAttribute('aria-expanded', String(this.expanded));
-        more.addEventListener('click', () => { this.expanded = !this.expanded; this.renderLibrary(groups); });
+        more.addEventListener('click', () => { this.expanded = !this.expanded; this.renderLibrary(groups); (this.expanded ? this.library.querySelectorAll('.event-card')[6] : this.library.querySelector('.event-show-more'))?.focus(); });
         this.library.append(more);
       }
     }
 
     card(group, index) {
-      const card = el('button', 'event-card'); card.type = 'button'; card.dataset.eventId = group.id;
+      const card = el('a', 'event-card'); card.dataset.eventId = group.id;
+      card.href = window.OLAF_NAVIGATION.write(location.href, { ...window.OLAF_NAVIGATION.read(location.href), event: group.id, piece: '', media: 0 }).href;
       card.setAttribute('aria-label', 'Obrir ' + group.name + ', ' + countText(group.items.length, 'peça', 'peces'));
       const cover = el('span', 'event-card-cover');
       const photos = [...group.items].sort((a, b) => (b.kind === 'story') - (a.kind === 'story')).slice(0, 3);
       photos.forEach((piece, n) => {
         const frame = el('span', 'event-stack-frame event-stack-' + n + (photos.length === 1 ? ' event-stack-solo' : ''));
-        const img = el('img'); img.src = this.imageUrl(piece.image || piece.media?.[0]?.image); img.alt = ''; img.loading = index < 3 ? 'eager' : 'lazy'; img.decoding = 'async';
+        const img = el('img'); img.width = 400; img.height = 225; img.src = this.imageUrl(piece.image || piece.media?.[0]?.image); img.alt = ''; img.loading = index < 3 ? 'eager' : 'lazy'; img.decoding = 'async';
         img.addEventListener('error', () => { img.hidden = true; frame.classList.add('poster-unavailable'); }, { once: true });
         frame.append(img); cover.append(frame);
       });
@@ -134,14 +139,14 @@
       const footer = el('span', 'event-card-footer');
       const source = el('span', '', total.brand ? countText(total.brand, 'peça amb compte de marca', 'peces amb comptes de marca') : 'Publicacions de l’estació');
       footer.append(source, arrow()); body.append(footer); card.append(cover, body);
-      card.addEventListener('click', () => this.onSelect(group.id, true));
+      card.addEventListener('click', event => { if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); this.onSelect(group.id, true); });
       return card;
     }
 
     renderDossier(group) {
       this.dossier.replaceChildren();
-      const back = el('button', 'event-back', 'Tornar a les col·leccions'); back.type = 'button'; back.prepend(arrow());
-      back.addEventListener('click', () => this.onSelect('*', true));
+      const back = el('a', 'event-back', 'Tornar a les col·leccions'); back.href = window.OLAF_NAVIGATION.write(location.href, { ...window.OLAF_NAVIGATION.read(location.href), event: '*', piece: '', media: 0 }).href; back.prepend(arrow());
+      back.addEventListener('click', event => { if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); this.onSelect('*', true); });
       this.dossier.append(back);
       const head = el('div', 'event-dossier-heading'), text = el('div');
       text.append(el('p', 'event-eyebrow', group.kind));
@@ -157,7 +162,8 @@
       if (!group.items.length) return;
       if (group.id !== 'all' && group.id !== 'other') {
         const roles = el('div', 'event-roles');
-        const roleHeading = el('h3', '', 'Quin paper hi té cada marca?'); roles.append(roleHeading);
+        const roleHeading = el('h2', '', 'Vinculació de les marques'); roleHeading.id = 'eventRolesTitle'; roleHeading.tabIndex = -1; roles.append(roleHeading);
+        roles.append(el('p', 'section-description', 'Consulta què acredita cada peça: naming, presència física, producte o contingut compartit.'));
         const byBrand = new Map();
         group.items.forEach(piece => this.catalog.relations(piece).forEach(relation => {
           if (!byBrand.has(relation.brand)) byBrand.set(relation.brand, []);
@@ -182,18 +188,12 @@
           details.append(evidence); roles.append(details);
         });
         roles.append(el('p', 'event-evidence-note', 'La lectura descriu el que acredita cada peça. Un naming o un logotip digital no pressuposa presència física ni un contracte directe amb l’estació.'));
-        this.dossier.append(roles);
+        this.insights.append(roles);
+        const jumps = el('nav', 'context-jumps'); jumps.setAttribute('aria-label', 'Apartats de l’esdeveniment');
+        [['#viewer', 'Veure les peces'], ['#eventRolesTitle', 'Vinculació de les marques']].forEach(([href, text]) => { const link = el('a', '', text); link.href = href; link.addEventListener('click', event => { event.preventDefault(); const target = document.querySelector(href); target.tabIndex = -1; target.focus({ preventScroll: true }); target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' }); }); jumps.append(link); });
+        this.dossier.append(jumps);
       }
-      const railHead = el('div', 'event-rail-heading'); railHead.append(el('h3', '', 'Les peces de la col·lecció'), el('span', '', 'Tria una peça o llisca lateralment'));
-      const rail = el('div', 'event-piece-rail'); rail.setAttribute('aria-label', 'Peces de ' + group.name);
-      group.items.forEach((piece, index) => {
-        const button = el('button', 'event-piece-thumb'); button.type = 'button'; button.dataset.pieceId = piece.id; button.setAttribute('aria-label', (index + 1) + '. ' + piece.title);
-        const img = el('img'); img.src = this.imageUrl(piece.image || piece.media?.[0]?.image); img.alt = ''; img.loading = 'lazy';
-        button.append(img, el('span', '', piece.kind === 'story' ? 'Story' : piece.format === 'Reel / vídeo' ? 'Reel' : 'Post'));
-        if (originsOf(piece).some(o => o.type === 'brand')) button.append(el('i', 'thumb-brand-origin', 'M'));
-        button.addEventListener('click', () => this.onPiece(piece.id)); rail.append(button);
-      });
-      this.dossier.append(railHead, rail);
+      if (!this.insights.children.length) this.insights.hidden = true;
     }
 
     setActive(piece) {
