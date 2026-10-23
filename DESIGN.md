@@ -25,6 +25,7 @@ La navegació principal i els enllaços entre fitxes són enllaços HTML. Els ca
 - Les cerques no mouen el focus; les transicions de pantalla el situen al títol. Si es reconstrueix un control, es conserva el focus equivalent.
 - Selector d’estació compacte: fletxes, Inici/Fi, Enter/Espai, Escape i Tab. El focus és visible i el desplaçament del menú és independent.
 - Fletxes del carrusel només dins el seu propi àmbit; no intercepten vídeos, formularis o diàlegs. Imatges ampliables amb botó i diàleg natiu amb tancament Escape.
+- L’enllaç a Instagram és visible sota cada peça, fora del desplegable d’anàlisi. El text original té una vista prèvia i una lectura completa independent; els textos curts es mostren sencers i les Stories sense text no n’inventen cap.
 - Controls amb objectiu còmode de 44px; contorns de focus contrastats, selecció subratllada i indicació textual de filtres actius. La preferència de moviment reduït desactiva paral·laxi i transicions.
 - Errors de càrrega mantenen portada, explicació i font quan existeixen; una portada no simula un vídeo. Mapa amb OpenFreeMap i recuperació textual si no està disponible.
 - Desar o eliminar només es confirma després d’escriure al navegador. Una eliminació té opció de desfer.

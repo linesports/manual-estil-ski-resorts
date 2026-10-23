@@ -106,6 +106,23 @@ button:active:not(:disabled){filter:brightness(.94)}
 .detail-content .detail-label{font-size:17px;font-weight:600;margin:16px 0 10px;color:var(--ink)}
 .detail-content .limitation,.detail-content .proof,.piece-relationship p,.original-caption p{font-size:13px;color:var(--ui-secondary)}
 .piece-relationship strong{font-size:14px}.source-row{font-size:14px;gap:20px}.source-row a{min-height:28px;display:inline-flex;align-items:center}
+.publication-access{max-width:980px;margin:12px auto 0}
+.publication-access .source-row{margin:0;gap:8px 28px}
+.publication-access .source-row a{min-height:44px;gap:8px;font-weight:550;color:#274f6c;text-decoration:underline;text-underline-offset:5px}
+.publication-access .source-row a:hover{text-decoration-thickness:2px;color:var(--ink)}
+.publication-access .source-row svg{width:17px;height:17px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.publication-text{margin:16px 0 24px;max-width:75ch}
+.publication-label{font-size:13px;font-weight:600;color:var(--ui-secondary);margin:0 0 8px}
+.publication-text .caption-preview,.publication-text .original-caption p{font-size:15px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--ink);margin:0;font-weight:400}
+.publication-text .original-caption{border:0;padding:0;margin:4px 0 0}
+.publication-text:has(>.original-caption[open])>.caption-preview{display:none}
+.publication-text .original-caption summary{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:14px;font-weight:550;list-style:none;cursor:pointer;color:#274f6c;text-decoration:underline;text-underline-offset:5px}
+.publication-text .original-caption summary:hover{text-decoration-thickness:2px}
+.publication-text .original-caption summary svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;transition:transform var(--ui-fast) var(--ui-ease)}
+.publication-text .caption-collapse-label,.publication-text .original-caption[open] .caption-expand-label{display:none}
+.publication-text .original-caption[open] .caption-collapse-label{display:inline}
+.publication-text .original-caption[open] summary svg{transform:rotate(180deg)}
+.publication-text .original-caption[open] p{margin-top:8px}
 .hint,.collection-info,.collection-info summary{font-size:13px;color:var(--ui-secondary)}
 .collection-info p{font-size:14px;max-width:80ch}.collection-info summary{min-height:44px}
 .global-header{padding:36px 0 28px;min-height:0;gap:32px;align-items:flex-start;flex-wrap:wrap}
