@@ -80,10 +80,21 @@
       (this.expanded ? brands : brands.slice(0, this.pageSize)).forEach(brand => {
         const row = el('a', 'brand-directory-row'); row.dataset.brandId = brand.id; row.dataset.publicationCount = brand.publicationCount;
         row.href = window.OLAF_NAVIGATION.write(location.href, { ...window.OLAF_NAVIGATION.read(location.href), mode: 'brands', brand: brand.id, account: '*', piece: '', media: 0 }).href;
-        const avatar = el('span', 'brand-avatar');
+        const avatar = el('span', 'brand-avatar'); avatar.setAttribute('aria-hidden', 'true');
         const image = brand.accounts.find(account => account.avatar)?.avatar;
         const fallback = el('span', 'brand-logo-fallback', brand.name); fallback.hidden = !!image; avatar.append(fallback);
-        if (image) { const img = el('img'); img.width = 112; img.height = 96; img.src = image; img.alt = ''; img.loading = 'lazy'; img.addEventListener('error', () => { img.hidden = true; fallback.hidden = false; }, { once: true }); avatar.append(img); }
+        if (image) {
+          const img = el('img');
+          img.width = 600; img.height = 600; img.alt = ''; img.loading = 'lazy'; img.decoding = 'async';
+          const highResolution = image.replace('media/brand-avatars/', 'media/brand-avatars-hires/');
+          let triedOriginal = false;
+          img.src = highResolution;
+          img.addEventListener('error', () => {
+            if (!triedOriginal && highResolution !== image) { triedOriginal = true; img.src = image; return; }
+            img.hidden = true; fallback.hidden = false;
+          });
+          avatar.append(img);
+        }
         const identity = el('span', 'brand-row-identity'); identity.append(el('strong', '', brand.name), el('span', '', this.sectorForBrand(brand.aliases[0])));
         const accounts = el('span', 'brand-row-accounts', brand.accounts.filter(a => a.identityStatus === 'confirmed').slice(0, 2).map(a => '@' + a.username).join(' · ') || 'Compte pendent de verificar');
         const stations = el('span', 'brand-row-stations', brand.stationIds.slice(0, 3).map(id => this.profile(id)?.name || id).join(' · ') + (brand.stationIds.length > 3 ? ' +' + (brand.stationIds.length - 3) : ''));
