@@ -132,15 +132,16 @@ for (const [regionId, ids] of Object.entries(byRegion)) {
       assert(x >= padding && x <= width - padding && y >= padding && y <= height - padding, `${id}: projected point clipped`);
       return `<g data-coordinates="${point.join(',')}"><circle cx="${number(x)}" cy="${number(y)}" r="9" fill="#b50024" opacity=".18"/><circle cx="${number(x)}" cy="${number(y)}" r="4.5" fill="#b50024" stroke="#fff" stroke-width="1.5"/></g>`;
     }).join('');
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><title>${escapeXML(scene.name)} · situació geogràfica aproximada</title><desc>Made with Natural Earth. Public domain. Mercator. ${escapeXML(region.label)}. ${region.bounds.join(', ')}.</desc><g fill="#d1d1cc" stroke="#82827c" stroke-width=".8" stroke-linejoin="round" fill-rule="evenodd">${outlines}</g>${markers}</svg>\n`;
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><title>${escapeXML(scene.name)} · situació geogràfica aproximada</title><desc>Made with Natural Earth. Public domain. Mercator. ${escapeXML(region.label)}. ${region.bounds.join(', ')}.</desc><g fill="none" stroke="#82827c" stroke-width="1.3" stroke-linejoin="round" fill-rule="evenodd">${outlines}</g>${markers}</svg>\n`;
     const image = `./media/geography/${id}.svg`;
     const bytes = Buffer.byteLength(svg);
     assert(bytes < 15360, `${id}: locator exceeds 15 KiB (${bytes})`);
     const target = path.join(root, image);
     if (process.argv.includes('--check')) assert.equal(await fs.readFile(target, 'utf8'), svg, `${id}: generated locator is stale`);
     else await fs.writeFile(target, svg);
-    stations[id] = { image, width, height, sourceUrl: 'https://www.naturalearthdata.com/', sourceLabel: 'Cartografia · Natural Earth · domini públic', bounds: region.bounds, points, projection: 'Mercator' };
-    assetReport.push({ id, image, bytes, sha256: createHash('sha256').update(svg).digest('hex'), region: regionId, bounds: region.bounds, points, countries: region.countries, filledCountries: region.filledCountries || region.countries, simplificationPixels: tolerance });
+    const sha256 = createHash('sha256').update(svg).digest('hex');
+    stations[id] = { image, width, height, sourceUrl: 'https://www.naturalearthdata.com/', sourceLabel: 'Cartografia · Natural Earth · domini públic', bounds: region.bounds, points, projection: 'Mercator', renderStyle: 'outline', sha256 };
+    assetReport.push({ id, image, bytes, sha256, region: regionId, bounds: region.bounds, points, countries: region.countries, filledCountries: [], renderStyle: 'outline', stroke: '#82827c', strokeWidth: 1.3, simplificationPixels: tolerance });
   }
 }
 const manifest = `window.OLAF_GEOGRAPHY = ${JSON.stringify({ stations, note: 'Situació aproximada. No és un plànol de pistes. Geometria administrativa Natural Earth 1:50m, domini públic.' })};\n`;

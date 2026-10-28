@@ -14,8 +14,8 @@
     {
       "id": "baqueira_beret",
       "image": "./media/geography/baqueira_beret.svg",
-      "bytes": 5725,
-      "sha256": "a1151994afda7994e8f50fa2ba59b06e69015a9ca798bde2074f7114d58c4da3",
+      "bytes": 5723,
+      "sha256": "5d2deae3684fb98b7912cbbe812d4e65bde2316c87577349df417a815a8e0422",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -35,19 +35,17 @@
         "AND",
         "FRA"
       ],
-      "filledCountries": [
-        "ESP",
-        "PRT",
-        "AND",
-        "FRA"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "sierranevadaestacion",
       "image": "./media/geography/sierranevadaestacion.svg",
-      "bytes": 5725,
-      "sha256": "c8e85c50f9c436ea046d9554ede8142d3c301470ba2850ae0d5339ea10a6684d",
+      "bytes": 5723,
+      "sha256": "fbfe69a687fd1406e7f10e5efd486a9286134c46141a37c6431fd1e30adcaeee",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -67,19 +65,17 @@
         "AND",
         "FRA"
       ],
-      "filledCountries": [
-        "ESP",
-        "PRT",
-        "AND",
-        "FRA"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "masellapirineu",
       "image": "./media/geography/masellapirineu.svg",
-      "bytes": 5711,
-      "sha256": "26c25ecacfc59f2fcf322593df84d2caa788a677de713a688286af3f7e84899e",
+      "bytes": 5709,
+      "sha256": "f403813b64ec2b5a1c2693bbf14a4f307fa2ce5aabd1ebc2afa5a9c1057b9262",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -99,19 +95,17 @@
         "AND",
         "FRA"
       ],
-      "filledCountries": [
-        "ESP",
-        "PRT",
-        "AND",
-        "FRA"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "cerleraramon",
       "image": "./media/geography/cerleraramon.svg",
-      "bytes": 5716,
-      "sha256": "16a5350deeb1abc05a3fce4e42b42256570befc493c8b38a5860bdcf3ea01e57",
+      "bytes": 5714,
+      "sha256": "dfebfff0790ad8a4adc04269610655711ef94a34d0e3af0eb148514553d0cc8f",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -131,19 +125,17 @@
         "AND",
         "FRA"
       ],
-      "filledCountries": [
-        "ESP",
-        "PRT",
-        "AND",
-        "FRA"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "javalambrearamon",
       "image": "./media/geography/javalambrearamon.svg",
-      "bytes": 5722,
-      "sha256": "e6f57200b44c068933fc364256e315efc2292fc16074161079c9a41c83150c47",
+      "bytes": 5720,
+      "sha256": "945b5f7d5d9caab0664bb1d8de5520c30aca7658e5049a0873e36f3851971fec",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -163,19 +155,17 @@
         "AND",
         "FRA"
       ],
-      "filledCountries": [
-        "ESP",
-        "PRT",
-        "AND",
-        "FRA"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "formigalpanticosaaramon",
       "image": "./media/geography/formigalpanticosaaramon.svg",
-      "bytes": 5924,
-      "sha256": "80614d4c58230801a4a86064d8902c591ebdca6d279902ed677e4cc3bcf53633",
+      "bytes": 5922,
+      "sha256": "2944c0767f8f76f24e5ce6d89f78eb883d4ee5988d91a95f3a8f21dfc93829d1",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -199,19 +189,17 @@
         "AND",
         "FRA"
       ],
-      "filledCountries": [
-        "ESP",
-        "PRT",
-        "AND",
-        "FRA"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "grandvalira",
       "image": "./media/geography/grandvalira.svg",
-      "bytes": 5717,
-      "sha256": "79cd0f48b0b4c71375057f5d5106930276c6b446dbfb8f31c6c1bddfc8b8b904",
+      "bytes": 5715,
+      "sha256": "cc9565d3c599b5c5edf1059389bb61a76865b621dd08cadc1be3ff6f438700c2",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -231,19 +219,17 @@
         "AND",
         "FRA"
       ],
-      "filledCountries": [
-        "ESP",
-        "PRT",
-        "AND",
-        "FRA"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "palarinsalandorra",
       "image": "./media/geography/palarinsalandorra.svg",
-      "bytes": 5914,
-      "sha256": "5f74841f8dbaab87d2e5a6484e6431200394a424371c8e48882f2a0a483c4cdb",
+      "bytes": 5912,
+      "sha256": "53f432dfab6244eb8378506255c3de3ca027e17dcac199dc12756c88bcbbe430",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -267,19 +253,17 @@
         "AND",
         "FRA"
       ],
-      "filledCountries": [
-        "ESP",
-        "PRT",
-        "AND",
-        "FRA"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "ordinoarcalis",
       "image": "./media/geography/ordinoarcalis.svg",
-      "bytes": 5726,
-      "sha256": "8914a5c07e76c9cc12218ed34a9269638a466ce712848615b70a8d199d60a558",
+      "bytes": 5724,
+      "sha256": "8111257be553e648a081126180513173cb9bb535468941af622a6202dd739179",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -299,19 +283,17 @@
         "AND",
         "FRA"
       ],
-      "filledCountries": [
-        "ESP",
-        "PRT",
-        "AND",
-        "FRA"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "grupoaramon",
       "image": "./media/geography/grupoaramon.svg",
-      "bytes": 6294,
-      "sha256": "191f6d873fc0a59902ed0f754f62c8b6923e9ed13345083f2d95c8166fe4d497",
+      "bytes": 6292,
+      "sha256": "5aa31c411ac7a77299dd5a5af81281b350512b7837f58cc9241e9e61b66e3657",
       "region": "iberia",
       "bounds": [
         -10.4,
@@ -343,19 +325,17 @@
         "AND",
         "FRA"
       ],
-      "filledCountries": [
-        "ESP",
-        "PRT",
-        "AND",
-        "FRA"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "val_thorens",
       "image": "./media/geography/val_thorens.svg",
-      "bytes": 7265,
-      "sha256": "60f5b91aefde44c88c29b012e9b0bef8b137a2da58775ef433ec30806062d676",
+      "bytes": 7263,
+      "sha256": "f23f0b476ebf89e18dd80879f5a7ad33879fb0ab7cb0c981a4e6465d71526fda",
       "region": "alps",
       "bounds": [
         -5.6,
@@ -376,20 +356,17 @@
         "AUT",
         "LIE"
       ],
-      "filledCountries": [
-        "FRA",
-        "CHE",
-        "ITA",
-        "AUT",
-        "LIE"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "tignesofficiel",
       "image": "./media/geography/tignesofficiel.svg",
-      "bytes": 7265,
-      "sha256": "73182a1e6b9637c17b7355c72757bbd557f64bd943544aa0774c76e40d4604d9",
+      "bytes": 7263,
+      "sha256": "2e59bf75f5db31cc92e30690ef878aab91f45c4848670e8633c2e9414f232504",
       "region": "alps",
       "bounds": [
         -5.6,
@@ -410,20 +387,17 @@
         "AUT",
         "LIE"
       ],
-      "filledCountries": [
-        "FRA",
-        "CHE",
-        "ITA",
-        "AUT",
-        "LIE"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "laax",
       "image": "./media/geography/laax.svg",
-      "bytes": 7257,
-      "sha256": "b535eb09a759f515adb3f0ec680508bd1bf0323e28db37c5115df79d6eaa8f97",
+      "bytes": 7255,
+      "sha256": "b5ca2851a2f69a5befe543611fbc06366ba0394bce279d5f06fcbc404eddb665",
       "region": "alps",
       "bounds": [
         -5.6,
@@ -444,20 +418,17 @@
         "AUT",
         "LIE"
       ],
-      "filledCountries": [
-        "FRA",
-        "CHE",
-        "ITA",
-        "AUT",
-        "LIE"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "zermattbergbahnen",
       "image": "./media/geography/zermattbergbahnen.svg",
-      "bytes": 7285,
-      "sha256": "78d5be2a009f2b61e6d56893227230e80ef62b4358c2db59769260c5353a587b",
+      "bytes": 7283,
+      "sha256": "21b06fb95bbb6b29c1d79df1f18727888d3fa7e6fb2458ff7021b24827003426",
       "region": "alps",
       "bounds": [
         -5.6,
@@ -478,20 +449,17 @@
         "AUT",
         "LIE"
       ],
-      "filledCountries": [
-        "FRA",
-        "CHE",
-        "ITA",
-        "AUT",
-        "LIE"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "aspensnowmass",
       "image": "./media/geography/aspensnowmass.svg",
-      "bytes": 13824,
-      "sha256": "ea4d799c2de72b6a2672f0016ff2d9e54785f872b8e5e42822cb0cb010c89ca7",
+      "bytes": 13822,
+      "sha256": "c432ebf2134e7cdf7ad19dd13d8fa93333cd48932794ccab78697eed520db8e7",
       "region": "usa",
       "bounds": [
         -126,
@@ -510,16 +478,17 @@
         "CAN",
         "MEX"
       ],
-      "filledCountries": [
-        "USA"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.9
     },
     {
       "id": "jacksonhole",
       "image": "./media/geography/jacksonhole.svg",
-      "bytes": 13823,
-      "sha256": "a9f56d4501732be31441dd2a005a9c1671b9c6b8223b3aa2c2e39ed400d6cc4d",
+      "bytes": 13821,
+      "sha256": "0c5ad0eb50e945aa7276339b66013c2d3849c4ca689128ba8fed52a0a09a2602",
       "region": "usa",
       "bounds": [
         -126,
@@ -538,16 +507,17 @@
         "CAN",
         "MEX"
       ],
-      "filledCountries": [
-        "USA"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.9
     },
     {
       "id": "whistlerblackcomb",
       "image": "./media/geography/whistlerblackcomb.svg",
-      "bytes": 11967,
-      "sha256": "8a0144ceb9b7d5739fe35e121e99b4f503d02ae5b51c91b097af31e8d638a71c",
+      "bytes": 11965,
+      "sha256": "9e109e59f661e57ef1839f92168486c6fddacbfc86ba981d18bed4993a8e02f1",
       "region": "canada",
       "bounds": [
         -142,
@@ -566,17 +536,17 @@
         "USA",
         "MEX"
       ],
-      "filledCountries": [
-        "CAN",
-        "USA"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 1.25
     },
     {
       "id": "hanazononiseko",
       "image": "./media/geography/hanazononiseko.svg",
-      "bytes": 5135,
-      "sha256": "0dfa7c7c5f361ff7ac136664910b21f8ad043f30a4488c61f23f265f744baf61",
+      "bytes": 5133,
+      "sha256": "3aecd24f22946810dfd18af33ee4dd2f95d3af06fe567f4dc6bf65b302cf027a",
       "region": "japan",
       "bounds": [
         128,
@@ -593,16 +563,17 @@
       "countries": [
         "JPN"
       ],
-      "filledCountries": [
-        "JPN"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "rusutsuresort_official",
       "image": "./media/geography/rusutsuresort_official.svg",
-      "bytes": 5125,
-      "sha256": "939a78fd75d472c738a1cca354804f08dc3c52ce9cb77bc97ec9f649b2e84fe4",
+      "bytes": 5123,
+      "sha256": "f5cb7dc782204e10e9199d72aecd1e979d516c4039b62eabbac4fa86e767c3c5",
       "region": "japan",
       "bounds": [
         128,
@@ -619,16 +590,17 @@
       "countries": [
         "JPN"
       ],
-      "filledCountries": [
-        "JPN"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "skiportillo",
       "image": "./media/geography/skiportillo.svg",
-      "bytes": 9666,
-      "sha256": "2d9b829169307e880b144d2b95429da32910e59b0a3f234062f3122bf772ed0b",
+      "bytes": 9664,
+      "sha256": "489c727d2f9d1241ab4a1c542ec86ca745a6f5038c0f428f1b170b1eadab3cff",
       "region": "andes",
       "bounds": [
         -76.5,
@@ -649,17 +621,17 @@
         "PRY",
         "URY"
       ],
-      "filledCountries": [
-        "CHL",
-        "ARG"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "valle_nevado",
       "image": "./media/geography/valle_nevado.svg",
-      "bytes": 9666,
-      "sha256": "1f765343f3b93e232f063abdc88f1e83cb81bce5b71accdff761c5e65cf2f068",
+      "bytes": 9664,
+      "sha256": "5a067da51057832cae91a2ace33a2eb075cacab0076514be757a665a812dd439",
       "region": "andes",
       "bounds": [
         -76.5,
@@ -680,17 +652,17 @@
         "PRY",
         "URY"
       ],
-      "filledCountries": [
-        "CHL",
-        "ARG"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     },
     {
       "id": "cerrocastor",
       "image": "./media/geography/cerrocastor.svg",
-      "bytes": 9668,
-      "sha256": "19248a1c8b169567aab035eb488e8b8d1b2c6877af8cb0f761d15857d107a5f2",
+      "bytes": 9666,
+      "sha256": "f1accd226e6543d0a1b2013d601c2dc8fe73ebff8ceec0641acc354f98d08ab2",
       "region": "andes",
       "bounds": [
         -76.5,
@@ -711,10 +683,10 @@
         "PRY",
         "URY"
       ],
-      "filledCountries": [
-        "CHL",
-        "ARG"
-      ],
+      "filledCountries": [],
+      "renderStyle": "outline",
+      "stroke": "#82827c",
+      "strokeWidth": 1.3,
       "simplificationPixels": 0.45
     }
   ]

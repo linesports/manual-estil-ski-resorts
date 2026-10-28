@@ -19,51 +19,66 @@ function weatherHarness(responses) {
   vm.runInNewContext(fs.readFileSync(require.resolve('../weather.js'), 'utf8'), context);
   const container = new Node('section');
   const find = className => {
-    const walk = node => node.className === className ? node : node.children.flatMap(child => walk(child) || []).find(Boolean);
+    const walk = node => String(node.className || '').split(' ').includes(className) ? node : node.children.flatMap(child => walk(child) || []).find(Boolean);
     return walk(container);
   };
-  return { api: window.OLAF_WEATHER, container, find, show: () => window.OLAF_WEATHER.show({ stationId: 'baqueira_beret', scene: { name: 'Baqueira Beret', coordinates: [.9, 42.7] }, container }) };
+  const visibleText = () => {
+    const walk = node => node.hidden || String(node.className || '').split(' ').includes('sr-only') ? '' : (node.textContent || '') + node.children.map(walk).join('');
+    return walk(container);
+  };
+  return { api: window.OLAF_WEATHER, container, find, visibleText, show: () => window.OLAF_WEATHER.show({ stationId: 'baqueira_beret', scene: { name: 'Baqueira Beret', coordinates: [.9, 42.7] }, container }) };
 }
 
 const forecast = age => ({ age, temperatureC: 5, condition: 'Ennuvolat', icon: 'cloud', validAt: Date.parse('2026-10-28T12:00:00Z'), generatedAt: Date.parse('2026-10-28T11:30:00Z') });
 
-test('fresh weather exposes the estimate and its validity without a provider link or routine refresh action', async () => {
-  const h = weatherHarness([forecast('fresh')]);
-  await h.show();
+test('weather shows only the temperature, while loading and estimate validity remain accessible', async () => {
+  let ready;
+  const h = weatherHarness([new Promise(resolve => { ready = resolve; })]);
+  const request = h.show();
+  assert.equal(h.visibleText(), '—°C');
+  assert.match(h.find('weather-status').textContent, /Consultant/);
+  assert.equal(h.find('weather-retry').hidden, true);
+  ready(forecast('fresh')); await request;
+  assert.equal(h.visibleText(), '5°C');
   assert.equal(h.find('weather-temperature').textContent, '5°C');
-  assert.equal(h.find('weather-condition').textContent, 'Ennuvolat');
+  for (const removed of ['weather-heading', 'weather-icon', 'weather-condition', 'weather-updated', 'weather-meta']) assert.equal(h.find(removed), undefined, removed);
   assert.equal(h.find('weather-source'), undefined);
   assert.equal(h.find('weather-retry').hidden, true);
-  assert.equal(h.find('weather-status').hidden, true);
+  assert.match(h.find('weather-status').className, /sr-only/);
+  assert.equal(h.find('weather-status').attributes.role, 'status');
   assert.match(h.find('weather-reading').title, /Baqueira Beret/);
-  assert.equal(h.find('weather-updated').dateTime, '2026-10-28T12:00:00.000Z');
+  assert.match(h.find('weather-reading').title, /12:00/);
 });
 
-test('a failed refresh labels a cached estimate honestly and offers recovery, then hides the retry after success', async () => {
+test('a failed refresh never displays a cached temperature and offers a temperature-shaped accessible retry', async () => {
   const h = weatherHarness([forecast('fresh'), new Error('offline'), forecast('fresh')]);
   await h.show();
   await h.api.refresh();
   assert.equal(h.container.dataset.weatherState, 'stale');
-  assert.equal(h.find('weather-heading').textContent, 'Última previsió disponible');
+  assert.equal(h.visibleText(), '—°C');
+  assert.equal(h.find('weather-temperature').textContent, '—°C');
   assert.match(h.find('weather-status').textContent, /No s’ha pogut actualitzar/);
-  assert.equal(h.find('weather-status').hidden, false);
   assert.equal(h.find('weather-retry').hidden, false);
+  assert.match(h.find('weather-retry').attributes['aria-label'], /Torna/);
   await h.api.refresh();
   assert.equal(h.container.dataset.weatherState, 'fresh');
   assert.equal(h.find('weather-retry').hidden, true);
-  assert.equal(h.find('weather-status').hidden, true);
+  assert.equal(h.visibleText(), '5°C');
 });
 
-test('an unavailable estimate has no temperature and retains a retry, while an old successful estimate is not described as a failed request', async () => {
+test('unavailable and old forecasts show a placeholder, with their reason outside the visual layout', async () => {
   const unavailable = weatherHarness([new Error('offline')]);
   await unavailable.show();
   assert.equal(unavailable.container.dataset.weatherState, 'unavailable');
+  assert.equal(unavailable.visibleText(), '—°C');
   assert.equal(unavailable.find('weather-reading').hidden, true);
   assert.equal(unavailable.find('weather-retry').hidden, false);
   const old = weatherHarness([forecast('stale')]);
   await old.show();
   assert.equal(old.container.dataset.weatherState, 'stale');
-  assert.equal(old.find('weather-status').hidden, false);
+  assert.equal(old.visibleText(), '—°C');
+  assert.match(old.find('weather-status').className, /sr-only/);
+  assert.match(old.find('weather-status').textContent, /recent/);
   assert.doesNotMatch(old.find('weather-status').textContent, /No s’ha pogut actualitzar/);
   assert.equal(old.find('weather-retry').hidden, true);
 });

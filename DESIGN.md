@@ -8,13 +8,13 @@ La referència escollida explícitament per l’usuari és Switzerland Tourism /
 
 - Inter autohostatjada amb llicència oberta. La STAllegra de Switzerland Tourism no es copia.
 - Fons blanc `#fff`, tinta `#272726`, text secundari `#62625f`, vermell `#b50024` i logo `#db001c`. Gris `#f2f2f2` reservat a superfícies secundàries.
-- Entrada general ampla sobre vídeo territorial: explica els patrocinis a Instagram, els referents d’estacions i la utilitat per a FGC. Missatge i dates reals 29/09/2025–28/09/2026; botó per arribar a les estacions. Cap mètrica ni selector competeix amb aquesta presentació.
+- Capçalera única fusionada: vídeo territorial al 60% esquerre, amb context breu «Patrocinis a Instagram», nom/selector d’estació i una sola frase de propòsit. El 40% dret, gris sòlid, integra mapa de contorns, situació, coordenades i temperatura. No hi ha una segona presentació ni botó intermedi per arribar a l’estació; període real al peu i temporada al menú.
 - Vídeo territorial propi per als 22 perfils, amb controls de pausa, pausa fora de pantalla i fotografia de reserva. Moviment reduït o estalvi de dades mantenen la fotografia fins a una reproducció voluntària. El vídeo és context territorial; no forma part de les evidències de temporada 25–26.
-- Capçalera global blanca de 110 px. Després de la presentació, fitxa d’estació de dues columnes: nom/selector i context a l’esquerra; mapa, coordenades i temps sobre gris sòlid a la dreta. Menú local de 76 px amb Esdeveniments, Peces i Marques, fixat en fer scroll; focus visible.
-- Contingut de 1190 px, sense caixes per a cada paràgraf. La fitxa d’estació no superposa informació sobre vídeo ni mostra la línia de país/compte, comptatges abreujats o ajuda redundant sota el títol. Després del menú comencen els filtres i esdeveniments. Cartografia Natural Earth de domini públic amb marcador vermell; fonts al peu.
+- Capçalera global blanca de 110 px. Hero i fitxa d’estació són un únic component. Menú local de 76 px immediatament a sota amb Esdeveniments, Peces i Marques, fixat en fer scroll; focus visible.
+- Contingut de 1190 px, sense caixes per a cada paràgraf. La capçalera limita el text sobre vídeo al context i selector; no mostra línia de país/compte, comptatges abreujats o ajuda redundant sota el títol. Després del menú comencen els filtres i esdeveniments. Cartografia Natural Earth de domini públic: contorn gris d’1,3 unitats SVG, interior transparent i marcador vermell; fonts al peu.
 - Col·leccions fotogràfiques amb radi de 16 px, sense ombra; només representen agrupacions reals existents. Hover: zoom 1.05, retall interior de 3 px i desplaçament del text de 5 px. Sense aquests moviments quan es demana moviment reduït.
 - Les fotografies de presentació poden tenir un enquadrament editorial. Les portades verticals adopten la proporció de la imatge i es distribueixen en tres columnes de diferents alçades, sense franges laterals; cartells i fonts verticals es conserven sencers. L’original complet sempre continua accessible al visor.
-- Meteorologia amb temperatura, descripció i hora de validesa discreta; detall al title de la lectura. Sense crèdit ni Actualitza en el bloc normal. Refresc automàtic de 12 minuts, estats de fallada/antiguitat explícits i reintent quan falla. Font MET Norway/CC BY 4.0 al peu: és una estimació per ubicació, no estat de pistes.
+- Meteorologia amb només la temperatura visible. Validesa, ubicació i estat en title/aria; sense icona, títol, descripció o hora visible. Refresc automàtic de 12 minuts; —°C quan no hi ha un valor actual, amb reintent accessible si falla. Font MET Norway/CC BY 4.0 al peu: és una estimació per ubicació, no estat de pistes.
 
 ## Arquitectura de la informació
 
@@ -59,4 +59,8 @@ Implementació i validació: `docs/VISUAL-V2.md`.
 
 Marques i Categories són les denominacions visibles; Esdeveniments identifica la navegació local, mentre els usos analítics d’activació de marca mantenen el seu significat. Entrar a Marques des d’una estació conserva el filtre local i en recalcula els recomptes de consulta; Totes les estacions és una elecció explícita, conservada en recàrrega i historial. La vista de cada marca manté autoria, peces, fonts i anàlisi.
 
-Presentació i fitxa separades, crèdits de mapa/temps al peu, cap gràfic global de formats. Implementació i decisions a `docs/superpowers/specs/2026-10-28-feedback.md`.
+Correcció posterior de l’usuari: presentació i fitxa fusionades en una sola capçalera, només temperatura i mapa de contorns. Crèdits de mapa/temps al peu i cap gràfic global de formats. Implementació i decisions a `docs/superpowers/specs/2026-10-28-feedback.md`.
+
+## Fusió de la capçalera — correcció del mateix dia
+
+La imatge de feedback i el hero formen ara una sola composició de dues zones. El context general es redueix a una línia i una frase curta; el selector ja és a la primera pantalla. El mapa conserva punts, coordenades i geometria, canviant només el farciment a buit. La temperatura és l’única dada meteorològica visible; mai es presenta un valor antic com a actual.

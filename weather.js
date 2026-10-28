@@ -7,15 +7,6 @@
   const REQUEST_MS = 10000;
   const cache = new Map();
   let active = null, generation = 0, controller = null, interval = null;
-  const icons = {
-    sun: '<circle cx="24" cy="24" r="8"/><path d="M24 3v5m0 32v5M3 24h5m32 0h5M9 9l4 4m22 22 4 4M9 39l4-4m22-22 4-4"/>',
-    moon: '<path d="M35 32A17 17 0 0 1 16 8a17 17 0 1 0 19 24Z"/>',
-    cloud: '<path d="M13 35h23a8 8 0 0 0 0-16 12 12 0 0 0-23-3 10 10 0 0 0 0 19Z"/>',
-    rain: '<path d="M12 29h25a7 7 0 0 0-1-14 11 11 0 0 0-21-2 9 9 0 0 0-3 16Zm4 5-3 7m12-7-3 7m12-7-3 7"/>',
-    snow: '<path d="M12 28h25a7 7 0 0 0-1-14 11 11 0 0 0-21-2 9 9 0 0 0-3 16ZM17 34v8m-4-4h8m-7-3 6 6m-6 0 6-6m12-1v8m-4-4h8m-7-3 6 6m-6 0 6-6"/>',
-    fog: '<path d="M11 25h26a7 7 0 0 0-1-14 11 11 0 0 0-20 0 8 8 0 0 0-5 14ZM7 33h29M12 39h29"/>',
-    thunder: '<path d="M12 27h25a7 7 0 0 0-1-14 11 11 0 0 0-21-2 9 9 0 0 0-3 16Zm13 2-6 9h7l-3 8 11-13h-8l4-4"/>'
-  };
 
   function el(tag, className, text) {
     const node = document.createElement(tag); node.className = className;
@@ -24,26 +15,16 @@
   }
 
   function build(container) {
-    const heading = el('p', 'weather-heading', 'El temps ara');
     const reading = el('div', 'weather-reading');
-    const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    icon.setAttribute('class', 'weather-icon'); icon.setAttribute('viewBox', '0 0 48 48'); icon.setAttribute('aria-hidden', 'true');
-    icon.setAttribute('width', '48'); icon.setAttribute('height', '48');
-    icon.setAttribute('fill', 'none'); icon.setAttribute('stroke', 'currentColor'); icon.setAttribute('stroke-width', '1.6');
-    icon.setAttribute('stroke-linecap', 'round'); icon.setAttribute('stroke-linejoin', 'round');
-    const temperature = el('strong', 'weather-temperature');
-    const description = el('span', 'weather-condition');
-    reading.append(icon, temperature, description);
-    const updated = el('time', 'weather-updated');
-    const status = el('p', 'weather-status'); status.setAttribute('role', 'status');
-    const retry = el('button', 'weather-retry', 'Torna-ho a provar'); retry.type = 'button'; retry.hidden = true;
+    const temperature = el('strong', 'weather-temperature', '—°C'); reading.append(temperature);
+    const status = el('span', 'weather-status sr-only'); status.setAttribute('role', 'status');
+    const retry = el('button', 'weather-retry', '—°C'); retry.type = 'button'; retry.hidden = true;
     retry.addEventListener('click', () => refresh());
     // Provider attribution lives in the shared footer, outside the station summary.
-    const meta = el('div', 'weather-meta'); meta.append(updated);
     container.classList.add('station-weather');
-    container.setAttribute('aria-label', 'Temps actual a la ubicació seleccionada');
-    container.replaceChildren(heading, reading, meta, status, retry);
-    return { heading, reading, icon, temperature, description, updated, status, retry };
+    container.setAttribute('role', 'group');
+    container.replaceChildren(reading, status, retry);
+    return { reading, temperature, status, retry };
   }
 
   function timeLabel(value, zone, withDate = false) {
@@ -71,36 +52,26 @@
 
   function render(state, snapshot, options = {}) {
     if (state !== active) return;
-    const nodes = state.nodes, now = Date.now();
-    const age = model.freshness(snapshot, now);
-    if (!snapshot || age === 'expired') {
-      nodes.heading.textContent = 'El temps ara'; nodes.reading.hidden = true; nodes.updated.hidden = true;
-      nodes.status.textContent = options.loading ? 'Consultant el temps…' : 'El temps no està disponible ara.';
-      nodes.status.hidden = false;
-      nodes.retry.hidden = !!options.loading;
-      nodes.retry.disabled = !!options.loading;
-      state.container.dataset.weatherState = options.loading ? 'loading' : 'unavailable';
-      return;
-    }
-    const stale = options.cached || age !== 'fresh';
-    nodes.heading.textContent = stale ? 'Última previsió disponible' : 'El temps ara';
-    nodes.reading.hidden = false; nodes.updated.hidden = false;
-    nodes.temperature.textContent = new Intl.NumberFormat('ca-ES', { maximumFractionDigits: 0 }).format(snapshot.temperatureC) + '°C';
-    nodes.description.textContent = snapshot.condition;
-    nodes.icon.innerHTML = icons[snapshot.icon] || icons.cloud;
-    nodes.updated.dateTime = new Date(snapshot.validAt).toISOString();
-    nodes.updated.textContent = stale ? 'Previsió de ' + timeLabel(snapshot.validAt, state.zone, true)
-      : 'Previsió de les ' + timeLabel(snapshot.validAt, state.zone);
-    nodes.updated.title = 'Estimació per a la ubicació aproximada de ' + state.scene.name + ' · ' + timeLabel(snapshot.validAt, state.zone, true) +
-      ' · model actualitzat ' + timeLabel(snapshot.generatedAt, state.zone, true) + ' · ' + state.zone;
-    nodes.reading.title = nodes.updated.title;
-    nodes.status.textContent = options.loading ? 'Actualitzant…' : stale
-      ? options.cached ? 'No s’ha pogut actualitzar.' : 'Pendent d’una previsió més recent.'
-      : '';
-    nodes.status.hidden = !nodes.status.textContent;
-    nodes.retry.hidden = !!options.loading || !options.cached;
-    nodes.retry.disabled = !!options.loading;
-    state.container.dataset.weatherState = options.loading ? 'loading' : stale ? 'stale' : 'fresh';
+    const nodes = state.nodes, age = model.freshness(snapshot, Date.now());
+    const loading = !!options.loading, unavailable = !snapshot || age === 'expired';
+    const fresh = !loading && !options.cached && !unavailable && age === 'fresh';
+    const retry = !loading && (unavailable || !!options.cached);
+    const value = fresh ? new Intl.NumberFormat('ca-ES', { maximumFractionDigits: 0 }).format(snapshot.temperatureC) + '°C' : '—°C';
+    const validity = snapshot ? 'Previsió de ' + timeLabel(snapshot.validAt, state.zone, true) +
+      ' · model actualitzat ' + timeLabel(snapshot.generatedAt, state.zone, true) + ' · ' + state.zone + '.' : '';
+    const location = 'Ubicació aproximada de ' + state.scene.name + '.';
+    const message = fresh ? 'Temperatura estimada: ' + value + '. ' + validity + ' ' + location
+      : loading ? 'Consultant la temperatura. ' + location
+      : unavailable ? 'La temperatura no està disponible ara. ' + location
+      : (options.cached ? 'No s’ha pogut actualitzar la temperatura. ' : 'Pendent d’una previsió més recent. ') + validity + ' ' + location;
+    nodes.temperature.textContent = value;
+    nodes.reading.hidden = retry; nodes.reading.title = message;
+    nodes.retry.hidden = !retry; nodes.retry.disabled = loading;
+    nodes.retry.title = message + ' Torna-ho a provar.';
+    nodes.retry.setAttribute('aria-label', 'Torna a consultar la temperatura de ' + state.scene.name);
+    nodes.status.textContent = message;
+    state.container.setAttribute('aria-label', 'Temperatura a ' + state.scene.name);
+    state.container.dataset.weatherState = loading ? 'loading' : fresh ? 'fresh' : unavailable ? 'unavailable' : 'stale';
   }
 
   async function refresh() {

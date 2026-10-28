@@ -40,7 +40,7 @@
     if (!geography) return;
     const locator = document.createElement('img');
     locator.alt = ''; locator.width = geography.width; locator.height = geography.height;
-    locator.decoding = 'async'; locator.src = geography.image;
+    locator.decoding = 'async'; locator.src = geography.image + (geography.sha256 ? '?v=' + geography.sha256.slice(0, 12) : '');
     locator.addEventListener('error', () => {
       if (mapNode.dataset.station === id) mapNode.hidden = true;
     }, { once: true });
@@ -114,11 +114,6 @@
     image.closest('.ambient-scene').append(node);
     playback();
   }
-  document.getElementById('exploreStations').addEventListener('click', () => {
-    const selector = document.getElementById('stationSelectorTrigger');
-    selector.focus({ preventScroll: true });
-    stationPanel.scrollIntoView({ behavior: reduced.matches ? 'instant' : 'smooth', block: 'start' });
-  });
   videoToggle.addEventListener('click', () => {
     if (!heroVideo) return;
     if (heroVideo.paused) { manuallyPaused = false; motionOptIn = true; } else manuallyPaused = true;
