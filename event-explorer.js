@@ -27,7 +27,7 @@
       this.onPiece = onPiece;
       this.expanded = false;
       const label = el('label', 'field event-field');
-      label.append(el('span', '', 'Esdeveniment o activació'));
+      label.append(el('span', '', 'Esdeveniment'));
       this.select = el('select');
       this.select.id = 'eventFilter';
       label.append(this.select);
@@ -92,7 +92,7 @@
       this.library.replaceChildren();
       const heading = el('div', 'event-library-heading');
       const titleBlock = el('div');
-      const title = el('h2', '', 'Esdeveniments i activacions'); title.id = 'eventLibraryTitle';
+      const title = el('h2', '', 'Esdeveniments'); title.id = 'eventLibraryTitle';
       titleBlock.append(title, el('p', 'event-intro', 'Les peces agrupades pel context on participa cada marca.'));
       const all = el('button', 'event-text-link', 'Veure totes les peces');
       all.type = 'button'; all.append(arrow()); all.addEventListener('click', () => this.onSelect('all', true));

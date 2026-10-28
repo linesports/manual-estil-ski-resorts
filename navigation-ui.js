@@ -7,13 +7,13 @@
     return node;
   };
   const number = value => new Intl.NumberFormat('ca-ES').format(value);
-  const labels = { station: 'Estacions', brands: 'Comptes de marca', sectors: 'Sectors', saved: 'Desades' };
+  const labels = { station: 'Estacions', brands: 'Marques', sectors: 'Categories', saved: 'Desades' };
   window.OLAFNavigationUI = class {
     constructor({ profiles, catalog, sectorForBrand, onNavigate, onPiece, onReset }) {
       Object.assign(this, { profiles, catalog, sectorForBrand, onNavigate, onPiece, onReset });
       this.indexPage = 0; this.items = []; this.activeId = ''; this.indexKey = '';
       this.sectors = el('section', 'sector-directory'); this.sectors.id = 'sectorDirectory';
-      this.sectors.setAttribute('aria-label', 'Explora els sectors');
+      this.sectors.setAttribute('aria-label', 'Explora les categories');
       document.getElementById('sectorHeader').after(this.sectors);
       const index = el('details', 'piece-index'); index.id = 'pieceIndex';
       this.index = index; this.indexSummary = el('summary'); this.indexSummary.id = 'pieceIndexSummary';
@@ -41,7 +41,7 @@
       this.notice.append(this.message, this.undo, this.dismiss); document.body.append(this.notice);
     }
 
-    href(state) { return window.OLAF_NAVIGATION.write(location.href, { station: this.state?.station || this.profiles[0]?.id, ...state }).href; }
+    href(state) { return window.OLAF_NAVIGATION.write(location.href, window.OLAF_NAVIGATION.transition(this.state || { station: this.profiles[0]?.id }, state)).href; }
     link(text, state, className = '') {
       const node = el('a', className, text); node.href = this.href(state);
       node.addEventListener('click', event => {
@@ -62,6 +62,10 @@
         if (state.event !== '*') { list.replaceChildren(); add('Estacions', { mode: 'station', station: state.station }); add(profile?.name, { ...state, event: '*', piece: '', media: 0 }); add(eventName || 'Peces de marca'); }
         else add(profile?.name);
       } else if (state.mode === 'brands') {
+        if (state.resort !== '*') {
+          const resort = this.profiles.find(p => p.id === state.resort);
+          if (resort) { add('Estacions', { mode:'station', station:resort.id }); add(resort.name, { mode:'station', station:resort.id }); }
+        }
         add(labels.brands, state.brand ? { ...state, brand: '', account: '*', format: 'all', piece: '', media: 0 } : null);
         if (brandName) add(brandName);
       } else if (state.mode === 'sectors') {
@@ -70,7 +74,7 @@
       } else add('Referències desades');
       list.lastElementChild?.lastElementChild?.setAttribute('aria-current', 'page');
       crumbs.append(list);
-      document.title = [state.mode === 'station' ? eventName || profile?.name : state.mode === 'brands' ? brandName || 'Comptes de marca' : state.mode === 'sectors' ? (state.sector === '*' ? 'Sectors' : state.sector) : 'Referències desades', 'OLAF'].join(' · ');
+      document.title = [state.mode === 'station' ? eventName || profile?.name : state.mode === 'brands' ? brandName || 'Marques' : state.mode === 'sectors' ? (state.sector === '*' ? 'Categories' : state.sector) : 'Referències desades', 'OLAF'].join(' · ');
       const navStates = { station: { mode: 'station', station: state.station }, brands: { mode: 'brands' }, sectors: { mode: 'sectors' }, saved: { mode: 'saved' } };
       Object.entries(navStates).forEach(([key, target]) => {
         const id = { station: 'stationViewButton', brands: 'brandViewButton', sectors: 'sectorViewButton', saved: 'savedViewButton' }[key];

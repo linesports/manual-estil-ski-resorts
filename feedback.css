@@ -1,0 +1,69 @@
+/* Feedback approved 28 October 2026. Retains the desktop Zermatt visual language. */
+@media (min-width:1024px) {
+body[data-view="station"] .appbar{position:relative;top:auto;left:auto}
+.study-hero{position:relative;isolation:isolate;min-height:620px;height:min(790px,calc(100svh - 110px));background:#233139;color:#fff;overflow:clip}
+.study-hero .ambient-scene{position:absolute;inset:0;width:100%;height:100%;max-width:none!important;z-index:-2;opacity:1;overflow:hidden}
+.study-hero .ambient-scene:before{display:none}
+.study-hero .ambient-scene:after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(9,21,28,.76),rgba(9,21,28,.35))}
+.study-hero .ambient-scene picture{display:block;width:100%;height:100%}
+.study-hero .ambient-scene img,.study-hero .hero-video{width:100%;height:100%;object-fit:cover;mask-image:none;-webkit-mask-image:none}
+.study-copy{width:min(1190px,calc(100% - 80px));height:100%;margin:auto;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:60px 0 70px;position:relative;z-index:3}
+.study-copy h1{font-size:clamp(52px,4.25vw,76px);line-height:1.12;letter-spacing:-.035em;font-weight:600;color:#fff;max-width:26ch;margin:0 0 26px;text-wrap:balance}
+.study-copy>p:not(.study-period){font-size:18px;line-height:1.65;font-weight:450;max-width:65ch;margin:0 0 30px;color:#fff}
+.study-explore{display:inline-flex;align-items:center;gap:20px;min-height:54px;padding:12px 22px;border:1px solid #fff;border-radius:6px;background:#fff;color:#272726;font-size:15px;font-weight:600;cursor:pointer;transition:background .18s,color .18s}
+.study-explore svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.study-explore:hover{background:#b50024;border-color:#b50024;color:#fff}
+.study-explore:focus-visible,.hero-video-toggle:focus-visible{outline-color:#fff;outline-offset:6px}
+.study-copy .study-period{font-size:13px;font-weight:450;line-height:1.6;margin:26px 0 0;color:#fff}
+.study-hero .hero-footer{left:auto;right:40px;bottom:24px;width:auto;transform:none;margin:0}
+.station-hero{height:auto;max-height:none;min-height:0;width:min(1190px,calc(100% - 80px));margin:64px auto 0;background:transparent;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;isolation:auto;overflow:visible;scroll-margin-top:28px}
+.station-hero:after{display:none}
+.station-hero:has(.station-options:not([hidden])){z-index:60}
+.station-hero .station-header{position:relative;inset:auto;min-height:360px;height:auto;padding:28px 0;margin:0;display:flex;align-items:center;justify-content:flex-start;pointer-events:auto;color:#272726;z-index:5}
+.station-hero .station-identity{max-width:100%;width:100%;text-align:left}
+.station-hero .station-selector{padding:0;width:fit-content;max-width:100%;margin:0;isolation:auto}
+.station-hero .station-selector:before{display:none}
+.station-hero .station-name{font-size:clamp(40px,3.35vw,58px);line-height:1.15;letter-spacing:-.035em;font-weight:600;text-align:left;color:#272726;text-shadow:none;margin:0 0 22px}
+.station-hero .station-selector-trigger{font-size:inherit;display:flex;justify-content:flex-start;gap:20px;line-height:inherit;align-items:center;color:#272726;text-align:left;min-height:56px;font-weight:600}
+.station-hero .station-selector-trigger:focus-visible{outline:3px solid #b50024;outline-offset:8px;border-radius:3px}
+.station-hero .station-selector-label{text-shadow:none}
+.station-hero .station-selector-trigger:hover .station-selector-label{text-decoration:underline;text-decoration-color:#b50024;text-decoration-thickness:2px;text-underline-offset:8px}
+.station-hero .station-selector-caret{border-color:#b50024;width:12px;height:12px;flex-basis:12px;margin:-5px 4px 0 0;flex-shrink:0}
+.station-hero .station-options{left:0;transform:none;top:100%;width:min(360px,calc(100vw - 80px));max-height:360px;margin-top:12px;z-index:55}
+.station-purpose{font-size:20px;line-height:1.45;font-weight:550;max-width:31ch;margin:0 0 12px;color:#272726}
+.station-reading{font-size:15px;line-height:1.7;color:#62625f;max-width:44ch;margin:0}
+.station-hero .station-overview{position:relative;inset:auto;transform:none;width:100%;height:auto;min-height:360px;display:flex;align-items:center;padding:34px;background:#f2f2f2;color:#272726;z-index:1;border-radius:0}
+.station-overview .station-overview-context{width:100%;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:center}
+.station-overview .station-map{height:150px;overflow:visible}
+.station-overview .station-map>img{filter:contrast(1.08)}
+.station-overview .station-geography figcaption{display:flex;flex-wrap:wrap;gap:4px 10px}
+.station-overview .station-geography figcaption>a:first-child{font-size:13px;line-height:1.5;color:#272726;font-weight:500;white-space:normal;min-height:44px}
+.station-overview .station-geography figcaption .geography-coordinates{font-size:12px;color:#62625f;padding-left:21px;white-space:nowrap}
+.station-overview .station-weather{color:#272726;display:grid;gap:8px;grid-template-columns:1fr;min-height:0;align-content:center;padding:0}
+.station-overview .weather-heading{font-size:14px;color:#272726}
+.station-overview .weather-reading{grid-template-columns:36px 1fr;column-gap:10px}
+.station-overview .weather-icon{width:34px;height:34px}
+.station-overview .weather-temperature{font-size:36px;color:#272726;letter-spacing:-.035em}
+.station-overview .weather-condition{font-size:13px;color:#62625f;line-height:1.5;margin:4px 0}
+.station-overview .weather-meta{display:block}
+.station-overview .weather-updated,.station-overview .weather-status{font-size:12px;color:#62625f;line-height:1.5}
+.station-overview .weather-status:empty{display:none}
+.station-overview .weather-retry{grid-column:1;color:#b50024;font-size:13px;min-height:44px;width:fit-content}
+.piece-relationship>small{font-size:12px;line-height:1.6;color:#62625f}
+.station-section-nav{margin-top:36px;height:76px;border-block:1px solid #deddd9;scroll-margin-top:0}
+.station-section-nav>div{justify-content:flex-start;gap:20px}
+.station-section-nav a{font-size:15px;min-height:46px;padding:0 18px;border-radius:6px}
+.station-section-nav a[aria-current="location"]{background:#f9f0f2}
+body[data-view="station"] .content{padding-top:8px}
+.source-credits{max-width:58ch;text-align:left;font-size:12px;line-height:1.6}
+.source-credits>summary{cursor:pointer;min-height:36px;display:flex;align-items:center;list-style:none;text-decoration:underline;text-underline-offset:4px}
+.source-credits>summary:after{content:"";width:6px;height:6px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);margin:0 4px 4px 10px}
+.source-credits[open]>summary:after{transform:rotate(225deg);margin-bottom:0}
+.source-credits>div{padding-top:8px}
+.source-credits>div p{font-size:12px;line-height:1.7;margin:4px 0 0}
+.source-credits>div a{display:inline;min-height:0;font-size:12px}
+.footer-context .source-credits #geographySource{display:inline}
+@media(min-width:1700px){.study-copy{padding-bottom:84px}.station-hero{margin-top:80px;gap:64px}.station-hero .station-overview{padding:42px}.station-hero .station-header,.station-hero .station-overview{min-height:390px}}
+@media(prefers-reduced-motion:reduce){.study-explore{transition:none}}
+@media(forced-colors:active){.study-copy{background:Canvas;color:CanvasText}.study-copy h1,.study-copy>p:not(.study-period),.study-copy .study-period{color:CanvasText}.station-hero .station-overview{border:1px solid CanvasText}.study-explore{border:1px solid ButtonText}}
+}

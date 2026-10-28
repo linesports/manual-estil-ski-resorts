@@ -260,7 +260,7 @@
     DATA.profiles.forEach(profile => addOption(savedStationFilter, profile.id, profile.name));
     savedStationFilter.value = Array.from(savedStationFilter.options).some(option => option.value === previousStation) ? previousStation : '*';
 
-    populateSectorSelect(savedSectorFilter, 'Tots els sectors');
+    populateSectorSelect(savedSectorFilter, 'Totes les categories');
     const previousCategory = savedCategoryFilter.value || '*';
     savedCategoryFilter.replaceChildren();
     addOption(savedCategoryFilter, '*', 'Totes les categories');
@@ -283,7 +283,6 @@
     document.getElementById('brandViewButton').setAttribute('aria-current', String(viewMode === 'brands' ? 'page' : 'false'));
     document.getElementById('sectorViewButton').setAttribute('aria-current', String(viewMode === 'sectors' ? 'page' : 'false'));
     document.getElementById('savedViewButton').setAttribute('aria-current', String(viewMode === 'saved' ? 'page' : 'false'));
-    document.getElementById('formatSummary').hidden = !isStation;
     document.dispatchEvent(new CustomEvent('olaf:viewchange', { detail: { mode: viewMode, station: selected, brand: activeBrand } }));
   }
 
@@ -353,7 +352,7 @@
 
   function renderCompositeContent() {
     if (viewMode === 'station') refreshSponsorOptions();
-    populateSectorSelect(sectorFilter, 'Tots els sectors');
+    populateSectorSelect(sectorFilter, 'Totes les categories');
     populateSavedFilters();
     syncViewChrome();
     if (viewMode !== 'brands') brandExplorer.render({ enabled: false });
@@ -379,8 +378,8 @@
       brandButton.disabled = false;
       document.getElementById('brandSourceNote').hidden = false;
       document.getElementById('brandSourceNote').textContent = allItems.some(piece => piece.origins.some(o => o.type === 'brand'))
-        ? 'Estació i marques, en una mateixa lectura. Les publicacions dels partners tenen un vincle documentat amb aquesta estació. Consulta la cobertura de cada compte a «Comptes de marca».'
-        : 'Els comptes de marca es mostren quan hi ha una publicació documentada relacionada explícitament amb aquesta estació. No disposar-ne encara no implica que no n’hagin publicat.';
+        ? 'Estació i marques, en una mateixa lectura. Les publicacions dels partners tenen un vincle documentat amb aquesta estació. Consulta la cobertura de cada compte a «Marques».'
+        : 'Les publicacions de les marques es mostren quan tenen un vincle documentat amb aquesta estació. No disposar-ne encara no implica que no n’hagin publicat.';
       const feedCount = items.filter(p => p.kind === 'post').length;
       document.getElementById('stationCounts').textContent = feedCount + ' posts i Reels · ' + items.filter(p => p.kind === 'story').length + ' Stories' +
         (selectedBrand !== '*' ? ' · ' + selectedBrand : '');
@@ -430,12 +429,12 @@
       renderWithItems(items, true);
       if (sector === '*') { document.getElementById('viewer').hidden = true; document.getElementById('empty').hidden = true; }
       const stations = new Set(visible.flatMap(piece => piece.relatedStations || [sourceStation(piece)]));
-      const label = sector === '*' ? 'Tots els sectors' : sector;
-      document.getElementById('sectorHeading').textContent = label === 'Tots els sectors' ? 'Patrocinis per sector' : label;
+      const label = sector === '*' ? 'Totes les categories' : sector;
+      document.getElementById('sectorHeading').textContent = label === 'Totes les categories' ? 'Patrocinis per categoria' : label;
       document.getElementById('sectorIntro').textContent =
         new Intl.NumberFormat('ca-ES').format(visible.length) +
-        ' peces publicitàries · ' + stations.size + ' estacions · mira quines marques i activacions apareixen en aquest àmbit.';
-      if(sector === '*') document.getElementById('sectorIntro').textContent = 'Tria un sector per comparar com es mostren les marques a les estacions.';
+        ' peces publicitàries · ' + stations.size + ' estacions · mira quines marques i patrocinis apareixen en aquest àmbit.';
+      if(sector === '*') document.getElementById('sectorIntro').textContent = 'Tria una categoria per comparar com es mostren les marques a les estacions.';
     } else {
       const items = getSavedItems();
       renderWithItems(items, true);
@@ -447,10 +446,10 @@
     if (!visible.length && !(viewMode === 'sectors' && sectorFilter.value === '*')) {
       document.getElementById('emptyTitle').textContent = viewMode === 'saved'
         ? 'Encara no hi ha referències desades amb aquests filtres'
-        : 'No hi ha peces documentades en aquest sector';
+        : 'No hi ha peces documentades en aquesta categoria';
       document.getElementById('emptyText').textContent = viewMode === 'saved'
         ? 'Guarda una peça amb una categoria per construir la teva biblioteca de referències.'
-        : 'Prova un altre sector per veure les activacions documentades a les estacions.';
+        : 'Prova una altra categoria per veure els patrocinis documentats a les estacions.';
       document.getElementById('emptyAction').hidden = true;
     }
     if (!empty.hidden && viewMode === 'station' && selectedBrand !== '*') {
@@ -646,7 +645,7 @@
   }
 
   function navigateTo(state) {
-    const url = window.OLAF_NAVIGATION.write(location.href, { station: selected, ...state });
+    const url = window.OLAF_NAVIGATION.write(location.href, window.OLAF_NAVIGATION.transition(routeState(), state));
     if (url.href !== location.href) history.pushState(null, '', url);
     restoreRoute(true);
   }
@@ -664,7 +663,7 @@
     brandExplorer.sector = state.sector; brandExplorer.account = state.account;
     if (!brandExplorer.profiles.some(p => p.id === brandExplorer.station)) brandExplorer.station = '*';
     selectValue(brandExplorer.sectorSelect, brandExplorer.sector); brandExplorer.sector = brandExplorer.sectorSelect.value;
-    populateSectorSelect(sectorFilter, 'Tots els sectors'); populateSavedFilters();
+    populateSectorSelect(sectorFilter, 'Totes les categories'); populateSavedFilters();
     selectValue(sectorFilter, state.sector); selectValue(savedSectorFilter, state.sector);
     selectValue(savedStationFilter, state.resort); selectValue(savedCategoryFilter, state.category); selectValue(sectorStationFilter, state.resort);
     syncFormatButtons(); renderComposite();
@@ -863,11 +862,6 @@
   window.addEventListener('popstate', () => restoreRoute(false));
   window.addEventListener('hashchange', () => { if(!['viewer','main','eventRolesTitle'].includes(location.hash.slice(1))) restoreRoute(false); });
   if (!['*', 'all', 'other', ...catalog.eventsFor(selected).map(event => event.id)].includes(selectedEvent)) selectedEvent = '*';
-  const stationPieces = DATA.pieces;
-  DATA.pieces = window.OLAF_BRAND_MODEL.uniquePublications(catalog.pieces);
-  renderFormatSummary();
-  DATA.pieces = stationPieces;
-  document.querySelector('.format-summary-kicker').textContent = 'Visió conjunta · totes les fonts';
   brandExplorer = new window.OLAFBrandExplorer({
     directory: brandDirectory, profiles: DATA.profiles, sectorForBrand,
     onBrand: selectBrand,

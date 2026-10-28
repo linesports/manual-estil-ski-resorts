@@ -36,12 +36,10 @@
     reading.append(icon, temperature, description);
     const updated = el('time', 'weather-updated');
     const status = el('p', 'weather-status'); status.setAttribute('role', 'status');
-    const retry = el('button', 'weather-retry', 'Actualitza'); retry.type = 'button';
+    const retry = el('button', 'weather-retry', 'Torna-ho a provar'); retry.type = 'button'; retry.hidden = true;
     retry.addEventListener('click', () => refresh());
-    const source = el('a', 'weather-source', 'Dades de MET Norway');
-    source.href = 'https://www.met.no/en'; source.target = '_blank'; source.rel = 'noopener noreferrer';
-    source.title = 'Estimació meteorològica de MET Norway · dades sota CC BY 4.0';
-    const meta = el('div', 'weather-meta'); meta.append(updated, source);
+    // Provider attribution lives in the shared footer, outside the station summary.
+    const meta = el('div', 'weather-meta'); meta.append(updated);
     container.classList.add('station-weather');
     container.setAttribute('aria-label', 'Temps actual a la ubicació seleccionada');
     container.replaceChildren(heading, reading, meta, status, retry);
@@ -78,7 +76,8 @@
     if (!snapshot || age === 'expired') {
       nodes.heading.textContent = 'El temps ara'; nodes.reading.hidden = true; nodes.updated.hidden = true;
       nodes.status.textContent = options.loading ? 'Consultant el temps…' : 'El temps no està disponible ara.';
-      nodes.retry.textContent = options.loading ? 'Actualitzant…' : 'Torna-ho a provar';
+      nodes.status.hidden = false;
+      nodes.retry.hidden = !!options.loading;
       nodes.retry.disabled = !!options.loading;
       state.container.dataset.weatherState = options.loading ? 'loading' : 'unavailable';
       return;
@@ -90,13 +89,17 @@
     nodes.description.textContent = snapshot.condition;
     nodes.icon.innerHTML = icons[snapshot.icon] || icons.cloud;
     nodes.updated.dateTime = new Date(snapshot.validAt).toISOString();
-    nodes.updated.textContent = 'Previsió de les ' + timeLabel(snapshot.validAt, state.zone);
+    nodes.updated.textContent = stale ? 'Previsió de ' + timeLabel(snapshot.validAt, state.zone, true)
+      : 'Previsió de les ' + timeLabel(snapshot.validAt, state.zone);
     nodes.updated.title = 'Estimació per a la ubicació aproximada de ' + state.scene.name + ' · ' + timeLabel(snapshot.validAt, state.zone, true) +
       ' · model actualitzat ' + timeLabel(snapshot.generatedAt, state.zone, true) + ' · ' + state.zone;
+    nodes.reading.title = nodes.updated.title;
     nodes.status.textContent = options.loading ? 'Actualitzant…' : stale
-      ? 'No s’ha pogut actualitzar. Dades de ' + timeLabel(snapshot.validAt, state.zone, true) + '.'
-      : 'Actualitzat a les ' + timeLabel(state.lastFetch || now, state.zone);
-    nodes.retry.disabled = !!options.loading; nodes.retry.textContent = stale ? 'Torna-ho a provar' : 'Actualitza';
+      ? options.cached ? 'No s’ha pogut actualitzar.' : 'Pendent d’una previsió més recent.'
+      : '';
+    nodes.status.hidden = !nodes.status.textContent;
+    nodes.retry.hidden = !!options.loading || !options.cached;
+    nodes.retry.disabled = !!options.loading;
     state.container.dataset.weatherState = options.loading ? 'loading' : stale ? 'stale' : 'fresh';
   }
 

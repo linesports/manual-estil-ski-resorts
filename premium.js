@@ -5,7 +5,8 @@
   const image = document.getElementById('sceneImage');
   const credit = document.getElementById('sceneCredit');
   const mapNode = document.getElementById('resortMap');
-  const hero = document.getElementById('stationHero');
+  const hero = document.getElementById('studyHero');
+  const stationPanel = document.getElementById('stationHero');
   const sectionNav = document.getElementById('stationSectionNav');
   const overview = document.getElementById('stationOverview');
   const videoToggle = document.getElementById('heroVideoToggle');
@@ -113,6 +114,11 @@
     image.closest('.ambient-scene').append(node);
     playback();
   }
+  document.getElementById('exploreStations').addEventListener('click', () => {
+    const selector = document.getElementById('stationSelectorTrigger');
+    selector.focus({ preventScroll: true });
+    stationPanel.scrollIntoView({ behavior: reduced.matches ? 'instant' : 'smooth', block: 'start' });
+  });
   videoToggle.addEventListener('click', () => {
     if (!heroVideo) return;
     if (heroVideo.paused) { manuallyPaused = false; motionOptIn = true; } else manuallyPaused = true;
@@ -121,7 +127,7 @@
   new IntersectionObserver(entries => { heroInView = entries[0].isIntersecting; playback(); }, { threshold: .02 }).observe(hero);
   document.addEventListener('visibilitychange', playback);
 
-  const targets = { overview: 'stationHero', activations: 'eventLibrary', pieces: 'viewer', analysis: 'eventInsights' };
+  const targets = { activations: 'eventLibrary', pieces: 'viewer' };
   function sectionTarget(section) {
     const node = document.getElementById(targets[section]);
     return section === 'analysis' && node?.hidden ? document.getElementById('storyDetails') : node;
@@ -130,7 +136,7 @@
   function navRoutes(state) {
     navLinks.forEach(link => {
       const section = link.dataset.section;
-      const targetState = section === 'brands' ? { mode: 'brands', station: state.station } :
+      const targetState = section === 'brands' ? window.OLAF_NAVIGATION.transition(state, { mode: 'brands' }) :
         section === 'overview' ? state :
         { ...state, event: section === 'activations' ? '*' : section === 'analysis' && state.event !== '*' ? state.event : 'all', piece: '', media: 0 };
       link.href = window.OLAF_NAVIGATION.write(location.href, targetState).href;
@@ -160,7 +166,7 @@
       scrollFrame = 0;
       const sections = Object.keys(targets).map(key => ({ key, node: sectionTarget(key) }))
         .filter(item => item.node && !item.node.hidden && item.node.getClientRects().length && item.node.getBoundingClientRect().top <= 150);
-      const active = sections.at(-1)?.key || 'overview';
+      const active = sections.at(-1)?.key || 'activations';
       navLinks.forEach(a => a.setAttribute('aria-current', a.dataset.section === active ? 'location' : 'false'));
     });
   }
@@ -206,10 +212,10 @@
   function sync(state = app.getState()) {
     const scene = scenes.stations?.[state.station];
     const stationMode = state.mode === 'station';
-    hero.hidden = sectionNav.hidden = overview.hidden = !stationMode;
+    hero.hidden = stationPanel.hidden = sectionNav.hidden = overview.hidden = !stationMode;
     if (stationMode && scene) {
-      document.getElementById('heroPlace').textContent = scene.place;
-      document.getElementById('stationOverviewTitle').textContent = 'En un cop d’ull';
+      document.getElementById('stationOverviewTitle').textContent = 'Situació i temps de ' + scene.name;
+      stationPanel.setAttribute('aria-label', 'Patrocinis de ' + scene.name + ' a Instagram');
       navRoutes(state);
       window.OLAF_WEATHER?.show({ stationId: state.station, scene, container: document.getElementById('stationWeather') });
     } else window.OLAF_WEATHER?.hide();

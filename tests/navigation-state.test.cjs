@@ -27,3 +27,48 @@ test('a malformed pasted station fragment does not prevent the site from opening
   const state = navigation.read('https://example.org/#%E0%A4%A', ['baqueira_beret']);
   assert.equal(state.station,'baqueira_beret');
 });
+
+test('opening brands from a resort preserves that resort as the directory filter and in shared links', () => {
+  const destination = navigation.transition({ mode:'station', station:'masellapirineu', event:'all' }, { mode:'brands' });
+  const link = navigation.write('https://example.org/manual/#masellapirineu', destination);
+  const restored = navigation.read(link, ['baqueira_beret', 'masellapirineu']);
+  assert.equal(restored.mode, 'brands');
+  assert.equal(restored.station, 'masellapirineu');
+  assert.equal(restored.resort, 'masellapirineu');
+  assert.equal(restored.event, '*');
+});
+
+test('an explicit all-resorts brand directory is not narrowed by the remembered station after reload', () => {
+  const destination = navigation.transition({ mode:'station', station:'masellapirineu' }, { mode:'brands', resort:'*' });
+  const link = navigation.write('https://example.org/manual/', destination);
+  const restored = navigation.read(link, ['baqueira_beret', 'masellapirineu']);
+  assert.equal(restored.station, 'masellapirineu');
+  assert.equal(restored.resort, '*');
+  assert.equal(navigation.transition(restored, { mode:'brands' }).resort, '*');
+  assert.equal(navigation.read(navigation.write(link, navigation.transition(restored, { mode:'brands' }))).resort, '*');
+});
+
+test('a destination station and explicit brand filters take precedence over the previous station', () => {
+  const destination = navigation.transition({ mode:'station', station:'baqueira_beret' }, { mode:'brands', station:'masellapirineu', resort:'grandvalira', query:'GoPro' });
+  assert.equal(destination.station, 'masellapirineu');
+  assert.equal(destination.resort, 'grandvalira');
+  assert.equal(destination.query, 'GoPro');
+  assert.equal(navigation.transition({mode:'station', station:'baqueira_beret'}, {mode:'brands',station:'masellapirineu'}).resort, 'masellapirineu');
+});
+
+test('returning to a resort or moving to categories does not import a brands-only resort filter', () => {
+  const current = { mode:'brands', station:'masellapirineu', resort:'grandvalira', brand:'gopro' };
+  assert.deepEqual(navigation.transition(current, { mode:'station' }), { mode:'station', station:'masellapirineu' });
+  assert.deepEqual(navigation.transition(current, { mode:'sectors' }), { mode:'sectors', station:'masellapirineu' });
+});
+
+test('returning from a filtered brand to the brands directory keeps the current resort rather than the remembered station', () => {
+  const current = {mode:'brands',station:'masella',resort:'grandvalira',brand:'gopro'};
+  const destination = navigation.transition(current, {mode:'brands'});
+  const restored = navigation.read(navigation.write('https://example.org/manual/', destination), ['masella','grandvalira']);
+  assert.equal(restored.station, 'masella');
+  assert.equal(restored.resort, 'grandvalira');
+  assert.equal(restored.brand, '');
+  assert.equal(navigation.transition(current, {mode:'brands',resort:'*'}).resort, '*');
+  assert.equal(navigation.transition({...current,resort:'*'}, {mode:'brands'}).resort, '*');
+});

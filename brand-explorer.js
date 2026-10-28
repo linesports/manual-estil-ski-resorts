@@ -32,13 +32,13 @@
       this.query = ''; this.station = '*'; this.sector = '*'; this.scope = 'with'; this.account = '*'; this.expanded = false; this.pageSize = 18;
       this.root = el('section', 'brand-surface'); this.root.id = 'brandSurface'; this.root.hidden = true;
       const intro = el('div', 'brand-introduction'); this.intro = intro;
-      const title = el('h1', '', 'Comptes de marca'); title.id = 'brandDirectoryTitle'; title.tabIndex = -1;
+      const title = el('h1', '', 'Marques'); title.id = 'brandDirectoryTitle'; title.tabIndex = -1;
       intro.append(title, el('p', '', 'Publicacions dels patrocinadors vinculades a les estacions.'));
       const toolbar = el('div', 'brand-search-toolbar');
       const searchLabel = el('label', 'brand-search'); searchLabel.append(el('span', '', 'Cerca una marca o un compte'));
       this.search = el('input'); this.search.type = 'search'; this.search.placeholder = 'Ex.: GoPro, Movistar…'; this.search.name = 'q'; this.search.autocomplete = 'off'; this.search.spellcheck = false; this.search.id = 'brandSearch';
       searchLabel.append(this.search); toolbar.append(searchLabel);
-      this.sectorSelect = this.field(toolbar, 'Sector', 'brandSectorFilter'); option(this.sectorSelect, '*', 'Tots els sectors');
+      this.sectorSelect = this.field(toolbar, 'Categoria', 'brandSectorFilter'); option(this.sectorSelect, '*', 'Totes les categories');
       [...new Set(directory.brands.map(brand => sectorForBrand(brand.aliases[0])))].sort((a, b) => a.localeCompare(b, 'ca')).forEach(name => option(this.sectorSelect, name, name));
       this.stationSelect = this.field(toolbar, 'Estació', 'brandStationFilter'); option(this.stationSelect, '*', 'Totes les estacions');
       profiles.forEach(profile => option(this.stationSelect, profile.id, profile.name));
@@ -64,21 +64,30 @@
 
     profile(id) { return this.profiles.find(p => p.id === id); }
 
+    publicationCountFor(brand) {
+      if (this.station === '*') return brand.publicationCount;
+      return window.OLAF_BRAND_MODEL.uniquePublications(brand.items.filter(piece =>
+        piece.station === this.station || piece.relatedStations?.includes(this.station))).length;
+    }
+
     filteredBrands() {
       const query = window.OLAF_BRAND_MODEL.normalize(this.query);
       return this.directory.brands.filter(brand =>
-        (this.scope === 'all' || brand.items.length) &&
+        (this.scope === 'all' || this.publicationCountFor(brand)) &&
         (this.station === '*' || brand.stationIds.includes(this.station)) &&
         (this.sector === '*' || this.sectorForBrand(brand.aliases[0]) === this.sector) &&
         (!query || window.OLAF_BRAND_MODEL.normalize([brand.name, ...brand.accounts.map(a => a.username), ...brand.stationIds.map(id => this.profile(id)?.name)].join(' ')).includes(query)))
-        .sort((a, b) => b.publicationCount - a.publicationCount || a.name.localeCompare(b.name, 'ca'));
+        .sort((a, b) => this.publicationCountFor(b) - this.publicationCountFor(a) || a.name.localeCompare(b.name, 'ca'));
     }
 
     renderRows() {
       const brands = this.filteredBrands(); this.list.replaceChildren(); if(this.search.value !== this.query) this.search.value = this.query; this.sectorSelect.value = this.sector; this.stationSelect.value = this.station; this.scopeSelect.value = this.scope;
-      this.resultNote.textContent = brands.length + (brands.length === 1 ? ' marca' : ' marques') + (this.scope === 'with' ? ' amb publicacions vinculades a les estacions' : ' · la disponibilitat varia segons el compte') + ' · de més a menys publicacions';
+      const placeLabel = this.station === '*' ? 'les estacions' : this.profile(this.station)?.name || this.station;
+      this.intro.querySelector('p').textContent = 'Publicacions de marques relacionades amb ' + placeLabel + '.';
+      this.resultNote.textContent = brands.length + (brands.length === 1 ? ' marca' : ' marques') + (this.scope === 'with' ? ' amb publicacions vinculades a ' + placeLabel : ' · la disponibilitat varia segons el compte') + ' · de més a menys publicacions';
       (this.expanded ? brands : brands.slice(0, this.pageSize)).forEach(brand => {
-        const row = el('a', 'brand-directory-row'); row.dataset.brandId = brand.id; row.dataset.publicationCount = brand.publicationCount;
+        const publicationCount = this.publicationCountFor(brand);
+        const row = el('a', 'brand-directory-row'); row.dataset.brandId = brand.id; row.dataset.publicationCount = publicationCount;
         row.href = window.OLAF_NAVIGATION.write(location.href, { ...window.OLAF_NAVIGATION.read(location.href), mode: 'brands', brand: brand.id, account: '*', piece: '', media: 0 }).href;
         const avatar = el('span', 'brand-avatar'); avatar.setAttribute('aria-hidden', 'true');
         const image = brand.accounts.find(account => account.avatar)?.avatar;
@@ -97,12 +106,12 @@
         }
         const identity = el('span', 'brand-row-identity'); identity.append(el('strong', '', brand.name), el('span', '', this.sectorForBrand(brand.aliases[0])));
         const accounts = el('span', 'brand-row-accounts', brand.accounts.filter(a => a.identityStatus === 'confirmed').slice(0, 2).map(a => '@' + a.username).join(' · ') || 'Compte pendent de verificar');
-        const stations = el('span', 'brand-row-stations', brand.stationIds.slice(0, 3).map(id => this.profile(id)?.name || id).join(' · ') + (brand.stationIds.length > 3 ? ' +' + (brand.stationIds.length - 3) : ''));
-        const count = el('span', 'brand-row-count'); count.append(el('strong', '', new Intl.NumberFormat('ca-ES').format(brand.publicationCount)), el('span', '', brand.publicationCount ? (brand.publicationCount === 1 ? 'publicació' : 'publicacions') : 'peces recuperades'));
+        const stations = el('span', 'brand-row-stations', this.station === '*' ? brand.stationIds.slice(0, 3).map(id => this.profile(id)?.name || id).join(' · ') + (brand.stationIds.length > 3 ? ' +' + (brand.stationIds.length - 3) : '') : this.profile(this.station)?.name || this.station);
+        const count = el('span', 'brand-row-count'); count.append(el('strong', '', new Intl.NumberFormat('ca-ES').format(publicationCount)), el('span', '', publicationCount ? (publicationCount === 1 ? 'publicació' : 'publicacions') : 'peces recuperades'));
         row.append(avatar, identity, accounts, stations, count, arrow());
         row.addEventListener('click', event => { if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); this.account = '*'; this.onBrand(brand.id, true); }); this.list.append(row);
       });
-      if (!brands.length) this.list.append(el('p', 'brand-no-results', 'Cap marca coincideix amb aquesta cerca. Prova un altre nom, sector o estació.'));
+      if (!brands.length) this.list.append(el('p', 'brand-no-results', 'Cap marca coincideix amb aquesta cerca. Prova un altre nom, categoria o estació.'));
       this.more.hidden = brands.length <= this.pageSize;
       this.more.textContent = this.expanded ? 'Mostrar menys marques' : (brands.length - this.pageSize === 1 ? 'Veure una marca més' : 'Veure les ' + (brands.length - this.pageSize) + ' marques restants');
       this.more.setAttribute('aria-expanded', String(this.expanded));
@@ -130,7 +139,7 @@
       if (!brand) return [];
       if (this.account !== '*' && !brand.accounts.some(account => account.username === this.account)) this.account = '*';
       this.detail.replaceChildren();
-      const back = el('a', 'context-back', '← Tornar als comptes de marca'); back.id = 'brandBackLink'; const route = window.OLAF_NAVIGATION.read(location.href); back.href = window.OLAF_NAVIGATION.write(location.href, { ...route, brand: '', account: '*', format: 'all', piece: '', media: 0 }).href; back.addEventListener('click', event => { if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); this.onBack(); }); this.detail.append(back);
+      const back = el('a', 'context-back', '← Tornar a les marques'); back.id = 'brandBackLink'; const route = window.OLAF_NAVIGATION.read(location.href); back.href = window.OLAF_NAVIGATION.write(location.href, { ...route, brand: '', account: '*', format: 'all', piece: '', media: 0 }).href; back.addEventListener('click', event => { if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); this.onBack(); }); this.detail.append(back);
       const heading = el('div', 'brand-detail-heading'), identity = el('div');
       const title = el('h1', '', brand.name); title.tabIndex = -1; title.id = 'brandDetailTitle'; identity.append(title);
       const confirmed = brand.accounts.filter(account => account.identityStatus === 'confirmed');

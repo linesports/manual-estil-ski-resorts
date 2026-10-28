@@ -42,5 +42,15 @@
     put('piece', state.piece); if (state.piece) put('media', state.media, 0);
     return url;
   }
-  return { read, write };
+  function transition(current, destination) {
+    const next = { station: current.station, ...destination };
+    // Entering the brand directory from a resort is a contextual query. An
+    // explicit all-resorts choice stays explicit; URL parsing never infers it.
+    if (next.mode === 'brands' && !Object.prototype.hasOwnProperty.call(destination, 'resort')) {
+      if (current.mode === 'station') next.resort = next.station;
+      else if (current.mode === 'brands') next.resort = current.resort || '*';
+    }
+    return next;
+  }
+  return { read, write, transition };
 });
