@@ -14,7 +14,7 @@
 
 Projecció Mercator esfèrica de longitud/latitud WGS84. Cada àmbit té una finestra explícita a `provenance.json`; no s'inventen contorns, relleus ni línies de carena. Les illes de menys de 0,9 píxels en totes dues dimensions s'ometen a aquesta escala. Els contorns es simplifiquen amb Douglas–Peucker a la tolerància indicada per asset i s'arrodoneixen a 0,1 unitats SVG.
 
-La presentació és només de contorns: tots els territoris tenen `fill="none"`, sense farciment interior, amb traç gris `#82827c` d'1,3 unitats SVG. Els marcadors vermells es conserven. El canvi de presentació del 28 d'octubre no altera cap traçat, punt, coordenada, finestra, projecció ni tolerància. El manifest inclou `renderStyle` i el SHA-256 de cada SVG per poder invalidar la memòria cau sense canviar-ne la ruta nominal.
+La presentació és només de contorns: tots els territoris tenen `fill="none"`, sense farciment interior, amb traç blanc `#fff` d'1,3 unitats SVG per mostrar-los sobre el vídeo del hero. Els marcadors vermells es conserven. El canvi de presentació del 28 d'octubre no altera cap traçat, punt, coordenada, finestra, projecció ni tolerància. El manifest inclou `renderStyle` i el SHA-256 de cada SVG per poder invalidar la memòria cau sense canviar-ne la ruta nominal.
 
 Els SVG són localitzadors de situació, sense marc ni fons. No són plànols de pistes. Els elements `img` de la interfície han de portar `alt=""` i `aria-hidden="true"`, perquè el nom del lloc i l'enllaç al mapa ja n'ofereixen l'equivalent textual.
 
