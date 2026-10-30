@@ -4,7 +4,7 @@ const { select } = require('../event-covers.js');
 const piece = (id, image, mediaType = 'image', kind = 'post') => ({ id, image, kind, mediaType, media: [{ image, mediaType }] });
 
 test('event covers never borrow a curated publication excluded by the active filters', () => {
-  const only = piece('brand:iberdrola:DU27URviGCE:baqueira_beret', 'https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media/DU27URviGCE_01.webp', 'video');
+  const only = piece('brand:iberdrola:DU27URviGCE:baqueira_beret', 'https://linesports.github.io/manual-estil-ski-resorts-media/DU27URviGCE_01.webp', 'video');
   const covers = select({ id: 'baqueira_beret:iberdrola', items: [only] });
   assert.deepEqual(covers.map(c => c.pieceId), [only.id]);
   assert.equal(covers[0].image, only.image);
@@ -28,8 +28,8 @@ test('the explicit Europa Cup cover wins over an earlier schedule Story without 
 });
 
 test('a source carousel can use a later photo without adding a publication', () => {
-  const p = piece('brand:audispain:DSpIj2NjFxh:baqueira_beret', 'https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media-4/DSpIj2NjFxh_01.webp');
-  p.media.push({ image: 'https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media-4/DSpIj2NjFxh_03.webp', mediaType: 'image' });
+  const p = piece('brand:audispain:DSpIj2NjFxh:baqueira_beret', 'https://linesports.github.io/manual-estil-ski-resorts-media-4/DSpIj2NjFxh_01.webp');
+  p.media.push({ image: 'https://linesports.github.io/manual-estil-ski-resorts-media-4/DSpIj2NjFxh_03.webp', mediaType: 'image' });
   const covers = select({ id: 'baqueira_beret:winter-driving', items: [p] });
   assert.equal(covers.length, 1);
   assert.equal(covers[0].pieceId, p.id);
@@ -48,9 +48,9 @@ test('a publication with no usable image never emits an empty img source', () =>
 });
 
 test('the photographic Audi preview outranks its information panel when both publications match', () => {
-  const panel = piece('brand:audispain:DSpIj2NjFxh:baqueira_beret', 'https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media-4/DSpIj2NjFxh_01.webp');
-  panel.media.push({ image: 'https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media-4/DSpIj2NjFxh_03.webp', mediaType: 'image' });
-  const photo = piece('brand:audispain:DRVFhn0mIwM:baqueira_beret', 'https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media-4/DRVFhn0mIwM_01.webp', 'video');
+  const panel = piece('brand:audispain:DSpIj2NjFxh:baqueira_beret', 'https://linesports.github.io/manual-estil-ski-resorts-media-4/DSpIj2NjFxh_01.webp');
+  panel.media.push({ image: 'https://linesports.github.io/manual-estil-ski-resorts-media-4/DSpIj2NjFxh_03.webp', mediaType: 'image' });
+  const photo = piece('brand:audispain:DRVFhn0mIwM:baqueira_beret', 'https://linesports.github.io/manual-estil-ski-resorts-media-4/DRVFhn0mIwM_01.webp', 'video');
   const main = select({ id: 'baqueira_beret:winter-driving', items: [panel, photo] }).at(-1);
   assert.equal(main.pieceId, photo.id);
   assert.equal(main.fit, 'cover');
