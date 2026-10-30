@@ -7,7 +7,7 @@
   const editorial = {
   "baqueira_beret:fwt": {
     "pieceId": "brand:dynastarskis:DTiwnWjDQJG:baqueira_beret",
-    "image": "https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media/DTiwnWjDQJG_01.webp",
+    "image": "https://linesports.github.io/manual-estil-ski-resorts-media/DTiwnWjDQJG_01.webp",
     "width": 1280,
     "height": 853,
     "fit": "cover",
@@ -21,7 +21,7 @@
   },
   "baqueira_beret:iberdrola": {
     "pieceId": "brand:iberdrola:DTxizIgiFC4:baqueira_beret",
-    "image": "https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media/DTxizIgiFC4_03.webp",
+    "image": "https://linesports.github.io/manual-estil-ski-resorts-media/DTxizIgiFC4_03.webp",
     "reason": "Tercer element del carrusel de la marca: fotografia de l’equipament i els trofeus d’Iberdrola. Retall de presentació; original sencer al visor.",
     "width": 1080,
     "height": 1350,
@@ -31,7 +31,7 @@
   },
   "baqueira_beret:winter-driving": {
     "pieceId": "brand:audispain:DRVFhn0mIwM:baqueira_beret",
-    "image": "https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media-4/DRVFhn0mIwM_01.webp",
+    "image": "https://linesports.github.io/manual-estil-ski-resorts-media-4/DRVFhn0mIwM_01.webp",
     "width": 750,
     "height": 1333,
     "fit": "cover",
@@ -41,7 +41,7 @@
     "alternates": [
       {
         "pieceId": "brand:audispain:DSpIj2NjFxh:baqueira_beret",
-        "image": "https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media-4/DSpIj2NjFxh_03.webp",
+        "image": "https://linesports.github.io/manual-estil-ski-resorts-media-4/DSpIj2NjFxh_03.webp",
         "reason": "Tercer element del carrusel oficial amb la pista de Baqueira identificada; làmina completa.",
         "width": 1080,
         "height": 1346
@@ -50,7 +50,7 @@
   },
   "baqueira_beret:snow-beer": {
     "pieceId": "brand:sanmiguel_es:DVJQVDaCIxz:baqueira_beret",
-    "image": "https://marcgrisolia-ai.github.io/manual-estil-ski-resorts-media-4/DVJQVDaCIxz_01.webp",
+    "image": "https://linesports.github.io/manual-estil-ski-resorts-media-4/DVJQVDaCIxz_01.webp",
     "reason": "Fotografia original del servei de l’activació a la terrassa. Enquadrament centrat en la persona i el servei; no s’atribueix una localització concreta al fotograma del recap.",
     "width": 750,
     "height": 1332,
