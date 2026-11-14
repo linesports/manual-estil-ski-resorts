@@ -64,3 +64,7 @@ Correcció posterior de l’usuari: presentació i fitxa fusionades en una sola 
 ## Fusió de la capçalera — correcció del mateix dia
 
 La imatge de feedback i el hero formen ara una sola composició de dues zones. El vídeo ocupa tota l’amplada, amb el mapa i la temperatura sobreposats sense cap divisió de color. El context general es redueix a una línia i una frase curta; el selector ja és a la primera pantalla. El mapa conserva punts, coordenades i geometria, canviant només el farciment a buit. La temperatura és l’única dada meteorològica visible; mai es presenta un valor antic com a actual.
+
+## Capa de polit frontend — 14 de novembre
+
+`polish.css` i `polish.js` es carreguen els últims i només afinen l'escriptori, sense tocar corpus, URL ni arquitectura. Capçalera enganxosa amb vidre esmerilat i subratllat animat; hero amb degradats superior/inferior, entrada esglaonada i controls de vidre; menú local amb píndola activa; camps, selectors i commutadors amb anells de focus nets; col·leccions amb degradat de lectura reforçat, insígnies fosques i fletxa que gira en passar-hi; directori de marques amb logotip contingut en un mosaic (ja no es solapa amb el text) i comptador destacat; categories amb esquelet de càrrega; aparició progressiva, transició de vista i barra de progrés de lectura. Tot respecta `prefers-reduced-motion` i `prefers-contrast`.
